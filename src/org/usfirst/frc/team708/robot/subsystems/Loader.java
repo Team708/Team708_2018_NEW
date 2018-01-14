@@ -1,7 +1,10 @@
 package org.usfirst.frc.team708.robot.subsystems;
 
-//import org.usfirst.frc.team708.robot.Constants;
+
+import org.usfirst.frc.team708.robot.Constants;
+//import org.usfirst.frc.team708.robot.Robot;
 //import org.usfirst.frc.team708.robot.RobotMap;
+//import org.usfirst.frc.team708.robot.util.IRSensor;
 //import edu.wpi.first.wpilibj.DigitalInput;
 //import edu.wpi.first.wpilibj.Encoder;
 //import edu.wpi.first.wpilibj.Talon;
@@ -9,34 +12,28 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- *
+ * Leaders
+ * 
  */
-public class Shooter extends Subsystem {
-	// Put methods for controlling this subsystem here. Call these
-	// from Commands.
+public class Loader extends Subsystem {
 	
 	/**
 	 * Constructor
 	 */
-	public Shooter() {
-		// Initializes the encoder
-        
+	public Loader() {
 		
-		// Initializes the motor
-        
 	}
-
+	
 	public void initDefaultCommand() {
-
+  //      setDefaultCommand(new ManualLoader());
     }
 	
-
 	
-	/**
-	 * Sends data to the Smart Dashboard
-	 */
 	public void sendToDashboard() {
-
+		
+		
+		if (Constants.DEBUG) {
+	
+		}
 	}
 }
-

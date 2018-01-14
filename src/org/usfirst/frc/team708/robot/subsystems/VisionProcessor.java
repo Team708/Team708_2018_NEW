@@ -1,18 +1,18 @@
-package org.team708.robot.subsystems;
+package org.usfirst.frc.team708.robot.subsystems;
 
-import org.team708.robot.AutoConstants;
+
+import org.usfirst.frc.team708.robot.AutoConstants;
 
 //import org.team708.robot.commands.visionProcessor.ProcessData;
 
-import org.team708.robot.Constants;
-import org.team708.robot.util.Math708;
+import org.usfirst.frc.team708.robot.Constants;
+import org.usfirst.frc.team708.robot.util.Math708;
 
-import edu.wpi.first.wpilibj.Preferences;
+//import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
-import edu.wpi.first.wpilibj.networktables2.type.NumberArray;
+//import edu.wpi.first.wpilibj.networktables2.type.NumberArray;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 
 /**
  *
@@ -20,14 +20,14 @@ import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 public class VisionProcessor extends Subsystem {
     
 	private NetworkTable roboRealmInfo;
-	private NumberArray targetCrosshair;
+// NumberArray deprecated	private NumberArray targetCrosshair;
 	
 	private boolean hasTarget;
 	private boolean wasCentered;
 	private boolean isAtY = false;
 	
 	private final double 	imageWidth = 320;
-	private final double 	targetWidth = 18; //width of target in inches
+//	private final double 	targetWidth = 18; //width of target in inches
 
 	private double 			centerX = 0.0;
 	private double			targetY = AutoConstants.Y_TARGET;
@@ -38,29 +38,29 @@ public class VisionProcessor extends Subsystem {
 	private double thresholdY = AutoConstants.Y_THRESHOLD;
 	
     // High goal aspect ratio (11ft6in/3ft1in) in inches (3.729 repeating)
-    private final double targetAspectRatio = 3.73; 
+//    private final double targetAspectRatio = 3.73; 
     
     // Distance related measurements from the network table
-    private double 			distanceToTarget 	= 0.0;
-    private int 			differencePx 		= 0;
-    private final double 	targetDiameterIn 	= 24;
+ //   private double 			distanceToTarget 	= 0.0;
+//    private int 			differencePx 		= 0;
+//    private final double 	targetDiameterIn 	= 24;
     
     // Data sent from the network table
-    private double currentAspectRatio = 0.0;
-    private double upper_left_x = 0;
-    private double upper_left_y = 0;
-    private double upper_right_x = 0;
-    private double upper_right_y = 0;
-    private double lower_left_x = 0;
-    private double lower_left_y = 0;
-    private double radius = 0;
-    private double blob_count = 0;
+//    private double currentAspectRatio = 0.0;
+//    private double upper_left_x = 0;
+//    private double upper_left_y = 0;
+//    private double upper_right_x = 0;
+//    private double upper_right_y = 0;
+//    private double lower_left_x = 0;
+//    private double lower_left_y = 0;
+//    private double radius = 0;
+//    private double blob_count = 0;
     
-    private double lowerLengthX;
-    private double setProportion;
+//    private double lowerLengthX;
+//    private double setProportion;
     	
     //daisy says to set this to 43.5 deg
-    private final double cameraFOVRads = Math.toRadians(47);
+//    private final double cameraFOVRads = Math.toRadians(47);
 //    private double cameraFOVRads = Math.toRadians(43.5);
 	double rotate;
     
@@ -68,10 +68,11 @@ public class VisionProcessor extends Subsystem {
 		super("Vision Processor");
 		roboRealmInfo = NetworkTable.getTable("vision");
 		
-		targetCrosshair = new NumberArray();
+// Number array deprecated		targetCrosshair = new NumberArray();
 		centerX = imageWidth / 2;
 	}
 	
+	/*
 	public void processData() {
 		try {
 			currentX= roboRealmInfo.getNumber("cx", 0);
@@ -94,7 +95,7 @@ public class VisionProcessor extends Subsystem {
 			e.printStackTrace();
 		}
 	}
-	
+	*/
 	public double getRotate() {
 		
 		if (hasTarget) 

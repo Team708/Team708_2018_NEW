@@ -1,10 +1,18 @@
 package org.usfirst.frc.team708.robot.util;
 
-import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 
-public class HatterDrive extends RobotDrive {
+public class HatterDrive extends DifferentialDrive {
 
+	public HatterDrive(SpeedController leftMotor, SpeedController rightMotor) {
+		super(leftMotor, rightMotor);
+		
+		//DifferentialDrive(left, right);
+		// TODO Auto-generated constructor stub
+	}
+
+/*
 	private double turnSensitivity 	= 1.5; 	// How sensitive turning is for the
 						// drivetrain
 	private double driveStall	= 0.1; 	// What percent power before the drivetrain
@@ -24,6 +32,8 @@ public class HatterDrive extends RobotDrive {
 		this.setSafetyEnabled(USE_SAFETY);
 		this.squaredInputs = squaredInputs;
 	}
+	*/
+	
 
 	/**
 	 * Borrowed from Team 254, this allows for easily controlling a fast drivetrain
@@ -35,17 +45,17 @@ public class HatterDrive extends RobotDrive {
 	public void cheesyDrive(double move, double rotate, boolean quickTurn) {
 		double angular_power 	= 0.0;
 		double overPower 	= 0.0;
-		double sensitivity 	= turnSensitivity;
+	//	double sensitivity 	= turnSensitivity;
 		double rPower 		= 0.0;
 		double lPower 		= 0.0;
 
 		if (quickTurn) {
 			overPower 	= 1.0;
-			sensitivity 	= 1.0;
+	//		sensitivity 	= 1.0;
 			angular_power 	= rotate;
 		} else {
 			overPower = 0.0;
-			angular_power = Math.abs(move) * rotate * sensitivity;
+	//		angular_power = Math.abs(move) * rotate * sensitivity;
 		}
 		rPower = lPower = move;
 		lPower += angular_power;
@@ -66,37 +76,37 @@ public class HatterDrive extends RobotDrive {
 		
 		lPower = correctDriveStall(lPower);
 		rPower = correctDriveStall(rPower);
-		setLeftRightMotorOutputs(lPower, rPower);
+	//	setLeftRightMotorOutputs(lPower, rPower);
 	}
 	
 	/**
 	 * Drives the robot using a move value and a rotation value
 	 */
 	public void arcadeDrive(double move, double rotate) {
-		super.arcadeDrive(move, rotate, squaredInputs);
+	//	super.arcadeDrive(move, rotate, squaredInputs);
 	}
 	
 	/**
 	 * Drives the robot using a left side value and a right side value
 	 */
 	public void tankDrive(double left, double right) {
-		super.tankDrive(left, right, squaredInputs);
+	//	super.tankDrive(left, right, squaredInputs);
 	}
 	
 	/**
 	 * Returns if the inputs for the drivetrain is squared
 	 * @return
 	 */
-	public boolean isSquaredInputs() {
-		return squaredInputs;
-	}
+	//public boolean isSquaredInputs() {
+	//	return squaredInputs;
+	//}
 	
 	/**
 	 * Sets whether the robot should be squaring its drivetrain inputs
 	 * @param squaredInputs
 	 */
 	public void setSquaredInputs(boolean squaredInputs) {
-		this.squaredInputs = squaredInputs;
+	//	this.squaredInputs = squaredInputs;
 	}
 	
 	/**
@@ -110,9 +120,9 @@ public class HatterDrive extends RobotDrive {
 	public double correctDriveStall(double input) {
 		double output = 0.0;
 		
-		if (Math.abs(input) > Math.abs(driveStall)) {
+//		if (Math.abs(input) > Math.abs(driveStall)) {
 			output = input;
-		}
+//		}
 		
 		return output;
 	}

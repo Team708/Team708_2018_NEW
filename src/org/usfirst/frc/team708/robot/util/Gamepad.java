@@ -37,7 +37,7 @@ public class Gamepad extends Joystick{
     public static final int button_RightStick 	= 10;	//only 12 buttons allowed - must find out which can be read    
     
 
-    private static final double axis_deadband 	= .15;
+    private static final double axis_deadband 	= .10;
     
     private int port;
     
@@ -47,7 +47,7 @@ public class Gamepad extends Joystick{
      * @param port 
      */
     public Gamepad(int port){
-	super(port);
+    	super(port);
         this.port = port;
     }
     
@@ -57,19 +57,14 @@ public class Gamepad extends Joystick{
      * @param axis
      * @return 
      */
-    
     public double getAxis(int axis){
-	double val = getRawAxis(axis);
-        if(Math.abs(val) <= axis_deadband){
-            return 0;
-        }else if(axis == Gamepad.rightStick_Y || axis == Gamepad.leftStick_Y)
-        {
-            //flip the y axes on both joysticks
-            //they naturally read negative for upward motion, but they should read positive
-            return -val;
-        }else{
-            return val;
-        }
+		double val = getRawAxis(axis);
+		if(Math.abs(val) <= axis_deadband) return 0; 
+		
+		//flip the y axes on both joysticks
+	    //they naturally read negative for upward motion, but they should read positive
+		if (axis == Gamepad.rightStick_Y || axis == Gamepad.leftStick_Y) return -val;
+		else return val;
     }
     
     /**
@@ -95,7 +90,7 @@ public class Gamepad extends Joystick{
      * @return 
      */
     public boolean getButton(int button){
-	return getRawButton(button);
+    	return getRawButton(button);
     }
     
     public int getPort()

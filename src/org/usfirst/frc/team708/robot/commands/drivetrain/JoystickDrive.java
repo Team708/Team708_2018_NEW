@@ -15,9 +15,6 @@ public class JoystickDrive extends Command {
     public JoystickDrive() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.drivetrain);
-//    	requires(Robot.shooter);
-//    	requires(Robot.feeder);
-
     }
 
     // Called just before this Command runs the first time
