@@ -6,6 +6,8 @@ import org.usfirst.frc.team708.robot.Constants;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team708.robot.commands.pneumatics.*;
+import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
 
 public class PneumaticsManual extends Command {
 
@@ -20,7 +22,7 @@ public class PneumaticsManual extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.PneumaticsTest.set(DoubleSolenoid.Value.kForward);
+    	PneumaticsTest.set(DoubleSolenoid.Value.kForward);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,7 +36,7 @@ public class PneumaticsManual extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.feeder.stop();
+    	PneumaticsTest.stop();
     }
 
     // Called when another command which requires one or more of the same

@@ -4,27 +4,25 @@ import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 	
 public class PneumaticsTest extends Subsystem {
 	
-	private DoubleSolenoid ExampleDoubleSolenoid = new DoubleSolenoid(1,2);
+	private static DoubleSolenoid ExampleDoubleSolenoid = new DoubleSolenoid(RobotMap.Test1, RobotMap.Test2);
 	/**
 	 * Constructor
 	 */
 	public PneumaticsTest() {
-	DoubleSolenoid	ExampleDoubleSolenoid = new DoubleSolenoid(RobotMap.Test1, RobotMap.Test2); //initializes the loading motor
+	DoubleSolenoid	ExampleDoubleSolenoid = new DoubleSolenoid(RobotMap.Test1, RobotMap.Test2); //initializes
 	}
 	
 	public void initDefaultCommand() {
     }
 	
-	public void manualMove(){
-		ExampleDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
-	}
 	
-	public void stop(){
+	public static void stop(){
 		ExampleDoubleSolenoid.set(DoubleSolenoid.Value.kOff);
 	}
 	
@@ -33,5 +31,11 @@ public class PneumaticsTest extends Subsystem {
 
 		if (Constants.DEBUG) {
 		}
+	}
+
+	public static void set(Value kforward) {
+		ExampleDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+		// TODO Auto-generated method stub
+		
 	}
 }
