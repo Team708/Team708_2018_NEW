@@ -6,6 +6,7 @@ package org.usfirst.frc.team708.robot;
 import edu.wpi.first.wpilibj.buttons.*;
 
 import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsManual;
+import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsOff;
 //import org.team708.robot.commands.drivetrain.*;
 //import org.team708.robot.commands.intake.*;
 //import org.team708.robot.commands.shooter.*;
@@ -87,7 +88,7 @@ public class OI {
 		 */
 		
 		PneumaticsTestButton.whenPressed(new PneumaticsManual());
-		PneumaticsTestButton.whenPressed(new Pneumatics());
+		PneumaticsTestButton.whenPressed(new PneumaticsOff());
 		//spinFeeder.whileHeld(new ManualFeeder());
 		//spinFeederBack.whileActive(new SpinFeederBack());
 		
