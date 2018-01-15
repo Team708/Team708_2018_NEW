@@ -10,8 +10,7 @@ import org.usfirst.frc.team708.robot.util.Math708;
 
 //import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
-//import edu.wpi.first.wpilibj.networktables2.type.NumberArray;
+import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -19,7 +18,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class VisionProcessor extends Subsystem {
     
-	private NetworkTable roboRealmInfo;
 // NumberArray deprecated	private NumberArray targetCrosshair;
 	
 	private boolean hasTarget;
@@ -66,36 +64,13 @@ public class VisionProcessor extends Subsystem {
     
 	public VisionProcessor() {
 		super("Vision Processor");
-		roboRealmInfo = NetworkTable.getTable("vision");
+		NetworkTableInstance limeLightInstance = NetworkTableInstance.getDefault();
+		NetworkTable limeLightTable = limeLightInstance.getTable("/limelight");
+		NetworkTableEntry limeLightEntry = limeLightTable.getEntry("tx");
+		currentX = limeLightEntry.getDouble(0);
 		
-// Number array deprecated		targetCrosshair = new NumberArray();
-		centerX = imageWidth / 2;
 	}
 	
-	/*
-	public void processData() {
-		try {
-			currentX= roboRealmInfo.getNumber("cx", 0);
-			currentY= roboRealmInfo.getNumber("cy", 0);
-//			upper_left_x = (double) roboRealmInfo.getNumber("p1x");
-//            upper_left_y = (double) roboRealmInfo.getNumber("p1y");
-//            upper_right_x = (double)roboRealmInfo.getNumber("p2x");
-//            upper_right_y = (double)roboRealmInfo.getNumber("p2y");
-//            lower_left_x = (double) roboRealmInfo.getNumber("p3x");
-//            lower_left_y = (double) roboRealmInfo.getNumber("p3y");
-			
-			if (currentX > 0) {
-				hasTarget = true;
-			} else {
-				hasTarget = false;
-			}
-			
-            
-		} catch (TableKeyNotDefinedException e) {
-			e.printStackTrace();
-		}
-	}
-	*/
 	public double getRotate() {
 		
 		if (hasTarget) 
@@ -184,10 +159,10 @@ public class VisionProcessor extends Subsystem {
 	}
 
 	public void sendToDashboard() {
-		SmartDashboard.putBoolean("See Target", isHasTarget());
+//		SmartDashboard.putBoolean("See Target", isHasTarget());
 //		SmartDashboard.putBoolean("Was Centered", wasCentered());
-		SmartDashboard.putBoolean("Is At Y", isAtY());
-		SmartDashboard.putNumber("Current Y", currentY);
+//		SmartDashboard.putBoolean("Is At Y", isAtY());
+//		SmartDashboard.putNumber("Current Y", currentY);
 		SmartDashboard.putNumber("Center of Target", currentX);
 //		SmartDashboard.putNumber("Rotation", rotate);
 	}

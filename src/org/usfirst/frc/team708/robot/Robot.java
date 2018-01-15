@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team708.robot;
 
+import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.CameraServer;
@@ -18,10 +19,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team708.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team708.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team708.robot.subsystems.VisionProcessor;
-//Hello I am nic
+
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -45,7 +44,6 @@ public class Robot extends IterativeRobot {
     Command 			autonomousCommand;
     Preferences			prefs;
     
-
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -56,8 +54,9 @@ public class Robot extends IterativeRobot {
         statsTimer.start();		// Starts the timer for the Smart Dashboard
         
         // Subsystem Initialization
-
-	    drivetrain 		= new Drivetrain();
+	    
+		drivetrain 		= new Drivetrain();
+//	    visionProcessor = new VisionProcessor();
 		sendDashboardSubsystems();		// Sends each subsystem's currently running command to the Smart Dashboard
 			
 		queueAutonomousModes();			// Adds autonomous modes to the selection box
@@ -121,7 +120,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-        LiveWindow.run();
+//        LiveWindow.run();
         sendStatistics();
     }
     
@@ -132,7 +131,14 @@ public class Robot extends IterativeRobot {
     
     
     private void sendStatistics() {
-        if (statsTimer.get() >= Constants.SEND_STATS_INTERVAL) statsTimer.reset();
+ //       if (statsTimer.get() >= Constants.SEND_STATS_INTERVAL) statsTimer.reset();
+    	
+		NetworkTableInstance limeLightInstance = NetworkTableInstance.getDefault();
+		NetworkTable limeLightTable = limeLightInstance.getTable("/limelight");
+		NetworkTableEntry limeLightEntry = limeLightTable.getEntry("tx");
+		drivetrain.currentX = limeLightEntry.getDouble(0);
+		
+    	drivetrain.sendToDashboard();
     }
     
     /**
@@ -150,6 +156,7 @@ public class Robot extends IterativeRobot {
      * Sends every subsystem to the Smart Dashboard
      */
     private void sendDashboardSubsystems() {
+    	SmartDashboard.putData(drivetrain);
     	
     }
 }
