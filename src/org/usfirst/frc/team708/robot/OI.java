@@ -33,10 +33,10 @@ public class OI {
 	 */
 	
 	// Drivetrain Buttons
-	private static final int INTAKE_OUT_HOLD_BUTTON	 	= Gamepad.button_L_Shoulder;
-	private static final int INTAKE_IN_HOLD_BUTTON		= Gamepad.button_R_Shoulder;
-	
-	
+	private static final int ShiftColsonWheels	 	= Gamepad.button_L_Shoulder;
+	private static final int ShiftOmniWheels		= Gamepad.button_R_Shoulder;
+	private static final int HighGear               = Gamepad.shoulderAxisRight;
+	private static final int LowGear               = Gamepad.shoulderAxisLeft;
 	/*
 	 * Operator Button Assignment
 	 */
