@@ -14,13 +14,13 @@ public class PneumaticsTest extends Subsystem {
 	 * Constructor
 	 */
 	public PneumaticsTest() {
-		ExampleDoubleSolenoid = new DoubleSolenoid(RobotMap.Test1, RobotMap.Test2); //initializes the loading motor
+	DoubleSolenoid	ExampleDoubleSolenoid = new DoubleSolenoid(RobotMap.Test1, RobotMap.Test2); //initializes the loading motor
 	}
 	
 	public void initDefaultCommand() {
     }
 	
-	public void manualMove(double speed){
+	public void manualMove(){
 		ExampleDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
 	}
 	
