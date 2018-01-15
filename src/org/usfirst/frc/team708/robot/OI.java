@@ -87,7 +87,7 @@ public class OI {
 		 */
 		
 		PneumaticsTestButton.whenPressed(new PneumaticsManual());
-		PneunmaticsTestButton.whenPressed(new Pneumatics());
+		PneumaticsTestButton.whenPressed(new Pneumatics());
 		//spinFeeder.whileHeld(new ManualFeeder());
 		//spinFeederBack.whileActive(new SpinFeederBack());
 		
