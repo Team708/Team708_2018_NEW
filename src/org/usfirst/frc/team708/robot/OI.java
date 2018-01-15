@@ -33,10 +33,10 @@ public class OI {
 	 */
 	
 	// Drivetrain Buttons
-	private static final int ShiftColsonWheels	 	= Gamepad.button_L_Shoulder;
-	private static final int ShiftOmniWheels		= Gamepad.button_R_Shoulder;
-	private static final int HighGear               = Gamepad.shoulderAxisRight;
-	private static final int LowGear               = Gamepad.shoulderAxisLeft;
+	//private static final int ShiftColsonWheels	 	= Gamepad.button_L_Shoulder;
+	private static final int PneumaitcsTest		= Gamepad.button_R_Shoulder;
+//	private static final int HighGear               = Gamepad.shoulderAxisRight;
+//	private static final int LowGear               = Gamepad.shoulderAxisLeft;
 	/*
 	 * Operator Button Assignment
 	 */
@@ -60,8 +60,8 @@ public class OI {
 	/*
 	 * Driver Button Commands
 	 */
-	public static final Button intakeOut 	= new JoystickButton(driverGamepad, INTAKE_OUT_HOLD_BUTTON);
-	public static final Button intakeIn 	= new JoystickButton(driverGamepad, INTAKE_IN_HOLD_BUTTON);
+	public static final Button PneumaticsTestButton 	= new JoystickButton(driverGamepad, PneumaitcsTest);
+//	public static final Button intakeIn 	= new JoystickButton(driverGamepad, INTAKE_IN_HOLD_BUTTON);
 
 	/*
 	 * Operator Button Commands

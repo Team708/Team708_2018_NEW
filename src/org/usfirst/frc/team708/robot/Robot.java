@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team708.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.CameraServer;
@@ -18,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team708.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team708.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team708.robot.subsystems.VisionProcessor;
+import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -39,6 +41,7 @@ public class Robot extends IterativeRobot {
     
     public static Drivetrain 		drivetrain;
 	public static VisionProcessor 	visionProcessor;
+	public static PneumaticsTest    PneumaticsTest;
     
 	public static OI 				oi;
  
@@ -59,6 +62,7 @@ public class Robot extends IterativeRobot {
         // Subsystem Initialization
 
 	    drivetrain 		= new Drivetrain();
+	    PneumaticsTest  = new PneumaticsTest();
 		sendDashboardSubsystems();		// Sends each subsystem's currently running command to the Smart Dashboard
 			
 		queueAutonomousModes();			// Adds autonomous modes to the selection box
