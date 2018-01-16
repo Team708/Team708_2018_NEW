@@ -1,6 +1,7 @@
 package org.usfirst.frc.team708.robot.commands.pneumatics;
 
 import java.awt.Robot;
+import java.time.Instant;
 
 import org.usfirst.frc.team708.robot.Constants;
 
@@ -8,15 +9,12 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
+import org.usfirst.frc.team708.robot.*;
 
 public class PneumaticsManual extends Command {
-
-
-    public PneumaticsManual() {
-//    	requires(Robot.feeder);
-//    	requires(Robot.intake_ball);
-//    	requires(Robot.drivetrain);
-//    	requires(Robot.shooter);
+	
+	public PneumaticsManual() {
+    	
     }
     
 

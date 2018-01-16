@@ -87,11 +87,16 @@ public class OI {
 		 * Driver Commands to be called by button
 		 */
 		
-		PneumaticsTestButton.whenPressed(new PneumaticsManual());
-		PneumaticsTestButton.whenPressed(new PneumaticsOff());
-		//spinFeeder.whileHeld(new ManualFeeder());
-		//spinFeederBack.whileActive(new SpinFeederBack());
+		if(Constants.PneumaticsTestButtonPressed == false) {
+    		Constants.PneumaticsTestButtonPressed = true;
+    		PneumaticsTestButton.whenPressed(new PneumaticsManual()); // runs Pneumatics Command
+    	}
+    	else {
+    		Constants.PneumaticsTestButtonPressed = false;
+    		PneumaticsTestButton.whenPressed(new PneumaticsOff()); // runs Pneumatics Command
 		
 		}
-}
+		
+      }
 
+}

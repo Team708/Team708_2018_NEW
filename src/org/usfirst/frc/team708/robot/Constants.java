@@ -111,6 +111,13 @@ public final class Constants {
 	
 	public static final double pid_tolerance = 1;
 	
+	/*
+	 * Pneumatics Test
+	 */
+	
+	public static boolean PneumaticsTestButtonPressed;
+	
+	
 	
 	/*
 	 * Vision Processor
