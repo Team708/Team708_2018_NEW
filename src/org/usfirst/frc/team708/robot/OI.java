@@ -36,7 +36,8 @@ public class OI {
 	
 	// Drivetrain Buttons
 	//private static final int ShiftColsonWheels	 	= Gamepad.button_L_Shoulder;
-	private static final int PneumaitcsTest		= Gamepad.button_R_Shoulder;
+	private static final int PneumaticsOn		= Gamepad.button_A;
+	private static final int PneumaticsOff	    = Gamepad.button_B;
 //	private static final int HighGear               = Gamepad.shoulderAxisRight;
 //	private static final int LowGear               = Gamepad.shoulderAxisLeft;
 	/*
@@ -62,7 +63,7 @@ public class OI {
 	/*
 	 * Driver Button Commands
 	 */
-	public static final Button PneumaticsTestButton 	= new JoystickButton(driverGamepad, PneumaitcsTest);
+//	public static final Button PneumaticsTestButton 	= new JoystickButton(driverGamepad, PneumaticsTest);
 //	public static final Button intakeIn 	= new JoystickButton(driverGamepad, INTAKE_IN_HOLD_BUTTON);
 
 	/*
@@ -87,8 +88,8 @@ public class OI {
 		 * Driver Commands to be called by button
 		 */
 		
-		PneumaticsTestButton.whenPressed(new PneumaticsManual());
-		PneumaticsTestButton.whenPressed(new PneumaticsOff());
+//		PneumaticsTestButton.whenPressed(new PneumaticsManual());
+	//	PneumaticsTestButton.whenPressed(new PneumaticsOff());
 		//spinFeeder.whileHeld(new ManualFeeder());
 		//spinFeederBack.whileActive(new SpinFeederBack());
 		

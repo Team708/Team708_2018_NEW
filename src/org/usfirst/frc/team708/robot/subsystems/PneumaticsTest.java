@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 	
 public class PneumaticsTest extends Subsystem {
 	
-	private static DoubleSolenoid ExampleDoubleSolenoid = new DoubleSolenoid(RobotMap.Test1, RobotMap.Test2);
+	private DoubleSolenoid ExampleDoubleSolenoid;
+	
 	/**
 	 * Constructor
 	 */
@@ -21,9 +22,11 @@ public class PneumaticsTest extends Subsystem {
 	public void initDefaultCommand() {
     }
 	
-	
-	public static void stop(){
-		ExampleDoubleSolenoid.set(DoubleSolenoid.Value.kOff);
+	public void setpiston(Value value) {
+		ExampleDoubleSolenoid.set(value);;	
+	}	
+	public void reverse(){
+		ExampleDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	public void sendToDashboard() {
@@ -31,11 +34,5 @@ public class PneumaticsTest extends Subsystem {
 
 		if (Constants.DEBUG) {
 		}
-	}
-
-	public static void set(Value kforward) {
-		ExampleDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
-		// TODO Auto-generated method stub
-		
 	}
 }
