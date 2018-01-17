@@ -1,6 +1,6 @@
 package org.usfirst.frc.team708.robot.commands.pneumatics;
 
-import java.awt.Robot;
+//import java.awt.Robot;
 
 import org.usfirst.frc.team708.robot.Constants;
 
@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
+import org.usfirst.frc.team708.robot.Robot;
 
 public class PneumaticsOff extends Command {
 
@@ -22,7 +23,7 @@ public class PneumaticsOff extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	PneumaticsTest.set(DoubleSolenoid.Value.kOff);
+    	Robot.PneumaticsTest.setpiston(DoubleSolenoid.Value.kOff);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -36,7 +37,7 @@ public class PneumaticsOff extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	PneumaticsTest.stop();
+    	Robot.PneumaticsTest.reverse();
     }
 
     // Called when another command which requires one or more of the same
@@ -44,5 +45,4 @@ public class PneumaticsOff extends Command {
     protected void interrupted() {
     	end();
     }
-
 }

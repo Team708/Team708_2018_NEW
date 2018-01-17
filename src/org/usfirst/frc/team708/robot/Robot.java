@@ -20,6 +20,7 @@ import org.usfirst.frc.team708.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team708.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team708.robot.subsystems.VisionProcessor;
 import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
+import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -137,7 +138,7 @@ public class Robot extends IterativeRobot {
     
     
     private void sendStatistics() {
-        if (statsTimer.get() >= Constants.SEND_STATS_INTERVAL) statsTimer.reset();
+//        if (statsTimer.get() >= Constants.SEND_STATS_INTERVAL) statsTimer.reset();
     }
     
     /**
