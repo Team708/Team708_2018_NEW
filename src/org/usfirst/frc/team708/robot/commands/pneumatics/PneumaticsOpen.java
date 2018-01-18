@@ -7,13 +7,13 @@ import org.usfirst.frc.team708.robot.Constants;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
-import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
 import org.usfirst.frc.team708.robot.Robot;
+import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
 
-public class PneumaticsOff extends Command {
+public class PneumaticsOpen extends Command {
 
 
-    public PneumaticsOff() {
+    public PneumaticsOpen() {
 //    	requires(Robot.feeder);
 //    	requires(Robot.intake_ball);
 //    	requires(Robot.drivetrain);
@@ -23,21 +23,20 @@ public class PneumaticsOff extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.PneumaticsTest.setpiston(DoubleSolenoid.Value.kOff);
+    	Robot.pneumaticsTest.forward();
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {    	
+    protected void execute() {    
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return(false);
+    	return(true);
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.PneumaticsTest.reverse();
     }
 
     // Called when another command which requires one or more of the same

@@ -6,7 +6,8 @@ package org.usfirst.frc.team708.robot;
 import edu.wpi.first.wpilibj.buttons.*;
 
 import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsManual;
-import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsOff;
+import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsClose;
+import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsOpen;
 //import org.team708.robot.commands.drivetrain.*;
 //import org.team708.robot.commands.intake.*;
 //import org.team708.robot.commands.shooter.*;
@@ -36,10 +37,10 @@ public class OI {
 	
 	// Drivetrain Buttons
 	//private static final int ShiftColsonWheels	 	= Gamepad.button_L_Shoulder;
-	private static final int PneumaticsOn		= Gamepad.button_A;
-	private static final int PneumaticsOff	    = Gamepad.button_B;
-//	private static final int HighGear               = Gamepad.shoulderAxisRight;
-//	private static final int LowGear               = Gamepad.shoulderAxisLeft;
+	private static final int PNEUMATICS_ON			= Gamepad.button_X;
+	private static final int PNEUMATICS_OFF	 	   = Gamepad.button_Y;
+//	private static final int HIGH_GEAR               = Gamepad.shoulderAxisRight;
+//	private static final int LOW_GEAR               = Gamepad.shoulderAxisLeft;
 	/*
 	 * Operator Button Assignment
 	 */
@@ -47,18 +48,18 @@ public class OI {
 	private static final int SPIN_LOADER_BUTTON		= Gamepad.button_R_Shoulder;
 	private static final int SPIN_SHOOTER_BUTTON	= Gamepad.button_L_Shoulder;
 	private static final int SPIN_SHOOTER_BACK_BUTTON	= Gamepad.button_RightStick;
-	private static final int SPIN_ALL_BACK_BUTTON	= Gamepad.button_A;
+	//private static final int SPIN_ALL_BACK_BUTTON	= Gamepad.button_A;
 	
 	// ARM
 	private static final int OPERATE_ARM_BUTTON		= Gamepad.leftStick_Y;
 	private static final int OPERATE_GRAPPLER_BUTTON= Gamepad.rightStick_X;
 	
 	// LOADER Buttons
-	public static final int LOADER_IN_BUTTON 	= Gamepad.button_X;
-	public static final int LOADER_OUT_BUTTON 	= Gamepad.button_B;
+	//public static final int LOADER_IN_BUTTON 	= Gamepad.button_X;
+	//public static final int LOADER_OUT_BUTTON 	= Gamepad.button_B;
 	
 	// OTHER
-	public static final int SONAR_OVERRIDE 	= Gamepad.button_Y;
+	//public static final int SONAR_OVERRIDE 	= Gamepad.button_Y;
 	
 	/*
 	 * Driver Button Commands
@@ -71,14 +72,14 @@ public class OI {
 	 */
 	public static final Button spinShooter		= new JoystickButton(operatorGamepad, SPIN_SHOOTER_BUTTON);
 	public static final Button spinShooterBack	= new JoystickButton(operatorGamepad, SPIN_SHOOTER_BACK_BUTTON);
-	public static final Button spinAllBack		= new JoystickButton(operatorGamepad, SPIN_ALL_BACK_BUTTON);
-	public static final Button fire				= new JoystickButton(operatorGamepad, SPIN_LOADER_BUTTON);
-	public static final Button loaderSpinIn		= new JoystickButton(operatorGamepad, LOADER_IN_BUTTON);
-	public static final Button loaderSpinOut	= new JoystickButton(operatorGamepad, LOADER_OUT_BUTTON);
-	public static final Button sonarOverride	= new JoystickButton(operatorGamepad, SONAR_OVERRIDE);
+//	public static final Button spinAllBack		= new JoystickButton(operatorGamepad, SPIN_ALL_BACK_BUTTON);
+//	public static final Button fire				= new JoystickButton(operatorGamepad, SPIN_LOADER_BUTTON);
+//	public static final Button loaderSpinIn		= new JoystickButton(operatorGamepad, LOADER_IN_BUTTON);
+//	public static final Button loaderSpinOut	= new JoystickButton(operatorGamepad, LOADER_OUT_BUTTON);
+//	public static final Button sonarOverride	= new JoystickButton(operatorGamepad, SONAR_OVERRIDE);
+	public static final Button pneumaticsOn		= new JoystickButton(operatorGamepad, PNEUMATICS_ON);
+	public static final Button pneumaticsOff	= new JoystickButton(operatorGamepad, PNEUMATICS_OFF);
 
-
-	
 	/**
 	 * Constructor
 	 * Assigns commands to be called when each button is pressed.
@@ -88,11 +89,10 @@ public class OI {
 		 * Driver Commands to be called by button
 		 */
 		
-//		PneumaticsTestButton.whenPressed(new PneumaticsManual());
-	//	PneumaticsTestButton.whenPressed(new PneumaticsOff());
+		pneumaticsOn.whileHeld(new PneumaticsOpen());
+		pneumaticsOff.whileHeld(new PneumaticsClose());
 		//spinFeeder.whileHeld(new ManualFeeder());
 		//spinFeederBack.whileActive(new SpinFeederBack());
-		
 		}
 }
 
