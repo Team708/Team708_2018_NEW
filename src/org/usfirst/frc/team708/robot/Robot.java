@@ -42,8 +42,7 @@ public class Robot extends IterativeRobot {
     
     public static Drivetrain 		drivetrain;
 	public static VisionProcessor 	visionProcessor;
-	public static PneumaticsTest    PneumaticsTest;
-    
+	public static PneumaticsTest    pneumaticsTest;
 	public static OI 				oi;
  
 	SendableChooser<Command> autonomousMode = new SendableChooser<>();
@@ -61,13 +60,14 @@ public class Robot extends IterativeRobot {
         statsTimer.start();		// Starts the timer for the Smart Dashboard
         
         // Subsystem Initialization
+        
+        oi 				= new OI();		// Initializes the OI
 
 	    drivetrain 		= new Drivetrain();
-	    PneumaticsTest  = new PneumaticsTest();
+	    pneumaticsTest  = new PneumaticsTest();
 		sendDashboardSubsystems();		// Sends each subsystem's currently running command to the Smart Dashboard
 			
 		queueAutonomousModes();			// Adds autonomous modes to the selection box
-		oi 				= new OI();		// Initializes the OI. 
 		// This MUST BE LAST or a NullPointerException will be thrown
     }
 	
@@ -92,7 +92,7 @@ public class Robot extends IterativeRobot {
     /**
      * This function is called periodically during autonomous
      */
-    public void autonomousPeriodic() {	
+    public void autonomousPeriodic() {
         Scheduler.getInstance().run();
         sendStatistics();
     }
