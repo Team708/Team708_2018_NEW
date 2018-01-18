@@ -10,17 +10,17 @@ import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
 import org.usfirst.frc.team708.robot.Robot;
 
-public class PneumaticsClose extends Command {
+public class PneumaticsOff extends Command {
 
 
-    public PneumaticsClose() {
+    public PneumaticsOff() {
     	
     }
     
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.pneumaticsTest.reverse();
+    	Robot.pneumaticsTest.off();
     }
 
     // Called repeatedly when this Command is scheduled to run

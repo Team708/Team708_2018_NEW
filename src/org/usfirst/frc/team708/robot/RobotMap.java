@@ -74,7 +74,7 @@ public class RobotMap {
 	// PCM Ports
 	public static final int Test1  = 0; //Shifts Drivetrain from High gear to low gear
     public static final int Test2   = 1; //Changes from omni to coleson
-	//public static final int Grabber 	   = 2; //Changes grabber state
+	public static final int Test3   = 2; //Changes grabber state
 //	public static final int 			   = 3;
 //	public static final int 			   = 4;
 //	public static final int 			   = 5;

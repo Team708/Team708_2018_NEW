@@ -6,8 +6,8 @@ package org.usfirst.frc.team708.robot;
 import edu.wpi.first.wpilibj.buttons.*;
 
 import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsManual;
-import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsClose;
-import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsOpen;
+import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsOff;
+import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsOn;
 //import org.team708.robot.commands.drivetrain.*;
 //import org.team708.robot.commands.intake.*;
 //import org.team708.robot.commands.shooter.*;
@@ -89,8 +89,8 @@ public class OI {
 		 * Driver Commands to be called by button
 		 */
 		
-		pneumaticsOn.whileHeld(new PneumaticsOpen());
-		pneumaticsOff.whileHeld(new PneumaticsClose());
+		pneumaticsOn.whileHeld(new PneumaticsOn());
+		pneumaticsOff.whileHeld(new PneumaticsOff());
 		//spinFeeder.whileHeld(new ManualFeeder());
 		//spinFeederBack.whileActive(new SpinFeederBack());
 		}

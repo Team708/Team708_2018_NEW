@@ -10,10 +10,10 @@ import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 import org.usfirst.frc.team708.robot.Robot;
 import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
 
-public class PneumaticsOpen extends Command {
+public class PneumaticsOn extends Command {
 
 
-    public PneumaticsOpen() {
+    public PneumaticsOn() {
 //    	requires(Robot.feeder);
 //    	requires(Robot.intake_ball);
 //    	requires(Robot.drivetrain);
@@ -23,7 +23,7 @@ public class PneumaticsOpen extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.pneumaticsTest.forward();
+    	Robot.pneumaticsTest.on();
     }
 
     // Called repeatedly when this Command is scheduled to run
