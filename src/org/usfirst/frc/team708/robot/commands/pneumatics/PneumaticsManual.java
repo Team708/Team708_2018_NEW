@@ -29,7 +29,7 @@ public class PneumaticsManual extends Command {
     		Robot.pneumaticsTest.on();
      	} else if (OI.driverGamepad.getButton(Gamepad.button_Y)) {
      		Robot.pneumaticsTest.off();
-     	} else Robot.pneumaticsTest.off();
+     	} //else Robot.pneumaticsTest.off();
     }
 
     // Make this return true when this Command no longer needs to run execute()

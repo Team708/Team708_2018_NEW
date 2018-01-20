@@ -28,6 +28,8 @@ public class PneumaticsTest extends Subsystem {
 		 setDefaultCommand(new PneumaticsManual());
     }	
 	
+	
+	
 	public void off(){
 		exampleSolenoid.set(false);
 	}
