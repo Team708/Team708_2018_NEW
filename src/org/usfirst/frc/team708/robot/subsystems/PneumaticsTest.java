@@ -19,7 +19,7 @@ public class PneumaticsTest extends Subsystem {
 	 * Constructor
 	 */
 	public PneumaticsTest() {
-		exampleSolenoid = new Solenoid(3); //initializes
+		exampleSolenoid = new Solenoid(2); //initializes
 		
 		exampleSolenoid.set(true);
 	}
