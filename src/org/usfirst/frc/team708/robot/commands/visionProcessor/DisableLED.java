@@ -2,28 +2,25 @@ package org.usfirst.frc.team708.robot.commands.visionProcessor;
 
 import org.usfirst.frc.team708.robot.Robot;
 
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class FindTarget extends Command {
+public class DisableLED extends Command {
 	
-    public FindTarget() {
+    public DisableLED() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.visionProcessor);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	Robot.visionProcessor.setNTInfo("ledMode", 1.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    // ADD BACK IN LATER	Robot.visionProcessor.processData();
-    //	Robot.drivetrain.haloDrive(Robot.visionProcessor.getMove(0.5), Robot.visionProcessor.getRotate());
     }
 
     // Make this return true when this Command no longer needs to run execute()

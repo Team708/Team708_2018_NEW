@@ -59,7 +59,6 @@ public class Drivetrain extends PIDSubsystem {
 						// (this could be important if a jerky robot causes things to topple
 	private boolean usePID = false;
 	
-    public double currentX = 0.0;
     /**
      * Constructor
      */
@@ -357,7 +356,6 @@ public class Drivetrain extends PIDSubsystem {
     	SmartDashboard.putNumber("DT Encoder Distance", encoder.getDistance());	// Encoder reading
     	SmartDashboard.putNumber("DT Encoder 2 Distance", encoder2.getDistance());		// Encoder reading
 //    	SmartDashboard.putNumber("Sonar Mode", sonarOverride);
-    	SmartDashboard.putNumber("Center of Target", currentX);
 
     }
 }

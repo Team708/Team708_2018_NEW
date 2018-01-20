@@ -1,7 +1,7 @@
 
 package org.usfirst.frc.team708.robot;
 
-import edu.wpi.first.networktables.*;
+//import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.CameraServer;
@@ -37,6 +37,7 @@ public class Robot extends IterativeRobot {
     
     public static Drivetrain 		drivetrain;
 	public static VisionProcessor 	visionProcessor;
+	
     
 	public static OI 				oi;
  
@@ -56,7 +57,7 @@ public class Robot extends IterativeRobot {
         // Subsystem Initialization
 	    
 		drivetrain 		= new Drivetrain();
-//	    visionProcessor = new VisionProcessor();
+	    visionProcessor = new VisionProcessor();
 		sendDashboardSubsystems();		// Sends each subsystem's currently running command to the Smart Dashboard
 			
 		queueAutonomousModes();			// Adds autonomous modes to the selection box
@@ -98,6 +99,7 @@ public class Robot extends IterativeRobot {
     	//If you want the autonomous to continue until interrupted by another command, 
     	//remove this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        visionProcessor.setNTInfo("ledMode", 1.0);
     }
 
     /**
@@ -113,6 +115,9 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+       
+
+		
         sendStatistics();
     }
     
@@ -133,10 +138,7 @@ public class Robot extends IterativeRobot {
     private void sendStatistics() {
  //       if (statsTimer.get() >= Constants.SEND_STATS_INTERVAL) statsTimer.reset();
     	
-		NetworkTableInstance limeLightInstance = NetworkTableInstance.getDefault();
-		NetworkTable limeLightTable = limeLightInstance.getTable("/limelight");
-		NetworkTableEntry limeLightEntry = limeLightTable.getEntry("tx");
-		drivetrain.currentX = limeLightEntry.getDouble(0);
+
 		
     	drivetrain.sendToDashboard();
     }
