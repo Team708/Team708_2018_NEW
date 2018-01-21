@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team708.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team708.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team708.robot.subsystems.VisionProcessor;
+import org.usfirst.frc.team708.robot.Constants;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -58,6 +59,9 @@ public class Robot extends IterativeRobot {
 	    
 		drivetrain 		= new Drivetrain();
 	    visionProcessor = new VisionProcessor();
+	    
+	    visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_ON);
+	    
 		sendDashboardSubsystems();		// Sends each subsystem's currently running command to the Smart Dashboard
 			
 		queueAutonomousModes();			// Adds autonomous modes to the selection box
@@ -81,6 +85,8 @@ public class Robot extends IterativeRobot {
     	// schedule the autonomous command   		
     	autonomousCommand = (Command)autonomousMode.getSelected();
         if (autonomousCommand != null) autonomousCommand.start();
+        visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
+        visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_ON);
     }
 
     /**
@@ -99,7 +105,8 @@ public class Robot extends IterativeRobot {
     	//If you want the autonomous to continue until interrupted by another command, 
     	//remove this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        visionProcessor.setNTInfo("ledMode", 1.0);
+        visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
+        visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_OFF);
     }
 
     /**

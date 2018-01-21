@@ -2,13 +2,9 @@ package org.usfirst.frc.team708.robot.subsystems;
 
 
 import org.usfirst.frc.team708.robot.AutoConstants;
-
-//import org.team708.robot.commands.visionProcessor.ProcessData;
-
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.util.Math708;
 
-//import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -18,21 +14,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class VisionProcessor extends Subsystem {
 	
-//	private boolean hasTarget			= false;	
 	private boolean isCentered			= false;
-//	private boolean isAtY = false;		-Not using Y in 2018
-	
-	private final double 	imageWidth  = 320.0;
-	private final double 	targetWidth = 13.0; //width of target in inches
 
-	private double			hasTarget	= 0.0;	//Get from Network Table
-	private double 			currentX 	= 0.0;	//Get from Network Table
-//	private double			currentY = 0.0;		-Not using Y in 2018
-	
+//	Required Network Table Data 	
+	private double hasTarget	= 0.0;	//Get from Network Table
+	private double displacementX 	= 0.0;	//Get from Network Table
 
-	private double thresholdX = AutoConstants.X_THRESHOLD;
-	private double thresholdY = AutoConstants.Y_THRESHOLD;
-	
+//	Accessing the Limelight's Network Table	
 	NetworkTableInstance 	limeLightInstance 	= NetworkTableInstance.getDefault();
 	NetworkTable			limeLightTable		= limeLightInstance.getTable("/limelight");
     	
@@ -56,40 +44,24 @@ public class VisionProcessor extends Subsystem {
 //	Method for centering with the cubes
 	public double getRotate() {
 		
-		getNTInfo("tx", currentX);
+		getNTInfo("tx", displacementX);
 		getNTInfo("tv", hasTarget);
 		
-		if (hasTarget == 1) 
+		if (hasTarget == Constants.VISION_TARGET_FOUND) 
 		{
-			rotate = Math708.getSignClippedPercentError(currentX, 0.0, 0.3, 0.5);
+			rotate = Math708.getSignClippedPercentError(displacementX, 0.0, 0.3, 0.5);
 			
-			if (Math.abs(currentX) <= thresholdX) {
+			if (Math.abs(displacementX) <= AutoConstants.X_THRESHOLD) {
 				rotate = 0.0;
 				isCentered = true;
 			}
-			else if (Math.abs(currentX) > thresholdX) {
+			else if (Math.abs(displacementX) > AutoConstants.X_THRESHOLD) {
 				isCentered = false;
-			}
-			
-			
-			/*
-			rotate = difference / centerX;
-			
-			
-				if (rotate > 0.0) {
-					//reverses the sign to turn left, when target is left
-					rotate = -Constants.VISION_ROTATE_MOTOR_SPEED;
-				}
-				else {
-					rotate = Constants.VISION_ROTATE_MOTOR_SPEED;
-				}
-				*/
+			}			
 		}
 		
-		else {		//Ask if we want to move at all if no targets are found
-			//rotates if not target (default is right) if loses/doesn't have target
-			rotate = -0.4;
-			
+		else {
+			rotate = 0.0;
 		}
 		
 		return rotate;
@@ -131,10 +103,15 @@ public class VisionProcessor extends Subsystem {
 		return isCentered;
 	}
 
-	public void sendToDashboard() {
+	public void sendToDashboard() {		//Might have to rewrite public variables for the smart dashboard...
+										//Future me problem		-Viet
+		
 //		SmartDashboard.putBoolean("string name", boolean);
+		SmartDashboard.putBoolean("Is Centered", isCentered);
 
 //		SmartDashboard.putNumber("string name", number);
+		SmartDashboard.putNumber("Displacement X", displacementX);
+		SmartDashboard.putNumber("Has Target", hasTarget);
 
 
 	}
@@ -143,5 +120,6 @@ public class VisionProcessor extends Subsystem {
 		if (Constants.DEBUG) {
 		}    	
     }
+    
 }
 

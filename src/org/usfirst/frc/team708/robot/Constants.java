@@ -40,6 +40,16 @@ public final class Constants {
 	
 	public static final double SHOOTER_MOTOR_FORWARD 		=  	0.8;
 	public static final double SHOOTER_MOTOR_BACKWARD 		=  -1.0;
+	
+	//I hate you guys... Here are your ENDLESS vision constants!	-Viet
+	public static final double VISION_LED_ON				= 0.0;
+	public static final double VISION_LED_OFF				= 1.0;
+	public static final double VISION_LED_BLINK				= 2.0;
+	public static final double VISION_PROCESSING_ON			= 0.0;
+	public static final double VISION_PROCESSING_OFF		= 1.0;
+	public static final double VISION_TARGET_NOT_FOUND		= 0.0;
+	public static final double VISION_TARGET_FOUND			= 1.0;
+	
 
 	
 	/*
