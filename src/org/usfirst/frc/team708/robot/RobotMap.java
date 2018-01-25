@@ -15,8 +15,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 public class RobotMap {
 	
 	// Gamepad USB ports
-	public static final int driverGamepad   = 1;
-	public static final int operatorGamepad = 2;
+	public static final int driverGamepad   = 0;
+	public static final int operatorGamepad = 1;
 	
 	// PWM Ports
 //	public static final int 			 	= 0;
