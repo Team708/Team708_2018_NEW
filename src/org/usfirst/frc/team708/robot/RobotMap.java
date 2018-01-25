@@ -49,14 +49,14 @@ public class RobotMap {
 	public static final int pivotArmMotorSlave1			= 32;
 	
 	// Digital IO
-	public static final int drivetrainEncoderARt		= 0;
-	public static final int drivetrainEncoderBRt		= 1;
-	public static final int drivetrainEncoderALeft		= 2;
-	public static final int drivetrainEncoderBLeft		= 3;
-	public static final int pivotArmEncoderA			= 4;
-	public static final int pivotArmEncoderB			= 5;
-	public static final int telescopeEncoderARt			= 6;
-	public static final int telescopeEncoderBRt			= 7;
+	public static final int drivetrainEncoderARt		= 0;  	//this might go directly on the motor controllers
+	public static final int drivetrainEncoderBRt		= 1;	//this might go directly on the motor controllers
+	public static final int drivetrainEncoderALeft		= 2;	//this might go directly on the motor controllers
+	public static final int drivetrainEncoderBLeft		= 3;	//this might go directly on the motor controllers
+	public static final int pivotArmEncoderA			= 4;	//this might go directly on the motor controllers
+	public static final int pivotArmEncoderB			= 5;	//this might go directly on the motor controllers
+	public static final int telescopeEncoderA			= 6;	//this might go directly on the motor controllers
+	public static final int telescopeEncoderB			= 7;	//this might go directly on the motor controllers
 	public static final int colorSensor			 		= 8;  
 //	public static final int pivotArmDownSwitch	 		= 9;  	//might be on motor controller
 	public static final int TelescopeDownSwitch			= 9;	//might be on motor controller
