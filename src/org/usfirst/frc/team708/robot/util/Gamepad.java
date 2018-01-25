@@ -18,8 +18,8 @@ public class Gamepad extends Joystick{
     //floating-point values:
     public static final int leftStick_X 	= 0;
     public static final int leftStick_Y 	= 1;
-    public static final int shoulderAxisLeft 	= 2;
-    public static final int shoulderAxisRight 	= 3;
+    public static final int shoulderAxisLeft 	= 2; //Left trigger
+    public static final int shoulderAxisRight 	= 3; //Right trigger
     public static final int rightStick_X 	= 4;
     public static final int rightStick_Y 	= 5;
     public static final int dpadAxis 		= 6;
