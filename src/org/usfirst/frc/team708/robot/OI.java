@@ -8,7 +8,7 @@ import org.usfirst.frc.team708.robot.util.Gamepad;
 import org.usfirst.frc.team708.robot.util.triggers.*;
 
 import org.usfirst.frc.team708.robot.commands.drivetrain.*;
-import org.usfirst.frc.team708.robot.commands.intake.*;
+import org.usfirst.frc.team708.robot.commands.intakeCube.*;
 import org.usfirst.frc.team708.robot.commands.arm.*;
 import org.usfirst.frc.team708.robot.commands.cubegrabber.*;
 ;

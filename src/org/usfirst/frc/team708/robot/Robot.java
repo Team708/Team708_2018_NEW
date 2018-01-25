@@ -48,6 +48,8 @@ public class Robot extends IterativeRobot {
 	public static VisionProcessor 	visionProcessor;
 	public static PneumaticsTest    pneumaticsTest;
 	public static Intake_Cube		intake_cube;
+	public static Arm				arm;
+	public static Telescope			telescope;
 	public static OI 				oi;
  
 	SendableChooser<Command> autonomousMode = new SendableChooser<>();
