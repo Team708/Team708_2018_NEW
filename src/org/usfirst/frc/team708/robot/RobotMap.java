@@ -20,7 +20,7 @@ public class RobotMap {
 	public static final int operatorGamepad = 1;
 	
 	// PWM Ports
-	public static final int INTAKE_MOTOR 	= 0;
+	public static final int intakeMotor  	= 0;
 //	public static final int 			 	= 1;
 //	public static final int  			 	= 2;
 //	public static final int  				= 3;
@@ -77,10 +77,10 @@ public class RobotMap {
 	public static final int shifterLow		= 0; 	//Shifts Drivetrain to Low gear
     public static final int shifterHigh		= 1; 	//Shifts Drivetrain to High gear
     public static final int butterflyShift	= 2;	//Drops Onmi Wheels
-//	public static final int openGrabber		= 3;	//Open Grabber
-//	public static final int closeGrabber	= 4;	//Close Grabber
-//	public static final int telescopeLow	= 5;	//shifts Telescope to Low Gear
-//	public static final int telescopeHigh	= 6;	//Shifts Telescope to High Gear
+	public static final int openGrabber		= 3;	//Open Grabber
+	public static final int closeGrabber	= 4;	//Close Grabber
+	public static final int telescopeLow	= 5;	//shifts Telescope to Low Gear
+	public static final int telescopeHigh	= 6;	//Shifts Telescope to High Gear
 //	public static final int = 7;
 	
 	

@@ -28,7 +28,7 @@ public class VisionProcessor extends Subsystem {
 	NetworkTable			limeLightTable		= limeLightInstance.getTable("/limelight");
 	
 //	Sweep function variables
-	private double gyroAngle = drivetrain.getAngle();
+	private double gyroAngle = 0.0;
     	
 	double rotate;
 	
@@ -71,6 +71,7 @@ public class VisionProcessor extends Subsystem {
 		
 		else {	//The robot does not see any targets and is now sweeping
 			drivetrain.resetGyro();
+			gyroAngle = drivetrain.getAngle();
 			if (gyroAngle == AutoConstants.SWEEP_ANGLE_START) {
 				rotate = drivetrain.rotateByGyro(AutoConstants.SWEEP_ANGLE_LEFT, AutoConstants.X_THRESHOLD);
 			}

@@ -15,8 +15,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 //import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team708.robot.commands.intake_cube.*;
-
+import org.usfirst.frc.team708.robot.commands.intakeCube.*;
 import org.usfirst.frc.team708.robot.commands.autonomous.*;
 import org.usfirst.frc.team708.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team708.robot.subsystems.Intake_Cube;
@@ -180,6 +179,8 @@ public class Robot extends IterativeRobot {
     	autonomousMode.addObject("Drive time distance", 	new driveDistance());
     	autonomousMode.addObject("Drive in Square", 		new DriveInSquare());
     	autonomousMode.addObject("Drive encoder distance", 	new driveDistanceEncoder());
+    	autonomousMode.addObject("Drive To White Line", 	new DriveToWhiteLine());
+
 
     	SmartDashboard.putData("Autonomous Selection", autonomousMode);    	   	
     }

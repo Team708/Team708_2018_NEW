@@ -20,8 +20,8 @@ public class PneumaticsTest extends Subsystem {
 	 * Constructor
 	 */
 	public PneumaticsTest() {
-		exampleDoubleSolenoid = new DoubleSolenoid(0, 1); //initializes
-		singleSolenoid = new Solenoid(3);
+		exampleDoubleSolenoid = new DoubleSolenoid(RobotMap.squeezeGrabber, RobotMap.releaseGrabber); //initializes
+//		singleSolenoid = new Solenoid(3);
 		
 		exampleDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
 	}

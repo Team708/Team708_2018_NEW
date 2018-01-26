@@ -21,7 +21,7 @@ public class Telescope extends Subsystem {
       * Constructor
       */
 	public Telescope() {
-	telescopeMotor = new Talon(RobotMap.INTAKE_MOTOR);
+	telescopeMotor = new Talon(RobotMap.intakeMotor);
 	 
 	}
 	

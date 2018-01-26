@@ -30,7 +30,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drivetrain extends PIDSubsystem {
 
-	private WPI_TalonSRX leftMaster, leftSlave, rightMaster, rightSlave;	// Motor Controllers
+	private WPI_TalonSRX leftMaster, leftSlave1, leftSlave2, rightMaster, rightSlave1, rightSlave2;	// Motor Controllers
 	
 	
 	// Variables specific for drivetrain PID loop
@@ -65,12 +65,14 @@ public class Drivetrain extends PIDSubsystem {
     	
     	// Initializes motor controllers with device IDs from RobotMap
 		leftMaster  = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorMaster);
-		leftSlave   = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorSlave);
+		leftSlave1  = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorSlave1);
+		leftSlave2  = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorSlave2);
 		rightMaster = new WPI_TalonSRX(RobotMap.drivetrainRightMotorMaster);
-		rightSlave  = new WPI_TalonSRX(RobotMap.drivetrainRightMotorSlave);
+		rightSlave1  = new WPI_TalonSRX(RobotMap.drivetrainRightMotorSlave1);
+		rightSlave2  = new WPI_TalonSRX(RobotMap.drivetrainRightMotorSlave2);
 		
-		SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftMaster, leftSlave);
-		SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightMaster, rightSlave);
+		SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftMaster, leftSlave1, leftSlave2);
+		SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightMaster, rightSlave1, rightSlave1);
 		
 		drivetrain = new DifferentialDrive(leftMotors, rightMotors);	// Initializes drivetrain class
 		
@@ -88,8 +90,7 @@ public class Drivetrain extends PIDSubsystem {
 		encoder2.setDistancePerPulse(distancePerPulse);
 		encoder2.reset();								// Resets the encoder so that it starts with a 0.0 value
 		
-		opticalSensor  = new DigitalInput(7);
-		opticalSensor1 = new DigitalInput(8);
+		opticalSensor  = new DigitalInput(RobotMap.colorSensor);
 
     }
     
@@ -269,9 +270,11 @@ public class Drivetrain extends PIDSubsystem {
     public void toggleBrakeMode() {
     	brake = !brake;
     	leftMaster.setNeutralMode(NeutralMode.Brake);
-    	leftSlave.setNeutralMode(NeutralMode.Brake);
+    	leftSlave1.setNeutralMode(NeutralMode.Brake);
+    	leftSlave2.setNeutralMode(NeutralMode.Brake);
     	rightMaster.setNeutralMode(NeutralMode.Brake);
-    	rightSlave.setNeutralMode(NeutralMode.Brake);
+    	rightSlave1.setNeutralMode(NeutralMode.Brake);
+    	rightSlave2.setNeutralMode(NeutralMode.Brake);
     }
     
     /**
@@ -309,12 +312,12 @@ public class Drivetrain extends PIDSubsystem {
      * @return
      */
     public boolean isOpticalSensorWhite() {
-    	return opticalSensor.get();
+    	return !opticalSensor.get();
     }
     
-    public boolean isOpticalSensor1White() {
-    	return opticalSensor1.get();
-    }
+//    public boolean isOpticalSensor1White() {
+//    	return !opticalSensor1.get();
+//    }
     /**
      * Returns a process variable to the PIDSubsystem for correction
      */
@@ -361,7 +364,7 @@ public class Drivetrain extends PIDSubsystem {
 //    	SmartDashboard.putNumber("Sonar Mode", sonarOverride);
     	SmartDashboard.putNumber("Gyro angle", gyro.getAngle());
 
-    	SmartDashboard.putBoolean("Optical0", isOpticalSensorWhite());
+//    	SmartDashboard.putBoolean("Optical0", isOpticalSensorWhite());
     	SmartDashboard.putBoolean("Optical1", isOpticalSensor1White());
     }
 }
