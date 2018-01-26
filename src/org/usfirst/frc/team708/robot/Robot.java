@@ -60,7 +60,7 @@ public class Robot extends IterativeRobot {
 		drivetrain 		= new Drivetrain();
 	    visionProcessor = new VisionProcessor();
 	    
-	    visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_ON);
+	    visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
 	    
 		sendDashboardSubsystems();		// Sends each subsystem's currently running command to the Smart Dashboard
 			

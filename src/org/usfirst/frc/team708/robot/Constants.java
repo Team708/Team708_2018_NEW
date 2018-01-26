@@ -13,44 +13,44 @@ public final class Constants {
 	/*
 	 * Motor Controllers
 	 */
-	public static final double INTAKE_FORWARD 		= -1.0;
-	public static final double INTAKE_REVERSE 		= 1.0;
-	public static final double INTAKE_OFF 			= 0.0;
+	public static final double INTAKE_FORWARD 	= -1.0;
+	public static final double INTAKE_REVERSE 	= 1.0;
+	public static final double INTAKE_OFF 		= 0.0;
 	
-	public static final double MOTOR_FORWARD 		= 1.0;
-	public static final double MOTOR_REVERSE 		= -1.0;
-	public static final double MOTOR_OFF 			= 0.0;
+	public static final double MOTOR_FORWARD 	= 1.0;
+	public static final double MOTOR_REVERSE 	= -1.0;
+	public static final double MOTOR_OFF 		= 0.0;
 
 	public static final double DRIVE_MOTOR_MAX_SPEED 		= 1.0;
 	public static final double ROTATE_MOTOR_MAX_SPEED 		= 1.0;
 	public static final double ARMPIVOT_MOTOR_MAX_SPEED 	= 1.0;
 	public static final double VISION_ROTATE_MOTOR_SPEED	= 0.8;
 	
-	public static final double LOADER_MOTOR_FORWARD 		=  1.0;
-	public static final double LOADER_MOTOR_REVERSE 		=  -1.0;
-	public static final double LOADER_OFF 					= 0.0;
+	public static final double LOADER_MOTOR_FORWARD 	=  1.0;
+	public static final double LOADER_MOTOR_REVERSE 	=  -1.0;
+	public static final double LOADER_OFF 				= 0.0;
+
+	public static final double SHOOTER_MOTOR_SPEED_LOW 	=  5200;
+	public static final double SHOOTER_MOTOR_SPEED_HIGH	=  5200;
+	public static final double SHOOTER_F_HIGH 			=  .17126;
+	public static final double SHOOTER_F_LOW 			=  .2398;
 	
-	public static final double SHOOTER_MOTOR_SPEED_LOW 		=  5200;
-	public static final double SHOOTER_MOTOR_SPEED_HIGH 	=  5200;
-	public static final double SHOOTER_F_HIGH 		=  .17126;
-	public static final double SHOOTER_F_LOW 		=  .2398;
+	public static final double SHOOTER_MOTOR_POWER_FORWARD_HIGH =  0.8;
+	public static final double SHOOTER_MOTOR_POWER_FORWARD_LOW 	=  0.8;
 	
-	public static final double SHOOTER_MOTOR_POWER_FORWARD_HIGH 	=  0.8;
-	public static final double SHOOTER_MOTOR_POWER_FORWARD_LOW 		=  0.8;
-	
-	public static final double SHOOTER_MOTOR_FORWARD 		=  	0.8;
-	public static final double SHOOTER_MOTOR_BACKWARD 		=  -1.0;
+	public static final double SHOOTER_MOTOR_FORWARD 	=  	0.8;
+	public static final double SHOOTER_MOTOR_BACKWARD 	=  -1.0;
 	
 	//I hate you guys... Here are your ENDLESS vision constants!	-Viet
-	public static final double VISION_LED_ON				= 0.0;
-	public static final double VISION_LED_OFF				= 1.0;
-	public static final double VISION_LED_BLINK				= 2.0;
-	public static final double VISION_PROCESSING_ON			= 0.0;
-	public static final double VISION_PROCESSING_OFF		= 1.0;
-	public static final double VISION_TARGET_NOT_FOUND		= 0.0;
-	public static final double VISION_TARGET_FOUND			= 1.0;
-	
-
+	public static final double VISION_LED_ON			= 0.0;
+	public static final double VISION_LED_OFF			= 1.0;
+	public static final double VISION_LED_BLINK			= 2.0;
+	public static final double VISION_PROCESSING_ON		= 0.0;
+	public static final double VISION_PROCESSING_OFF	= 1.0;
+	public static final double VISION_TARGET_NOT_FOUND	= 0.0;
+	public static final double VISION_TARGET_FOUND		= 1.0;
+	public static final boolean VISION_CODER_HAPPY		= false;
+	public static final boolean VISION_CODER_ANNOYED	= true;
 	
 	/*
 	 * Smart Dashboard
