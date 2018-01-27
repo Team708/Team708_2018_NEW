@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * @author Alex Tysak
  */
 
-public class Intake_Cube extends Subsystem {
+public class IntakeCube extends Subsystem {
 	
 	public Spark intakeMotor;
 	
@@ -26,7 +26,7 @@ public class Intake_Cube extends Subsystem {
     /**
       * Constructor
       */
-	public Intake_Cube() {
+	public IntakeCube() {
 //	intakeMotor = new Talon(RobotMap.INTAKE_MOTOR);
 		intakeMotor = new Spark(RobotMap.intakeMotor);
 	 

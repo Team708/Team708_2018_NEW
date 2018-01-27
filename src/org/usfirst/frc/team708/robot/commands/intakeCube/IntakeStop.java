@@ -19,7 +19,7 @@ public class IntakeStop extends Command {
 
 	
     public IntakeStop() {
-    	requires(Robot.intake_cube);
+    	requires(Robot.intakeCube);
     }
     
 
@@ -29,7 +29,7 @@ public class IntakeStop extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake_cube.moveMotor(Constants.INTAKE_OFF);
+    	Robot.intakeCube.moveMotor(Constants.INTAKE_OFF);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -39,7 +39,7 @@ public class IntakeStop extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.intake_cube.moveMotor(Constants.INTAKE_OFF);
+    	Robot.intakeCube.moveMotor(Constants.INTAKE_OFF);
     }
 
     // Called when another command which requires one or more of the same

@@ -65,14 +65,14 @@ public class Drivetrain extends PIDSubsystem {
     	
     	// Initializes motor controllers with device IDs from RobotMap
 		leftMaster  = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorMaster);
-		leftSlave1  = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorSlave1);
-		leftSlave2  = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorSlave2);
+		leftSlave1   = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorSlave1);
+		leftSlave2   = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorSlave2);
 		rightMaster = new WPI_TalonSRX(RobotMap.drivetrainRightMotorMaster);
 		rightSlave1  = new WPI_TalonSRX(RobotMap.drivetrainRightMotorSlave1);
 		rightSlave2  = new WPI_TalonSRX(RobotMap.drivetrainRightMotorSlave2);
 		
 		SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftMaster, leftSlave1, leftSlave2);
-		SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightMaster, rightSlave1, rightSlave1);
+		SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightMaster, rightSlave1, rightSlave2);
 		
 		drivetrain = new DifferentialDrive(leftMotors, rightMotors);	// Initializes drivetrain class
 		
@@ -90,7 +90,8 @@ public class Drivetrain extends PIDSubsystem {
 		encoder2.setDistancePerPulse(distancePerPulse);
 		encoder2.reset();								// Resets the encoder so that it starts with a 0.0 value
 		
-		opticalSensor  = new DigitalInput(RobotMap.colorSensor);
+//		opticalSensor  = new DigitalInput(7);
+		opticalSensor1 = new DigitalInput(RobotMap.colorSensor);
 
     }
     
@@ -311,13 +312,13 @@ public class Drivetrain extends PIDSubsystem {
      * Returns if the optical sensor detects the color white
      * @return
      */
-    public boolean isOpticalSensorWhite() {
-    	return !opticalSensor.get();
-    }
-    
-//    public boolean isOpticalSensor1White() {
-//    	return !opticalSensor1.get();
+//    public boolean isOpticalSensorWhite() {
+//    	return !opticalSensor.get();
 //    }
+    
+    public boolean isOpticalSensor1White() {
+    	return !opticalSensor1.get();
+    }
     /**
      * Returns a process variable to the PIDSubsystem for correction
      */

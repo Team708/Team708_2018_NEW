@@ -1,4 +1,4 @@
-package org.usfirst.frc.team708.robot.commands.intakeCube;
+package org.usfirst.frc.team708.robot.commands.arm;
 
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.OI;
@@ -16,19 +16,20 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *@author James Alex Thomas Mikhael
  */
-public class AutoIntakeIn extends Command {
+public class ControlArmDown extends Command {
 
 	private boolean hasBall;
 
-    public AutoIntakeIn() {
-    	requires(Robot.intakeCube);
-//    	requires(Robot.loader);
+    public ControlArmDown() {
+    	requires(Robot.arm);
     }
     
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	if (Robot.loader.HasBall()){
+    	Robot.arm.moveMotor(Constants.ARM_REVERSE);
+    	
+//    	if (Robot.loader.HasBall() == true){
 //        	Robot.loader.stop();
 //        	cancel();
 //    	}
@@ -37,20 +38,25 @@ public class AutoIntakeIn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeCube.moveMotor(Constants.INTAKE_FORWARD);
- //   	Robot.loader.manualMove(0.4);
+
+//    	if (Robot.loader.HasBall() == true){
+//    		Robot.intake.stop();
+//        	Robot.loader.stop();
+//    		cancel();
+//    	} else {
+//    	Robot.loader.manualMove(0.5);
+ //   	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-//    	return(Robot.loader.HasBall());
     	return false;		//Replace with intake "has" boolean later	-Viet
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.intakeCube.stop();
-//    	Robot.loader.stop();
+     Robot.arm.stop();
+
     }
 
     // Called when another command which requires one or more of the same

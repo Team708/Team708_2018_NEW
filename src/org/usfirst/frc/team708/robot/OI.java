@@ -10,8 +10,9 @@ import org.usfirst.frc.team708.robot.util.triggers.*;
 import org.usfirst.frc.team708.robot.commands.drivetrain.*;
 import org.usfirst.frc.team708.robot.commands.intakeCube.*;
 import org.usfirst.frc.team708.robot.commands.arm.*;
-import org.usfirst.frc.team708.robot.commands.cubegrabber.*;
-;
+import org.usfirst.frc.team708.robot.commands.pneumatics.*;
+//import org.usfirst.frc.team708.robot.commands.cubegrabber.*;
+//;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -52,8 +53,7 @@ public class OI {
 	private static final int ARM_UP_TO_HUMAN_FEEDER_BUTTON	= Gamepad.button_Y;
 	private static final int CLIMB_LOW_GEAR_BUTTON			= Gamepad.shoulderAxisRight;
 
-//	private static final int INTAKE_CUBE_BUTTON				= Gamepad.button_RightStick;
-//	private static final int ARM_MANIPULATOR_BUTTON			= Gamepad.button_LeftStick;
+
 	
 	
 /*
@@ -72,7 +72,8 @@ public class OI {
 	public static final Trigger intakeCubeIn	= new AxisUp(operatorGamepad, INTAKE_CUBE_BUTTON);
 	public static final Trigger intakeCubeOut	= new AxisDown(operatorGamepad, INTAKE_CUBE_BUTTON);
 	
-	public static final Button operateArm		= new JoystickButton(operatorGamepad, OPERATE_ARM_BUTTON);
+	public static final Trigger operateArmDown = new AxisUp(operatorGamepad, OPERATE_ARM_BUTTON);
+	public static final Trigger operateArmUp	= new AxisDown(operatorGamepad, OPERATE_ARM_BUTTON);
 	public static final Button operateTelescope	= new JoystickButton(operatorGamepad, OPERATE_TELESCOPE_BUTTON);
 	public static final Button armToGround		= new JoystickButton(operatorGamepad, ARM_UP_TO_GROUND_BUTTON);
 	public static final Button armToSwitch		= new JoystickButton(operatorGamepad, ARM_UP_TO_SWITCH_BUTTON);
@@ -88,22 +89,23 @@ public class OI {
 
 	public OI() {
 
-		onmiOn.whenPressed(new EnableOnmi());
-		colsonOn.whenPressed(new EnableColson());
-		highGearOn.whenPressed(new ShiftHigh());
-		lowGearOn.whenPressed(new ShiftLow());
-		
+//		onmiOn.whenPressed(new EnableOnmi());
+//		colsonOn.whenPressed(new EnableColson());
+//		highGearOn.whenPressed(new ShiftHigh());
+//		lowGearOn.whenPressed(new ShiftLow());
+//		
 		releaseCube.whenPressed(new ReleaseCube());
-		squeezeCube.whenPressed(new squeezeCube());
+		squeezeCube.whenPressed(new SqueezeCube());
 		intakeCubeIn.whileActive(new IntakeIn());
 		intakeCubeOut.whileActive(new IntakeOut());
-		operateArm.whileActive(new ControlArm());
-		operateTelescope.whileActive(new ControlTelescope());
-		armToGround.whenPressed(new MoveToGround());
-		armToSwitch.whenPressed(new MoveToSwitch());
-		armToScale.whenPressed(new MoveToScale());
-		armToFeeder.whenPressed(new MoveToFeeder());
-		climbLowGear.whileHeld(new ShiftClimberLowGear()); 
+		operateArmDown.whileActive(new ControlArmDown());
+		operateArmUp.whileActive(new ControlArmUp());
+//		operateTelescope.whileActive(new ControlTelescope());
+//		armToGround.whenPressed(new MoveToGround());
+//		armToSwitch.whenPressed(new MoveToSwitch());
+//		armToScale.whenPressed(new MoveToScale());
+//		armToFeeder.whenPressed(new MoveToFeeder());
+//		climbLowGear.whileHeld(new ShiftClimberLowGear()); 
 		
 /*
  		.whileActive(new 

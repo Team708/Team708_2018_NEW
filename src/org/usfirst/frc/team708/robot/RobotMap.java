@@ -20,7 +20,7 @@ public class RobotMap {
 	public static final int operatorGamepad = 1;
 	
 	// PWM Ports
-	public static final int intakeMotor  	= 0;
+	public static final int intakeMotor 	= 0;
 //	public static final int 			 	= 1;
 //	public static final int  			 	= 2;
 //	public static final int  				= 3;
@@ -32,8 +32,8 @@ public class RobotMap {
 //	public static final int  				= 9;
 	
 	// Drivetrain CAN Device IDs
-	public static final int drivetrainLeftMotorMaster  	= 11;
-	public static final int drivetrainLeftMotorSlave1  	= 12;
+	public static final int drivetrainLeftMotorMaster  	= 11; // SMP should be 11
+	public static final int drivetrainLeftMotorSlave1  	= 12; // SMP should be 12
 	public static final int drivetrainLeftMotorSlave2	= 13;
 	
 	public static final int drivetrainRightMotorMaster  = 14;
@@ -46,8 +46,8 @@ public class RobotMap {
 	public static final int telescopingMotorSlave3	 	= 24;
 
 	// Pivot Arm CAN Device ID
-	public static final int pivotArmMotorMaster			= 31;
-	public static final int pivotArmMotorSlave1			= 32;
+	public static final int pivotArmMotorMaster			= 31; // SMP should be 31
+	public static final int pivotArmMotorSlave1			= 32; // SMP should be 32
 	
 	// Digital IO
 	public static final int drivetrainEncoderARt		= 0;  	//this might go directly on the motor controllers
@@ -60,7 +60,7 @@ public class RobotMap {
 	public static final int telescopeEncoderB			= 7;	//this might go directly on the motor controllers
 	public static final int colorSensor			 		= 8;  
 //	public static final int pivotArmDownSwitch	 		= 9;  	//might be on motor controller
-	public static final int TelescopeDownSwitch			= 9;	//might be on motor controller
+	public static final int telescopeDownSwitch			= 9;	//might be on motor controller
 	
 	// RELAY
 //	public static final int 			 	= 0;
@@ -77,8 +77,8 @@ public class RobotMap {
 	public static final int shifterLow		= 0; 	//Shifts Drivetrain to Low gear
     public static final int shifterHigh		= 1; 	//Shifts Drivetrain to High gear
     public static final int butterflyShift	= 2;	//Drops Onmi Wheels
-	public static final int openGrabber		= 3;	//Open Grabber
-	public static final int closeGrabber	= 4;	//Close Grabber
+	public static final int releaseGrabber	= 3;	//Release Grabber
+	public static final int squeezeGrabber	= 4;	//Squeeze Grabber
 	public static final int telescopeLow	= 5;	//shifts Telescope to Low Gear
 	public static final int telescopeHigh	= 6;	//Shifts Telescope to High Gear
 //	public static final int = 7;

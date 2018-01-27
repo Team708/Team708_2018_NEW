@@ -21,13 +21,13 @@ public class IntakeIn extends Command {
 	private boolean hasBall;
 
     public IntakeIn() {
-    	requires(Robot.intake_cube);
+    	requires(Robot.intakeCube);
     }
     
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.intake_cube.moveMotor(Constants.INTAKE_FORWARD);
+    	Robot.intakeCube.moveMotor(Constants.INTAKE_FORWARD);
     	
 //    	if (Robot.loader.HasBall() == true){
 //        	Robot.loader.stop();
@@ -55,7 +55,7 @@ public class IntakeIn extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-     Robot.intake_cube.stop();
+     Robot.intakeCube.stop();
 
     }
 

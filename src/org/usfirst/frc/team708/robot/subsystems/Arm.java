@@ -19,6 +19,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Arm extends Subsystem {
 	
 	private WPI_TalonSRX armMotorMaster, armMotorSlave1;
+	private SpeedControllerGroup armMotors;
+
 	
     /**
       * Constructor
@@ -27,7 +29,7 @@ public class Arm extends Subsystem {
 		armMotorMaster = new WPI_TalonSRX(RobotMap.pivotArmMotorMaster);
 		armMotorSlave1  = new WPI_TalonSRX(RobotMap.pivotArmMotorSlave1);
 	 
-		SpeedControllerGroup armMotors = new SpeedControllerGroup(armMotorMaster, armMotorSlave1);
+		 armMotors = new SpeedControllerGroup(armMotorMaster, armMotorSlave1);
 
 	}
 	
@@ -42,7 +44,8 @@ public class Arm extends Subsystem {
 	}
 	
 	public void stop(){
-		armMotors.set(Constants.INTAKE_OFF);
+//		armMotors.set(Constants.INTAKE_OFF);
+		armMotors.stopMotor();
     	SmartDashboard.putNumber("In Stop Motor speed=", 0.0);
 	}
     

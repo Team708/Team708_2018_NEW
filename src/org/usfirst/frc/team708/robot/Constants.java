@@ -13,8 +13,10 @@ public final class Constants {
 	/*
 	 * Motor Controllers
 	 */
-	public static final double INTAKE_FORWARD 		= -1.0;
-	public static final double INTAKE_REVERSE 		= 1.0;
+	public static final double INTAKE_FORWARD 		= 1.0;
+	public static final double INTAKE_REVERSE 		= -1.0;
+	public static final double ARM_FORWARD 		= 1.0;
+	public static final double ARM_REVERSE 		= -1.0;
 	public static final double INTAKE_OFF 			= 0.0;
 	
 	public static final double DRIVE_MOTOR_MAX_SPEED 		= 1.0;
