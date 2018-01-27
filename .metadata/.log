@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 !SESSION 2018-01-26 17:25:10.077 -----------------------------------------------
+=======
+!SESSION 2018-01-26 11:24:22.801 -----------------------------------------------
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 =======
 !SESSION 2018-01-26 11:24:22.801 -----------------------------------------------
 >>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
@@ -11,7 +15,11 @@ Framework arguments:  -product org.eclipse.epp.package.java.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 !ENTRY org.eclipse.ui.intro 4 0 2018-01-26 17:25:36.718
+=======
+!ENTRY org.eclipse.ui.intro 4 0 2018-01-26 11:24:48.784
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 =======
 !ENTRY org.eclipse.ui.intro 4 0 2018-01-26 11:24:48.784
 >>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
@@ -76,7 +84,12 @@ java.io.FileNotFoundException: C:\Users\zvtran\Desktop\FRC_Software\Robotics 201
 	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:716)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl$1.handleEvent(PartServiceImpl.java:109)
+=======
+	at org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer.showTab(StackRenderer.java:1293)
+	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer.lambda$0(LazyStackRenderer.java:68)
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 =======
 	at org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer.showTab(StackRenderer.java:1293)
 	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer.lambda$0(LazyStackRenderer.java:68)
@@ -226,6 +239,7 @@ java.io.FileNotFoundException: C:\Users\zvtran\Desktop\FRC_Software\Robotics 201
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1499)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 !ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2018-01-26 17:25:37.658
 !MESSAGE Installing tools if necessary
 
@@ -234,6 +248,8 @@ java.io.FileNotFoundException: C:\Users\zvtran\Desktop\FRC_Software\Robotics 201
 
 !ENTRY org.eclipse.egit.ui 2 0 2018-01-26 17:25:38.636
 =======
+=======
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 !ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2018-01-26 11:24:49.662
 !MESSAGE Installing tools if necessary
 
@@ -241,6 +257,9 @@ java.io.FileNotFoundException: C:\Users\zvtran\Desktop\FRC_Software\Robotics 201
 !MESSAGE Install necessary for tools
 
 !ENTRY org.eclipse.egit.ui 2 0 2018-01-26 11:24:50.441
+<<<<<<< HEAD
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
+=======
 >>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\zvtran'. If this is
@@ -248,6 +267,7 @@ not correct please set the HOME environment variable and restart Eclipse. Otherw
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 !ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2018-01-26 17:25:40.118
 !MESSAGE Installedtools
@@ -292,6 +312,8 @@ java.lang.NullPointerException
 
 !ENTRY org.eclipse.ui.workbench 4 2 2018-01-26 17:27:02.514
 =======
+=======
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 !ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2018-01-26 11:24:53.410
 !MESSAGE Installedtools
 
@@ -336,6 +358,9 @@ java.lang.NullPointerException
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
 
 !ENTRY org.eclipse.ui.workbench 4 2 2018-01-26 11:25:14.573
+<<<<<<< HEAD
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
+=======
 >>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
 !STACK 0
@@ -348,7 +373,11 @@ java.lang.NullPointerException
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 !ENTRY org.eclipse.ui 4 0 2018-01-26 17:27:02.535
+=======
+!ENTRY org.eclipse.ui 4 0 2018-01-26 11:25:14.904
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 =======
 !ENTRY org.eclipse.ui 4 0 2018-01-26 11:25:14.904
 >>>>>>> f9d3792403d13dad670097ed62a3d81547b12778

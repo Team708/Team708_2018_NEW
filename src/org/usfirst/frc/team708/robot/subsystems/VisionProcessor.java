@@ -18,15 +18,21 @@ public class VisionProcessor extends Subsystem {
 	public static Drivetrain 		drivetrain;
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public boolean isCentered		= false;
 
 //	Required Network Table Data 	
 	private double hasTarget		= 0.0;	//Get from Network Table
 =======
+=======
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 	private boolean isCentered		= false;
 
 //	Required Network Table Data 	
 	private double seesTarget		= 0.0;	//Get from Network Table
+<<<<<<< HEAD
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
+=======
 >>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 	private double displacementX 	= 0.0;	//Get from Network Table
 
@@ -77,6 +83,7 @@ public class VisionProcessor extends Subsystem {
 		}
 		
 <<<<<<< HEAD
+<<<<<<< HEAD
 //		else {	//The robot does not see any targets and is now sweeping
 //			drivetrain.resetGyro();
 //			gyroAngle = drivetrain.getAngle();
@@ -91,6 +98,8 @@ public class VisionProcessor extends Subsystem {
 //			}
 //		}		
 =======
+=======
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 		else {	//The robot does not see any targets and is now sweeping
 			drivetrain.resetGyro();
 			gyroAngle = drivetrain.getAngle();
@@ -104,6 +113,9 @@ public class VisionProcessor extends Subsystem {
 				rotate = drivetrain.rotateByGyro(AutoConstants.SWEEP_ANGLE_STOP, AutoConstants.X_THRESHOLD);
 			}
 		}		
+<<<<<<< HEAD
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
+=======
 >>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 		return rotate;
 	}

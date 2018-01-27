@@ -18,7 +18,10 @@ public final class Constants {
 	public static final double INTAKE_OFF 		= 0.0;
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 	public static final double MOTOR_FORWARD 	= 1.0;
 	public static final double MOTOR_REVERSE 	= -1.0;
 	public static final double MOTOR_OFF 		= 0.0;
@@ -31,12 +34,15 @@ public final class Constants {
 	public static final double DRIVE_MOTOR_OFF		 		= 0.0;
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public static final double VISION_LED_ON				= 0.0;
 	public static final double VISION_LED_OFF				= 1.0;
 	public static final double VISION_LED_BLINK				= 2.0;
 	public static final double VISION_PROCESSING_ON			= 0.0;
 
 =======
+=======
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 	public static final double LOADER_MOTOR_FORWARD 	=  1.0;
 	public static final double LOADER_MOTOR_REVERSE 	=  -1.0;
 	public static final double LOADER_OFF 				= 0.0;
@@ -57,6 +63,9 @@ public final class Constants {
 	public static final double VISION_LED_OFF			= 1.0;
 	public static final double VISION_LED_BLINK			= 2.0;
 	public static final double VISION_PROCESSING_ON		= 0.0;
+<<<<<<< HEAD
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
+=======
 >>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 	public static final double VISION_PROCESSING_OFF	= 1.0;
 	public static final double VISION_TARGET_NOT_FOUND	= 0.0;
@@ -64,8 +73,11 @@ public final class Constants {
 	public static final boolean VISION_CODER_HAPPY		= false;
 	public static final boolean VISION_CODER_ANNOYED	= true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 	
 >>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 	/*

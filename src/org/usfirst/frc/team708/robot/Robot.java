@@ -80,6 +80,9 @@ public class Robot extends IterativeRobot {
 		drivetrain 		= new Drivetrain();
 	    visionProcessor = new VisionProcessor();
 	    
+<<<<<<< HEAD
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
+=======
 >>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 	    visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
 	    
