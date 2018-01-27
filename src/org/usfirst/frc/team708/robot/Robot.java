@@ -40,7 +40,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
  * 
  * @author omn0mn0m
  * @author Viet Tran
- * @author wutnut
+ * @author wutnut, last seen Jan. 2017
  */
 public class Robot extends IterativeRobot {
 	
