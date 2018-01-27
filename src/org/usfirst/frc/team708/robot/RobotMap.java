@@ -1,5 +1,7 @@
 package org.usfirst.frc.team708.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+
 //import edu.wpi.first.wpilibj.SPI.Port;
 
 /**
@@ -9,17 +11,18 @@ package org.usfirst.frc.team708.robot;
  * floating around.
  * 
  * @author omn0mn0m
- */
+ *  pushed 1/26/2018
+ *  */
 public class RobotMap {
 	
 	// Gamepad USB ports
-	public static final int driverGamepad   = 1;
-	public static final int operatorGamepad = 2;
+	public static final int driverGamepad   = 0;
+	public static final int operatorGamepad = 1;
 	
 	// PWM Ports
-//	public static final int 			 	= 0;
-	public static final int INTAKE_MOTOR 	= 1;
-//	public static final int SHOOTER_PWM	 	= 2;
+	public static final int intakeMotor 	= 0;
+//	public static final int 			 	= 1;
+//	public static final int  			 	= 2;
 //	public static final int  				= 3;
 //	public static final int  				= 4;
 //	public static final int  				= 5;
@@ -29,54 +32,56 @@ public class RobotMap {
 //	public static final int  				= 9;
 	
 	// Drivetrain CAN Device IDs
-	public static final int drivetrainLeftMotorMaster  = 11;
-	public static final int drivetrainLeftMotorSlave   = 12;
-	public static final int drivetrainRightMotorMaster = 13;
-	public static final int drivetrainRightMotorSlave  = 14;
+	public static final int drivetrainLeftMotorMaster  	= 11;
+	public static final int drivetrainLeftMotorSlave1  	= 12;
+	public static final int drivetrainLeftMotorSlave2	= 13;
 	
+	public static final int drivetrainRightMotorMaster  = 14;
+	public static final int drivetrainRightMotorSlave1 	= 15;
+	public static final int drivetrainRightMotorSlave2 	= 16;
 
-	public static final int loaderMotor	 	= 21;
-	
+	public static final int telescopingMotorMaster	 	= 21;
+	public static final int telescopingMotorSlave1	 	= 22;
+	public static final int telescopingMotorSlave2	 	= 23;
+	public static final int telescopingMotorSlave3	 	= 24;
+
 	// Pivot Arm CAN Device ID
-	public static final int pivotArmMotor	= 31;
-	
-	// Grappler Grabber CAN Device IDs
-	public static final int grapplerMotorMaster	= 41;
-	public static final int grapplerMotorSlave 	= 42;
-	
-	// Shooter CAN Device ID
-	public static final int shooterMotor	= 51;
+	public static final int pivotArmMotorMaster			= 31;
+	public static final int pivotArmMotorSlave1			= 32;
 	
 	// Digital IO
-	public static final int drivetrainEncoderARt		= 0;
-	public static final int drivetrainEncoderBRt		= 1;
-	public static final int drivetrainEncoderALeft		= 2;
-	public static final int drivetrainEncoderBLeft		= 3;
-	public static final int shooterEncoderA				= 4;
-	public static final int shooterEncoderB				= 5;
-	public static final int pivotArmUpperSwitch			= 6;
-	public static final int pivotArmLowerSwitch			= 7;
-	public static final int grapplerUpperSwitch 		= 8;
-	public static final int grapplerLowerSwitch			= 9;
+	public static final int drivetrainEncoderARt		= 0;  	//this might go directly on the motor controllers
+	public static final int drivetrainEncoderBRt		= 1;	//this might go directly on the motor controllers
+	public static final int drivetrainEncoderALeft		= 2;	//this might go directly on the motor controllers
+	public static final int drivetrainEncoderBLeft		= 3;	//this might go directly on the motor controllers
+	public static final int pivotArmEncoderA			= 4;	//this might go directly on the motor controllers
+	public static final int pivotArmEncoderB			= 5;	//this might go directly on the motor controllers
+	public static final int telescopeEncoderA			= 6;	//this might go directly on the motor controllers
+	public static final int telescopeEncoderB			= 7;	//this might go directly on the motor controllers
+	public static final int colorSensor			 		= 8;  
+//	public static final int pivotArmDownSwitch	 		= 9;  	//might be on motor controller
+	public static final int telescopeDownSwitch			= 9;	//might be on motor controller
 	
 	// RELAY
+//	public static final int 			 	= 0;
 //	public static final int 			 	= 1;
 //	public static final int 			 	= 2;
 //	public static final int 			 	= 3;
 	
 	//Analog sesnor IDs
-	public static final int DTSonar				= 1;
-	public static final int LoaderIRSensor		= 2;
-	public static final int armPotentiometer	= 0;
+//	public static final int armPotentiometer	= 0;
+//	public static final int DTSonar				= 1;
+//	public static final int loaderIRSensor		= 2;
 	
 	// PCM Ports
-//	public static final int 				= 0;
-//	public static final int   				= 1;
-//	public static final int  				= 2;
-//	public static final int 				= 3;
-//	public static final int 				= 4;
-//	public static final int 				= 5;
-//	public static final int					= 6;
-//	public static final int 				= 7;
+	public static final int shifterLow		= 0; 	//Shifts Drivetrain to Low gear
+    public static final int shifterHigh		= 1; 	//Shifts Drivetrain to High gear
+    public static final int butterflyShift	= 2;	//Drops Onmi Wheels
+	public static final int releaseGrabber	= 3;	//Release Grabber
+	public static final int squeezeGrabber	= 4;	//Squeeze Grabber
+	public static final int telescopeLow	= 5;	//shifts Telescope to Low Gear
+	public static final int telescopeHigh	= 6;	//Shifts Telescope to High Gear
+//	public static final int = 7;
+	
 	
 }

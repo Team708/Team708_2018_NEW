@@ -1,7 +1,7 @@
 
 package org.usfirst.frc.team708.robot;
 
-//import edu.wpi.first.networktables.*;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.CameraServer;
@@ -15,13 +15,21 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 //import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team708.robot.commands.intakeCube.*;
+import org.usfirst.frc.team708.robot.commands.drivetrain.*;
+import org.usfirst.frc.team708.robot.commands.visionProcessor.*;
 
-import org.usfirst.frc.team708.robot.commands.autonomous.DoNothing;
+import org.usfirst.frc.team708.robot.commands.autonomous.*;
 import org.usfirst.frc.team708.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team708.robot.subsystems.Intake_Cube;
 import org.usfirst.frc.team708.robot.subsystems.VisionProcessor;
+import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
+import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 import org.usfirst.frc.team708.robot.Constants;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,6 +39,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
  * directory.
  * 
  * @author omn0mn0m
+ * @author Viet Tran
+ * @author wutnut
  */
 public class Robot extends IterativeRobot {
 	
@@ -38,14 +48,17 @@ public class Robot extends IterativeRobot {
     
     public static Drivetrain 		drivetrain;
 	public static VisionProcessor 	visionProcessor;
-	
-    
+	public static PneumaticsTest    pneumaticsTest;
+	public static Intake_Cube		intake_cube;
+//	public static Arm				arm;
+//	public static Telescope			telescope;
 	public static OI 				oi;
  
 	SendableChooser<Command> autonomousMode = new SendableChooser<>();
     Command 			autonomousCommand;
     Preferences			prefs;
     
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -56,17 +69,35 @@ public class Robot extends IterativeRobot {
         statsTimer.start();		// Starts the timer for the Smart Dashboard
         
         // Subsystem Initialization
+        
+	    drivetrain 		= new Drivetrain();
+	    pneumaticsTest  = new PneumaticsTest();
+	    intake_cube			= new Intake_Cube();
+	    visionProcessor	= new VisionProcessor();
 	    
+<<<<<<< HEAD
+=======
 		drivetrain 		= new Drivetrain();
 	    visionProcessor = new VisionProcessor();
 	    
-	    visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_ON);
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
+	    visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
 	    
 		sendDashboardSubsystems();		// Sends each subsystem's currently running command to the Smart Dashboard
 			
 		queueAutonomousModes();			// Adds autonomous modes to the selection box
-		oi 				= new OI();		// Initializes the OI. 
+		
+//		NetworkTableInstance  table = NetworkTableInstance.getDefault();    
+//
+//		NetworkTable limelightNT = table.getTable("limelight");
+//		double targetOffsetAngle_Horizontal = limelightNT.
+//		double targetOffsetAngle_Horizontal = double.valueof(limelightNT.getEntry("tx", 0));
+//		double targetOffsetAngle_Vertical = table.getNumber("ty", 0);
+//		double targetArea = table.getNumber("ta", 0);
+//		double targetSkew = table.getNumber("ts", 0);
+		
 		// This MUST BE LAST or a NullPointerException will be thrown
+        oi 				= new OI();		// Initializes the OI		
     }
 	
     /**
@@ -85,6 +116,7 @@ public class Robot extends IterativeRobot {
     	// schedule the autonomous command   		
     	autonomousCommand = (Command)autonomousMode.getSelected();
         if (autonomousCommand != null) autonomousCommand.start();
+        
         visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
         visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_ON);
     }
@@ -92,7 +124,7 @@ public class Robot extends IterativeRobot {
     /**
      * This function is called periodically during autonomous
      */
-    public void autonomousPeriodic() {	
+    public void autonomousPeriodic() {
         Scheduler.getInstance().run();
         sendStatistics();
     }
@@ -114,7 +146,7 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit() {
-    	
+    	//testing
     }
 
     /**
@@ -122,9 +154,6 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-       
-
-		
         sendStatistics();
     }
     
@@ -132,7 +161,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-//        LiveWindow.run();
+        LiveWindow.run();
         sendStatistics();
     }
     
@@ -143,11 +172,10 @@ public class Robot extends IterativeRobot {
     
     
     private void sendStatistics() {
- //       if (statsTimer.get() >= Constants.SEND_STATS_INTERVAL) statsTimer.reset();
-    	
-
-		
+//        if (statsTimer.get() >= Constants.SEND_STATS_INTERVAL) statsTimer.reset();
     	drivetrain.sendToDashboard();
+        intake_cube.sendToDashboard();
+        visionProcessor.sendToDashboard();
     }
     
     /**
@@ -158,6 +186,12 @@ public class Robot extends IterativeRobot {
     	autonomousMode.addObject("Test Auto 1", null);
     	autonomousMode.addObject("Do Nothing", new DoNothing());
 
+    	autonomousMode.addObject("Drive time distance", 	new driveDistance());
+    	autonomousMode.addObject("Drive in Square", 		new DriveInSquare());
+    	autonomousMode.addObject("Drive encoder distance", 	new driveDistanceEncoder());
+    	autonomousMode.addObject("Drive To White Line", 	new DriveToWhiteLine());
+    	autonomousMode.addObject("Testing Cube", 			new FindCube());
+
     	SmartDashboard.putData("Autonomous Selection", autonomousMode);    	   	
     }
     
@@ -166,8 +200,9 @@ public class Robot extends IterativeRobot {
      */
     private void sendDashboardSubsystems() {
     	SmartDashboard.putData(drivetrain);
-    	
-    }
+    	SmartDashboard.putData(intake_cube);
+    	SmartDashboard.putData(visionProcessor);    
+    	}
 }
 
 

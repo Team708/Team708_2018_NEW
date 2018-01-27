@@ -1,7 +1,8 @@
 package org.usfirst.frc.team708.robot.commands.autonomous;
 
 import org.usfirst.frc.team708.robot.Robot;
-
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 
@@ -26,6 +27,15 @@ public class DoNothing extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+//		if(gameData.charAt(0) == 'L')
+//		{
+//			//Put left auto code here
+//		} else {
+//			//Put right auto code here
+//		}
+		SmartDashboard.putString("gameData", gameData);
     }
 
     // Make this return true when this Command no longer needs to run execute()

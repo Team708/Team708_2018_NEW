@@ -2,7 +2,6 @@ package org.usfirst.frc.team708.robot.subsystems;
 
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.OI;
-import org.usfirst.frc.team708.robot.Robot;
 import org.usfirst.frc.team708.robot.RobotMap;
 import org.usfirst.frc.team708.robot.commands.drivetrain.JoystickDrive;
 import org.usfirst.frc.team708.robot.util.HatterDrive;
@@ -16,9 +15,6 @@ import com.ctre.phoenix.motorcontrol.can.*;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
 //import edu.wpi.first.wpilibj.interfaces.Gyro;
 //import edu.wpi.first.wpilibj.GyroBase;
 //import edu.wpi.first.wpilibj.AnalogGyro;
@@ -34,7 +30,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drivetrain extends PIDSubsystem {
 
-	private WPI_TalonSRX leftMaster, leftSlave, rightMaster, rightSlave;	// Motor Controllers
+	private WPI_TalonSRX leftMaster, leftSlave1, leftSlave2, rightMaster, rightSlave1, rightSlave2;	// Motor Controllers
 	
 	
 	// Variables specific for drivetrain PID loop
@@ -54,6 +50,7 @@ public class Drivetrain extends PIDSubsystem {
 	private IRSensor drivetrainIRSensor;					// IR Sensor for <=25inches
 	private UltrasonicSensor drivetrainUltrasonicSensor;	// Sonar used for <=21feet
 	private DigitalInput opticalSensor;
+	private DigitalInput opticalSensor1;
 	
 	private boolean brake = true;		// Whether the talons should be in coast or brake mode
 						// (this could be important if a jerky robot causes things to topple
@@ -68,12 +65,14 @@ public class Drivetrain extends PIDSubsystem {
     	
     	// Initializes motor controllers with device IDs from RobotMap
 		leftMaster  = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorMaster);
-		leftSlave   = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorSlave);
+		leftSlave1   = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorSlave1);
+		leftSlave2   = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorSlave2);
 		rightMaster = new WPI_TalonSRX(RobotMap.drivetrainRightMotorMaster);
-		rightSlave  = new WPI_TalonSRX(RobotMap.drivetrainRightMotorSlave);
+		rightSlave1  = new WPI_TalonSRX(RobotMap.drivetrainRightMotorSlave1);
+		rightSlave2  = new WPI_TalonSRX(RobotMap.drivetrainRightMotorSlave2);
 		
-		SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftMaster, leftSlave);
-		SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightMaster, rightSlave);
+		SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftMaster, leftSlave1, leftSlave2);
+		SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightMaster, rightSlave1, rightSlave2);
 		
 		drivetrain = new DifferentialDrive(leftMotors, rightMotors);	// Initializes drivetrain class
 		
@@ -90,6 +89,10 @@ public class Drivetrain extends PIDSubsystem {
 		encoder.reset();								// Resets the encoder so that it starts with a 0.0 value
 		encoder2.setDistancePerPulse(distancePerPulse);
 		encoder2.reset();								// Resets the encoder so that it starts with a 0.0 value
+		
+		opticalSensor  = new DigitalInput(7);
+		opticalSensor1 = new DigitalInput(8);
+
     }
     
 
@@ -156,7 +159,6 @@ public class Drivetrain extends PIDSubsystem {
 	
 	public void haloDrive(double move, double rotate) {
 		haloDrive(move, rotate, this.usePID);
-	
 	}
     
     /**
@@ -193,8 +195,8 @@ public class Drivetrain extends PIDSubsystem {
 	}
     
     public void stop() {
-    	leftMaster.set(Constants.MOTOR_OFF);
-    	rightMaster.set(Constants.MOTOR_OFF);
+    	leftMaster.set(Constants.DRIVE_MOTOR_OFF);
+    	rightMaster.set(Constants.DRIVE_MOTOR_OFF);
     }
     
     /**
@@ -269,9 +271,11 @@ public class Drivetrain extends PIDSubsystem {
     public void toggleBrakeMode() {
     	brake = !brake;
     	leftMaster.setNeutralMode(NeutralMode.Brake);
-    	leftSlave.setNeutralMode(NeutralMode.Brake);
+    	leftSlave1.setNeutralMode(NeutralMode.Brake);
+    	leftSlave2.setNeutralMode(NeutralMode.Brake);
     	rightMaster.setNeutralMode(NeutralMode.Brake);
-    	rightSlave.setNeutralMode(NeutralMode.Brake);
+    	rightSlave1.setNeutralMode(NeutralMode.Brake);
+    	rightSlave2.setNeutralMode(NeutralMode.Brake);
     }
     
     /**
@@ -309,9 +313,12 @@ public class Drivetrain extends PIDSubsystem {
      * @return
      */
     public boolean isOpticalSensorWhite() {
-    	return opticalSensor.get();
+    	return !opticalSensor.get();
     }
     
+    public boolean isOpticalSensor1White() {
+    	return !opticalSensor1.get();
+    }
     /**
      * Returns a process variable to the PIDSubsystem for correction
      */
@@ -329,33 +336,36 @@ public class Drivetrain extends PIDSubsystem {
         drivetrain.arcadeDrive(moveSpeed, -output);
     }
     
+    
     /**
      * Sends data for this subsystem to the dashboard
      */
     public void sendToDashboard() {
     	if (Constants.DEBUG) {
 	    	// Accelerometer Info
-	    	SmartDashboard.putNumber("Accelerometer X", accelerometer.getX());
-	    	SmartDashboard.putNumber("Accelerometer Y", accelerometer.getY());
-	    	SmartDashboard.putNumber("Accelerometer Z", accelerometer.getZ());
-	    	
-	    	SmartDashboard.putNumber("Gyro Rate", gyro.getRate());			// Gyro rate
-	    	SmartDashboard.putNumber("PID Output", pidOutput);			// PID Info
-	    	SmartDashboard.putNumber("DT Encoder Raw", encoder.get());		// Encoder raw count
-	    	SmartDashboard.putBoolean("Brake", brake);					// Brake or Coast
-//	    	SmartDashboard.putNumber("DT IR Distance", getIRDistance());			// IR distance reading
-	    	
-	    	SmartDashboard.putNumber("DT Rt Master", rightMaster.getTemperature());
-	    	SmartDashboard.putNumber("DT Rt Slave", rightSlave.getTemperature());
-	    	SmartDashboard.putNumber("DT Lft Master", leftMaster.getTemperature());
-	    	SmartDashboard.putNumber("DT Lft Slave", leftSlave.getTemperature());
+//	    	SmartDashboard.putNumber("Accelerometer X", accelerometer.getX());
+//	    	SmartDashboard.putNumber("Accelerometer Y", accelerometer.getY());
+//	    	SmartDashboard.putNumber("Accelerometer Z", accelerometer.getZ());
+//	    	
+//	    	SmartDashboard.putNumber("Gyro Rate", gyro.getRate());			// Gyro rate
+//	    	SmartDashboard.putNumber("PID Output", pidOutput);			// PID Info
+//	    	SmartDashboard.putNumber("DT Encoder Raw", encoder.get());		// Encoder raw count
+//	    	SmartDashboard.putBoolean("Brake", brake);					// Brake or Coast
+////	    	SmartDashboard.putNumber("DT IR Distance", getIRDistance());			// IR distance reading
+//	    	
+//	    	SmartDashboard.putNumber("DT Rt Master", rightMaster.getTemperature());
+//	    	SmartDashboard.putNumber("DT Rt Slave", rightSlave.getTemperature());
+//	    	SmartDashboard.putNumber("DT Lft Master", leftMaster.getTemperature());
+//	    	SmartDashboard.putNumber("DT Lft Slave", leftSlave.getTemperature());
     	}
     	
-    	SmartDashboard.putNumber("Gyro angle", gyro.getAngle());				// Gyro angle
 //    	SmartDashboard.putNumber("DT Sonar Distance", getSonarDistance());		// Sonar distance reading
-    	SmartDashboard.putNumber("DT Encoder Distance", encoder.getDistance());	// Encoder reading
-    	SmartDashboard.putNumber("DT Encoder 2 Distance", encoder2.getDistance());		// Encoder reading
+//    	SmartDashboard.putNumber("DT Encoder Distance", encoder.getDistance());	// Encoder reading
+//    	SmartDashboard.putNumber("DT Encoder 2 Distance", encoder2.getDistance());		// Encoder reading
 //    	SmartDashboard.putNumber("Sonar Mode", sonarOverride);
+    	SmartDashboard.putNumber("Gyro angle", gyro.getAngle());
 
+    	SmartDashboard.putBoolean("Optical0", isOpticalSensorWhite());
+    	SmartDashboard.putBoolean("Optical1", isOpticalSensor1White());
     }
 }

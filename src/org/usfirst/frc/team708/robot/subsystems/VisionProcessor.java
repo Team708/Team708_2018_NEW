@@ -1,8 +1,9 @@
 package org.usfirst.frc.team708.robot.subsystems;
 
-
+//List of Imports
 import org.usfirst.frc.team708.robot.AutoConstants;
 import org.usfirst.frc.team708.robot.Constants;
+import org.usfirst.frc.team708.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team708.robot.util.Math708;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -10,19 +11,31 @@ import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- *
+ *	@author Viet Tran
  */
 public class VisionProcessor extends Subsystem {
 	
-	private boolean isCentered			= false;
+	public static Drivetrain 		drivetrain;
+	
+<<<<<<< HEAD
+	public boolean isCentered		= false;
 
 //	Required Network Table Data 	
-	private double hasTarget	= 0.0;	//Get from Network Table
+	private double hasTarget		= 0.0;	//Get from Network Table
+=======
+	private boolean isCentered		= false;
+
+//	Required Network Table Data 	
+	private double seesTarget		= 0.0;	//Get from Network Table
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 	private double displacementX 	= 0.0;	//Get from Network Table
 
 //	Accessing the Limelight's Network Table	
 	NetworkTableInstance 	limeLightInstance 	= NetworkTableInstance.getDefault();
 	NetworkTable			limeLightTable		= limeLightInstance.getTable("/limelight");
+	
+//	Sweep function variables
+	private double gyroAngle = 0.0;
     	
 	double rotate;
 	
@@ -32,6 +45,7 @@ public class VisionProcessor extends Subsystem {
 		convertInfo = limeLightInfo.getDouble(0);	
 		return convertInfo;
 	}
+	
 //	Method for setting different data into a Network Table    
 	public void setNTInfo(String tableInfo, Double setValue) {
 		NetworkTableEntry limeLightInfo = limeLightTable.getEntry(tableInfo);		
@@ -41,13 +55,15 @@ public class VisionProcessor extends Subsystem {
 	public VisionProcessor() {
 		super("Vision Processor");
 	}
+
+
 //	Method for centering with the cubes
 	public double getRotate() {
 		
 		getNTInfo("tx", displacementX);
-		getNTInfo("tv", hasTarget);
+		getNTInfo("tv", seesTarget);
 		
-		if (hasTarget == Constants.VISION_TARGET_FOUND) 
+		if (seesTarget == Constants.VISION_TARGET_FOUND) 
 		{
 			rotate = Math708.getSignClippedPercentError(displacementX, 0.0, 0.3, 0.5);
 			
@@ -60,13 +76,39 @@ public class VisionProcessor extends Subsystem {
 			}			
 		}
 		
-		else {
-			rotate = 0.0;
-		}
-		
+<<<<<<< HEAD
+//		else {	//The robot does not see any targets and is now sweeping
+//			drivetrain.resetGyro();
+//			gyroAngle = drivetrain.getAngle();
+//			if (gyroAngle == AutoConstants.SWEEP_ANGLE_START) {
+//				rotate = drivetrain.rotateByGyro(AutoConstants.SWEEP_ANGLE_LEFT, AutoConstants.X_THRESHOLD);
+//			}
+//			else if (gyroAngle == AutoConstants.SWEEP_ANGLE_LEFT) {
+//				rotate = drivetrain.rotateByGyro(AutoConstants.SWEEP_ANGLE_RIGHT, AutoConstants.X_THRESHOLD);
+//			}
+//			else if (gyroAngle == AutoConstants.SWEEP_ANGLE_RIGHT) {
+//				rotate = drivetrain.rotateByGyro(AutoConstants.SWEEP_ANGLE_STOP, AutoConstants.X_THRESHOLD);
+//			}
+//		}		
+=======
+		else {	//The robot does not see any targets and is now sweeping
+			drivetrain.resetGyro();
+			gyroAngle = drivetrain.getAngle();
+			if (gyroAngle == AutoConstants.SWEEP_ANGLE_START) {
+				rotate = drivetrain.rotateByGyro(AutoConstants.SWEEP_ANGLE_LEFT, AutoConstants.X_THRESHOLD);
+			}
+			else if (gyroAngle == AutoConstants.SWEEP_ANGLE_LEFT) {
+				rotate = drivetrain.rotateByGyro(AutoConstants.SWEEP_ANGLE_RIGHT, AutoConstants.X_THRESHOLD);
+			}
+			else if (gyroAngle == AutoConstants.SWEEP_ANGLE_RIGHT) {
+				rotate = drivetrain.rotateByGyro(AutoConstants.SWEEP_ANGLE_STOP, AutoConstants.X_THRESHOLD);
+			}
+		}		
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 		return rotate;
 	}
-	
+
+//	Method for moving towards a target	-NOT USED IN 2018
 	//Returns how to move to get to target distance (targetAmount = target ratio)
 	
 /**	public double getMove() {
@@ -96,13 +138,14 @@ public class VisionProcessor extends Subsystem {
 	 * @return
 	 */
 	public double hadTarget() {
-		return hasTarget;
+		return seesTarget;
 	}
 	
 	public boolean wasCentered() {
 		return isCentered;
 	}
 
+	
 	public void sendToDashboard() {		//Might have to rewrite public variables for the smart dashboard...
 										//Future me problem		-Viet
 		
@@ -111,7 +154,7 @@ public class VisionProcessor extends Subsystem {
 
 //		SmartDashboard.putNumber("string name", number);
 		SmartDashboard.putNumber("Displacement X", displacementX);
-		SmartDashboard.putNumber("Has Target", hasTarget);
+		SmartDashboard.putNumber("Has Target", seesTarget);
 
 
 	}

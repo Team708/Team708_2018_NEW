@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+2018-01-26 17:25:37,627 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+=======
+2018-01-26 11:24:49,669 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778

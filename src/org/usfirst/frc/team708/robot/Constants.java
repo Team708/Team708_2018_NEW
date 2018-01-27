@@ -13,45 +13,61 @@ public final class Constants {
 	/*
 	 * Motor Controllers
 	 */
-	public static final double INTAKE_FORWARD 		= -1.0;
-	public static final double INTAKE_REVERSE 		= 1.0;
-	public static final double INTAKE_OFF 			= 0.0;
+	public static final double INTAKE_FORWARD 	= -1.0;
+	public static final double INTAKE_REVERSE 	= 1.0;
+	public static final double INTAKE_OFF 		= 0.0;
 	
-	public static final double MOTOR_FORWARD 		= 1.0;
-	public static final double MOTOR_REVERSE 		= -1.0;
-	public static final double MOTOR_OFF 			= 0.0;
+<<<<<<< HEAD
+=======
+	public static final double MOTOR_FORWARD 	= 1.0;
+	public static final double MOTOR_REVERSE 	= -1.0;
+	public static final double MOTOR_OFF 		= 0.0;
 
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 	public static final double DRIVE_MOTOR_MAX_SPEED 		= 1.0;
 	public static final double ROTATE_MOTOR_MAX_SPEED 		= 1.0;
 	public static final double ARMPIVOT_MOTOR_MAX_SPEED 	= 1.0;
 	public static final double VISION_ROTATE_MOTOR_SPEED	= 0.8;
+	public static final double DRIVE_MOTOR_OFF		 		= 0.0;
 	
-	public static final double LOADER_MOTOR_FORWARD 		=  1.0;
-	public static final double LOADER_MOTOR_REVERSE 		=  -1.0;
-	public static final double LOADER_OFF 					= 0.0;
-	
-	public static final double SHOOTER_MOTOR_SPEED_LOW 		=  5200;
-	public static final double SHOOTER_MOTOR_SPEED_HIGH 	=  5200;
-	public static final double SHOOTER_F_HIGH 		=  .17126;
-	public static final double SHOOTER_F_LOW 		=  .2398;
-	
-	public static final double SHOOTER_MOTOR_POWER_FORWARD_HIGH 	=  0.8;
-	public static final double SHOOTER_MOTOR_POWER_FORWARD_LOW 		=  0.8;
-	
-	public static final double SHOOTER_MOTOR_FORWARD 		=  	0.8;
-	public static final double SHOOTER_MOTOR_BACKWARD 		=  -1.0;
-	
-	//I hate you guys... Here are your ENDLESS vision constants!	-Viet
+<<<<<<< HEAD
 	public static final double VISION_LED_ON				= 0.0;
 	public static final double VISION_LED_OFF				= 1.0;
 	public static final double VISION_LED_BLINK				= 2.0;
 	public static final double VISION_PROCESSING_ON			= 0.0;
-	public static final double VISION_PROCESSING_OFF		= 1.0;
-	public static final double VISION_TARGET_NOT_FOUND		= 0.0;
-	public static final double VISION_TARGET_FOUND			= 1.0;
-	
 
+=======
+	public static final double LOADER_MOTOR_FORWARD 	=  1.0;
+	public static final double LOADER_MOTOR_REVERSE 	=  -1.0;
+	public static final double LOADER_OFF 				= 0.0;
+
+	public static final double SHOOTER_MOTOR_SPEED_LOW 	=  5200;
+	public static final double SHOOTER_MOTOR_SPEED_HIGH	=  5200;
+	public static final double SHOOTER_F_HIGH 			=  .17126;
+	public static final double SHOOTER_F_LOW 			=  .2398;
 	
+	public static final double SHOOTER_MOTOR_POWER_FORWARD_HIGH =  0.8;
+	public static final double SHOOTER_MOTOR_POWER_FORWARD_LOW 	=  0.8;
+	
+	public static final double SHOOTER_MOTOR_FORWARD 	=  	0.8;
+	public static final double SHOOTER_MOTOR_BACKWARD 	=  -1.0;
+	
+	//I hate you guys... Here are your ENDLESS vision constants!	-Viet
+	public static final double VISION_LED_ON			= 0.0;
+	public static final double VISION_LED_OFF			= 1.0;
+	public static final double VISION_LED_BLINK			= 2.0;
+	public static final double VISION_PROCESSING_ON		= 0.0;
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
+	public static final double VISION_PROCESSING_OFF	= 1.0;
+	public static final double VISION_TARGET_NOT_FOUND	= 0.0;
+	public static final double VISION_TARGET_FOUND		= 1.0;
+	public static final boolean VISION_CODER_HAPPY		= false;
+	public static final boolean VISION_CODER_ANNOYED	= true;
+<<<<<<< HEAD
+
+=======
+	
+>>>>>>> f9d3792403d13dad670097ed62a3d81547b12778
 	/*
 	 * Smart Dashboard
 	 */
@@ -62,18 +78,18 @@ public final class Constants {
 	/*
 	 * Sensors
 	 */
-	public static final double SONAR_CLOSE 								= 30.0;
-	public static final double SONAR_FAR 								= 80.0;
-	public static final double IR_HAS_BALL_DISTANCE 					= 4.0;
-	public static final double ENCODER_BOTTOM_POSITION 					= 0.0;
+
 	public static final double GRAYHILL_ENCODER_PULSES_PER_REVOLUTION 	= 128.0;
-	
+	public static final double ENCODER_BOTTOM_POSITION 					= 0.0;
 	/*
 	 * Game Elements
 	 */	
-//	public static final double PORTCULLIS_HEIGHT = 10.5;
-	
-	
+    public static final double SCALE_HEIGHT = 0.0;	
+    public static final double SWITCH_HEIGHT = 0.0;
+    public static final double FEEDER_STATION_HEIGHT = 0.0;
+    public static final double GROUND_HEIGHT = 0.0;
+    
+    
 	/*
 	 * PIVOT ARM -- moves arm up and down
 	 */
@@ -83,18 +99,11 @@ public final class Constants {
 	
 	
 	/*
-	 * GRAPPLER -- extends arm (telescoping)
+	 * telescoping
 	 */
-	public static final double GRAPPLER_MOTOR_MINIMUM 		= 1.0;
-	public static final double GRAPPLER_SPROCKET_DIAMETER 	= 1.4;
+	public static final double TELESCOPING_MOTOR_MIN_SPEED 	= .8;
+	public static final double TELESCOPING_MOTOR_MAX_SPEED 	= 1.0;
 
-	
-	public static final double[] GRAPPLER_STOPS_DEGREES = {
-		0.0,
-		60.0,
-		95.0
-	};
-	
 	
 	/*
 	 * Drivetrain
