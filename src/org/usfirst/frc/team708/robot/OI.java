@@ -96,8 +96,8 @@ public class OI {
 //		
 		releaseCube.whenPressed(new ReleaseCube());
 		squeezeCube.whenPressed(new SqueezeCube());
-		intakeCubeIn.whileActive(new IntakeIn());
-		intakeCubeOut.whileActive(new IntakeOut());
+		intakeCubeIn.whileActive(new IntakeOut());
+		intakeCubeOut.whileActive(new IntakeIn());
 		operateArmDown.whileActive(new ControlArmDown());
 		operateArmUp.whileActive(new ControlArmUp());
 //		operateTelescope.whileActive(new ControlTelescope());

@@ -2,6 +2,9 @@ package org.usfirst.frc.team708.robot.subsystems;
 
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
 //import org.team708.robot.commands.arm.JoystickMoveArm;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Value;
@@ -21,15 +24,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class IntakeCube extends Subsystem {
 	
 	public Spark intakeMotor;
-	
-	
+	public DigitalInput cubeSensor;
     /**
       * Constructor
       */
 	public IntakeCube() {
 //	intakeMotor = new Talon(RobotMap.INTAKE_MOTOR);
 		intakeMotor = new Spark(RobotMap.intakeMotor);
-	 
+		cubeSensor = new DigitalInput(RobotMap.cubeSensor);
 	}
 	
 	public void initDefaultCommand() {
@@ -40,6 +42,21 @@ public class IntakeCube extends Subsystem {
 	public void moveMotor(double speed) {
 		intakeMotor.set(speed);
     	SmartDashboard.putNumber("In Move Motor speed=", speed);
+	}
+	
+	public void stopMotor() {
+		intakeMotor.set(0.0);
+    	SmartDashboard.putNumber("In Move Motor speed=", 0.0);
+	}
+	
+public boolean hasCube() {
+		
+		if (cubeSensor.get()) {
+			return (true);
+	    }
+		else {
+			return (false);
+		}
 	}
 	
 	public void stop(){
@@ -53,6 +70,7 @@ public class IntakeCube extends Subsystem {
     public void sendToDashboard() {
 		if (Constants.DEBUG) {
 		}
+		SmartDashboard.putBoolean("Has cube:", hasCube());
     }
     
     

@@ -17,7 +17,7 @@ public class VisionProcessor extends Subsystem {
 	
 	public static Drivetrain 		drivetrain;
 	
-	private boolean isCentered = false;
+	private boolean isCentered;
 
 //	Required Network Table Data 	
 	private boolean hasTarget;	//Get from Network Table
@@ -29,22 +29,22 @@ public class VisionProcessor extends Subsystem {
 	NetworkTable			limeLightTable		= limeLightInstance.getTable("/limelight");
 	
 //	Sweep function variables
-	private double gyroAngle = 0.0;
+//	private double gyroAngle = 0.0;
     	
 	private double rotate			= 0.0;
-	private double move			= 0.0;
+	public double getRotate			= 0.0;
 	
 //	Method for getting different data from a Network Table	
-	public double getNTInfo(String tableInfo) {
-		NetworkTableEntry limeLightEntry = limeLightTable.getEntry(tableInfo);		
-		return limeLightEntry.getDouble(0);	
-		 
+	public double getNTInfo(String tableInfo, Double convertInfo) {
+		NetworkTableEntry limeLightInfo = limeLightTable.getEntry(tableInfo);		
+		convertInfo = limeLightInfo.getDouble(0);	
+		return convertInfo;
 	}
 	
 //	Method for setting different data into a Network Table    
 	public void setNTInfo(String tableInfo, Double setValue) {
-		NetworkTableEntry limeLightEntry = limeLightTable.getEntry(tableInfo);		
-		limeLightEntry.setNumber(setValue);
+		NetworkTableEntry limeLightInfo = limeLightTable.getEntry(tableInfo);		
+		limeLightInfo.setNumber(setValue);
 	}
 	
 	public VisionProcessor() {
@@ -53,14 +53,15 @@ public class VisionProcessor extends Subsystem {
 
 
 //	Method for centering with the cubes
-//	public double displacementX() {
-//		NetworkTableEntry limeLightInfo = limeLightTable.getEntry("tx");		
-//		displacementX = limeLightInfo.getDouble(0);	
-//		return displacementX;
-//	}
+	public double displacementX() {
+		NetworkTableEntry limeLightInfo = limeLightTable.getEntry("tx");		
+		displacementX = limeLightInfo.getDouble(0);	
+		return displacementX;
+	}
 	public boolean hasTarget() {
-		tv = getNTInfo("tv");
-		if (tv != 0.0) {
+		NetworkTableEntry limeLightInfo = limeLightTable.getEntry("tv");		
+		tv = limeLightInfo.getDouble(0);	
+		if (tv == 1.0) {
 			hasTarget = true;
 		}
 		else {
@@ -70,7 +71,7 @@ public class VisionProcessor extends Subsystem {
 	}
 	public boolean isCentered() {
 	
-		displacementX = getNTInfo("tx");
+		getNTInfo("tx", displacementX);
 	
 		if (Math.abs(displacementX) <= AutoConstants.X_THRESHOLD) {
 			isCentered = true;
@@ -81,17 +82,19 @@ public class VisionProcessor extends Subsystem {
 		return isCentered;
 	}
 	public double getRotate() {	
-		rotate=0.0;
-		isCentered();
-		if (hasTarget()) {
-			if (!isCentered())	
-			     if (displacementX > 0)
-				     rotate = -.5;
-			     else 
-			 	    rotate = .5;
-			 else // centered
-				rotate= 0.0;
-		} //dont have target - sweep
+		if (hasTarget = true) {
+			
+			if (isCentered = true) {
+				rotate = 0.0;
+			}
+			else if (isCentered = false && displacementX > 0) {
+				rotate = .5;
+			}
+			else if (isCentered = false && displacementX < 0) {
+				rotate = -.5;
+			}
+		}
+		
 //		else {	//The robot does not see any targets and is now sweeping
 //			drivetrain.resetGyro();
 //			gyroAngle = drivetrain.getAngle();
@@ -111,7 +114,7 @@ public class VisionProcessor extends Subsystem {
 //	Method for moving towards a target	-NOT USED IN 2018
 	//Returns how to move to get to target distance (targetAmount = target ratio)
 	
-/*	public double getMove() {
+/**	public double getMove() {
 		double move;
 		
 		if (hasTarget) 
@@ -132,15 +135,33 @@ public class VisionProcessor extends Subsystem {
 		
 		return move;
 	}
-*/
+	
+	/**
+	 * Returns if the robot sees a container
+	 * @return
+	 */
+	public boolean hadTarget() {
+		return hasTarget;
+	}
+	
+	public boolean wasCentered() {
+		return isCentered;
+	}
+	public double currentX () {
+		return displacementX;
+	}
 
 	public void sendToDashboard() {		//Might have to rewrite public variables for the smart dashboard...
 										//Future me problem		-Viet
 		
-		SmartDashboard.putBoolean("Is Centered", isCentered());
-		SmartDashboard.putNumber("Displacement X", displacementX);
-		SmartDashboard.putBoolean("Has Target", hasTarget());
-		SmartDashboard.putNumber("TV", tv);
+//		SmartDashboard.putBoolean("string name", boolean);
+		SmartDashboard.putBoolean("Is Centered", wasCentered());
+
+//		SmartDashboard.putNumber("string name", number);
+//		SmartDashboard.putNumber("Displacement X", currentX());
+//		SmartDashboard.putNumber("Has Target", targetFound());
+
+
 	}
 
     public void initDefaultCommand() {

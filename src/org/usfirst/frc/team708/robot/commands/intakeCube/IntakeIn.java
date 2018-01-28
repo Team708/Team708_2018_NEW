@@ -4,7 +4,7 @@ import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.OI;
 import org.usfirst.frc.team708.robot.Robot;
 import org.usfirst.frc.team708.robot.RobotMap;
-//import org.team708.robot.subsystems.*;
+import org.usfirst.frc.team708.robot.subsystems.IntakeCube;
 //import org.usfirst.frc.team708.robot.subsystems.Loader;
 
 
@@ -27,8 +27,8 @@ public class IntakeIn extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.intakeCube.moveMotor(Constants.INTAKE_FORWARD);
     	
+
 //    	if (Robot.loader.HasBall() == true){
 //        	Robot.loader.stop();
 //        	cancel();
@@ -38,6 +38,11 @@ public class IntakeIn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+    	if(Robot.intakeCube.hasCube())
+    		Robot.intakeCube.stop();
+    	else
+         	Robot.intakeCube.moveMotor(Constants.INTAKE_FORWARD);
 
 //    	if (Robot.loader.HasBall() == true){
 //    		Robot.intake.stop();

@@ -60,7 +60,7 @@ public class RobotMap {
 	public static final int telescopeEncoderB			= 7;	//this might go directly on the motor controllers
 	public static final int colorSensor			 		= 8;  
 //	public static final int pivotArmDownSwitch	 		= 9;  	//might be on motor controller
-	public static final int telescopeDownSwitch			= 9;	//might be on motor controller
+	public static final int cubeSensor			= 9;	//might be on motor controller
 	
 	// RELAY
 //	public static final int 			 	= 0;
@@ -69,7 +69,7 @@ public class RobotMap {
 //	public static final int 			 	= 3;
 	
 	//Analog sesnor IDs
-//	public static final int armPotentiometer	= 0;
+//  public static final int 	= 0;
 //	public static final int DTSonar				= 1;
 //	public static final int loaderIRSensor		= 2;
 	
