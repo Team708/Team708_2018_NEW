@@ -2,6 +2,7 @@
 package org.usfirst.frc.team708.robot;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.CameraServer;
@@ -38,9 +39,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  * 
- * @author omn0mn0m
- * @author Viet Tran
- * @author wutnut
+ * @cleanup of vision & gamedata - 1/28 @11:24
  */
 public class Robot extends IterativeRobot {
 	
@@ -53,7 +52,9 @@ public class Robot extends IterativeRobot {
 	public static Arm				arm;
 //	public static Telescope			telescope;
 	public static OI 				oi;
- 
+
+   	public String gameData;
+   	
 	SendableChooser<Command> autonomousMode = new SendableChooser<>();
     Command 			autonomousCommand;
     Preferences			prefs;
@@ -75,21 +76,14 @@ public class Robot extends IterativeRobot {
 	    intakeCube			= new IntakeCube();
 	    visionProcessor	= new VisionProcessor();
 	    arm = new Arm();
-	    
+
+
 	    visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
 	    
 		sendDashboardSubsystems();		// Sends each subsystem's currently running command to the Smart Dashboard
 			
 		queueAutonomousModes();			// Adds autonomous modes to the selection box
 		
-//		NetworkTableInstance  table = NetworkTableInstance.getDefault();    
-//
-//		NetworkTable limelightNT = table.getTable("limelight");
-//		double targetOffsetAngle_Horizontal = limelightNT.
-//		double targetOffsetAngle_Horizontal = double.valueof(limelightNT.getEntry("tx", 0));
-//		double targetOffsetAngle_Vertical = table.getNumber("ty", 0);
-//		double targetArea = table.getNumber("ta", 0);
-//		double targetSkew = table.getNumber("ts", 0);
 		
 		// This MUST BE LAST or a NullPointerException will be thrown
         oi 				= new OI();		// Initializes the OI		
@@ -108,12 +102,23 @@ public class Robot extends IterativeRobot {
 	 * Runs at the start of autonomous mode
 	 */
     public void autonomousInit() {
-    	// schedule the autonomous command   		
+    	// schedule the autonomous command 
+    	
+        visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
+        visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_ON);
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		
     	autonomousCommand = (Command)autonomousMode.getSelected();
         if (autonomousCommand != null) autonomousCommand.start();
         
-        visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
-        visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_ON);
+		SmartDashboard.putString("gameData", gameData);
+		
+		if(gameData.charAt(0) == 'L')
+		{
+			SmartDashboard.putString("switch location", "got an L");
+		} else {
+			SmartDashboard.putString("switch location", "got an R");
+		}
     }
 
     /**
@@ -180,6 +185,7 @@ public class Robot extends IterativeRobot {
     private void queueAutonomousModes() {
     	
     	autonomousMode.addObject("Test Auto 1", null);
+    	autonomousMode.addObject("Test Cube", new TestingCube());
     	autonomousMode.addObject("Do Nothing", new DoNothing());
 
     	autonomousMode.addObject("Drive time distance", 	new driveDistance());

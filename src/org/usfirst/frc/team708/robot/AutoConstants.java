@@ -10,6 +10,6 @@ public final class AutoConstants {
 	public static final double SWEEP_ANGLE_STOP		= 0.0;
 	public static final double SWEEP_ANGLE_RIGHT	= 20.0; 	//Target angle in degrees
 	public static final double SWEEP_ANGLE_LEFT		= -20.0;	//Target angle in degrees	
-	public static final double SWEEP_ROTATE_RIGHT	= .3;
-	public static final double SWEEP_ROTATE_LEFT	= -.3;
+	public static final double SWEEP_ROTATE_RIGHT	= .5;
+	public static final double SWEEP_ROTATE_LEFT	= -.5;
 }

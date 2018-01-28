@@ -26,7 +26,7 @@ public final class Constants {
 	public static final double DRIVE_MOTOR_OFF		 		= 0.0;
 	
 	public static final double VISION_LED_ON				= 0.0;
-	public static final double VISION_LED_OFF				= 1.0;
+	public static final double VISION_LED_OFF				= 1.0; //was 1.0
 	public static final double VISION_LED_BLINK				= 2.0;
 	public static final double VISION_PROCESSING_ON			= 0.0;
 
