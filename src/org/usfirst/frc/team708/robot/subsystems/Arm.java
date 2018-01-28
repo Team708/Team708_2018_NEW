@@ -6,6 +6,7 @@ import org.usfirst.frc.team708.robot.util.Potentiometer;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Encoder;
 //import org.team708.robot.commands.arm.JoystickMoveArm;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Value;
@@ -28,7 +29,7 @@ public class Arm extends Subsystem {
 	private WPI_TalonSRX armMotorMaster, armMotorSlave1;
 	private SpeedControllerGroup armMotors;
 	
-	private Encoder enc;
+	private Encoder enc; //RESET IN AUTO TO CALIBRATE BEFORE EACH MATCH
 
 	
     /**
@@ -40,7 +41,7 @@ public class Arm extends Subsystem {
 	 
 		 armMotors = new SpeedControllerGroup(armMotorMaster, armMotorSlave1);
 
-		 enc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+		 enc = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
 	}
 	
 	public void initDefaultCommand() {
@@ -60,7 +61,7 @@ public class Arm extends Subsystem {
 	}
     
 	public double getAngle(){
-		return ; //gets current pivot angle
+		return enc.get() * Constants.ARM_REVS_PER_TALON_REV; //Arm Angle = (# talon revs) * (arm revs/talon rev) 
 	}
 	
     /**

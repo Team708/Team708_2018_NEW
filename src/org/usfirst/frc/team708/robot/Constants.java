@@ -52,7 +52,7 @@ public final class Constants {
 	/*
 	 * Game Elements
 	 */
-	//These "heights" are angles that we've determined can reach the specified heights in the comments below
+	//These "heights" will be the angles that can reach the specified heights in the comments below
     public static final double SCALE_HEIGHT = 78.0; //78 inches (arm telescopes out to here)	
     public static final double SWITCH_HEIGHT = 21.0; //21 inches (robot throws cube up to this height, so this constant is our angular trajectory)
     public static final double FEEDER_STATION_HEIGHT = 27.0; //27 inches (trajectory)
@@ -65,6 +65,7 @@ public final class Constants {
 	public static final double PIVOT_ARM_SPROCKET_DIAMETER 	= 1.8;
 	public static final double PIVOT_UP 					= 1.0;
 	public static final double PIVOT_DOWN 					= 0.25;
+	public static final double ARM_REVS_PER_TALON_REV = 0.0; // Will be used to find pivot angle from encoder count
 	
 	
 	/*
