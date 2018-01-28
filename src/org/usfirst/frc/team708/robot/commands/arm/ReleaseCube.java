@@ -1,9 +1,4 @@
-/* TAKE THIS CODE IF YOU NEED IT, maybe for DriveTrain.
- * It will eventually be removed from here.
- * 
- * 
- *
-package org.usfirst.frc.team708.robot.commands.pneumatics;
+package org.usfirst.frc.team708.robot.commands.arm;
 
 //import java.awt.Robot;
 
@@ -42,6 +37,7 @@ public class ReleaseCube extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.arm.stop();
     }
 
     // Called when another command which requires one or more of the same
@@ -49,5 +45,6 @@ public class ReleaseCube extends Command {
     protected void interrupted() {
     	end();
     }
+    
 }
 */

@@ -1,9 +1,4 @@
-/* TAKE THIS CODE IF YOU NEED IT, maybe for DriveTrain.
- * It will eventually be removed from here.
- * 
- * 
- *
-package org.usfirst.frc.team708.robot.commands.pneumatics;
+package org.usfirst.frc.team708.robot.commands.arm;
 
 //import java.awt.Robot;
 
@@ -12,27 +7,24 @@ import org.usfirst.frc.team708.robot.Constants;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
-import org.usfirst.frc.team708.robot.Robot;
 import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
+import org.usfirst.frc.team708.robot.Robot;
 
-public class ReleaseCube extends Command {
+public class SqueezeCube extends Command {
 
 
-    public ReleaseCube() {
-//    	requires(Robot.feeder);
-//    	requires(Robot.intake_ball);
-//    	requires(Robot.drivetrain);
-//    	requires(Robot.shooter);
+    public SqueezeCube() {
+    	
     }
     
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.pneumaticsTest.forward();
+    	Robot.pneumaticsTest.reverse();
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {    
+    protected void execute() {    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -42,6 +34,7 @@ public class ReleaseCube extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.arm.stop();
     }
 
     // Called when another command which requires one or more of the same
@@ -50,4 +43,3 @@ public class ReleaseCube extends Command {
     	end();
     }
 }
-*/

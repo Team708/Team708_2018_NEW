@@ -14,11 +14,9 @@ import edu.wpi.first.wpilibj.command.Command;
 
 
 /**
- *@author James Alex Thomas Mikhael
+ *@author Nick, Mike, Josh
  */
 public class ControlArmUp extends Command {
-
-	private boolean hasBall;
 
     public ControlArmUp() {
     	requires(Robot.arm);
@@ -29,28 +27,17 @@ public class ControlArmUp extends Command {
     protected void initialize() {
     	Robot.arm.moveMotor(Constants.ARM_FORWARD);
     	
-//    	if (Robot.loader.HasBall() == true){
-//        	Robot.loader.stop();
-//        	cancel();
-//    	}
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 
-//    	if (Robot.loader.HasBall() == true){
-//    		Robot.intake.stop();
-//        	Robot.loader.stop();
-//    		cancel();
-//    	} else {
-//    	Robot.loader.manualMove(0.5);
- //   	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return false;		//Replace with intake "has" boolean later	-Viet
+    	return false;		
     }
 
     // Called once after isFinished returns true

@@ -51,11 +51,12 @@ public final class Constants {
 	public static final double ENCODER_BOTTOM_POSITION 					= 0.0;
 	/*
 	 * Game Elements
-	 */	
-    public static final double SCALE_HEIGHT = 0.0;	
-    public static final double SWITCH_HEIGHT = 0.0;
-    public static final double FEEDER_STATION_HEIGHT = 0.0;
-    public static final double GROUND_HEIGHT = 0.0;
+	 */
+	//These "heights" are angles that we've determined can reach the specified heights in the comments below
+    public static final double SCALE_HEIGHT = 78.0; //78 inches (arm telescopes out to here)	
+    public static final double SWITCH_HEIGHT = 21.0; //21 inches (robot throws cube up to this height, so this constant is our angular trajectory)
+    public static final double FEEDER_STATION_HEIGHT = 27.0; //27 inches (trajectory)
+    public static final double GROUND_HEIGHT = 0.0;  //0 inches (keep as is)
     
     
 	/*

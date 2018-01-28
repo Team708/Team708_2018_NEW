@@ -2,6 +2,7 @@ package org.usfirst.frc.team708.robot.subsystems;
 
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.RobotMap;
+import org.usfirst.frc.team708.robot.util.Potentiometer;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -16,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * Code for the pivot motors of the two arms.
+ * Code for the pivot arms.
  * @author Nick Iannarone
  * @author Michael Steinberg
  * @author Josh Smith
@@ -26,6 +27,8 @@ public class Arm extends Subsystem {
 	
 	private WPI_TalonSRX armMotorMaster, armMotorSlave1;
 	private SpeedControllerGroup armMotors;
+	
+	private Encoder enc;
 
 	
     /**
@@ -37,6 +40,7 @@ public class Arm extends Subsystem {
 	 
 		 armMotors = new SpeedControllerGroup(armMotorMaster, armMotorSlave1);
 
+		 enc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	}
 	
 	public void initDefaultCommand() {
@@ -55,6 +59,10 @@ public class Arm extends Subsystem {
     	SmartDashboard.putNumber("In Stop Motor speed=", 0.0);
 	}
     
+	public double getAngle(){
+		return ; //gets current pivot angle
+	}
+	
     /**
      * Sends data about the subsystem to the Smart Dashboard
      */

@@ -11,21 +11,27 @@ import org.usfirst.frc.team708.robot.RobotMap;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 
-
-
 /**
  *@author Nick, Mike, Josh
  */
-public class ControlArmDown extends Command {
-
-    public ControlArmDown() {
+public class ControlArmToFeeder extends Command {
+	
+    public ControlArmToFeeder() {
     	requires(Robot.arm);
     }
     
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.arm.moveMotor(Constants.ARM_REVERSE);    	
+        //   o  o
+       	// \    )  /   USE TELESCOPER METHOD (ask Mike) TO RETRACT ARM FIRST
+       	//   {:::}
+    	
+    	if(Robot.arm.getAngle() > Constants.FEEDER_STATION_HEIGHT)
+    		Robot.arm.moveMotor(Constants.ARM_REVERSE);
+    	if(Robot.arm.getAngle() < Constants.FEEDER_STATION_HEIGHT)
+    		Robot.arm.moveMotor(Constants.ARM_FORWARD);
+    	}    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,7 +40,9 @@ public class ControlArmDown extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return false;
+    	//Have a range in case the RIO can't get the angle exact.
+    	if (Robot.arm.getAngle() > Constants.FEEDER_STATION_HEIGHT - 5 && Robot.arm.getAngle() < Constants.FEEDER_STATION_HEIGHT + 5)
+    		return true;		
     }
 
     // Called once after isFinished returns true
