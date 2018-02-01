@@ -46,7 +46,7 @@ public class RobotMap {
 	public static final int telescopingMotorSlave3	 	= 24;
 
 	// Pivot Arm CAN Device ID
-	public static final int pivotArmMotorMaster			= 31; // SMP should be 31
+	public static final int pivotArmMotorMaster			= 55; // SMP should be 31
 	public static final int pivotArmMotorSlave1			= 32; // SMP should be 32
 	
 	// Digital IO
@@ -60,7 +60,9 @@ public class RobotMap {
 	public static final int telescopeEncoderB			= 7;	//this might go directly on the motor controllers
 	public static final int colorSensor			 		= 8;  
 //	public static final int pivotArmDownSwitch	 		= 9;  	//might be on motor controller
-	public static final int telescopeDownSwitch			= 9;	//might be on motor controller
+//	public static final int telescopeDownSwitch			= 9;	//might be on motor controller
+	public static final int cubeSensor					= 9;
+	
 	
 	// RELAY
 //	public static final int 			 	= 0;

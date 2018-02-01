@@ -8,6 +8,7 @@ import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightToWhiteLin
 //import org.usfirst.frc.team708.robot.commands.drivetrain.RotateAndDriveToBoiler;
 import org.usfirst.frc.team708.robot.commands.drivetrain.ToggleBrakeMode;
 import org.usfirst.frc.team708.robot.commands.drivetrain.TurnToDegrees;
+import org.usfirst.frc.team708.robot.commands.visionProcessor.FindCube;
 import org.usfirst.frc.team708.robot.commands.drivetrain.Send;
 //import org.usfirst.frc.team708.robot.commands.feeder.SpinFeeder;
 //import org.usfirst.frc.team708.robot.commands.shooter.SpinShooter;
@@ -37,7 +38,6 @@ public class DriveToWhiteLine extends CommandGroup {
 
     	addSequential(new Send("In DriveDistance"));
 
-    	addSequential(new Send("Calling wait 2"));
     	addSequential(new WaitCommand(1.0));
     	
     	addSequential(new DriveStraightForTime(.7, 3.5));
@@ -45,11 +45,37 @@ public class DriveToWhiteLine extends CommandGroup {
 
     	addSequential(new TurnToDegrees(.5, 55));
     	
-    	addSequential(new DriveStraightForTime(.4, 2));
-    	addSequential(new TurnToDegrees(.5, 60));
-    	addSequential(new DriveStraightForTime(.5, 2));
-
+    	//in parallel lift arm 
     	
+    	addSequential(new DriveStraightForTime(.5, 1));
+    	
+    	//drop the block
+    	
+    	addSequential(new TurnToDegrees(.5, 90));
+    	addSequential(new FindCube(false));
+
+    	//in parallel intake cube
+    	addSequential(new DriveStraightForTime(.5, 3));
+    	
+    	//move arm up and extend telescope (if we can't shoot)
+    	addSequential(new DriveStraightForTime(-.5, 1));
+    	
+    	//shoot the cube or drop cube
+    	
+    	addSequential(new DriveStraightForTime(-.5, 1));
+    	
+    	addSequential(new TurnToDegrees(.5, -45));
+    	addSequential(new FindCube(false));
+    	
+    	//in parallel intake cube
+    	addSequential(new DriveStraightForTime(.5, 3));
+    	
+    	addSequential(new TurnToDegrees(.5, 160));
+
+    	//move arm up and extend telescope for scale
+    	addSequential(new DriveStraightForTime(.5, 3));
+    	
+    	//release cube
     	addSequential(new Send("finished"));
     }
     

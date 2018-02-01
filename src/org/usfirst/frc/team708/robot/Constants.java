@@ -49,12 +49,13 @@ public final class Constants {
 
 	public static final double GRAYHILL_ENCODER_PULSES_PER_REVOLUTION 	= 128.0;
 	public static final double ENCODER_BOTTOM_POSITION 					= 0.0;
+
 	/*
 	 * Game Elements
 	 */	
-    public static final double SCALE_HEIGHT = 0.0;	
-    public static final double SWITCH_HEIGHT = 0.0;
-    public static final double FEEDER_STATION_HEIGHT = 0.0;
+    public static final double SCALE_HEIGHT = 78.0;	
+    public static final double SWITCH_HEIGHT = 21.0;
+    public static final double FEEDER_STATION_HEIGHT = 27.0;
     public static final double GROUND_HEIGHT = 0.0;
     
     
@@ -64,7 +65,7 @@ public final class Constants {
 	public static final double PIVOT_ARM_SPROCKET_DIAMETER 	= 1.8;
 	public static final double PIVOT_UP 					= 1.0;
 	public static final double PIVOT_DOWN 					= 0.25;
-	
+	public static final double ARM_REVS_PER_TALON_REV 		= 0.0;
 	
 	/*
 	 * telescoping

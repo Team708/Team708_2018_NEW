@@ -104,7 +104,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
     	// schedule the autonomous command 
     	
-        visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
+        visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_ON);
         visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_ON);
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
@@ -117,8 +117,10 @@ public class Robot extends IterativeRobot {
 		{
 			SmartDashboard.putString("switch location", "got an L");
 		} else {
-			SmartDashboard.putString("switch location", "got an R");
+		SmartDashboard.putString("switch location", "got an R");
 		}
+        visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_ON);
+        visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_ON);
     }
 
     /**
