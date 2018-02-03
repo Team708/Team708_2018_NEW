@@ -26,8 +26,8 @@ public class ControlArmToGround extends Command {
     	//   o  o
     	// \    )  /   USE TELESCOPER METHOD (ask Mike) TO RETRACT ARM FIRST
     	//   {:::}
-    	if(Robot.arm.getAngle() > Constants.GROUND_HEIGHT)
-    		Robot.arm.moveMotor(Constants.ARM_REVERSE);
+    	
+    	Robot.arm.setAngle((int)(Constants.GROUND_HEIGHT - Robot.arm.getAngle())); 
     	}    	
     }
 
@@ -37,9 +37,7 @@ public class ControlArmToGround extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	//Have a range in case the RIO can't get the angle exact. 5 is an arbitrary #.
-    	if (Robot.arm.getAngle() > Constants.GROUND_HEIGHT - 5 && Robot.arm.getAngle() < Constants.GROUND_HEIGHT + 5)
-    		return true;		
+    	return true;
     }
 
     // Called once after isFinished returns true

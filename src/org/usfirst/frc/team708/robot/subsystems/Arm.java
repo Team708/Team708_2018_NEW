@@ -2,18 +2,18 @@ package org.usfirst.frc.team708.robot.subsystems;
 
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.RobotMap;
-import org.usfirst.frc.team708.robot.util.Potentiometer;
+//import org.usfirst.frc.team708.robot.util.Potentiometer;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.Encoder;
+//import edu.wpi.first.wpilibj.Encoder;
 //import org.team708.robot.commands.arm.JoystickMoveArm;
-import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.Relay.Value;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Spark;
+//import edu.wpi.first.wpilibj.Relay;
+//import edu.wpi.first.wpilibj.Relay.Value;
+//import edu.wpi.first.wpilibj.Talon;
+//import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -29,7 +29,7 @@ public class Arm extends Subsystem {
 	private WPI_TalonSRX armMotorMaster, armMotorSlave1;
 	private SpeedControllerGroup armMotors;
 	
-	private Encoder enc; //RESET IN AUTO TO CALIBRATE BEFORE EACH MATCH
+	//private Encoder enc; //RESET IN AUTO TO CALIBRATE BEFORE EACH MATCH
 
 	
     /**
@@ -51,8 +51,7 @@ public class Arm extends Subsystem {
 	
 	public void moveMotor(double speed) {
 		armMotors.set(speed);
-		armMotorMaster.getSensorCollection().getPulseWidthPosition();
-
+		
     	SmartDashboard.putNumber("In Move Motor speed=", speed);
 	}
 	
@@ -63,7 +62,12 @@ public class Arm extends Subsystem {
 	}
     
 	public double getAngle(){
-		return armMotorMaster.getSensorCollection().getPulseWidthPosition();
+		return armMotorMaster.getSensorCollection().getPulseWidthPosition(); 
+		//Multiply by Gear Ratio constant to get the actual angle
+	}
+	
+	public void setAngle(int angle) {
+		armMotorMaster.getSensorCollection().setPulseWidthPosition(angle, 0);
 	}
 	
     /**

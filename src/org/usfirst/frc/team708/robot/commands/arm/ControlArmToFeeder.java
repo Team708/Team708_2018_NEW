@@ -27,10 +27,7 @@ public class ControlArmToFeeder extends Command {
        	// \    )  /   USE TELESCOPER METHOD (ask Mike) TO RETRACT ARM FIRST
        	//   {:::}
     	
-    	if(Robot.arm.getAngle() > Constants.FEEDER_STATION_HEIGHT)
-    		Robot.arm.moveMotor(Constants.ARM_REVERSE);
-    	if(Robot.arm.getAngle() < Constants.FEEDER_STATION_HEIGHT)
-    		Robot.arm.moveMotor(Constants.ARM_FORWARD);
+    	Robot.arm.setAngle((int)(Constants.FEEDER_STATION_HEIGHT - Robot.arm.getAngle()));
     	}    	
     }
 
@@ -40,9 +37,7 @@ public class ControlArmToFeeder extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	//Have a range in case the RIO can't get the angle exact.
-    	if (Robot.arm.getAngle() > Constants.FEEDER_STATION_HEIGHT - 5 && Robot.arm.getAngle() < Constants.FEEDER_STATION_HEIGHT + 5)
-    		return true;		
+    	return true;		
     }
 
     // Called once after isFinished returns true
