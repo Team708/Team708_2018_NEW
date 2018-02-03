@@ -86,7 +86,6 @@ public class OI {
 
 	public OI() {
 
-//		onmiOn.whenPressed(new EnableOnmi());
 		butterflyOn.whenPressed(new ActivateButterfly());
 		highGearOn.whenPressed(new GearShift2());
 		lowGearOn.whenPressed(new GearShift1());
@@ -99,13 +98,14 @@ public class OI {
 		operateArmDown.whileActive(new ControlArmDown());
 		operateArmUp.whileActive(new ControlArmUp());
 		
-//		operateTelescope.whileActive(new ControlTelescope());
-//		armToGround.whenPressed(new MoveToGround());
-//		armToSwitch.whenPressed(new MoveToSwitch());
-//		armToScale.whenPressed(new MoveToScale());
-//		armToFeeder.whenPressed(new MoveToFeeder());
-//		climbLowGear.whileHeld(new ShiftClimberLowGear()); 
+		armToGround.whenPressed(new ControlArmToGround());
+		armToSwitch.whenPressed(new ControlArmToSwitch());
+		armToScale.whenPressed(new ControlArmToScale());
+		armToFeeder.whenPressed(new ControlArmToFeeder());
 		
+//		climbLowGear.whileHeld(new ShiftClimberLowGear()); 
+//		operateTelescope.whileActive(new ControlTelescope());
+
 /*
  		.whileActive(new 
 		.whenPressed(new

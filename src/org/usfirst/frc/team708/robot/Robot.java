@@ -176,6 +176,7 @@ public class Robot extends IterativeRobot {
     	drivetrain.sendToDashboard();
         intakeCube.sendToDashboard();
         visionProcessor.sendToDashboard();
+        pneumaticsCube.sendToDashboard();
         arm.sendToDashboard();
     }
     
@@ -204,6 +205,7 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putData(intakeCube); 
     	SmartDashboard.putData(visionProcessor);
     	SmartDashboard.putData(arm);
+    	SmartDashboard.putData(pneumaticsCube);
     }
 }
 

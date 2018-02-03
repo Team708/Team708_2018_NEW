@@ -52,9 +52,9 @@ public final class Constants {
 	/*
 	 * Game Elements
 	 */	
-    public static final double SCALE_HEIGHT = 0.0;	
-    public static final double SWITCH_HEIGHT = 0.0;
-    public static final double FEEDER_STATION_HEIGHT = 0.0;
+    public static final double SCALE_HEIGHT = 4000.0;	
+    public static final double SWITCH_HEIGHT = 2000.0;
+    public static final double FEEDER_STATION_HEIGHT = 800.0;
     public static final double GROUND_HEIGHT = 0.0;
     
     
@@ -64,8 +64,8 @@ public final class Constants {
 	public static final double PIVOT_ARM_SPROCKET_DIAMETER 	= 1.8;
 	public static final double PIVOT_UP 					= 1.0;
 	public static final double 	PIVOT_DOWN 					= 0.25;
-	public static final int	ARM_ENC_STARTING_POSITION 		= 4242;
-	
+	public static final int	ARM_ENC_STARTING_POSITION 		= 700;
+	public static final int	ARM_TOLERANCE					= 100;
 	/*
 	 * telescoping
 	 */

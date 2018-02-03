@@ -55,7 +55,7 @@ public class Arm extends Subsystem {
    public boolean armDown() {
 		if (!armSensor.get()) {
 //			armMotorMaster.getSensorCollection().setQuadraturePosition(0, 0);	
-			armMotorMaster.setSelectedSensorPosition(500, 0, 0);
+			armMotorMaster.setSelectedSensorPosition(0, 0, 0);
 
 			return (true);
 	    }
@@ -71,7 +71,7 @@ public class Arm extends Subsystem {
 //		armMotorMaster.configSensorTerm
 //		armMotorMaster.
 		
-		return 0;
+		return getEncoderDistance();
 	}
 	
    public void setEncoderReading() {
@@ -83,7 +83,7 @@ public class Arm extends Subsystem {
    }
    
    public void resetArmEncoder() {
-//       enc.reset();
+		armMotorMaster.setSelectedSensorPosition(0, 0, 0);
    }
    
     /**

@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 	
 public class PneumaticsCube extends Subsystem {
@@ -36,6 +37,7 @@ public class PneumaticsCube extends Subsystem {
 	
 	public void reverse(){
 		exampleDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+
 	}
 	
 	public void forward() {
@@ -43,6 +45,8 @@ public class PneumaticsCube extends Subsystem {
 	}
 	
 	public void sendToDashboard() {
+
+//		SmartDashboard.putBoolean("In Soleniod", true);
 
 		if (Constants.DEBUG) {
 		}

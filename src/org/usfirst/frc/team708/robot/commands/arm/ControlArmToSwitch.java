@@ -23,24 +23,21 @@ public class ControlArmToSwitch extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        //   o  o
-       	// \    )  /   USE TELESCOPER METHOD (ask Mike) TO RETRACT ARM FIRST
-       	//   {:::}
-    	
-    	if(Robot.arm.getAngle() > Constants.SWITCH_HEIGHT)
-    		Robot.arm.moveMotor(Constants.ARM_REVERSE);
-    	if(Robot.arm.getAngle() < Constants.SWITCH_HEIGHT)
-    		Robot.arm.moveMotor(Constants.ARM_FORWARD);
     	}    	
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    }
+    	if(Robot.arm.getAngle() > Constants.SWITCH_HEIGHT)
+    		Robot.arm.moveMotor(Constants.ARM_FORWARD);
+    	if(Robot.arm.getAngle() < Constants.SWITCH_HEIGHT)
+    		Robot.arm.moveMotor(Constants.ARM_REVERSE);
+    	}    	
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//Have a range in case the RIO can't get the angle exact.
-    	if (Robot.arm.getAngle() > Constants.SWITCH_HEIGHT - 5 && Robot.arm.getAngle() < Constants.SWITCH_HEIGHT + 5)
+       	if (Robot.arm.getAngle() >= Constants.SWITCH_HEIGHT - Constants.ARM_TOLERANCE && 
+			      Robot.arm.getAngle() <= Constants.SWITCH_HEIGHT + Constants.ARM_TOLERANCE)
     		return true;
     	else
     		return false;
