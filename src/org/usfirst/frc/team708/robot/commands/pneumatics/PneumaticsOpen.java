@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 import org.usfirst.frc.team708.robot.Robot;
-import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
+import org.usfirst.frc.team708.robot.subsystems.PneumaticsCube;
 
 public class PneumaticsOpen extends Command {
 
@@ -23,7 +23,7 @@ public class PneumaticsOpen extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.pneumaticsTest.forward();
+    	Robot.pneumaticsCube.forward();
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -2,3 +2,4 @@
 dist/FRCUserProgram.jar
 *.jar
 *.jar
+src/org/usfirst/frc/team708/robot/OI.java

@@ -24,7 +24,7 @@ import org.usfirst.frc.team708.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team708.robot.subsystems.Arm;
 import org.usfirst.frc.team708.robot.subsystems.IntakeCube;
 import org.usfirst.frc.team708.robot.subsystems.VisionProcessor;
-import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
+import org.usfirst.frc.team708.robot.subsystems.PneumaticsCube;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 import org.usfirst.frc.team708.robot.Constants;
 
@@ -47,7 +47,7 @@ public class Robot extends IterativeRobot {
     
     public static Drivetrain 		drivetrain;
 	public static VisionProcessor 	visionProcessor;
-	public static PneumaticsTest    pneumaticsTest;
+	public static PneumaticsCube    pneumaticsCube;
 	public static IntakeCube		intakeCube;
 	public static Arm				arm;
 //	public static Telescope			telescope;
@@ -72,8 +72,8 @@ public class Robot extends IterativeRobot {
         // Subsystem Initialization
         
 	    drivetrain 		= new Drivetrain();
-	    pneumaticsTest  = new PneumaticsTest();
 	    intakeCube		= new IntakeCube();
+	    pneumaticsCube	= new PneumaticsCube();
 	    visionProcessor	= new VisionProcessor();
 	    arm = new Arm();
 

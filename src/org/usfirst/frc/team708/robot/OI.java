@@ -11,8 +11,7 @@ import org.usfirst.frc.team708.robot.commands.drivetrain.*;
 import org.usfirst.frc.team708.robot.commands.intakeCube.*;
 import org.usfirst.frc.team708.robot.commands.arm.*;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
-//import org.usfirst.frc.team708.robot.commands.cubegrabber.*;
-//;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -92,12 +91,14 @@ public class OI {
 		highGearOn.whenPressed(new GearShift2());
 		lowGearOn.whenPressed(new GearShift1());
 		
-//		releaseCube.whenPressed(new ReleaseCube());
-//		squeezeCube.whenPressed(new SqueezeCube());
+		releaseCube.whenPressed(new ReleaseCube());
+		squeezeCube.whenPressed(new SqueezeCube());
+
 		intakeCubeIn.whileActive(new IntakeIn());
 		intakeCubeOut.whileActive(new IntakeOut());
 		operateArmDown.whileActive(new ControlArmDown());
 		operateArmUp.whileActive(new ControlArmUp());
+		
 //		operateTelescope.whileActive(new ControlTelescope());
 //		armToGround.whenPressed(new MoveToGround());
 //		armToSwitch.whenPressed(new MoveToSwitch());

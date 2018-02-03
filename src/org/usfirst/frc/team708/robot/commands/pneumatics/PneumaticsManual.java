@@ -8,7 +8,7 @@ import org.usfirst.frc.team708.robot.OI;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
-import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
+import org.usfirst.frc.team708.robot.subsystems.PneumaticsCube;
 import org.usfirst.frc.team708.robot.util.Gamepad;
 import org.usfirst.frc.team708.robot.Robot;
 
@@ -16,7 +16,7 @@ public class PneumaticsManual extends Command {
 
 
     public PneumaticsManual() {
-    	requires(Robot.pneumaticsTest);
+    	requires(Robot.pneumaticsCube);
     }
 
     // Called just before this Command runs the first time
@@ -26,10 +26,10 @@ public class PneumaticsManual extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {   
     	if (OI.driverGamepad.getButton(Gamepad.button_X)) {
-    		Robot.pneumaticsTest.setPiston(DoubleSolenoid.Value.kForward);
+    		Robot.pneumaticsCube.setPiston(DoubleSolenoid.Value.kForward);
      	} else if (OI.driverGamepad.getButton(Gamepad.button_Y)) {
-     		Robot.pneumaticsTest.setPiston(DoubleSolenoid.Value.kReverse);
-     	} else Robot.pneumaticsTest.setPiston(DoubleSolenoid.Value.kOff);
+     		Robot.pneumaticsCube.setPiston(DoubleSolenoid.Value.kReverse);
+     	} else Robot.pneumaticsCube.setPiston(DoubleSolenoid.Value.kOff);
     }
 
     // Make this return true when this Command no longer needs to run execute()

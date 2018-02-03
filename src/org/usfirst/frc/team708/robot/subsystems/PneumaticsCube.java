@@ -11,15 +11,15 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 	
-public class PneumaticsTest extends Subsystem {
+public class PneumaticsCube extends Subsystem {
 	
 	private DoubleSolenoid exampleDoubleSolenoid;
-	private Solenoid singleSolenoid;
+//	private Solenoid singleSolenoid;
 	
 	/**
 	 * Constructor
 	 */
-	public PneumaticsTest() {
+	public PneumaticsCube() {
 		exampleDoubleSolenoid = new DoubleSolenoid(RobotMap.squeezeGrabber, RobotMap.releaseGrabber); //initializes
 //		singleSolenoid = new Solenoid(3);
 		

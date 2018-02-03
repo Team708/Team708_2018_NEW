@@ -54,14 +54,11 @@ public class RobotMap {
 	public static final int drivetrainEncoderBRt		= 1;	//this might go directly on the motor controllers
 	public static final int drivetrainEncoderALeft		= 2;	//this might go directly on the motor controllers
 	public static final int drivetrainEncoderBLeft		= 3;	//this might go directly on the motor controllers
-	public static final int pivotArmEncoderA			= 4;	//this might go directly on the motor controllers
-	public static final int pivotArmEncoderB			= 5;	//this might go directly on the motor controllers
-//	public static final int telescopeEncoderA			= 6;	//this might go directly on the motor controllers
-//	public static final int telescopeEncoderB			= 7;	//this might go directly on the motor controllers
+//	public static final int  							= 4;
+//	public static final int 							= 5;
+	public static final int	TelescopeSensor				= 6;	
 	public static final int armSensor					= 7;
 	public static final int colorSensor			 		= 8;  
-//	public static final int pivotArmDownSwitch	 		= 9;  	//might be on motor controller
-//	public static final int telescopeDownSwitch			= 9;	//might be on motor controller
 	public static final int cubeSensor					= 9;
 	
 	

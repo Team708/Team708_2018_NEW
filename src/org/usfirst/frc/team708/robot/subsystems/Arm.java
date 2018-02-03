@@ -12,12 +12,6 @@ import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 
-//import org.team708.robot.commands.arm.JoystickMoveArm;
-//import edu.wpi.first.wpilibj.Relay;
-//import edu.wpi.first.wpilibj.Relay.Value;
-//import edu.wpi.first.wpilibj.Talon;
-//import edu.wpi.first.wpilibj.Spark;
-//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 

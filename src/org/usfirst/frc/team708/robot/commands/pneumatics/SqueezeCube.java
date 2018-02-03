@@ -7,7 +7,7 @@ import org.usfirst.frc.team708.robot.Constants;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
-import org.usfirst.frc.team708.robot.subsystems.PneumaticsTest;
+import org.usfirst.frc.team708.robot.subsystems.PneumaticsCube;
 import org.usfirst.frc.team708.robot.Robot;
 
 public class SqueezeCube extends Command {
@@ -20,7 +20,7 @@ public class SqueezeCube extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.pneumaticsTest.reverse();
+    	Robot.pneumaticsCube.reverse();
     }
 
     // Called repeatedly when this Command is scheduled to run
