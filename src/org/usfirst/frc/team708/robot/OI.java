@@ -10,7 +10,7 @@ import org.usfirst.frc.team708.robot.util.triggers.*;
 import org.usfirst.frc.team708.robot.commands.drivetrain.*;
 import org.usfirst.frc.team708.robot.commands.intakeCube.*;
 import org.usfirst.frc.team708.robot.commands.arm.*;
-import org.usfirst.frc.team708.robot.commands.pneumatics.*;
+//import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 //import org.usfirst.frc.team708.robot.commands.cubegrabber.*;
 //;
 
@@ -96,8 +96,8 @@ public class OI {
 		squeezeCube.whenPressed(new SqueezeCube());
 		intakeCubeIn.whileActive(new IntakeIn());
 		intakeCubeOut.whileActive(new IntakeOut());
-		operateArmDown.whileActive(new ControlArmDown());
-		operateArmUp.whileActive(new ControlArmUp());
+//		operateArmDown.whileActive(new ControlArmDown());
+//		operateArmUp.whileActive(new ControlArmUp());
 //		operateTelescope.whileActive(new ControlTelescope());
 //		armToGround.whenPressed(new MoveToGround());
 //		armToSwitch.whenPressed(new MoveToSwitch());

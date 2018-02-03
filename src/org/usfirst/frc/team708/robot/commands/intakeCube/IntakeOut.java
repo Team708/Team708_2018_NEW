@@ -31,7 +31,6 @@ public class IntakeOut extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-   // 	Robot.loader.manualMove(Constants.LOADER_MOTOR_REVERSE);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -42,7 +41,6 @@ public class IntakeOut extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.intakeCube.stop();
-    //	Robot.loader.stop();
     }
 
     // Called when another command which requires one or more of the same

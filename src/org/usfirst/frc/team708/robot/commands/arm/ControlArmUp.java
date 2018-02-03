@@ -8,17 +8,15 @@ import org.usfirst.frc.team708.robot.RobotMap;
 //import org.usfirst.frc.team708.robot.subsystems.Loader;
 
 
-import edu.wpi.first.wpilibj.Relay;
+//import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-
 /**
- *@author James Alex Thomas Mikhael
+ *@author Nick, Mike, Josh
  */
-public class ControlArmUp extends Command {
 
-	private boolean hasBall;
+public class ControlArmUp extends Command {
 
     public ControlArmUp() {
     	requires(Robot.arm);
@@ -28,24 +26,10 @@ public class ControlArmUp extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.arm.moveMotor(Constants.ARM_FORWARD);
-    	
-//    	if (Robot.loader.HasBall() == true){
-//        	Robot.loader.stop();
-//        	cancel();
-//    	}
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
-//    	if (Robot.loader.HasBall() == true){
-//    		Robot.intake.stop();
-//        	Robot.loader.stop();
-//    		cancel();
-//    	} else {
-//    	Robot.loader.manualMove(0.5);
- //   	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

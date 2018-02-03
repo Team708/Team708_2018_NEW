@@ -21,36 +21,30 @@ public class AutoIntakeIn extends Command {
 	private boolean hasBall;
 
     public AutoIntakeIn() {
-    	requires(Robot.intakeCube);
+//    	requires(Robot.intakeCube);
 //    	requires(Robot.loader);
     }
     
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	if (Robot.loader.HasBall()){
-//        	Robot.loader.stop();
-//        	cancel();
-//    	}
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeCube.moveMotor(Constants.INTAKE_FORWARD);
- //   	Robot.loader.manualMove(0.4);
-    }
+    	if(Robot.intakeCube.hasCube())
+    		Robot.intakeCube.stop();
+    	else
+         	Robot.intakeCube.moveMotor(Constants.INTAKE_FORWARD);    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-//    	return(Robot.loader.HasBall());
-    	return false;		//Replace with intake "has" boolean later	-Viet
+    	return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	Robot.intakeCube.stop();
-//    	Robot.loader.stop();
     }
 
     // Called when another command which requires one or more of the same
