@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * Code for the pivot arms.
  * @author Nick Iannarone
  * @author Michael Steinberg
- * @author Josh Smith
+ * @author Jorsh Smith
  */
 
 public class Arm extends Subsystem {
@@ -41,7 +41,7 @@ public class Arm extends Subsystem {
 	 
 		 armMotors = new SpeedControllerGroup(armMotorMaster, armMotorSlave1);
 
-		 enc = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
+		 //enc = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
 	}
 	
 	public void initDefaultCommand() {
@@ -51,6 +51,8 @@ public class Arm extends Subsystem {
 	
 	public void moveMotor(double speed) {
 		armMotors.set(speed);
+		armMotorMaster.getSensorCollection().getPulseWidthPosition();
+
     	SmartDashboard.putNumber("In Move Motor speed=", speed);
 	}
 	
@@ -61,7 +63,7 @@ public class Arm extends Subsystem {
 	}
     
 	public double getAngle(){
-		return enc.get() * Constants.ARM_REVS_PER_TALON_REV; //Arm Angle = (# talon revs) * (arm revs/talon rev) 
+		return armMotorMaster.getSensorCollection().getPulseWidthPosition();
 	}
 	
     /**

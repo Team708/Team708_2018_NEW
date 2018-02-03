@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *@author Nick, Mike, Josh
+ *@author Nick, Mike, Jorsh
  */
 public class ControlArmToFeeder extends Command {
 	

@@ -65,7 +65,7 @@ public final class Constants {
 	public static final double PIVOT_ARM_SPROCKET_DIAMETER 	= 1.8;
 	public static final double PIVOT_UP 					= 1.0;
 	public static final double PIVOT_DOWN 					= 0.25;
-	public static final double ARM_REVS_PER_TALON_REV = 0.0; // Will be used to find pivot angle from encoder count
+	// public static final double ARM_REVS_PER_TALON_REV = 0.0; // Will be used to find pivot angle from encoder count
 	
 	
 	/*
