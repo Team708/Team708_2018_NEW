@@ -33,8 +33,7 @@ public class OI {
 
 // Drivetrain Buttons
 //  private static final int ShiftColsonWheels		= Gamepad.shoulderAxisRight;
-	private static final int OMNI_TRACTION_BUTTON	= Gamepad.button_X;
-	private static final int COLSON_TRACTION_BUTTON = Gamepad.button_Y;
+	private static final int BUTTERFLY_BUTTON 		= Gamepad.button_Y;
 	private static final int HIGH_GEAR_BUTTON       = Gamepad.button_R_Shoulder;
 	private static final int LOW_GEAR_BUTTON		= Gamepad.button_L_Shoulder;
 	
@@ -59,8 +58,7 @@ public class OI {
 /*
  * Driver Button Commands
  */
-	public static final Button onmiOn	 	= new JoystickButton(driverGamepad, OMNI_TRACTION_BUTTON);
-	public static final Button colsonOn	 	= new JoystickButton(driverGamepad, COLSON_TRACTION_BUTTON);
+	public static final Button butterflyOn	= new JoystickButton(driverGamepad, BUTTERFLY_BUTTON);
 	public static final Button highGearOn	= new JoystickButton(driverGamepad, HIGH_GEAR_BUTTON);
 	public static final Button lowGearOn 	= new JoystickButton(driverGamepad, LOW_GEAR_BUTTON);
 
@@ -90,10 +88,10 @@ public class OI {
 	public OI() {
 
 //		onmiOn.whenPressed(new EnableOnmi());
-//		colsonOn.whenPressed(new EnableColson());
-//		highGearOn.whenPressed(new ShiftHigh());
-//		lowGearOn.whenPressed(new ShiftLow());
-//		
+		butterflyOn.whenPressed(new ActivateButterfly());
+		highGearOn.whenPressed(new GearShift2());
+		lowGearOn.whenPressed(new GearShift1());
+		
 		releaseCube.whenPressed(new ReleaseCube());
 		squeezeCube.whenPressed(new SqueezeCube());
 		intakeCubeIn.whileActive(new IntakeIn());
