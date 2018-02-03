@@ -26,7 +26,7 @@ public final class Constants {
 	public static final double DRIVE_MOTOR_OFF		 		= 0.0;
 	
 	public static final double VISION_LED_ON				= 0.0;
-	public static final double VISION_LED_OFF				= 1.0; //was 1.0
+	public static final double VISION_LED_OFF				= 1.0;
 	public static final double VISION_LED_BLINK				= 2.0;
 	public static final double VISION_PROCESSING_ON			= 0.0;
 
@@ -49,13 +49,12 @@ public final class Constants {
 
 	public static final double GRAYHILL_ENCODER_PULSES_PER_REVOLUTION 	= 128.0;
 	public static final double ENCODER_BOTTOM_POSITION 					= 0.0;
-
 	/*
 	 * Game Elements
 	 */	
-    public static final double SCALE_HEIGHT = 78.0;	
-    public static final double SWITCH_HEIGHT = 21.0;
-    public static final double FEEDER_STATION_HEIGHT = 27.0;
+    public static final double SCALE_HEIGHT = 0.0;	
+    public static final double SWITCH_HEIGHT = 0.0;
+    public static final double FEEDER_STATION_HEIGHT = 0.0;
     public static final double GROUND_HEIGHT = 0.0;
     
     
@@ -64,8 +63,8 @@ public final class Constants {
 	 */
 	public static final double PIVOT_ARM_SPROCKET_DIAMETER 	= 1.8;
 	public static final double PIVOT_UP 					= 1.0;
-	public static final double PIVOT_DOWN 					= 0.25;
-	public static final double ARM_REVS_PER_TALON_REV 		= 0.0;
+	public static final double 	PIVOT_DOWN 					= 0.25;
+	public static final int	ARM_ENC_STARTING_POSITION 		= 4242;
 	
 	/*
 	 * telescoping
@@ -82,7 +81,7 @@ public final class Constants {
 	public static final double 	DRIVETRAIN_ENCODER_PULSES_PER_REV 	= 128.0;
 	public static final boolean DRIVE_USE_SQUARED_INPUT 			= false;
 	public static final boolean DRIVETRAIN_USE_LEFT_ENCODER			= true; // variable to determine which side encoder is on
-	
+	public static final double  BUTTERFLY_PULSE_TIME					= 0.5;
 	
 	// PID Tuning parameters
 	public static final double Kp = 0.0;		// Proportional gain

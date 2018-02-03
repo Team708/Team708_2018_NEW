@@ -31,7 +31,7 @@ public class IntakeCube extends Subsystem {
 	public IntakeCube() {
 //	intakeMotor = new Talon(RobotMap.INTAKE_MOTOR);
 		intakeMotor = new Spark(RobotMap.intakeMotor);
-		cubeSensor = new DigitalInput(RobotMap.cubeSensor);
+		cubeSensor 	= new DigitalInput(RobotMap.cubeSensor);
 	}
 	
 	public void initDefaultCommand() {
@@ -49,9 +49,9 @@ public class IntakeCube extends Subsystem {
     	SmartDashboard.putNumber("In Move Motor speed=", 0.0);
 	}
 	
-public boolean hasCube() {
+    public boolean hasCube() {
 		
-		if (cubeSensor.get()) {
+		if (!cubeSensor.get()) {
 			return (true);
 	    }
 		else {

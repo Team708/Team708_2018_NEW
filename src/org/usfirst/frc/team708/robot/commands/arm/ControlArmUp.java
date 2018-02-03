@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ControlArmUp extends Command {
 
     public ControlArmUp() {
-    	requires(Robot.arm);
+//    	requires(Robot.arm);
     }
     
 

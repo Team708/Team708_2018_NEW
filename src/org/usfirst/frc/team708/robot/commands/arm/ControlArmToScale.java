@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ControlArmToScale extends Command {
 	
     public ControlArmToScale() {
-    	requires(Robot.arm);
+//    	requires(Robot.arm);
     }
     
 

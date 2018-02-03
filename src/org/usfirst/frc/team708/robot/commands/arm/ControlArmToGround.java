@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ControlArmToGround extends Command {
 	
     public ControlArmToGround() {
-    	requires(Robot.arm);
+//    	requires(Robot.arm);
     }
     
 

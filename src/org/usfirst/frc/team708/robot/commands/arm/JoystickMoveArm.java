@@ -11,7 +11,7 @@ public class JoystickMoveArm extends Command {
 	
     public JoystickMoveArm() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.arm);
+//        requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
@@ -27,15 +27,12 @@ public class JoystickMoveArm extends Command {
     	if(moveSpeed <= .25 && moveSpeed >= -.25){
     		moveSpeed = 0.0;
     	}
-//    	else if (Robot.arm.getLowerSwitch()){
-//    			if (moveSpeed <= 0.0){
-//    				moveSpeed = Constants.MOTOR_OFF;
-//    			}
-//    	}
+    	else if (Robot.arm.armDown()){
+    	    if (moveSpeed <= 0.0)
+    	        moveSpeed = 0.0;
+    	}
     	
     	Robot.arm.manualMove(moveSpeed);
-
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

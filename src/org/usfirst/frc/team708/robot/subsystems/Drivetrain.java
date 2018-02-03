@@ -14,7 +14,9 @@ import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import com.ctre.phoenix.motorcontrol.can.*;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Solenoid;
 //import edu.wpi.first.wpilibj.interfaces.Gyro;
 //import edu.wpi.first.wpilibj.GyroBase;
 //import edu.wpi.first.wpilibj.AnalogGyro;
@@ -25,7 +27,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is a drivetrain subsystem that uses PID to drive straight.
- * @author Nam Tran & Victor Lourng
+ * @author Nam Tran & Victor Lourng & Thomas Zhao
  */
 
 public class Drivetrain extends PIDSubsystem {
@@ -46,6 +48,8 @@ public class Drivetrain extends PIDSubsystem {
 	private double distancePerPulse;
 	private BuiltInAccelerometer accelerometer;				// Accelerometer that is built into the roboRIO
 	private ADXRS450_Gyro gyro;							// Gyro that is used for drift correction
+	private Solenoid butterflySolenoid;
+	private DoubleSolenoid gearShiftSolenoid;
 	
 	private IRSensor drivetrainIRSensor;					// IR Sensor for <=25inches
 	private UltrasonicSensor drivetrainUltrasonicSensor;	// Sonar used for <=21feet
@@ -93,6 +97,11 @@ public class Drivetrain extends PIDSubsystem {
 //		opticalSensor  = new DigitalInput(7);
 		opticalSensor1 = new DigitalInput(RobotMap.colorSensor);
 
+		butterflySolenoid = new Solenoid(RobotMap.butterflyShift);
+		gearShiftSolenoid = new DoubleSolenoid(RobotMap.shifterLow, RobotMap.shifterHigh);
+		
+		butterflySolenoid.set(false);
+		butterflySolenoid.setPulseDuration(Constants.BUTTERFLY_PULSE_TIME);
     }
     
 
@@ -277,7 +286,27 @@ public class Drivetrain extends PIDSubsystem {
     	rightSlave1.setNeutralMode(NeutralMode.Brake);
     	rightSlave2.setNeutralMode(NeutralMode.Brake);
     }
+    public void toggleButterfly()
+    {
+    	if(butterflySolenoid.get() == true)
+    		butterflySolenoid.set(false);
+    	else
+    		butterflySolenoid.set(true);
+    }
     
+    //Activate Butterfly Solenoid for a set duration
+    public void pulseButterfly() {
+    	butterflySolenoid.startPulse();
+    }
+    
+    public void shiftGearForward() {
+    	gearShiftSolenoid.set(DoubleSolenoid.Value.kForward);
+    }
+    
+    public void shiftGearReverse() {
+    	gearShiftSolenoid.set(DoubleSolenoid.Value.kReverse);
+    }
+        
     /**
      * Sets encoder direction depending on which side of the drivetrain it is on
      */
@@ -335,6 +364,8 @@ public class Drivetrain extends PIDSubsystem {
         pidOutput = output;
         drivetrain.arcadeDrive(moveSpeed, -output);
     }
+    
+  
     
     
     /**
