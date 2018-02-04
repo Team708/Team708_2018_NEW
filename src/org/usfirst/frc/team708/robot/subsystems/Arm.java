@@ -29,8 +29,11 @@ public class Arm extends Subsystem {
 		armMotorMaster = new WPI_TalonSRX(RobotMap.pivotArmMotorMaster);
 		armMotorSlave1  = new WPI_TalonSRX(RobotMap.pivotArmMotorSlave1);
 		
-		armMotorMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 		armSensor 	= new DigitalInput(RobotMap.armSensor);
+
+		armMotorSlave1.follow(armMotorMaster);
+
+		armMotorMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 
 		armMotorMaster.setSelectedSensorPosition(Constants.ARM_ENC_STARTING_POSITION, 0, 0);
 	}
@@ -74,8 +77,9 @@ public class Arm extends Subsystem {
 		return getEncoderDistance();
 	}
 	
-   public void setEncoderReading() {
-//    	enc.setReverseDirection(Constants.DRIVETRAIN_USE_LEFT_ENCODER);
+   public void setEncoderReading(int armlocation) {
+//	   armMotorMaster.getSensorCollection().setPulseWidthPosition(armlocation, 10);
+	   armMotorMaster.setSelectedSensorPosition(armlocation, 0, 10);
    }
    
    public double getEncoderDistance() {

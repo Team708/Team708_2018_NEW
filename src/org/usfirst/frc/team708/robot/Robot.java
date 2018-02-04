@@ -22,9 +22,11 @@ import org.usfirst.frc.team708.robot.commands.drivetrain.*;
 import org.usfirst.frc.team708.robot.commands.autonomous.*;
 import org.usfirst.frc.team708.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team708.robot.subsystems.Arm;
+import org.usfirst.frc.team708.robot.subsystems.Telescope;
 import org.usfirst.frc.team708.robot.subsystems.IntakeCube;
 import org.usfirst.frc.team708.robot.subsystems.VisionProcessor;
 import org.usfirst.frc.team708.robot.subsystems.PneumaticsCube;
+import org.usfirst.frc.team708.robot.subsystems.PneumaticsClimber;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 import org.usfirst.frc.team708.robot.Constants;
 
@@ -48,9 +50,10 @@ public class Robot extends IterativeRobot {
     public static Drivetrain 		drivetrain;
 	public static VisionProcessor 	visionProcessor;
 	public static PneumaticsCube    pneumaticsCube;
+	public static PneumaticsClimber pneumaticsClimber;
 	public static IntakeCube		intakeCube;
 	public static Arm				arm;
-//	public static Telescope			telescope;
+	public static Telescope			tele;
 	public static OI 				oi;
 
    	public String gameData;
@@ -71,11 +74,13 @@ public class Robot extends IterativeRobot {
         
         // Subsystem Initialization
         
-	    drivetrain 		= new Drivetrain();
-	    intakeCube		= new IntakeCube();
-	    pneumaticsCube	= new PneumaticsCube();
-	    visionProcessor	= new VisionProcessor();
-	    arm = new Arm();
+	    drivetrain 			= new Drivetrain();
+	    intakeCube			= new IntakeCube();
+	    pneumaticsCube		= new PneumaticsCube();
+	    pneumaticsClimber	= new PneumaticsClimber();
+	    visionProcessor		= new VisionProcessor();
+	    arm 				= new Arm();
+	    tele	 			= new Telescope();
 
 
 	    visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
@@ -161,7 +166,6 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-        LiveWindow.run();
         sendStatistics();
     }
     
@@ -177,7 +181,9 @@ public class Robot extends IterativeRobot {
         intakeCube.sendToDashboard();
         visionProcessor.sendToDashboard();
         pneumaticsCube.sendToDashboard();
+        pneumaticsClimber.sendToDashboard();
         arm.sendToDashboard();
+        tele.sendToDashboard();
     }
     
     /**
@@ -206,6 +212,8 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putData(visionProcessor);
     	SmartDashboard.putData(arm);
     	SmartDashboard.putData(pneumaticsCube);
+    	SmartDashboard.putData(pneumaticsClimber);
+    	SmartDashboard.putData(tele);
     }
 }
 

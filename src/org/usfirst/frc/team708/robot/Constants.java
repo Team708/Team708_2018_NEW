@@ -15,8 +15,7 @@ public final class Constants {
 	 */
 	public static final double INTAKE_FORWARD 		= 1.0;
 	public static final double INTAKE_REVERSE 		= -1.0;
-	public static final double ARM_FORWARD 		= 1.0;
-	public static final double ARM_REVERSE 		= -1.0;
+
 	public static final double INTAKE_OFF 			= 0.0;
 	
 	public static final double DRIVE_MOTOR_MAX_SPEED 		= 1.0;
@@ -49,30 +48,37 @@ public final class Constants {
 
 	public static final double GRAYHILL_ENCODER_PULSES_PER_REVOLUTION 	= 128.0;
 	public static final double ENCODER_BOTTOM_POSITION 					= 0.0;
-	/*
-	 * Game Elements
-	 */	
-    public static final double SCALE_HEIGHT = 4000.0;	
-    public static final double SWITCH_HEIGHT = 2000.0;
-    public static final double FEEDER_STATION_HEIGHT = 800.0;
-    public static final double GROUND_HEIGHT = 0.0;
-    
+	
+ 
     
 	/*
 	 * PIVOT ARM -- moves arm up and down
 	 */
-	public static final double PIVOT_ARM_SPROCKET_DIAMETER 	= 1.8;
-	public static final double PIVOT_UP 					= 1.0;
+	public static final double 	PIVOT_ARM_SPROCKET_DIAMETER = 1.8;
+	public static final double	PIVOT_UP 					= 1.0;
 	public static final double 	PIVOT_DOWN 					= 0.25;
-	public static final int	ARM_ENC_STARTING_POSITION 		= 700;
-	public static final int	ARM_TOLERANCE					= 100;
+	public static final int		ARM_ENC_STARTING_POSITION 	= 700;
+	public static final int		ARM_TOLERANCE				= 100;
+	public static final double	ARM_DEADZONE				= 0.6;
+	public static final double 	SCALE_HEIGHT 				= 4000.0;	
+	public static final double 	SWITCH_HEIGHT 				= 2000.0;
+	public static final double 	FEEDER_STATION_HEIGHT 		= 800.0;
+ 	public static final double 	GROUND_HEIGHT 				= 0.0;
+	public static final double 	ARM_FORWARD 					= 1.0;
+	public static final double 	ARM_REVERSE 					= -1.0;
+	
 	/*
 	 * telescoping
 	 */
-	public static final double TELESCOPING_MOTOR_MIN_SPEED 	= .8;
-	public static final double TELESCOPING_MOTOR_MAX_SPEED 	= 1.0;
-
-	
+	public static final double 	TELESCOPING_MOTOR_MIN_SPEED 	= .8;
+	public static final double 	TELESCOPING_MOTOR_MAX_SPEED 	= 1.0;
+	public static final int 	TELE_ENC_STARTING_POSITION 		= 0;
+	public static final double	TELE_DEADZONE 					= .4;
+	public static final double 	TELE_FORWARD 					= 1.0;
+	public static final double 	TELE_REVERSE 					= -1.0;
+	public static final double	TELE_SCALE_HEIGHT				= 1000;
+	public static final int		TELE_TOLERANCE					= 100;
+	public static final double	CLIMB_SHIFT_LOW					 = 1.0;
 	/*
 	 * Drivetrain
 	 */

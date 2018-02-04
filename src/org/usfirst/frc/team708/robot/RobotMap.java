@@ -40,13 +40,13 @@ public class RobotMap {
 	public static final int drivetrainRightMotorSlave1 	= 15;
 	public static final int drivetrainRightMotorSlave2 	= 16;
 
-	public static final int telescopingMotorMaster	 	= 21;
+	public static final int telescopingMotorMaster	 	= 55;
 	public static final int telescopingMotorSlave1	 	= 22;
 	public static final int telescopingMotorSlave2	 	= 23;
 	public static final int telescopingMotorSlave3	 	= 24;
 
 	// Pivot Arm CAN Device ID
-	public static final int pivotArmMotorMaster			= 55; // SMP should be 31
+	public static final int pivotArmMotorMaster			= 31; // SMP should be 31
 	public static final int pivotArmMotorSlave1			= 32; // SMP should be 32
 	
 	// Digital IO

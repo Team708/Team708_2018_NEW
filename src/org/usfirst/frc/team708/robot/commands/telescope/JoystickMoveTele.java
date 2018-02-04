@@ -1,24 +1,19 @@
-package org.usfirst.frc.team708.robot.commands.arm;
+package org.usfirst.frc.team708.robot.commands.telescope;
 
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.OI;
 import org.usfirst.frc.team708.robot.Robot;
 import org.usfirst.frc.team708.robot.RobotMap;
-//import org.team708.robot.subsystems.arm.*;
-//import org.usfirst.frc.team708.robot.subsystems.Loader;
 import org.usfirst.frc.team708.robot.util.Gamepad;
-
-//import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
-public class ControlArmDown extends Command {
-
-    public ControlArmDown() {
-//    	requires(Robot.arm);
+public class JoystickMoveTele extends Command {
+	
+    public JoystickMoveTele() {
+        // Use requires() here to declare subsystem dependencies
+//      requires(Robot.arm);
     }
-    
 
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -30,25 +25,25 @@ public class ControlArmDown extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Robot.arm.armDown()) {
-        	Robot.arm.stop();
-        	Robot.arm.resetArmEncoder();
+    	double moveSpeed = OI.operatorGamepad.getAxis(Gamepad.leftStick_Y);
+
+    	//check if joystick axis is in deadzone. Change movespeed to 0 if it is
+    	if((moveSpeed <= Constants.TELE_DEADZONE && moveSpeed >= -Constants.TELE_DEADZONE) || (Robot.tele.telescopeDown())){
+        	Robot.tele.manualMove(0.0);
         	return true;
-    	}	
-    	else
-    	{
-        	Robot.arm.moveMotor(Constants.ARM_REVERSE); 
-    	    return false;
+    	}
+    	else {
+        	Robot.tele.manualMove(moveSpeed);
+        	return false;
     	}
     }
+
     // Called once after isFinished returns true
     protected void end() {
-     Robot.arm.stop();
     }
 
     // Called when another command which requires one or more of the same
-    // subsystems are scheduled to run
+    // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

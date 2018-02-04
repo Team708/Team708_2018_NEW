@@ -10,6 +10,7 @@ import org.usfirst.frc.team708.robot.util.triggers.*;
 import org.usfirst.frc.team708.robot.commands.drivetrain.*;
 import org.usfirst.frc.team708.robot.commands.intakeCube.*;
 import org.usfirst.frc.team708.robot.commands.arm.*;
+import org.usfirst.frc.team708.robot.commands.telescope.*;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 
 
@@ -31,7 +32,6 @@ public class OI {
  */
 
 // Drivetrain Buttons
-//  private static final int ShiftColsonWheels		= Gamepad.shoulderAxisRight;
 	private static final int BUTTERFLY_BUTTON 		= Gamepad.button_Y;
 	private static final int HIGH_GEAR_BUTTON       = Gamepad.button_R_Shoulder;
 	private static final int LOW_GEAR_BUTTON		= Gamepad.button_L_Shoulder;
@@ -50,6 +50,7 @@ public class OI {
 	private static final int ARM_UP_TO_SCALE_BUTTON			= Gamepad.button_B;
 	private static final int ARM_UP_TO_HUMAN_FEEDER_BUTTON	= Gamepad.button_Y;
 	private static final int CLIMB_LOW_GEAR_BUTTON			= Gamepad.shoulderAxisRight;
+	private static final int CLIMB_HIGH_GEAR_BUTTON			= Gamepad.shoulderAxisLeft;
 
 
 	
@@ -69,14 +70,16 @@ public class OI {
 	public static final Trigger intakeCubeIn	= new AxisUp(operatorGamepad, INTAKE_CUBE_BUTTON);
 	public static final Trigger intakeCubeOut	= new AxisDown(operatorGamepad, INTAKE_CUBE_BUTTON);
 	
-	public static final Trigger operateArmDown = new AxisUp(operatorGamepad, OPERATE_ARM_BUTTON);
+	public static final Trigger operateArmDown 	= new AxisUp(operatorGamepad, OPERATE_ARM_BUTTON);
 	public static final Trigger operateArmUp	= new AxisDown(operatorGamepad, OPERATE_ARM_BUTTON);
-	public static final Button operateTelescope	= new JoystickButton(operatorGamepad, OPERATE_TELESCOPE_BUTTON);
+	public static final Trigger operateTeleUp	= new AxisUp(operatorGamepad, OPERATE_TELESCOPE_BUTTON);
+	public static final Trigger operateTeleDown	= new AxisDown(operatorGamepad, OPERATE_TELESCOPE_BUTTON);
 	public static final Button armToGround		= new JoystickButton(operatorGamepad, ARM_UP_TO_GROUND_BUTTON);
 	public static final Button armToSwitch		= new JoystickButton(operatorGamepad, ARM_UP_TO_SWITCH_BUTTON);
 	public static final Button armToScale		= new JoystickButton(operatorGamepad, ARM_UP_TO_SCALE_BUTTON);
 	public static final Button armToFeeder		= new JoystickButton(operatorGamepad, ARM_UP_TO_HUMAN_FEEDER_BUTTON);
 	public static final Trigger climbLowGear	= new AxisUp(operatorGamepad, CLIMB_LOW_GEAR_BUTTON);
+	public static final Trigger climbHighGear	= new AxisUp(operatorGamepad, CLIMB_HIGH_GEAR_BUTTON);
 
 
 	/**
@@ -95,16 +98,18 @@ public class OI {
 
 		intakeCubeIn.whileActive(new IntakeIn());
 		intakeCubeOut.whileActive(new IntakeOut());
-		operateArmDown.whileActive(new ControlArmDown());
-		operateArmUp.whileActive(new ControlArmUp());
+		operateArmDown.whileActive(new JoystickMoveArm());
+		operateArmUp.whileActive(new JoystickMoveArm());
+		operateTeleDown.whileActive(new JoystickMoveTele());
+		operateTeleUp.whileActive(new JoystickMoveTele());
 		
 		armToGround.whenPressed(new ControlArmToGround());
 		armToSwitch.whenPressed(new ControlArmToSwitch());
-		armToScale.whenPressed(new ControlArmToScale());
+		armToScale.whenPressed(new ControlTeleToScale());
 		armToFeeder.whenPressed(new ControlArmToFeeder());
 		
-//		climbLowGear.whileHeld(new ShiftClimberLowGear()); 
-//		operateTelescope.whileActive(new ControlTelescope());
+		climbLowGear.whileActive(new ShiftClimberLow()); 
+		climbHighGear.whileActive(new ShiftClimberHigh()); 
 
 /*
  		.whileActive(new 

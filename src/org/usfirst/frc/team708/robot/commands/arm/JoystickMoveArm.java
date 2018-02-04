@@ -6,6 +6,7 @@ import org.usfirst.frc.team708.robot.Robot;
 import org.usfirst.frc.team708.robot.RobotMap;
 import org.usfirst.frc.team708.robot.util.Gamepad;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class JoystickMoveArm extends Command {
 	
@@ -20,24 +21,21 @@ public class JoystickMoveArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	double moveSpeed = OI.operatorGamepad.getAxis(Gamepad.leftStick_X);
-
-    	//check if joystick axis is in deadzone. Change movespeed to 0 if it is
-    	if(moveSpeed <= .25 && moveSpeed >= -.25){
-    		moveSpeed = 0.0;
-    	}
-    	else if (Robot.arm.armDown()){
-    	    if (moveSpeed <= 0.0)
-    	        moveSpeed = 0.0;
-    	}
-    	
-    	Robot.arm.manualMove(moveSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	double moveSpeed = OI.operatorGamepad.getAxis(Gamepad.leftStick_X);
+
+    	//check if joystick axis is in deadzone. Change movespeed to 0 if it is
+    	if((moveSpeed <= Constants.ARM_DEADZONE && moveSpeed >= -Constants.ARM_DEADZONE) || (Robot.arm.armDown())){
+        	Robot.arm.manualMove(0.0);
+        	return true;
+    	}
+    	else {
+        	Robot.arm.manualMove(moveSpeed);
+        	return false;
+    	}
     }
 
     // Called once after isFinished returns true

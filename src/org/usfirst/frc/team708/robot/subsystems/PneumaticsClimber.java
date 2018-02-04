@@ -12,19 +12,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 	
-public class PneumaticsCube extends Subsystem {
+public class PneumaticsClimber extends Subsystem {
 	
-	private DoubleSolenoid exampleDoubleSolenoid;
-//	private Solenoid singleSolenoid;
+	private DoubleSolenoid climberDoubleSolenoid;
 	
 	/**
 	 * Constructor
 	 */
-	public PneumaticsCube() {
-		exampleDoubleSolenoid = new DoubleSolenoid(RobotMap.squeezeGrabber, RobotMap.releaseGrabber); //initializes
-//		singleSolenoid = new Solenoid(3);
+	public PneumaticsClimber() {
+		climberDoubleSolenoid = new DoubleSolenoid(RobotMap.telescopeLow, RobotMap.telescopeHigh); //initializes
 		
-		exampleDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+		climberDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	public void initDefaultCommand() {
@@ -32,22 +30,19 @@ public class PneumaticsCube extends Subsystem {
     }
 	
 	public void setPiston(Value value) {
-		exampleDoubleSolenoid.set(value);	
+		climberDoubleSolenoid.set(value);	
 	}	
 	
 	public void reverse(){
-		exampleDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+		climberDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
 
 	}
 	
 	public void forward() {
-		exampleDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+		climberDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	public void sendToDashboard() {
-
-//		SmartDashboard.putBoolean("In Soleniod", true);
-
 		if (Constants.DEBUG) {
 		}
 	}

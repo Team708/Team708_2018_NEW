@@ -1,4 +1,4 @@
-package org.usfirst.frc.team708.robot.commands.arm;
+package org.usfirst.frc.team708.robot.commands.telescope;
 
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.OI;
@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
-public class ControlArmDown extends Command {
+public class ControlTeleDown extends Command {
 
-    public ControlArmDown() {
+    public ControlTeleDown() {
 //    	requires(Robot.arm);
     }
     
@@ -30,20 +30,20 @@ public class ControlArmDown extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Robot.arm.armDown()) {
-        	Robot.arm.stop();
-        	Robot.arm.resetArmEncoder();
+    	if(Robot.tele.telescopeDown()) {
+        	Robot.tele.stop();
+        	Robot.tele.resetTeleEncoder();
         	return true;
     	}	
     	else
     	{
-        	Robot.arm.moveMotor(Constants.ARM_REVERSE); 
+        	Robot.tele.moveMotor(Constants.TELE_REVERSE); 
     	    return false;
     	}
     }
     // Called once after isFinished returns true
     protected void end() {
-     Robot.arm.stop();
+     Robot.tele.stop();
     }
 
     // Called when another command which requires one or more of the same

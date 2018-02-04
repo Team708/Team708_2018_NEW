@@ -27,9 +27,9 @@ public class ControlArmToSwitch extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.arm.getAngle() > Constants.SWITCH_HEIGHT)
+    	if(Robot.arm.getAngle() >= Constants.SWITCH_HEIGHT - Constants.ARM_TOLERANCE)
     		Robot.arm.moveMotor(Constants.ARM_FORWARD);
-    	if(Robot.arm.getAngle() < Constants.SWITCH_HEIGHT)
+    	else
     		Robot.arm.moveMotor(Constants.ARM_REVERSE);
     	}    	
 
