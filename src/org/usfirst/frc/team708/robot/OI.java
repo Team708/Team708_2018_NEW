@@ -32,10 +32,11 @@ public class OI {
  */
 
 // Drivetrain Buttons
-	private static final int BUTTERFLY_BUTTON 		= Gamepad.button_Y;
-	private static final int HIGH_GEAR_BUTTON       = Gamepad.button_R_Shoulder;
-	private static final int LOW_GEAR_BUTTON		= Gamepad.button_L_Shoulder;
-	
+	private static final int BUTTERFLY_BUTTON 				= Gamepad.button_Y;
+	private static final int HIGH_GEAR_BUTTON   		    = Gamepad.button_R_Shoulder;
+	private static final int LOW_GEAR_BUTTON				= Gamepad.button_L_Shoulder;
+	private static final int LED_ON							= Gamepad.button_A;
+	private static final int LED_OFF						= Gamepad.button_B;
 /*
  * Operator Button Assignment
  */
@@ -61,6 +62,8 @@ public class OI {
 	public static final Button butterflyOn	= new JoystickButton(driverGamepad, BUTTERFLY_BUTTON);
 	public static final Button highGearOn	= new JoystickButton(driverGamepad, HIGH_GEAR_BUTTON);
 	public static final Button lowGearOn 	= new JoystickButton(driverGamepad, LOW_GEAR_BUTTON);
+	public static final Button ledon 	= new JoystickButton(driverGamepad, LED_ON);
+	public static final Button ledoff 	= new JoystickButton(driverGamepad, LED_OFF);
 
 /*
  * Operator Button Commands
@@ -92,6 +95,9 @@ public class OI {
 		butterflyOn.whenPressed(new ActivateButterfly());
 		highGearOn.whenPressed(new GearShift2());
 		lowGearOn.whenPressed(new GearShift1());
+		
+//		LedOn.whenPressed(new LEDOn());
+//		LedOff.whenPressed(new LEDOff());
 		
 		releaseCube.whenPressed(new ReleaseCube());
 		squeezeCube.whenPressed(new SqueezeCube());
