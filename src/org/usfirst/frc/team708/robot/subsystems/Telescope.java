@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * Code for the pivot motors of the two arms.
  * @author Nick Iannarone
  * @author Michael Steinberg
- * @author Josh Smith
+ * @author Jorsh Smith
  */
 
 public class Telescope extends Subsystem {

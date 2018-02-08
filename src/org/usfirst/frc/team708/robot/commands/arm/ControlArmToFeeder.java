@@ -29,7 +29,7 @@ public class ControlArmToFeeder extends Command {
     	
     	Robot.arm.setAngle((int)(Constants.FEEDER_STATION_HEIGHT - Robot.arm.getAngle()));
     	}    	
-    }
+    
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {

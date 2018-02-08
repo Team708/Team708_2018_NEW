@@ -29,7 +29,7 @@ public class ControlArmToScale extends Command {
     	
     	Robot.arm.setAngle((int)(Constants.SCALE_HEIGHT - Robot.arm.getAngle()));
     	}    	
-    }
+    
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {

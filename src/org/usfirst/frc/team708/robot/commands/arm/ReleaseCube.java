@@ -45,6 +45,4 @@ public class ReleaseCube extends Command {
     protected void interrupted() {
     	end();
     }
-    
 }
-*/
