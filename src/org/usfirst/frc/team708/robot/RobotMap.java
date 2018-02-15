@@ -20,7 +20,7 @@ public class RobotMap {
 	public static final int operatorGamepad = 1;
 	
 	// PWM Ports
-	public static final int intakeMotor 	= 0;
+//	public static final int intakeMotor 	= 0;
 //	public static final int 			 	= 1;
 //	public static final int  			 	= 2;
 //	public static final int  				= 3;
@@ -32,22 +32,25 @@ public class RobotMap {
 //	public static final int  				= 9;
 	
 	// Drivetrain CAN Device IDs
-	public static final int drivetrainLeftMotorMaster  	= 11; // SMP should be 11
-	public static final int drivetrainLeftMotorSlave1  	= 12; // SMP should be 12
+	public static final int drivetrainLeftMotorMaster  	= 11; 
+	public static final int drivetrainLeftMotorSlave1  	= 12; 
 	public static final int drivetrainLeftMotorSlave2	= 13;
 	
 	public static final int drivetrainRightMotorMaster  = 14;
 	public static final int drivetrainRightMotorSlave1 	= 15;
 	public static final int drivetrainRightMotorSlave2 	= 16;
 
-	public static final int telescopingMotorMaster	 	= 55;
+	public static final int telescopingMotorMaster	 	= 21;
 	public static final int telescopingMotorSlave1	 	= 22;
 	public static final int telescopingMotorSlave2	 	= 23;
-	public static final int telescopingMotorSlave3	 	= 24;
+//	public static final int telescopingMotorSlave3	 	= 24;
 
 	// Pivot Arm CAN Device ID
-	public static final int pivotArmMotorMaster			= 31; // SMP should be 31
-	public static final int pivotArmMotorSlave1			= 32; // SMP should be 32
+	public static final int pivotArmMotorMaster			= 31; 
+	public static final int pivotArmMotorSlave1			= 32; 
+	
+	public static final int intakeMotorMaster			= 41; 
+	public static final int intakeMotorSlave			= 42; 
 	
 	// Digital IO
 	public static final int drivetrainEncoderARt		= 0;  	//this might go directly on the motor controllers

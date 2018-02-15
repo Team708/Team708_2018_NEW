@@ -5,6 +5,7 @@ import org.usfirst.frc.team708.robot.RobotMap;
 import org.usfirst.frc.team708.robot.commands.arm.JoystickMoveArm;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
@@ -18,7 +19,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Arm extends Subsystem {
 	
-	private WPI_TalonSRX 	armMotorMaster, armMotorSlave1;
+	private WPI_TalonSRX 	armMotorMaster;
+	private WPI_VictorSPX   armMotorSlave1;
 	public 	DigitalInput 	armSensor;
 
 	public double armDistancePerPulse;
@@ -27,8 +29,7 @@ public class Arm extends Subsystem {
       */
 	public Arm() {
 		armMotorMaster = new WPI_TalonSRX(RobotMap.pivotArmMotorMaster);
-		armMotorSlave1  = new WPI_TalonSRX(RobotMap.pivotArmMotorSlave1);
-		
+		armMotorSlave1  = new WPI_VictorSPX(RobotMap.pivotArmMotorSlave1);
 		armSensor 	= new DigitalInput(RobotMap.armSensor);
 
 		armMotorSlave1.follow(armMotorMaster);

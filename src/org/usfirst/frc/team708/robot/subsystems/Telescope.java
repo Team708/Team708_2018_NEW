@@ -5,6 +5,7 @@ import org.usfirst.frc.team708.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -12,22 +13,21 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Telescope extends Subsystem {
 	
-	private WPI_TalonSRX 	teleMotorMaster, teleMotorSlave1, teleMotorSlave2, teleMotorSlave3;
+	private WPI_TalonSRX 	teleMotorMaster;
+	private WPI_VictorSPX	teleMotorSlave1, teleMotorSlave2;
 	public 	DigitalInput 	teleSensor;
 
 	public double teleDistancePerPulse;
     
 	public Telescope() {
 		teleMotorMaster  = new WPI_TalonSRX(RobotMap.telescopingMotorMaster);
-		teleMotorSlave1  = new WPI_TalonSRX(RobotMap.telescopingMotorSlave1);
-		teleMotorSlave2  = new WPI_TalonSRX(RobotMap.telescopingMotorSlave2);
-		teleMotorSlave3  = new WPI_TalonSRX(RobotMap.telescopingMotorSlave3);
+		teleMotorSlave1  = new WPI_VictorSPX(RobotMap.telescopingMotorSlave1);
+		teleMotorSlave2  = new WPI_VictorSPX(RobotMap.telescopingMotorSlave2);
 
 		teleSensor 	= new DigitalInput(RobotMap.TelescopeSensor);
 
 		teleMotorSlave1.follow(teleMotorMaster);
 		teleMotorSlave2.follow(teleMotorMaster);
-		teleMotorSlave3.follow(teleMotorMaster);
 
 		teleMotorMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 		teleMotorMaster.setSelectedSensorPosition(Constants.TELE_ENC_STARTING_POSITION, 0, 0);

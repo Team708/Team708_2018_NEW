@@ -85,17 +85,13 @@ public class OI {
 	public static final Trigger climbHighGear	= new AxisUp(operatorGamepad, CLIMB_HIGH_GEAR_BUTTON);
 
 
-	/**
-	 * Constructor
-	 * Assigns commands to be called when each button is pressed.
-	 */
-
 	public OI() {
 
 		butterflyOn.whenPressed(new ActivateButterfly());
+		
 		highGearOn.whenPressed(new GearShift2());
 		lowGearOn.whenPressed(new GearShift1());
-		
+
 //		LedOn.whenPressed(new LEDOn());
 //		LedOff.whenPressed(new LEDOff());
 		

@@ -32,8 +32,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drivetrain extends PIDSubsystem {
 
-	private WPI_TalonSRX leftMaster, leftSlave1, leftSlave2, rightMaster, rightSlave1, rightSlave2;	// Motor Controllers
-	
+	private WPI_TalonSRX leftMaster, rightMaster;	// Motor Controllers
+	private WPI_VictorSPX	leftSlave1, leftSlave2, rightSlave2, rightSlave1;
+
 	
 	// Variables specific for drivetrain PID loop
 	private double moveSpeed = 0.0;
@@ -69,11 +70,11 @@ public class Drivetrain extends PIDSubsystem {
     	
     	// Initializes motor controllers with device IDs from RobotMap
 		leftMaster  = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorMaster);
-		leftSlave1   = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorSlave1);
-		leftSlave2   = new WPI_TalonSRX(RobotMap.drivetrainLeftMotorSlave2);
+		leftSlave1   = new WPI_VictorSPX(RobotMap.drivetrainLeftMotorSlave1);
+		leftSlave2   = new WPI_VictorSPX(RobotMap.drivetrainLeftMotorSlave2);
 		rightMaster = new WPI_TalonSRX(RobotMap.drivetrainRightMotorMaster);
-		rightSlave1  = new WPI_TalonSRX(RobotMap.drivetrainRightMotorSlave1);
-		rightSlave2  = new WPI_TalonSRX(RobotMap.drivetrainRightMotorSlave2);
+		rightSlave1  = new WPI_VictorSPX(RobotMap.drivetrainRightMotorSlave1);
+		rightSlave2  = new WPI_VictorSPX(RobotMap.drivetrainRightMotorSlave2);
 		
 		SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftMaster, leftSlave1, leftSlave2);
 		SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightMaster, rightSlave1, rightSlave2);
