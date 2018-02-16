@@ -60,10 +60,10 @@ public final class Constants {
 	public static final int		ARM_ENC_STARTING_POSITION 	= 700;
 	public static final int		ARM_TOLERANCE				= 100;
 	public static final double	ARM_DEADZONE				= 0.6;
-	public static final double 	SCALE_HEIGHT 				= 4000.0;	
-	public static final double 	SWITCH_HEIGHT 				= 2000.0;
-	public static final double 	FEEDER_STATION_HEIGHT 		= 800.0;
- 	public static final double 	GROUND_HEIGHT 				= 0.0;
+	public static final int 	SCALE_HEIGHT 				= 4000;	
+	public static final int 	SWITCH_HEIGHT 				= 2000;
+	public static final int 	FEEDER_STATION_HEIGHT 		= 800;
+ 	public static final int 	GROUND_HEIGHT 				= 0;
 	public static final double 	ARM_FORWARD 					= 1.0;
 	public static final double 	ARM_REVERSE 					= -1.0;
 	
@@ -76,7 +76,7 @@ public final class Constants {
 	public static final double	TELE_DEADZONE 					= .4;
 	public static final double 	TELE_FORWARD 					= 1.0;
 	public static final double 	TELE_REVERSE 					= -1.0;
-	public static final double	TELE_SCALE_HEIGHT				= 1000;
+	public static final double	TELE_SCALE_HEIGHT				= 3000;
 	public static final int		TELE_TOLERANCE					= 100;
 	public static final double	CLIMB_SHIFT_LOW					 = 1.0;
 	/*

@@ -28,7 +28,8 @@ public class JoystickMoveTele extends Command {
     	double moveSpeed = OI.operatorGamepad.getAxis(Gamepad.leftStick_Y);
 
     	//check if joystick axis is in deadzone. Change movespeed to 0 if it is
-    	if((moveSpeed <= Constants.TELE_DEADZONE && moveSpeed >= -Constants.TELE_DEADZONE) || (Robot.tele.telescopeDown())){
+    	if((moveSpeed <= Constants.TELE_DEADZONE && moveSpeed >= -Constants.TELE_DEADZONE) || 
+    	  ((Robot.tele.telescopeDown()) && (moveSpeed <= 0))){
         	Robot.tele.manualMove(0.0);
         	return true;
     	}
