@@ -26,7 +26,7 @@ public class ControlTeleToScale extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.tele.getAngle() >= Constants.TELE_SCALE_HEIGHT - Constants.TELE_TOLERANCE)
+    	if(Robot.tele.getAngle() <= Constants.TELE_SCALE_HEIGHT - Constants.TELE_TOLERANCE)
     		Robot.tele.moveMotor(Constants.TELE_FORWARD);
     	else
     		Robot.tele.moveMotor(Constants.TELE_REVERSE);

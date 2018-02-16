@@ -108,6 +108,8 @@ public class OI {
 		armToGround.whenPressed(new ControlArmToGround());
 		armToSwitch.whenPressed(new ControlArmToSwitch());
 		armToScale.whenPressed(new ControlArmToScale());
+		armToScale.whenPressed(new ControlTeleToScale()); //Test if armToScale works with two calls
+		
 		armToFeeder.whenPressed(new ControlArmToFeeder());
 		
 		climbLowGear.whileActive(new ShiftClimberLow()); 
