@@ -46,7 +46,7 @@ public final class Constants {
 	 * Sensors
 	 */
 
-	public static final double GRAYHILL_ENCODER_PULSES_PER_REVOLUTION 	= 128.0;
+	public static final double GRAYHILL_ENCODER_PULSES_PER_REVOLUTION 	= 256.0;
 	public static final double ENCODER_BOTTOM_POSITION 					= 0.0;
 	
  
@@ -84,7 +84,7 @@ public final class Constants {
 	 */
 	public static final double 	TANK_STICK_TOLERANCE 				= .30;
 	public static final double 	DRIVETRAIN_WHEEL_DIAMETER 			= 4.0;
-	public static final double 	DRIVETRAIN_ENCODER_PULSES_PER_REV 	= 128.0;
+	public static final double 	DRIVETRAIN_ENCODER_PULSES_PER_REV 	= 256.0;
 	public static final boolean DRIVE_USE_SQUARED_INPUT 			= false;
 	public static final boolean DRIVETRAIN_USE_LEFT_ENCODER			= true; // variable to determine which side encoder is on
 	public static final double  BUTTERFLY_PULSE_TIME					= 0.5;

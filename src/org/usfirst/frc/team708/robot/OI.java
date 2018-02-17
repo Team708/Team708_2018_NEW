@@ -12,6 +12,7 @@ import org.usfirst.frc.team708.robot.commands.intakeCube.*;
 import org.usfirst.frc.team708.robot.commands.arm.*;
 import org.usfirst.frc.team708.robot.commands.telescope.*;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
+import org.usfirst.frc.team708.robot.commands.autonomous.*;
 
 
 /**
@@ -35,8 +36,7 @@ public class OI {
 	private static final int BUTTERFLY_BUTTON 				= Gamepad.button_Y;
 	private static final int HIGH_GEAR_BUTTON   		    = Gamepad.button_R_Shoulder;
 	private static final int LOW_GEAR_BUTTON				= Gamepad.button_L_Shoulder;
-	private static final int LED_ON							= Gamepad.button_A;
-	private static final int LED_OFF						= Gamepad.button_B;
+	private static final int BRAKE_BUTTON					= Gamepad.button_B;
 /*
  * Operator Button Assignment
  */
@@ -62,8 +62,7 @@ public class OI {
 	public static final Button butterflyOn	= new JoystickButton(driverGamepad, BUTTERFLY_BUTTON);
 	public static final Button highGearOn	= new JoystickButton(driverGamepad, HIGH_GEAR_BUTTON);
 	public static final Button lowGearOn 	= new JoystickButton(driverGamepad, LOW_GEAR_BUTTON);
-	public static final Button ledon 	= new JoystickButton(driverGamepad, LED_ON);
-	public static final Button ledoff 	= new JoystickButton(driverGamepad, LED_OFF);
+	public static final Button breakOn	 	= new JoystickButton(driverGamepad, BRAKE_BUTTON);
 
 /*
  * Operator Button Commands
@@ -92,8 +91,7 @@ public class OI {
 		highGearOn.whenPressed(new GearShift2());
 		lowGearOn.whenPressed(new GearShift1());
 
-//		LedOn.whenPressed(new LEDOn());
-//		LedOff.whenPressed(new LEDOff());
+		breakOn.whenPressed(new ToggleBrakeMode());
 		
 		releaseCube.whenPressed(new ReleaseCube());
 		squeezeCube.whenPressed(new SqueezeCube());
@@ -105,12 +103,18 @@ public class OI {
 		operateTeleDown.whileActive(new JoystickMoveTele());
 		operateTeleUp.whileActive(new JoystickMoveTele());
 		
-		armToGround.whenPressed(new ControlArmToGround());
-		armToSwitch.whenPressed(new ControlArmToSwitch());
-		armToScale.whenPressed(new ControlArmToScale());
-		armToScale.whenPressed(new ControlTeleToScale()); //Test if armToScale works with two calls
+// jame's version this works - start both when armToScale is pressed		
+//		armToScale.whenPressed(new ControlArmToScale());
+//		armToScale.whenPressed(new ControlTeleToScale()); //Test if armToScale works with two calls
+//		armToGround.whenPressed(new ControlArmToGround());
+//		armToSwitch.whenPressed(new ControlArmToSwitch());	
+//		armToFeeder.whenPressed(new ControlArmToFeeder());
 		
-		armToFeeder.whenPressed(new ControlArmToFeeder());
+// sue's version - trying to call a command to do both things off the button press
+		armToGround.whenPressed(new MoveArmTeleToGroundCG());
+		armToSwitch.whenPressed(new MoveArmTeleToSwitchCG());
+		armToScale.whenPressed(new MoveArmTeleToScaleCG());		
+		armToFeeder.whenPressed(new MoveArmTeleToFeederCG());
 		
 		climbLowGear.whileActive(new ShiftClimberLow()); 
 		climbHighGear.whileActive(new ShiftClimberHigh()); 

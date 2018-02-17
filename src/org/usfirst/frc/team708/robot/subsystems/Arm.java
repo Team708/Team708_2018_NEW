@@ -99,8 +99,7 @@ public class Arm extends Subsystem {
 		if (Constants.DEBUG) {
 		}
 		SmartDashboard.putBoolean("Arm Down:", armDown());
-
-    	SmartDashboard.putNumber("get Arm Angle", getAngle());	// Encoder reading
+//    	SmartDashboard.putNumber("get Arm Angle", getAngle());	// Encoder reading
     	SmartDashboard.putNumber("get Arm Enc Distance", getEncoderDistance());	// Encoder reading
     }
     

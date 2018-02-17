@@ -56,7 +56,9 @@ public class Robot extends IterativeRobot {
 	public static Telescope			tele;
 	public static OI 				oi;
 
-   	public String gameData;
+   	public String 	gameData;
+   	public char 	scalelocation;
+   	public char 	switchlocation;
    	
 	SendableChooser<Command> autonomousMode = new SendableChooser<>();
     Command 			autonomousCommand;
@@ -118,12 +120,11 @@ public class Robot extends IterativeRobot {
         
 		SmartDashboard.putString("gameData", gameData);
 		
-		if(gameData.charAt(0) == 'L')
-		{
-			SmartDashboard.putString("switch location", "got an L");
-		} else {
-			SmartDashboard.putString("switch location", "got an R");
-		}
+		switchlocation = gameData.charAt(0);
+		scalelocation = gameData.charAt(1);
+
+//		SmartDashboard.putString("switch location", switchlocation);
+//		SmartDashboard.putString("scale location", scalelocation);
     }
 
     /**
@@ -144,6 +145,7 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.cancel();
         visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
         visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_OFF);
+        drivetrain.toggleBrakeMode();
     }
 
     /**
