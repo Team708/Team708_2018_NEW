@@ -200,7 +200,9 @@ public class Robot extends IterativeRobot {
     	autonomousMode.addObject("Drive time distance", 	new driveDistance());
     	autonomousMode.addObject("Drive in Square", 		new DriveInSquare());
     	autonomousMode.addObject("Drive encoder distance", 	new driveDistanceEncoder());
-    	autonomousMode.addObject("Drive To White Line", 	new DriveToWhiteLine());
+    	autonomousMode.addObject("Left Drive LL", 			new LeftDriveLL());
+    	autonomousMode.addObject("Left Drive RL", 			new LeftDriveRL());
+    	autonomousMode.addObject("Curvature Drive", 		new driveCurvatureForTime());
 
     	SmartDashboard.putData("Autonomous Selection", autonomousMode);    	   	
     }

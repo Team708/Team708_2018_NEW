@@ -61,6 +61,9 @@ public class Drivetrain extends PIDSubsystem {
 						// (this could be important if a jerky robot causes things to topple
 	private boolean usePID = false;
 	
+	private boolean gear_high;
+	private boolean butterfly_on = false;
+
     /**
      * Constructor
      */
@@ -170,6 +173,18 @@ public class Drivetrain extends PIDSubsystem {
 	public void haloDrive(double move, double rotate) {
 		haloDrive(move, rotate, this.usePID);
 	}
+	
+	
+	/**
+	 * Drive the drivetrain using curvature drive
+	 * @param xSpeed
+	 * @param zRotation
+	 * @param isQuickTurn
+	 */
+    public void curvatureDrive(double xSpeed, double zRotation, boolean isQuickTurn) {
+    	drivetrain.curvatureDrive(xSpeed, zRotation, isQuickTurn);
+    }
+	
     
     /**
      * Drives the drivetrain using a left motor(s) value and a right motor(s) value
@@ -293,6 +308,7 @@ public class Drivetrain extends PIDSubsystem {
     		butterflySolenoid.set(false);
     	else
     		butterflySolenoid.set(true);
+    	switch_butterfly();
     }
     
     //Activate Butterfly Solenoid for a set duration
@@ -346,6 +362,15 @@ public class Drivetrain extends PIDSubsystem {
 //    	return !opticalSensor.get();
 //    }
     
+    public void setgear(boolean gear)
+    {
+    	gear_high=gear;
+    }
+    
+    public void switch_butterfly()
+    {
+    	butterfly_on = !butterfly_on;
+    }
     public boolean isOpticalSensor1White() {
     	return !opticalSensor1.get();
     }
@@ -396,7 +421,8 @@ public class Drivetrain extends PIDSubsystem {
     	SmartDashboard.putNumber("DT Encoder left Distance", encoder2.getDistance());		// Encoder reading
     	SmartDashboard.putNumber("Gyro angle", gyro.getAngle());
     	SmartDashboard.putBoolean("Brake", brake);					// Brake or Coast
-
+    	SmartDashboard.putBoolean("gear high", gear_high);					// Brake or Coast
+    	SmartDashboard.putBoolean("butterfly", butterfly_on);
     	SmartDashboard.putBoolean("Optical1", isOpticalSensor1White());
     }
 }

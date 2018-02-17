@@ -1,6 +1,7 @@
 package org.usfirst.frc.team708.robot.commands.autonomous;
 
 import org.usfirst.frc.team708.robot.Robot;
+import org.usfirst.frc.team708.robot.commands.drivetrain.DriveCurvatureForTime;
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightToEncoderDistance;
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightToEncoderDistanceOrTime;
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightForTime;
@@ -24,7 +25,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class DriveToWhiteLine extends CommandGroup {
+public class driveCurvatureForTime extends CommandGroup {
    
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -34,49 +35,20 @@ public class DriveToWhiteLine extends CommandGroup {
     	
     }
 	
-    public  DriveToWhiteLine() {
+    public  driveCurvatureForTime() {
 
-    	addSequential(new Send("In DriveDistance"));
+    	addSequential(new Send("In CurvatureForTime"));
 
     	addSequential(new WaitCommand(1.0));
     	
-    	addSequential(new DriveStraightForTime(.7, 3.5));
-    	addSequential(new DriveStraightToWhiteLineorTime(false));
+    	//                         (xSpeed, zRotation, isQuickTurn, time);
+    	addSequential(new DriveCurvatureForTime(.5, .5, false, 3));
+//    	Curvature drive method for differential drive platform.
+//    	The rotation argument controls the curvature of the robot's path rather than its rate of heading 
+//    	change. This makes the robot more controllable at high speeds. 
+//    	Also handles the robot's quick turn functionality - "quick turn" overrides 
+//    	constant-curvature turning for turn-in-place maneuvers.
 
-    	addSequential(new TurnToDegrees(.5, 55));
-    	
-    	//in parallel lift arm 
-    	
-    	addSequential(new DriveStraightForTime(.5, 1));
-    	
-    	//drop the block
-    	
-    	addSequential(new TurnToDegrees(.5, 90));
-    	addSequential(new FindCube(false));
-
-    	//in parallel intake cube
-    	addSequential(new DriveStraightForTime(.5, 3));
-    	
-    	//move arm up and extend telescope (if we can't shoot)
-    	addSequential(new DriveStraightForTime(-.5, 1));
-    	
-    	//shoot the cube or drop cube
-    	
-    	addSequential(new DriveStraightForTime(-.5, 1));
-    	
-    	addSequential(new TurnToDegrees(.5, -45));
-    	addSequential(new FindCube(false));
-    	
-    	//in parallel intake cube
-    	addSequential(new DriveStraightForTime(.5, 3));
-    	
-    	addSequential(new TurnToDegrees(.5, 160));
-
-    	//move arm up and extend telescope for scale
-    	addSequential(new DriveStraightForTime(.5, 3));
-    	
-    	//release cube
-    	addSequential(new Send("finished"));
     }
     
     // Make this return true when this Command no longer needs to run execute()
