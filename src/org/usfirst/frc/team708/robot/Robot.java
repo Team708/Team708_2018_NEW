@@ -57,8 +57,9 @@ public class Robot extends IterativeRobot {
 	public static OI 				oi;
 
    	public String 	gameData;
-   	public char 	scalelocation;
-   	public char 	switchlocation;
+   	public String 	robotLocation;
+   	public String 	autoMode;
+
    	
 	SendableChooser<Command> autonomousMode = new SendableChooser<>();
     Command 			autonomousCommand;
@@ -115,16 +116,114 @@ public class Robot extends IterativeRobot {
         visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_ON);
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
-    	autonomousCommand = (Command)autonomousMode.getSelected();
-        if (autonomousCommand != null) autonomousCommand.start();
-        
-		SmartDashboard.putString("gameData", gameData);
+		//original dashboard code
+//    	autonomousCommand = (Command)autonomousMode.getSelected();
+//      if (autonomousCommand != null) autonomousCommand.start();
 		
-		switchlocation = gameData.charAt(0);
-		scalelocation = gameData.charAt(1);
+		// get the autocommand entered on the dashboard
+		// robotLocation is the 1st character of the autoMode - to be used to determine whether the robot is lined up on the right or left side of the field
+    	autonomousCommand = (Command)autonomousMode.getSelected();
+    	robotLocation = autonomousCommand.getName().substring(0,1); 
+    	autoMode = autonomousCommand.getName();
+        
+    	
+		SmartDashboard.putString("gameData", gameData);
+		SmartDashboard.putString("robotLocation", robotLocation);
+		SmartDashboard.putString("Auto Mode", autoMode);
+		
+		// if the autoMode is one of the 2 "special modes" - those that run based on the gamedata
+		// run the autoMode based on the state LL LR RL RR AND robotLocation combination
+		if ((autoMode.equals("Right_RobotLocation")) ||
+				(autoMode.equals("Left_RobotLocation")))
+			{
+				SmartDashboard.putString("HERE", "running the special modes");
+				switch(gameData.substring(0,2))
+				{
+					case "LL":
+					{
+						SmartDashboard.putString("Auto State", "LL");
+						
+						if (robotLocation.equals("L"))
+						{
+					    	autoLeft_LL command_Left_LL = new autoLeft_LL();
+					    	command_Left_LL.start();
+						}
+						else
+						{
+					    	autoRight_LL command_Right_LL = new autoRight_LL();
+					    	command_Right_LL.start();
+						}
+					
+						break;
+					}
+					case "RR":
+					{
+						SmartDashboard.putString("Auto State", "RR");				
+						
+						if (robotLocation.equals("L"))
+						{
+					    	autoLeft_RR command_Left_RR = new autoLeft_RR();
+					    	command_Left_RR.start();
+						}
+						else
+						{
+					    	autoRight_RR command_Right_RR = new autoRight_RR();
+					    	command_Right_RR.start();
+						}
+		
+						break;
+					}
+					case "LR":
+					{
+						SmartDashboard.putString("Auto State", "LR");
+						
+						if (robotLocation.equals("L"))
+						{
+					    	autoLeft_LR command_Left_LR = new autoLeft_LR();
+					    	command_Left_LR.start();
+						}
+						else
+						{
+					    	autoRight_LR command_Right_LR = new autoRight_LR();
+					    	command_Right_LR.start();
+						}
+		
+						break;
+					}
+					case "RL":
+					{
+						SmartDashboard.putString("Auto State", "RL");
+						
+						if (robotLocation.equals("L"))
+						{
+					    	autoLeft_RL command_Left_RL = new autoLeft_RL();
+					    	command_Left_RL.start();
+						}
+						else
+						{
+					    	autoRight_RL command_Right_RL = new autoRight_RL();
+					    	command_Right_RL.start();
+						}
+		
+						break;
+					}
+					default:
+					{
+						SmartDashboard.putString("Auto State", "DO NOTHING");
+						break;
+					}
+				
+				}
+			}
+			else
+			{
+				SmartDashboard.putString("HERE", "running the other modes");
 
-//		SmartDashboard.putString("switch location", switchlocation);
-//		SmartDashboard.putString("scale location", scalelocation);
+				SmartDashboard.putString("Auto State", autoMode);
+				if (autonomousCommand != null) autonomousCommand.start();
+			}
+
+
     }
 
     /**
