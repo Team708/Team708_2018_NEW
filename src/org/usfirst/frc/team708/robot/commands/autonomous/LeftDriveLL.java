@@ -4,6 +4,7 @@ import org.usfirst.frc.team708.robot.Robot;
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightToEncoderDistance;
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightToEncoderDistanceOrTime;
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveCurvatureForTime;
+import org.usfirst.frc.team708.robot.commands.drivetrain.DriveCurvatureToWhiteOrTime;
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightForTime;
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightToWhiteLineorTime;
 import org.usfirst.frc.team708.robot.commands.drivetrain.GearShift1;
@@ -42,7 +43,8 @@ public class LeftDriveLL extends CommandGroup {
     	addSequential(new GearShift1());
     	
        	//this goes to scale
-    	addSequential(new DriveCurvatureForTime(1.0, .05, false, 2.0));  //.2 front of switch
+    	addSequential(new DriveCurvatureForTime(1.0, .05, false, 1.8));  //.2 front of switch
+    	addSequential(new DriveCurvatureToWhiteOrTime(.4, .05, false, 1.0));
     	addParallel(new WaitCommand(1.0));
     	//raise to scale
     	

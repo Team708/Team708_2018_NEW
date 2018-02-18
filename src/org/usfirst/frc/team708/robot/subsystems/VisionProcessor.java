@@ -17,7 +17,8 @@ public class VisionProcessor extends Subsystem {
 	
 	public static Drivetrain 		drivetrain;
 	
-	private boolean isCentered = false;
+	private boolean isCentered 	= false;
+	private boolean led 		= false;
 
 //	Required Network Table Data 	
 	private boolean hasTarget;	//Get from Network Table
@@ -29,10 +30,10 @@ public class VisionProcessor extends Subsystem {
 	NetworkTable			limeLightTable		= limeLightInstance.getTable("/limelight");
 	
 //	Sweep function variables
-	private double gyroAngle = 0.0;
+//	private double gyroAngle = 0.0;
     	
 	private double rotate			= 0.0;
-	private double move			= 0.0;
+//	private double move			= 0.0;
 	
 //	Method for getting different data from a Network Table	
 	public double getNTInfo(String tableInfo) {
@@ -107,7 +108,15 @@ public class VisionProcessor extends Subsystem {
 //		}		
 		return rotate;
 	}
-
+	public void toggleLEDMode() {
+		led = !led;
+		if(led) {
+			setNTInfo("ledMode", Constants.VISION_LED_ON);
+		}
+		else {
+			setNTInfo("ledMode", Constants.VISION_LED_OFF);
+		}
+	}
 //	Method for moving towards a target	-NOT USED IN 2018
 	//Returns how to move to get to target distance (targetAmount = target ratio)
 	

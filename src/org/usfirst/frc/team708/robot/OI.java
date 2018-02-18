@@ -13,6 +13,7 @@ import org.usfirst.frc.team708.robot.commands.arm.*;
 import org.usfirst.frc.team708.robot.commands.telescope.*;
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 import org.usfirst.frc.team708.robot.commands.autonomous.*;
+import org.usfirst.frc.team708.robot.commands.visionProcessor.*;
 
 
 /**
@@ -37,6 +38,7 @@ public class OI {
 	private static final int HIGH_GEAR_BUTTON   		    = Gamepad.button_R_Shoulder;
 	private static final int LOW_GEAR_BUTTON				= Gamepad.button_L_Shoulder;
 	private static final int BRAKE_BUTTON					= Gamepad.button_B;
+	private static final int LED_BUTTON						= Gamepad.button_A;
 /*
  * Operator Button Assignment
  */
@@ -63,6 +65,7 @@ public class OI {
 	public static final Button highGearOn	= new JoystickButton(driverGamepad, HIGH_GEAR_BUTTON);
 	public static final Button lowGearOn 	= new JoystickButton(driverGamepad, LOW_GEAR_BUTTON);
 	public static final Button breakOn	 	= new JoystickButton(driverGamepad, BRAKE_BUTTON);
+	public static final Button ledToggle	= new JoystickButton(driverGamepad, LED_BUTTON);
 
 /*
  * Operator Button Commands
@@ -92,6 +95,7 @@ public class OI {
 		lowGearOn.whenPressed(new GearShift1());
 
 		breakOn.whenPressed(new ToggleBrakeMode());
+		ledToggle.whenPressed(new ToggleLEDMode());
 		
 		releaseCube.whenPressed(new ReleaseCube());
 		squeezeCube.whenPressed(new SqueezeCube());
