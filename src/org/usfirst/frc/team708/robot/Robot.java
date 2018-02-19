@@ -293,7 +293,6 @@ public class Robot extends IterativeRobot {
     private void queueAutonomousModes() {
     	
     	autonomousMode.addObject("Test Auto 1", null);
-    	autonomousMode.addObject("Test Cube", new TestingCube());
     	autonomousMode.addObject("Do Nothing", new DoNothing());
 
     	autonomousMode.addObject("Drive time distance", 	new driveDistance());

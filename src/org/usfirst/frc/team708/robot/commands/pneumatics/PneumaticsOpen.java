@@ -23,7 +23,7 @@ public class PneumaticsOpen extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.pneumaticsCube.forward();
+    	Robot.pneumaticsCube.toggleIntake();
     }
 
     // Called repeatedly when this Command is scheduled to run

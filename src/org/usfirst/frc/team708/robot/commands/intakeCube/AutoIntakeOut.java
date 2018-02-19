@@ -11,33 +11,34 @@ import org.usfirst.frc.team708.robot.RobotMap;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 
-
-
 /**
- *@author James Alex Thomas Mikhael
+ *@author James_Makovics
+ *@author Alex Tysak
+ *@author Thomas Zhao
  */
-public class AutoIntakeIn extends Command {
+public class AutoIntakeOut extends Command {
 
-    public AutoIntakeIn() {
-//    	requires(Robot.intakeCube);
-//    	requires(Robot.loader);
+	private double maxTime;
+
+    public AutoIntakeOut(double maxTime) {
+    	requires(Robot.intakeCube);
+    	this.setTimeout(maxTime);
     }
     
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.intakeCube.moveMotor(Constants.INTAKE_REVERSE);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.intakeCube.hasCube())
-    		Robot.intakeCube.stop();
-    	else
-         	Robot.intakeCube.moveMotor(Constants.INTAKE_FORWARD);    }
+    	Robot.intakeCube.moveMotor(Constants.INTAKE_REVERSE);
+   }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return false;
+    	return(isTimedOut());
     }
 
     // Called once after isFinished returns true

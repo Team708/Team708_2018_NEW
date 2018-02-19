@@ -14,35 +14,55 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 	
 public class PneumaticsCube extends Subsystem {
 	
-	private DoubleSolenoid exampleDoubleSolenoid;
-//	private Solenoid singleSolenoid;
+//	private DoubleSolenoid exampleDoubleSolenoid;
+	private Solenoid intakeSolenoid;
+	private boolean intake_on = false;
 	
 	/**
 	 * Constructor
 	 */
 	public PneumaticsCube() {
-		exampleDoubleSolenoid = new DoubleSolenoid(RobotMap.squeezeGrabber, RobotMap.releaseGrabber); //initializes
-//		singleSolenoid = new Solenoid(3);
+//		exampleDoubleSolenoid = new DoubleSolenoid(RobotMap.squeezeGrabber, RobotMap.releaseGrabber); //initializes
+		intakeSolenoid = new Solenoid(RobotMap.intake);
 		
-		exampleDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+		intakeSolenoid.set(false);
+		intakeSolenoid.setPulseDuration(Constants.INTAKE_PULSE_TIME);		
+//		exampleDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	public void initDefaultCommand() {
 //		 setDefaultCommand(new PneumaticsManual());
     }
+	  public void toggleIntake()
+	    {
+	    	if(intakeSolenoid.get() == true)
+	    		intakeSolenoid.set(false);
+	    	else
+	    		intakeSolenoid.set(true);
+	    	switch_intake();
+	    }
+	    
+	    //Activate Butterfly Solenoid for a set duration
+	    public void pulseIntake() {
+	    	intakeSolenoid.startPulse();
+	    }
+	    public void switch_intake()
+	    {
+	    	intake_on = !intake_on;
+	    }
 	
-	public void setPiston(Value value) {
-		exampleDoubleSolenoid.set(value);	
-	}	
-	
-	public void reverse(){
-		exampleDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
-
-	}
-	
-	public void forward() {
-		exampleDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
-	}
+//	public void setPiston(Value value) {
+//		exampleDoubleSolenoid.set(value);	
+//	}	
+//	
+//	public void reverse(){
+//		exampleDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+//
+//	}
+//	
+//	public void forward() {
+//		exampleDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+//	}
 	
 	public void sendToDashboard() {
 

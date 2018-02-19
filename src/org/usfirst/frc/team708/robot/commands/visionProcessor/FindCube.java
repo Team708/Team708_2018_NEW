@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class FindCube extends Command {
 	
-    public FindCube(boolean haveCube) {
+    public FindCube() {
         // Use requires() here to declare subsystem dependencies
 //        requires(Robot.visionProcessor);
 //        requires(Robot.drivetrain);

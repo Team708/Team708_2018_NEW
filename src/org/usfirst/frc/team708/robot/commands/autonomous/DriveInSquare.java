@@ -15,7 +15,7 @@ public class DriveInSquare extends CommandGroup {
 	private static final double driveStraightSpeed = 0.6;
 	private static final double driveStraightTime = 2;
 	
-	private static final double turnSpeed = 0.5;
+	private static final double turnSpeed = 0.7;
 	private static final double turnDegrees = 72;
    
     // Called just before this Command runs the first time
@@ -31,19 +31,19 @@ public class DriveInSquare extends CommandGroup {
     	addSequential(new WaitCommand(1.0));
     	addSequential(new DriveStraightForTime(driveStraightSpeed, driveStraightTime));
     	addSequential(new WaitCommand(0.1));
-    	addSequential(new TurnToDegrees(turnSpeed, turnDegrees));
+    	addSequential(new TurnToDegrees(turnSpeed, -turnDegrees));
     	addSequential(new WaitCommand(0.1));
     	addSequential(new DriveStraightForTime(driveStraightSpeed, driveStraightTime));
     	addSequential(new WaitCommand(0.1));
-    	addSequential(new TurnToDegrees(turnSpeed, turnDegrees));
+    	addSequential(new TurnToDegrees(turnSpeed, -turnDegrees));
     	addSequential(new WaitCommand(0.1));
     	addSequential(new DriveStraightForTime(driveStraightSpeed, driveStraightTime));
     	addSequential(new WaitCommand(0.1));
-    	addSequential(new TurnToDegrees(turnSpeed, turnDegrees));
+    	addSequential(new TurnToDegrees(turnSpeed, -turnDegrees));
     	addSequential(new WaitCommand(0.1));
     	addSequential(new DriveStraightForTime(driveStraightSpeed, driveStraightTime));
     	addSequential(new WaitCommand(0.1));
-    	addSequential(new TurnToDegrees(turnSpeed, turnDegrees));
+    	addSequential(new TurnToDegrees(turnSpeed, -turnDegrees));
     }
     
     // Make this return true when this Command no longer needs to run execute()

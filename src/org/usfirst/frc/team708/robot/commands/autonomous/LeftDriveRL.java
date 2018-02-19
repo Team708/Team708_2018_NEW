@@ -9,6 +9,7 @@ import org.usfirst.frc.team708.robot.commands.drivetrain.DriveCurvatureToDegrees
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightForTime;
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightToWhiteLineorTime;
 import org.usfirst.frc.team708.robot.commands.drivetrain.GearShift1;
+import org.usfirst.frc.team708.robot.commands.drivetrain.ActivateButterfly;
 //import org.usfirst.frc.team708.robot.commands.drivetrain.RotateAndDriveToBoiler;
 import org.usfirst.frc.team708.robot.commands.drivetrain.ToggleBrakeMode;
 import org.usfirst.frc.team708.robot.commands.drivetrain.TurnToDegrees;
@@ -45,28 +46,31 @@ public class LeftDriveRL extends CommandGroup {
     	
        	//this goes to scale
     	addSequential(new DriveCurvatureForTime(1.0, .05, false, 1.8));  //.2 front of switch
-    	addSequential(new DriveCurvatureToWhiteOrTime(.4, .05, false, 1.0));
-    	addParallel(new WaitCommand(1.0));
-    	//raise to scale
-    	
-    	
-    	//deploy cube
-    	addSequential(new WaitCommand(1.0));
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(200, .6, 1));
 
-    	//parallel
-    	//to ground
-       	//turn to cube
-    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, .7, false, 75.0, 1.1));  //.2 front of switch
+//		addparallel(new MoveArmTeleToScale());
+    	addSequential(new DriveCurvatureToWhiteOrTime(.4, .05, false, 1.0));
+    		
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(24, .6, true, 1));
+    	
+//      deploy cube addSequential(new SqueezeCube());
+    	addSequential(new WaitCommand(2.0));
+
+//		addparallel(new MoveArmTeleToGround());
+    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, .5, false, 50, 2));
+
+
     	addSequential(new DriveStraightToEncoderDistanceOrTime(230, .8, true, 4));
     	
     	
- //   	addSequential(new DriveCurvatureForTime(.7, .6, false, 2));  //.2 front of switch
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(45, .8, true, 1));
+    	addSequential(new ActivateButterfly());
+    	addSequential(new TurnToDegrees(1.0, 38));
 
-//    	addSequential(new TurnToDegrees(.8, 50));
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(600, .6, 1));
-//    	addSequential(new DriveCurvatureForTime(.7, .6, false, 2)); 
- 
+    	addSequential(new ActivateButterfly());
+
+       	addSequential(new FindCube());
+
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .6, 1));
     	
     	//release cube
     	addSequential(new Send("finished"));

@@ -25,11 +25,11 @@ public class PneumaticsManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {   
-    	if (OI.driverGamepad.getButton(Gamepad.button_X)) {
-    		Robot.pneumaticsCube.setPiston(DoubleSolenoid.Value.kForward);
-     	} else if (OI.driverGamepad.getButton(Gamepad.button_Y)) {
-     		Robot.pneumaticsCube.setPiston(DoubleSolenoid.Value.kReverse);
-     	} else Robot.pneumaticsCube.setPiston(DoubleSolenoid.Value.kOff);
+    	if (OI.driverGamepad.getButton(Gamepad.button_R_Shoulder)) {
+    		Robot.pneumaticsCube.toggleIntake();
+     	} else if (OI.driverGamepad.getButton(Gamepad.button_L_Shoulder)) {
+     		Robot.pneumaticsCube.toggleIntake();
+     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

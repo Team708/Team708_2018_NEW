@@ -44,81 +44,48 @@ public class LeftDriveLL extends CommandGroup {
     	
        	//this goes to scale
     	addSequential(new DriveCurvatureForTime(1.0, .05, false, 1.8));  //.2 front of switch
+
+//		addparallel(new MoveArmTeleToScale());
     	addSequential(new DriveCurvatureToWhiteOrTime(.4, .05, false, 1.0));
-    	addParallel(new WaitCommand(1.0));
-    	//raise to scale
+    		
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(24, .6, true, 1));
     	
-    	
-    	//deploy cube
-    	addSequential(new WaitCommand(1.0));
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(400, .6, 1));
+//      deploy cube addSequential(new SqueezeCube());
 
-    	//parallel
-    	//to ground
-       	//turn to cube
-    	addSequential(new DriveCurvatureForTime(-.9, 1.0, false, .5));  //.2 front of switch
-    	addSequential(new TurnToDegrees(.8, 100));
+//		addparallel(new MoveArmTeleToGround());
+    	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
 
-    	//find cube
-    	//get cube
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(44, .6, 1));
+    	addSequential(new TurnToDegrees(1.0, 90));
+
     	
+    	addSequential(new FindCube());
+
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(80, .6, 1));
+    	
+
     	//parallel
     	//raise to switch
     	//forward
     	addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, 1));
 
-    	//deploy
-    	addSequential(new WaitCommand(1.0));
-
-    	addSequential(new DriveCurvatureForTime(-.7, -1.0, false, .4));  //.2 front of switch
-
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(25, .6, 1));
-
-    	addSequential(new DriveCurvatureForTime(-1.0, -1.0, false, 1.0));  //.2 front of switch
-
-      	//parallel
-    	//raise to switch
-    	//forward
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(70, .7, 1));
-
-//    	addSequential(new WaitCommand(1.0));
-//    	
-//    	addSequential(new DriveStraightForTime(.7, 3.5));
-//    	addSequential(new DriveStraightToWhiteLineorTime(false));
-//
-//    	addSequential(new TurnToDegrees(.5, 55));
-//    	
-//    	//in parallel lift arm 
-//    	
-//    	addSequential(new DriveStraightForTime(.5, 1));
-//    	
-//    	//drop the block
-//    	
-//    	addSequential(new TurnToDegrees(.5, 90));
-//    	addSequential(new FindCube(false));
-//
-//    	//in parallel intake cube
-//    	addSequential(new DriveStraightForTime(.5, 3));
-//    	
-//    	//move arm up and extend telescope (if we can't shoot)
-//    	addSequential(new DriveStraightForTime(-.5, 1));
-//    	
-//    	//shoot the cube or drop cube
-//    	
-//    	addSequential(new DriveStraightForTime(-.5, 1));
-//    	
-//    	addSequential(new TurnToDegrees(.5, -45));
-//    	addSequential(new FindCube(false));
-//    	
-//    	//in parallel intake cube
-//    	addSequential(new DriveStraightForTime(.5, 3));
-//    	
-//    	addSequential(new TurnToDegrees(.5, 160));
-//
-//    	//move arm up and extend telescope for scale
-//    	addSequential(new DriveStraightForTime(.5, 3));
+    	//deploy addSequential(new AutoIntakeOut());
     	
+//		addparallel(new MoveArmTeleToGround());
+    	addSequential(new DriveCurvatureForTime(-1.0, -.9, false, .4));
+    	
+    	
+    	addSequential(new FindCube());
+
+
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .6, 1));
+
+
+    	addSequential(new TurnToDegrees(1.0, -100));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .7, 1));
+
+//		addparallel(new MoveArmTeleToScale());
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .7, 1));
+
     	//release cube
     	addSequential(new Send("finished"));
     }

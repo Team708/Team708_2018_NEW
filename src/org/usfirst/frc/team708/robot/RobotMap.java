@@ -84,7 +84,7 @@ public class RobotMap {
 	public static final int squeezeGrabber	= 4;	//Squeeze Grabber
 	public static final int telescopeLow	= 5;	//shifts Telescope to Low Gear
 	public static final int telescopeHigh	= 6;	//Shifts Telescope to High Gear
-//	public static final int = 7;
+	public static final int intake          = 7;
 	
 	
 }

@@ -17,6 +17,8 @@ public final class Constants {
 	public static final double INTAKE_REVERSE 		= -1.0;
 
 	public static final double INTAKE_OFF 			= 0.0;
+	public static final double INTAKE_PULSE_TIME	= 0.5;
+
 	
 	public static final double DRIVE_MOTOR_MAX_SPEED 		= 1.0;
 	public static final double ROTATE_MOTOR_MAX_SPEED 		= 1.0;
