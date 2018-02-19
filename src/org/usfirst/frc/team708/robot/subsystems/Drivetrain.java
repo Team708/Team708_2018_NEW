@@ -327,9 +327,9 @@ public class Drivetrain extends PIDSubsystem {
     /**
      * Sets encoder direction depending on which side of the drivetrain it is on
      */
-    public void setEncoderReading() {
-    	encoder.setReverseDirection(Constants.DRIVETRAIN_USE_LEFT_ENCODER);
-    }
+//    public void setEncoderReading() {
+//    	encoder.setReverseDirection(Constants.DRIVETRAIN_USE_LEFT_ENCODER);
+//    }
     
     public void setEncoderReading2() {
     	encoder.setReverseDirection(!Constants.DRIVETRAIN_USE_LEFT_ENCODER);
@@ -339,9 +339,9 @@ public class Drivetrain extends PIDSubsystem {
      * 
      * @return Distance traveled since last encoder reset
      */
-    public double getEncoderDistance() {
-    	return encoder.getDistance();
-    }
+//    public double getEncoderDistance() {
+//    	return encoder.getDistance();
+//    }
     public double getEncoderDistance2() {
     	return encoder2.getDistance();
     }
@@ -417,8 +417,8 @@ public class Drivetrain extends PIDSubsystem {
     	}
     	
 //    	SmartDashboard.putNumber("DT Sonar Distance", getSonarDistance());		// Sonar distance reading
-    	SmartDashboard.putNumber("DT Encoder right Distance", encoder.getDistance());	// Encoder reading
-    	SmartDashboard.putNumber("DT Encoder left Distance", encoder2.getDistance());		// Encoder reading
+//    	SmartDashboard.putNumber("DT Encoder right Distance", encoder.getDistance());	// Encoder reading
+    	SmartDashboard.putNumber("DT Encoder Distance", encoder2.getDistance());		// Encoder reading
     	SmartDashboard.putNumber("Gyro angle", gyro.getAngle());
     	SmartDashboard.putBoolean("Brake", brake);					// Brake or Coast
     	SmartDashboard.putBoolean("gear high", gear_high);					// Brake or Coast

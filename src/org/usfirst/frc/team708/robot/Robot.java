@@ -295,12 +295,13 @@ public class Robot extends IterativeRobot {
     	autonomousMode.addObject("Test Auto 1", null);
     	autonomousMode.addObject("Do Nothing", new DoNothing());
 
-    	autonomousMode.addObject("Drive time distance", 	new driveDistance());
     	autonomousMode.addObject("Drive in Square", 		new DriveInSquare());
     	autonomousMode.addObject("Drive encoder distance", 	new driveDistanceEncoder());
     	autonomousMode.addObject("Left Drive LL", 			new LeftDriveLL());
     	autonomousMode.addObject("Left Drive RL", 			new LeftDriveRL());
     	autonomousMode.addObject("Curvature Drive", 		new driveCurvatureForTime());
+    	autonomousMode.addObject("Left RobotLocation", 		new Left_RobotLocation());
+    	autonomousMode.addObject("Right RobotLocation", 	new Right_RobotLocation());
 
     	SmartDashboard.putData("Autonomous Selection", autonomousMode);    	   	
     }

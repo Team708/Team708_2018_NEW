@@ -1,8 +1,7 @@
 package org.usfirst.frc.team708.robot.commands.autonomous;
 
 import org.usfirst.frc.team708.robot.Robot;
-import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightForTime;
-import org.usfirst.frc.team708.robot.commands.drivetrain.TurnToDegrees;
+import org.usfirst.frc.team708.robot.commands.drivetrain.*;
 
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -29,21 +28,22 @@ public class DriveInSquare extends CommandGroup {
     public  DriveInSquare() {
 
     	addSequential(new WaitCommand(1.0));
-    	addSequential(new DriveStraightForTime(driveStraightSpeed, driveStraightTime));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(100, driveStraightSpeed, true, driveStraightTime));
     	addSequential(new WaitCommand(0.1));
     	addSequential(new TurnToDegrees(turnSpeed, -turnDegrees));
     	addSequential(new WaitCommand(0.1));
-    	addSequential(new DriveStraightForTime(driveStraightSpeed, driveStraightTime));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(100, driveStraightSpeed, true, driveStraightTime));
     	addSequential(new WaitCommand(0.1));
     	addSequential(new TurnToDegrees(turnSpeed, -turnDegrees));
     	addSequential(new WaitCommand(0.1));
-    	addSequential(new DriveStraightForTime(driveStraightSpeed, driveStraightTime));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(100, driveStraightSpeed, true, driveStraightTime));
     	addSequential(new WaitCommand(0.1));
     	addSequential(new TurnToDegrees(turnSpeed, -turnDegrees));
     	addSequential(new WaitCommand(0.1));
-    	addSequential(new DriveStraightForTime(driveStraightSpeed, driveStraightTime));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(100, driveStraightSpeed, true, driveStraightTime));
     	addSequential(new WaitCommand(0.1));
     	addSequential(new TurnToDegrees(turnSpeed, -turnDegrees));
+    	addSequential(new WaitCommand(0.1));
     }
     
     // Make this return true when this Command no longer needs to run execute()

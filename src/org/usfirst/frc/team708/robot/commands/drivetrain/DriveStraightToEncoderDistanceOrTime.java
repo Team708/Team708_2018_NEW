@@ -12,7 +12,7 @@ public class DriveStraightToEncoderDistanceOrTime extends Command {
 
 	private double 		targetDistance;
 	private final double rotate = 0.0;
-	private double 		speed;
+	private double 		tspeed;
 	
 	private double maxTime;
 	
@@ -32,10 +32,10 @@ public class DriveStraightToEncoderDistanceOrTime extends Command {
     	
     	if(goForward) {
     		targetDistance = distance;
-    		this.speed = speed;
+    		this.tspeed = speed;
     	} else {
     		targetDistance = -distance;
-    		this.speed = -speed;
+    		this.tspeed = -speed;
     	}
     	this.goForward = goForward;
     	
@@ -54,7 +54,7 @@ public class DriveStraightToEncoderDistanceOrTime extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.haloDrive(speed, rotate, false);
+    	Robot.drivetrain.haloDrive(tspeed, rotate, false);
 //    	Robot.drivetrain.haloDrive(Math708.getPercentError
 //    			(Robot.drivetrain.getEncoderDistance(), targetDistance), rotate);    	
     }
