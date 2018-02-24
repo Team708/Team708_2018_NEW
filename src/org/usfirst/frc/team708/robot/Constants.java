@@ -59,15 +59,15 @@ public final class Constants {
 	public static final double 	PIVOT_ARM_SPROCKET_DIAMETER = 1.8;
 	public static final double	PIVOT_UP 					= 1.0;
 	public static final double 	PIVOT_DOWN 					= 0.25;
-	public static final int		ARM_ENC_STARTING_POSITION 	= 700;
+	public static final int		ARM_ENC_STARTING_POSITION 	= 500; //700
 	public static final int		ARM_TOLERANCE				= 100;
 	public static final double	ARM_DEADZONE				= 0.6;
-	public static final int 	SCALE_HEIGHT 				= 4000;	
-	public static final int 	SWITCH_HEIGHT 				= 2000;
-	public static final int 	FEEDER_STATION_HEIGHT 		= 800;
- 	public static final int 	GROUND_HEIGHT 				= 0;
-	public static final double 	ARM_FORWARD 					= 1.0;
-	public static final double 	ARM_REVERSE 					= -1.0;
+	public static final int 	SCALE_HEIGHT 				= 1000;	//4000
+	public static final int 	SWITCH_HEIGHT 				= 300;  //2000
+	public static final int 	FEEDER_STATION_HEIGHT 		= 400;  //800
+ 	public static final int 	GROUND_HEIGHT 				= 100;  //0
+	public static final double 	ARM_FORWARD 					= 0.5;  //1
+	public static final double 	ARM_REVERSE 					= -0.5;  //-1
 	
 	/*
 	 * telescoping
@@ -75,10 +75,10 @@ public final class Constants {
 	public static final double 	TELESCOPING_MOTOR_MIN_SPEED 	= .8;
 	public static final double 	TELESCOPING_MOTOR_MAX_SPEED 	= 1.0;
 	public static final int 	TELE_ENC_STARTING_POSITION 		= 0;
-	public static final double	TELE_DEADZONE 					= .4;
-	public static final double 	TELE_FORWARD 					= 1.0;
-	public static final double 	TELE_REVERSE 					= -1.0;
-	public static final double	TELE_SCALE_HEIGHT				= 3000;
+	public static final double	TELE_DEADZONE 					= .6;  //.4;
+	public static final double 	TELE_FORWARD 					= .05;  //1
+	public static final double 	TELE_REVERSE 					= -0.5; //-.5
+	public static final double	TELE_SCALE_HEIGHT				= 2500;  //3000
 	public static final int		TELE_TOLERANCE					= 100;
 	public static final double	CLIMB_SHIFT_LOW					 = 1.0;
 	/*

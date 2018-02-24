@@ -1,12 +1,13 @@
 package org.usfirst.frc.team708.robot.commands.autonomous;
 
-import org.usfirst.frc.team708.robot.commands.drivetrain.DriveCurvatureForTime;
-import org.usfirst.frc.team708.robot.commands.drivetrain.DriveCurvatureToWhiteOrTime;
-import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightToEncoderDistanceOrTime;
-import org.usfirst.frc.team708.robot.commands.drivetrain.GearShift1;
-import org.usfirst.frc.team708.robot.commands.drivetrain.Send;
-import org.usfirst.frc.team708.robot.commands.drivetrain.TurnToDegrees;
-import org.usfirst.frc.team708.robot.commands.visionProcessor.FindCube;
+import org.usfirst.frc.team708.robot.commands.drivetrain.*;
+import org.usfirst.frc.team708.robot.commands.intakeCube.*;
+import org.usfirst.frc.team708.robot.commands.arm.*;
+import org.usfirst.frc.team708.robot.commands.autonomous.*;
+import org.usfirst.frc.team708.robot.commands.telescope.*;
+import org.usfirst.frc.team708.robot.commands.pneumatics.*;
+import org.usfirst.frc.team708.robot.commands.visionProcessor.*;
+
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -22,55 +23,62 @@ public class autoLeft_LL extends CommandGroup {
     public autoLeft_LL() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        addSequential(new Send("In autoLeft_LL"));
-    	addSequential(new Send("In Left Drive L L"));
+        addSequential(new Send("In autoLeft_LL -- SCALE"));
     	addSequential(new GearShift1());
     	
-       	//this goes to scale
+       	//drive to the scale
     	addSequential(new DriveCurvatureForTime(1.0, .05, false, 1.8));  //.2 front of switch
 
-//		addparallel(new MoveArmTeleToScale());
+    	// move arm and tele up as stopping at the white line - continue to the scale
+//		addparallel(new MoveArmTeleToScaleCG());
     	addSequential(new DriveCurvatureToWhiteOrTime(.4, .05, false, 1.0));
-    		
     	addSequential(new DriveStraightToEncoderDistanceOrTime(24, .6, true, 1));
     	
-//      deploy cube addSequential(new SqueezeCube());
+//      drop 1st cube in scale
+//    	addSequential(new SqueezeCube());
+    	addSequential(new WaitCommand(2.0));    	
 
-//		addparallel(new MoveArmTeleToGround());
+        addSequential(new Send("In autoLeft_LL -- SWITCH"));
+        // move arm&tele down backup and turn towards cube
+//		addparallel(new MoveArmTeleToGroundCG());
     	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
-
     	addSequential(new TurnToDegrees(1.0, 90));
 
-    	
     	addSequential(new FindCube());
 
+    	// run intake and drive to 2nd cube until intake sensor triggers
+// 		addParallel(new AutoIntakeIn(1);    	
     	addSequential(new DriveStraightToEncoderDistanceOrTime(80, .6, 1));
-    	
-
-    	//parallel
-    	//raise to switch
-    	//forward
+	
+    	// drop off 2nd cube in switch
+    	//addparallel MoveArmTeleToSwitchCG()
     	addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, 1));
-
-    	//deploy addSequential(new AutoIntakeOut());
+    	//deploy addSequential(new AutoIntakeOut(.1));
     	
-//		addparallel(new MoveArmTeleToGround());
+        addSequential(new Send("In autoLeft_LL -- SCALE2")); 
+        // move arm&tele down backup and turn towards cube
+//		addparallel(new MoveArmTeleToGroundCG());
     	addSequential(new DriveCurvatureForTime(-1.0, -.9, false, .4));
-    	
+    	addSequential(new TurnToDegrees(1.0, 90));    	
     	
     	addSequential(new FindCube());
 
-
+    	// run intake and drive to 3rd cube until intake sensor triggers
+// 		addParallel(new AutoIntakeIn(1);    	
     	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .6, 1));
+    	
+    	// transfer 3rd cube from intake to grabber
+    	//addSequential(new SqueezeCube());
 
-
+    	// Turn and drive towards the scale
     	addSequential(new TurnToDegrees(1.0, -100));
     	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .7, 1));
 
-//		addparallel(new MoveArmTeleToScale());
+//		addparallel(new MoveArmTeleToScaleCG());
     	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .7, 1));
 
-    	//release cube
+    	// drop 3rd cube in scale
+//    	addSequential(new SqueezeCube());
     	addSequential(new Send("finished"));
         
     }

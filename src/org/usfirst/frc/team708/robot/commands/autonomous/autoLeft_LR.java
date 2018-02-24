@@ -1,6 +1,13 @@
 package org.usfirst.frc.team708.robot.commands.autonomous;
 
-import org.usfirst.frc.team708.robot.commands.drivetrain.Send;
+import org.usfirst.frc.team708.robot.commands.drivetrain.*;
+import org.usfirst.frc.team708.robot.commands.intakeCube.*;
+import org.usfirst.frc.team708.robot.commands.arm.*;
+import org.usfirst.frc.team708.robot.commands.autonomous.*;
+import org.usfirst.frc.team708.robot.commands.telescope.*;
+import org.usfirst.frc.team708.robot.commands.pneumatics.*;
+import org.usfirst.frc.team708.robot.commands.visionProcessor.*;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 /**
@@ -14,9 +21,50 @@ public class autoLeft_LR extends CommandGroup {
     public autoLeft_LR() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        addSequential(new Send("In autoLeft_LR"));
-    	addSequential(new WaitCommand(5.0));
-        
+        addSequential(new Send("In autoLeft_LR - SWITCH"));
+    	addSequential(new GearShift1());
+    	
+       	//drive to the switch
+    	addSequential(new DriveCurvatureForTime(.50, .6, false, 1));
+    	
+    	// drop 1st cube in switch
+    	addSequential(new autoControlTeleUp(.5));
+//    	addSequential(new SqueezeCube());
+    	addSequential(new WaitCommand(2.0));  
+    	
+        addSequential(new Send("In autoLeft_LR -- other SCALE"));
+        // move arm&tele down backup towards the scale
+//		addparallel(new MoveArmTeleToGroundCG());
+    	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
+    	
+       	addSequential(new FindCube());
+       	    	
+    	// run intake and drive to 2nd cube until intake sensor triggers
+// 		addParallel(new AutoIntakeIn(1); 
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .6, 3));
+    	
+    	// transfer cube from intake to grabber
+    	//addSequential(new SqueezeCube());
+ 
+    	// backup so that robot can drive through alley over the bump to opposite field and stop
+    	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
+    	
+    	// drive to the far end of switch to find the 2nd cube
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(45, .8, true, 1));
+    	addSequential(new ActivateButterfly());  //omni on
+    	addSequential(new TurnToDegrees(1.0, 38));
+
+    	addSequential(new ActivateButterfly());//omni off
+
+
+//		addparallel(new MoveArmTeleToScaleCG());
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .7, 1));
+
+    	// drop 2nd cube in scale
+//    	addSequential(new SqueezeCube());
+    	addSequential(new Send("finished"));    	
+    	
+       
     }
 
     // Called just before this Command runs the first time

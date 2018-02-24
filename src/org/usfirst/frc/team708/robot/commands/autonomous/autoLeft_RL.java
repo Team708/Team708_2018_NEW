@@ -1,14 +1,12 @@
 package org.usfirst.frc.team708.robot.commands.autonomous;
 
-import org.usfirst.frc.team708.robot.commands.drivetrain.ActivateButterfly;
-import org.usfirst.frc.team708.robot.commands.drivetrain.DriveCurvatureForTime;
-import org.usfirst.frc.team708.robot.commands.drivetrain.DriveCurvatureToDegreesOrTime;
-import org.usfirst.frc.team708.robot.commands.drivetrain.DriveCurvatureToWhiteOrTime;
-import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightToEncoderDistanceOrTime;
-import org.usfirst.frc.team708.robot.commands.drivetrain.GearShift1;
-import org.usfirst.frc.team708.robot.commands.drivetrain.Send;
-import org.usfirst.frc.team708.robot.commands.drivetrain.TurnToDegrees;
-import org.usfirst.frc.team708.robot.commands.visionProcessor.FindCube;
+import org.usfirst.frc.team708.robot.commands.drivetrain.*;
+import org.usfirst.frc.team708.robot.commands.intakeCube.*;
+import org.usfirst.frc.team708.robot.commands.arm.*;
+import org.usfirst.frc.team708.robot.commands.autonomous.*;
+import org.usfirst.frc.team708.robot.commands.telescope.*;
+import org.usfirst.frc.team708.robot.commands.pneumatics.*;
+import org.usfirst.frc.team708.robot.commands.visionProcessor.*;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -24,39 +22,47 @@ public class autoLeft_RL extends CommandGroup {
     public autoLeft_RL() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        addSequential(new Send("In autoLeft_RL"));
-    	addSequential(new Send("In Left Drive R L"));
+        addSequential(new Send("In autoLeft_RL -- SCALE"));
     	addSequential(new GearShift1());
     	
-       	//this goes to scale
+       	//drive to the scale
     	addSequential(new DriveCurvatureForTime(1.0, .05, false, 1.8));  //.2 front of switch
 
-//		addparallel(new MoveArmTeleToScale());
+    	// move arm and tele up as stopping at the white line - continue to the scale    	
+//		addparallel(new MoveArmTeleToScaleCG());
     	addSequential(new DriveCurvatureToWhiteOrTime(.4, .05, false, 1.0));
-    		
     	addSequential(new DriveStraightToEncoderDistanceOrTime(24, .6, true, 1));
     	
-//      deploy cube addSequential(new SqueezeCube());
+//      drop 1st cube in scale 
+//		addSequential(new SqueezeCube());
     	addSequential(new WaitCommand(2.0));
 
-//		addparallel(new MoveArmTeleToGround());
+        addSequential(new Send("In autoLeft_RL -- OTHER SWITCH"));    	
+        // move arm&tele down backup and turn towards alley
+        //	addparallel(new MoveArmTeleToGroundCG());
     	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, .5, false, 50, 2));
 
 
+    	// drive through alley over the bump to opposite field and stop
     	addSequential(new DriveStraightToEncoderDistanceOrTime(230, .8, true, 4));
     	
-    	
+    	// drive to the far end of switch to find the 2nd cube
     	addSequential(new DriveStraightToEncoderDistanceOrTime(45, .8, true, 1));
-    	addSequential(new ActivateButterfly());
+    	addSequential(new ActivateButterfly());  //omni on
     	addSequential(new TurnToDegrees(1.0, 38));
 
-    	addSequential(new ActivateButterfly());
+    	addSequential(new ActivateButterfly());//omni off
 
        	addSequential(new FindCube());
 
+    	// run intake and drive to 2nd cube until intake sensor triggers
+// 		addParallel(new AutoIntakeIn(1); 
     	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .6, 1));
     	
-    	//release cube
+    	// drop off 2nd cube in switch
+    	//addparallel MoveArmTeleToSwitchCG()
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, 1));
+    	//deploy addSequential(new AutoIntakeOut(.1));
     	addSequential(new Send("finished"));
         
     }

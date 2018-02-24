@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class JoystickMoveArm extends Command {
 	
+	private double moveSpeed;
+	
     public JoystickMoveArm() {
         // Use requires() here to declare subsystem dependencies
 //        requires(Robot.arm);
@@ -21,20 +23,35 @@ public class JoystickMoveArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-    	double moveSpeed = OI.operatorGamepad.getAxis(Gamepad.leftStick_X);
+    	 moveSpeed = OI.operatorGamepad.getAxis(Gamepad.leftStick_X); 
 
     	//check if joystick axis is in deadzone. Change movespeed to 0 if it is
     	if((moveSpeed <= Constants.ARM_DEADZONE && moveSpeed >= -Constants.ARM_DEADZONE) || 
     	   ((Robot.arm.armDown()) && (moveSpeed <= 0))){
         	Robot.arm.manualMove(0.0);
+ //       	return true;
+    	}
+    	else {
+        	Robot.arm.manualMove(moveSpeed*.5);
+//        	return false;
+    	}
+    	
+    }
+
+    // Make this return true when this Command no longer needs to run execute()
+    protected boolean isFinished() {
+
+ //   	moveSpeed = OI.operatorGamepad.getAxis(Gamepad.leftStick_X); 
+//
+    	//check if joystick axis is in deadzone. Change movespeed to 0 if it is
+//    	if((moveSpeed <= Constants.ARM_DEADZONE && moveSpeed >= -Constants.ARM_DEADZONE) || 
+    	//    	if((moveSpeed <= Constants.ARM_DEADZONE && moveSpeed >= -Constants.ARM_DEADZONE) || 
+    	  if ((Robot.arm.armDown()) && (moveSpeed <= 0)){
+//        	Robot.arm.manualMove(0.0);
         	return true;
     	}
     	else {
-        	Robot.arm.manualMove(moveSpeed);
+ //       	Robot.arm.manualMove(moveSpeed);
         	return false;
     	}
     }
