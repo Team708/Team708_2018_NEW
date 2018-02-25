@@ -290,18 +290,45 @@ public class Drivetrain extends PIDSubsystem {
     	return value;
     }
     
-    /**
-     * Toggles between brake and coast mode for the talons
-     */
+
     public void toggleBrakeMode() {
     	brake = !brake;
-    	leftMaster.setNeutralMode(NeutralMode.Brake);
-    	leftSlave1.setNeutralMode(NeutralMode.Brake);
-    	leftSlave2.setNeutralMode(NeutralMode.Brake);
-    	rightMaster.setNeutralMode(NeutralMode.Brake);
-    	rightSlave1.setNeutralMode(NeutralMode.Brake);
-    	rightSlave2.setNeutralMode(NeutralMode.Brake);
+    	if (brake) {
+    		leftMaster.setNeutralMode(NeutralMode.Brake);
+    		leftSlave1.setNeutralMode(NeutralMode.Brake);
+    		leftSlave2.setNeutralMode(NeutralMode.Brake);
+    		rightMaster.setNeutralMode(NeutralMode.Brake);
+    		rightSlave1.setNeutralMode(NeutralMode.Brake);
+    		rightSlave2.setNeutralMode(NeutralMode.Brake);
+    	} else {
+    		leftMaster.setNeutralMode(NeutralMode.Coast);
+    		leftSlave1.setNeutralMode(NeutralMode.Coast);
+    		leftSlave2.setNeutralMode(NeutralMode.Coast);
+    		rightMaster.setNeutralMode(NeutralMode.Coast);
+    		rightSlave1.setNeutralMode(NeutralMode.Coast);
+    		rightSlave2.setNeutralMode(NeutralMode.Coast);
+    	}
     }
+    
+    public void setBrakeMode(boolean setBrake) {
+    	brake = setBrake;
+    	if (brake) {
+    		leftMaster.setNeutralMode(NeutralMode.Brake);
+    		leftSlave1.setNeutralMode(NeutralMode.Brake);
+    		leftSlave2.setNeutralMode(NeutralMode.Brake);
+    		rightMaster.setNeutralMode(NeutralMode.Brake);
+    		rightSlave1.setNeutralMode(NeutralMode.Brake);
+    		rightSlave2.setNeutralMode(NeutralMode.Brake);
+    	} else {
+    		leftMaster.setNeutralMode(NeutralMode.Coast);
+    		leftSlave1.setNeutralMode(NeutralMode.Coast);
+    		leftSlave2.setNeutralMode(NeutralMode.Coast);
+    		rightMaster.setNeutralMode(NeutralMode.Coast);
+    		rightSlave1.setNeutralMode(NeutralMode.Coast);
+    		rightSlave2.setNeutralMode(NeutralMode.Coast);
+    	}
+    }
+    
     public void toggleButterfly()
     {
     	if(butterflySolenoid.get() == true)

@@ -84,7 +84,7 @@ public class Telescope extends Subsystem {
 		if (Constants.DEBUG) {
 		}
 		SmartDashboard.putBoolean("Tele Down", telescopeDown());
-    	SmartDashboard.putNumber("Tele Angle", getAngle());	// Encoder reading
+    	SmartDashboard.putNumber("Tele length", getAngle());	// Encoder reading
     }
     
     

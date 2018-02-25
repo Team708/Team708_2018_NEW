@@ -244,7 +244,7 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.cancel();
         visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
         visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_OFF);
-        drivetrain.toggleBrakeMode();
+        drivetrain.setBrakeMode(false);
     }
 
     /**

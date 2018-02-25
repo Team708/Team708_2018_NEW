@@ -27,7 +27,8 @@ public class autoLeft_RR extends CommandGroup {
     	
        	//drive to the alley 
     	addSequential(new DriveCurvatureForTime(.50, .6, false, 1));
- 
+//    	addSequential(new DriveCurvatureToEncoderOrTime(.50, .6, false, 20, 1));
+
     	// drive to the far end of switch 
     	addSequential(new DriveStraightToEncoderDistanceOrTime(45, .8, true, 1));
     	addSequential(new ActivateButterfly());  //omni on
@@ -46,6 +47,8 @@ public class autoLeft_RR extends CommandGroup {
         // move arm&tele down backup and turn towards 2nd cube
 //		addparallel(new MoveArmTeleToGroundCG());
     	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(-1.0, .9, false, 20, .5));
+    	
     	addSequential(new TurnToDegrees(1.0, 90));
 
     	addSequential(new FindCube());
@@ -63,6 +66,7 @@ public class autoLeft_RR extends CommandGroup {
         // move arm&tele down backup and turn towards cube
 //		addparallel(new MoveArmTeleToGroundCG());
     	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(-1.0, .9, false, 20, .5));
     	addSequential(new TurnToDegrees(1.0, 90));
 
     	addSequential(new FindCube());

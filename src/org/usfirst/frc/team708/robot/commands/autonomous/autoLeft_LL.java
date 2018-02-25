@@ -28,10 +28,12 @@ public class autoLeft_LL extends CommandGroup {
     	
        	//drive to the scale
     	addSequential(new DriveCurvatureForTime(1.0, .05, false, 1.8));  //.2 front of switch
+//    	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .05, false, 240, 1.8));  //.2 front of switch
 
     	// move arm and tele up as stopping at the white line - continue to the scale
 //		addparallel(new MoveArmTeleToScaleCG());
     	addSequential(new DriveCurvatureToWhiteOrTime(.4, .05, false, 1.0));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(.4, .05, false, 60, 1.0));
     	addSequential(new DriveStraightToEncoderDistanceOrTime(24, .6, true, 1));
     	
 //      drop 1st cube in scale
@@ -42,6 +44,7 @@ public class autoLeft_LL extends CommandGroup {
         // move arm&tele down backup and turn towards cube
 //		addparallel(new MoveArmTeleToGroundCG());
     	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(-1.0, .9, false, 60, .5));
     	addSequential(new TurnToDegrees(1.0, 90));
 
     	addSequential(new FindCube());
@@ -59,6 +62,8 @@ public class autoLeft_LL extends CommandGroup {
         // move arm&tele down backup and turn towards cube
 //		addparallel(new MoveArmTeleToGroundCG());
     	addSequential(new DriveCurvatureForTime(-1.0, -.9, false, .4));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(-1.0, -.9, false, 60, .4));
+    	
     	addSequential(new TurnToDegrees(1.0, 90));    	
     	
     	addSequential(new FindCube());

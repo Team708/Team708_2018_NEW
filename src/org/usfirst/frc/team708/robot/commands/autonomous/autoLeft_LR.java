@@ -26,6 +26,8 @@ public class autoLeft_LR extends CommandGroup {
     	
        	//drive to the switch
     	addSequential(new DriveCurvatureForTime(.50, .6, false, 1));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(.5, .6, false, 30, 1));
+
     	
     	// drop 1st cube in switch
     	addSequential(new autoControlTeleUp(.5));
@@ -36,6 +38,8 @@ public class autoLeft_LR extends CommandGroup {
         // move arm&tele down backup towards the scale
 //		addparallel(new MoveArmTeleToGroundCG());
     	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(-1.0, .9, false, 40, .5));
+    	
     	
        	addSequential(new FindCube());
        	    	
@@ -48,6 +52,7 @@ public class autoLeft_LR extends CommandGroup {
  
     	// backup so that robot can drive through alley over the bump to opposite field and stop
     	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(-1.0, .9, false, 40, .5));
     	
     	// drive to the far end of switch to find the 2nd cube
     	addSequential(new DriveStraightToEncoderDistanceOrTime(45, .8, true, 1));

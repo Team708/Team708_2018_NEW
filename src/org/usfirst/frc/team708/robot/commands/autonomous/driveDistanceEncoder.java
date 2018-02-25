@@ -37,7 +37,7 @@ public class driveDistanceEncoder extends CommandGroup {
 
     	addSequential(new WaitCommand(5.0));
     	
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(200, .6, true, 4));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(220, .6, true, 4));
 
     	
     	addSequential(new Send("finished"));

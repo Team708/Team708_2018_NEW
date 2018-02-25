@@ -27,10 +27,13 @@ public class autoLeft_RL extends CommandGroup {
     	
        	//drive to the scale
     	addSequential(new DriveCurvatureForTime(1.0, .05, false, 1.8));  //.2 front of switch
+//    	addSequential(new DriveCurvatureToEncoderOrTime(-1.0, .05, false, 220, 1.8));
 
     	// move arm and tele up as stopping at the white line - continue to the scale    	
 //		addparallel(new MoveArmTeleToScaleCG());
     	addSequential(new DriveCurvatureToWhiteOrTime(.4, .05, false, 1.0));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(.4, .05, false, 20, 1.0));
+    	
     	addSequential(new DriveStraightToEncoderDistanceOrTime(24, .6, true, 1));
     	
 //      drop 1st cube in scale 
