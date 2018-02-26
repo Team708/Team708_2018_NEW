@@ -62,7 +62,7 @@ public final class Constants {
 	public static final int		ARM_ENC_STARTING_POSITION 	= 500; //700
 	public static final int		ARM_TOLERANCE				= 100;
 	public static final double	ARM_DEADZONE				= 0.6;
-	public static final int 	SCALE_HEIGHT 				= 1000;	//4000
+	public static final int 	SCALE_HEIGHT 				= 500; //1000;	//4000
 	public static final int 	SWITCH_HEIGHT 				= 300;  //2000
 	public static final int 	FEEDER_STATION_HEIGHT 		= 400;  //800
  	public static final int 	GROUND_HEIGHT 				= 100;  //0

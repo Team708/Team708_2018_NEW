@@ -42,17 +42,23 @@ public class OI {
 /*
  * Operator Button Assignment
  */
-	private static final int RELEASE_CUBE_BUTTON			= Gamepad.button_R_Shoulder;
-	private static final int SQUEEZE_CUBE_BUTTON			= Gamepad.button_L_Shoulder;
-	private static final int INTAKE_CUBE_BUTTON				= Gamepad.rightStick_X;
-	private static final int OPERATE_ARM_BUTTON				= Gamepad.leftStick_X;
-	private static final int OPERATE_TELESCOPE_BUTTON		= Gamepad.leftStick_Y;
+	
+//	private static final int RELEASE_CUBE_BUTTON			= Gamepad.button_R_Shoulder;
+//	private static final int SQUEEZE_CUBE_BUTTON			= Gamepad.button_L_Shoulder;
+	
+//	private static final int RELEASE_CUBE_BUTTON			= Gamepad.button_R_Shoulder;
+	private static final int SQUEEZE_CUBE_BUTTON			= Gamepad.shoulderAxisRight;;
+
+	private static final int INTAKE_CUBE_BUTTON_OUT			= Gamepad.button_R_Shoulder;
+	private static final int INTAKE_CUBE_BUTTON_IN			= Gamepad.button_L_Shoulder;
+	private static final int OPERATE_ARM_BUTTON				= Gamepad.leftStick_Y;
+	private static final int OPERATE_TELESCOPE_BUTTON		= Gamepad.rightStick_X;
 
 	private static final int ARM_UP_TO_GROUND_BUTTON		= Gamepad.button_A;
 	private static final int ARM_UP_TO_SWITCH_BUTTON		= Gamepad.button_X;
 	private static final int ARM_UP_TO_SCALE_BUTTON			= Gamepad.button_B;
 	private static final int ARM_UP_TO_HUMAN_FEEDER_BUTTON	= Gamepad.button_Y;
-	private static final int CLIMB_LOW_GEAR_BUTTON			= Gamepad.shoulderAxisRight;
+//	private static final int CLIMB_LOW_GEAR_BUTTON			= Gamepad.shoulderAxisRight;
 	private static final int CLIMB_HIGH_GEAR_BUTTON			= Gamepad.shoulderAxisLeft;
 
 
@@ -70,10 +76,10 @@ public class OI {
 /*
  * Operator Button Commands
  */
-	public static final Button releaseCube		= new JoystickButton(operatorGamepad, RELEASE_CUBE_BUTTON);
-	public static final Button squeezeCube		= new JoystickButton(operatorGamepad, SQUEEZE_CUBE_BUTTON);
-	public static final Trigger intakeCubeOut	= new AxisUp(operatorGamepad, INTAKE_CUBE_BUTTON);
-	public static final Trigger intakeCubeIn	= new AxisDown(operatorGamepad, INTAKE_CUBE_BUTTON);
+//	public static final Button releaseCube		= new JoystickButton(operatorGamepad, RELEASE_CUBE_BUTTON);
+	public static final Trigger squeezeCube		= new AxisUp(operatorGamepad, SQUEEZE_CUBE_BUTTON);
+	public static final Button intakeCubeOut	= new JoystickButton(operatorGamepad, INTAKE_CUBE_BUTTON_OUT);
+	public static final Button intakeCubeIn		= new JoystickButton(operatorGamepad, INTAKE_CUBE_BUTTON_IN);
 	
 	public static final Trigger operateArmUp 	= new AxisUp(operatorGamepad, OPERATE_ARM_BUTTON);
 	public static final Trigger operateArmDown	= new AxisDown(operatorGamepad, OPERATE_ARM_BUTTON);
@@ -83,7 +89,7 @@ public class OI {
 	public static final Button armToSwitch		= new JoystickButton(operatorGamepad, ARM_UP_TO_SWITCH_BUTTON);
 	public static final Button armToScale		= new JoystickButton(operatorGamepad, ARM_UP_TO_SCALE_BUTTON);
 	public static final Button armToFeeder		= new JoystickButton(operatorGamepad, ARM_UP_TO_HUMAN_FEEDER_BUTTON);
-	public static final Trigger climbLowGear	= new AxisUp(operatorGamepad, CLIMB_LOW_GEAR_BUTTON);
+//	public static final Trigger climbLowGear	= new AxisUp(operatorGamepad, CLIMB_LOW_GEAR_BUTTON);
 	public static final Trigger climbHighGear	= new AxisUp(operatorGamepad, CLIMB_HIGH_GEAR_BUTTON);
 
 
@@ -97,15 +103,15 @@ public class OI {
 		breakOn.whenPressed(new ToggleBrakeMode());
 		ledToggle.whenPressed(new ToggleLEDMode());
 		
-		releaseCube.whenPressed(new ReleaseCube());
-		squeezeCube.whenPressed(new SqueezeCube());
+//		releaseCube.whenPressed(new ReleaseCube());
+//		squeezeCube.whenPressed(new SqueezeCube());
 
-		intakeCubeIn.whileActive(new IntakeIn());
-		intakeCubeOut.whileActive(new IntakeOut());
-		operateArmDown.whileActive(new JoystickMoveArm());
-		operateArmUp.whileActive(new JoystickMoveArm());
-		operateTeleDown.whileActive(new JoystickMoveTele());
-		operateTeleUp.whileActive(new JoystickMoveTele());
+		intakeCubeIn.whileHeld(new IntakeIn());
+		intakeCubeOut.whileHeld(new IntakeOut());
+//		operateArmDown.whileActive(new JoystickMoveArm());
+//		operateArmUp.whileActive(new JoystickMoveArm());
+//		operateTeleDown.whileActive(new JoystickMoveTele());
+//		operateTeleUp.whileActive(new JoystickMoveTele());
 		
 // jame's version this works - start both when armToScale is pressed		
 //		armToScale.whenPressed(new ControlArmToScale());
@@ -120,8 +126,8 @@ public class OI {
 		armToScale.whenPressed(new MoveArmTeleToScaleCG());		
 		armToFeeder.whenPressed(new MoveArmTeleToFeederCG());
 		
-		climbLowGear.whileActive(new ShiftClimberLow()); 
-		climbHighGear.whileActive(new ShiftClimberHigh()); 
+//		climbLowGear.whileActive(new ShiftClimberLow()); 
+//		climbHighGear.whileActive(new ShiftClimberHigh()); 
 
 /*
  		.whileActive(new 

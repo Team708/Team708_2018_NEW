@@ -21,13 +21,10 @@ public class MoveArmTeleToScaleCG extends CommandGroup {
     public  MoveArmTeleToScaleCG() {
 
 
-    	addSequential(new Send("Moving the arm and tele to scale"));
-    	addSequential(new WaitCommand(1.0));
+//    	addSequential(new Send("Moving the arm and tele to scale"));
     	addParallel(new ControlArmToScale());
     	addSequential(new ControlTeleToScale());
-    	addSequential(new Send("done moving arm and tele scale"));
-    	addSequential(new WaitCommand(4));  	
-    
+//    	addSequential(new Send("done moving arm and tele scale"));    
     }
     
     // Make this return true when this Command no longer needs to run execute()

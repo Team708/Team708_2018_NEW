@@ -71,8 +71,8 @@ public class VisionProcessor extends Subsystem {
 	}
 	public boolean isCentered() {
 	
-//		displacementX = getNTInfo("tx");
-		displacementX = getNTInfo("ty");
+		displacementX = getNTInfo("tx");
+//		displacementX = getNTInfo("ty");
 	
 		if (Math.abs(displacementX) <= AutoConstants.X_THRESHOLD) {
 			isCentered = true;

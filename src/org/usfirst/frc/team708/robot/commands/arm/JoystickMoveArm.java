@@ -14,7 +14,7 @@ public class JoystickMoveArm extends Command {
 	
     public JoystickMoveArm() {
         // Use requires() here to declare subsystem dependencies
-//        requires(Robot.arm);
+        requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
@@ -23,19 +23,18 @@ public class JoystickMoveArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	 moveSpeed = OI.operatorGamepad.getAxis(Gamepad.leftStick_X); 
+    	 moveSpeed = OI.operatorGamepad.getAxis(Gamepad.leftStick_Y); 
 
     	//check if joystick axis is in deadzone. Change movespeed to 0 if it is
     	if((moveSpeed <= Constants.ARM_DEADZONE && moveSpeed >= -Constants.ARM_DEADZONE) || 
-    	   ((Robot.arm.armDown()) && (moveSpeed <= 0))){
+    	   ((Robot.arm.armDown()) && (moveSpeed <= Constants.ARM_DEADZONE))){
         	Robot.arm.manualMove(0.0);
- //       	return true;
     	}
     	else {
-        	Robot.arm.manualMove(moveSpeed*.5);
-//        	return false;
+        	Robot.arm.manualMove(moveSpeed);
     	}
     	
+//    	SmartDashboard.putNumber("Arm speed", moveSpeed);	// Encoder reading
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -44,14 +43,12 @@ public class JoystickMoveArm extends Command {
  //   	moveSpeed = OI.operatorGamepad.getAxis(Gamepad.leftStick_X); 
 //
     	//check if joystick axis is in deadzone. Change movespeed to 0 if it is
-//    	if((moveSpeed <= Constants.ARM_DEADZONE && moveSpeed >= -Constants.ARM_DEADZONE) || 
-    	//    	if((moveSpeed <= Constants.ARM_DEADZONE && moveSpeed >= -Constants.ARM_DEADZONE) || 
-    	  if ((Robot.arm.armDown()) && (moveSpeed <= 0)){
-//        	Robot.arm.manualMove(0.0);
+    	if((moveSpeed <= Constants.ARM_DEADZONE && moveSpeed >= -Constants.ARM_DEADZONE) || 
+    	   (Robot.arm.armDown()) && (moveSpeed <= Constants.ARM_DEADZONE)){
+        	Robot.arm.manualMove(0.0);
         	return true;
     	}
     	else {
- //       	Robot.arm.manualMove(moveSpeed);
         	return false;
     	}
     }

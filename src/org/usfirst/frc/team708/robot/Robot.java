@@ -60,7 +60,7 @@ public class Robot extends IterativeRobot {
    	public String 	robotLocation;
    	public String 	autoMode;
 
-   	
+	public boolean climber=true;
 	SendableChooser<Command> autonomousMode = new SendableChooser<>();
     Command 			autonomousCommand;
     Preferences			prefs;

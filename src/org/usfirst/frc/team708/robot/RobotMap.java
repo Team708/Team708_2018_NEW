@@ -58,9 +58,9 @@ public class RobotMap {
 	public static final int drivetrainEncoderALeft		= 2;	//this might go directly on the motor controllers
 	public static final int drivetrainEncoderBLeft		= 3;	//this might go directly on the motor controllers
 //	public static final int  							= 4;
-//	public static final int 							= 5;
-	public static final int	TelescopeSensor				= 6;	
-	public static final int armSensor					= 7;
+//	public static final int 							= 5;	
+	public static final int armSensor					= 6;
+	public static final int	TelescopeSensor				= 7;	
 	public static final int colorSensor			 		= 8;  
 	public static final int cubeSensor					= 9;
 	

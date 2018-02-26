@@ -3,7 +3,7 @@ package org.usfirst.frc.team708.robot.subsystems;
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.RobotMap;
 import org.usfirst.frc.team708.robot.commands.drivetrain.JoystickDrive;
-import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsManual;
+import org.usfirst.frc.team708.robot.commands.pneumatics.ShiftClimber;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PneumaticsClimber extends Subsystem {
 	
 	private DoubleSolenoid climberDoubleSolenoid;
+
 	
 	/**
 	 * Constructor
@@ -26,7 +27,7 @@ public class PneumaticsClimber extends Subsystem {
 	}
 	
 	public void initDefaultCommand() {
-//		 setDefaultCommand(new PneumaticsManual());
+//		 setDefaultCommand(new ShiftClimber());
     }
 	
 	public void setPiston(Value value) {

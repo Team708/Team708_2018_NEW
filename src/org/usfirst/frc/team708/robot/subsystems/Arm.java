@@ -41,7 +41,7 @@ public class Arm extends Subsystem {
 	
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-//        setDefaultCommand(new JoystickMoveArm());
+        setDefaultCommand(new JoystickMoveArm());
     }
 	
 	public void manualMove(double speed) {
@@ -99,8 +99,8 @@ public class Arm extends Subsystem {
 		if (Constants.DEBUG) {
 		}
 		SmartDashboard.putBoolean("Arm Down:", armDown());
-//    	SmartDashboard.putNumber("get Arm Angle", getAngle());	// Encoder reading
-    	SmartDashboard.putNumber("get Arm Enc Distance", getEncoderDistance());	// Encoder reading
+    	SmartDashboard.putNumber("Arm Angle", getAngle());	// Encoder reading
+//    	SmartDashboard.putNumber("Arm Distance", getEncoderDistance());	// Encoder reading
     }
     
     

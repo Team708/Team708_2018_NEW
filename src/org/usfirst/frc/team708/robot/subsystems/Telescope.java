@@ -2,6 +2,7 @@ package org.usfirst.frc.team708.robot.subsystems;
 
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.RobotMap;
+import org.usfirst.frc.team708.robot.commands.telescope.JoystickMoveTele;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -35,7 +36,7 @@ public class Telescope extends Subsystem {
 	
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-//        setDefaultCommand(new JoystickMoveArm());
+        setDefaultCommand(new JoystickMoveTele());
     }
 	
 	public void manualMove(double speed) {
