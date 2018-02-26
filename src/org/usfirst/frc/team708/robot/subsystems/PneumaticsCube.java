@@ -3,7 +3,7 @@ package org.usfirst.frc.team708.robot.subsystems;
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.RobotMap;
 import org.usfirst.frc.team708.robot.commands.drivetrain.JoystickDrive;
-import org.usfirst.frc.team708.robot.commands.pneumatics.PneumaticsManual;
+import org.usfirst.frc.team708.robot.commands.pneumatics.SqueezeCube;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -31,7 +31,7 @@ public class PneumaticsCube extends Subsystem {
 	}
 	
 	public void initDefaultCommand() {
-//		 setDefaultCommand(new PneumaticsManual());
+//		 setDefaultCommand(new SqueezeCube());
     }
 	  public void toggleIntake()
 	    {
@@ -42,6 +42,16 @@ public class PneumaticsCube extends Subsystem {
 	    	switch_intake();
 	    }
 	    
+	  public void IntakeOn()
+	    {
+		  intakeSolenoid.set(true);
+	    }
+	  
+	  public void IntakeOff()
+	    {
+		  intakeSolenoid.set(false);
+	    }
+	  
 	    //Activate Butterfly Solenoid for a set duration
 	    public void pulseIntake() {
 	    	intakeSolenoid.startPulse();

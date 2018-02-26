@@ -39,14 +39,14 @@ public class OI {
 	private static final int LOW_GEAR_BUTTON				= Gamepad.button_L_Shoulder;
 	private static final int BRAKE_BUTTON					= Gamepad.button_B;
 	private static final int LED_BUTTON						= Gamepad.button_A;
+	private static final int RELEASE_CUBE_BUTTON			= Gamepad.button_X;
+
 /*
  * Operator Button Assignment
  */
 	
-//	private static final int RELEASE_CUBE_BUTTON			= Gamepad.button_R_Shoulder;
 //	private static final int SQUEEZE_CUBE_BUTTON			= Gamepad.button_L_Shoulder;
 	
-//	private static final int RELEASE_CUBE_BUTTON			= Gamepad.button_R_Shoulder;
 	private static final int SQUEEZE_CUBE_BUTTON			= Gamepad.shoulderAxisRight;;
 
 	private static final int INTAKE_CUBE_BUTTON_OUT			= Gamepad.button_R_Shoulder;
@@ -72,11 +72,11 @@ public class OI {
 	public static final Button lowGearOn 	= new JoystickButton(driverGamepad, LOW_GEAR_BUTTON);
 	public static final Button breakOn	 	= new JoystickButton(driverGamepad, BRAKE_BUTTON);
 	public static final Button ledToggle	= new JoystickButton(driverGamepad, LED_BUTTON);
+	public static final Button releaseCube	= new JoystickButton(driverGamepad, RELEASE_CUBE_BUTTON);
 
 /*
  * Operator Button Commands
  */
-//	public static final Button releaseCube		= new JoystickButton(operatorGamepad, RELEASE_CUBE_BUTTON);
 	public static final Trigger squeezeCube		= new AxisUp(operatorGamepad, SQUEEZE_CUBE_BUTTON);
 	public static final Button intakeCubeOut	= new JoystickButton(operatorGamepad, INTAKE_CUBE_BUTTON_OUT);
 	public static final Button intakeCubeIn		= new JoystickButton(operatorGamepad, INTAKE_CUBE_BUTTON_IN);
@@ -103,8 +103,8 @@ public class OI {
 		breakOn.whenPressed(new ToggleBrakeMode());
 		ledToggle.whenPressed(new ToggleLEDMode());
 		
-//		releaseCube.whenPressed(new ReleaseCube());
-//		squeezeCube.whenPressed(new SqueezeCube());
+		releaseCube.whenPressed(new ReleaseCube());
+		squeezeCube.whileActive(new SqueezeCube());
 
 		intakeCubeIn.whileHeld(new IntakeIn());
 		intakeCubeOut.whileHeld(new IntakeOut());
