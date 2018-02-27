@@ -20,8 +20,8 @@ public final class Constants {
 	public static final double INTAKE_PULSE_TIME	= 0.5;
 
 	
-	public static final double DRIVE_MOTOR_MAX_SPEED 		= 1.0;
-	public static final double ROTATE_MOTOR_MAX_SPEED 		= 1.0;
+	public static final double DRIVE_MOTOR_MAX_SPEED 		= 1.0;  // 1.0
+	public static final double ROTATE_MOTOR_MAX_SPEED 		= 1.0;  // 1.0
 	public static final double ARMPIVOT_MOTOR_MAX_SPEED 	= 1.0;
 	public static final double VISION_ROTATE_MOTOR_SPEED	= 0.8;
 	public static final double DRIVE_MOTOR_OFF		 		= 0.0;
@@ -78,6 +78,7 @@ public final class Constants {
 	public static final double	TELE_DEADZONE 					= .6;  //.4;
 	public static final double 	TELE_FORWARD 					= .05;  //1
 	public static final double 	TELE_REVERSE 					= -0.5; //-.5
+	public static final double	TELE_MAX						= 13000;
 	public static final double	TELE_SCALE_HEIGHT				= 2500;  //3000
 	public static final int		TELE_TOLERANCE					= 100;
 	public static final double	CLIMB_SHIFT_LOW					 = 1.0;

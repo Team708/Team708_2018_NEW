@@ -214,7 +214,52 @@ public class Robot extends IterativeRobot {
 					}
 				
 				}
-			}
+			} // end if - using both switch and scale gamedata
+		
+			else if ((autoMode.equals("Right_SwitchOnly_RobotLocation")) ||
+					(autoMode.equals("Left_SwitchOnly_RobotLocation"))) {
+				
+				SmartDashboard.putString("HERE", "running the switchonly specials");
+				switch(gameData.substring(0,2))
+				{
+					case "LL":
+					{
+						SmartDashboard.putString("Auto State", "L");
+						
+						if (robotLocation.equals("L"))
+						{
+					    	autoLeft_L_SwitchOnly command_Left_L_SwitchOnly = new autoLeft_L_SwitchOnly();
+					    	command_Left_L_SwitchOnly.start();
+						}
+						else
+						{
+					    	autoRight_L_SwitchOnly command_Right_L_SwitchOnly = new autoRight_L_SwitchOnly();
+					    	command_Right_L_SwitchOnly.start();
+						}
+					
+						break;
+					}
+					case "RR":
+					{
+						SmartDashboard.putString("Auto State", "R");				
+						
+						if (robotLocation.equals("L"))
+						{
+					    	autoLeft_R_SwitchOnly command_Left_R_SwitchOnly = new autoLeft_R_SwitchOnly();
+					    	command_Left_R_SwitchOnly.start();
+						}
+						else
+						{
+					    	autoRight_R_SwitchOnly command_Right_R_SwitchOnly = new autoRight_R_SwitchOnly();
+					    	command_Right_R_SwitchOnly.start();
+						}
+		
+						break;
+					}
+				}//switch
+			} //end else if - using switch only
+		
+		
 			else
 			{
 				SmartDashboard.putString("HERE", "running the other modes");
@@ -300,6 +345,9 @@ public class Robot extends IterativeRobot {
     	autonomousMode.addObject("Curvature Drive", 		new driveCurvatureForTime());
     	autonomousMode.addObject("Left RobotLocation", 		new Left_RobotLocation());
     	autonomousMode.addObject("Right RobotLocation", 	new Right_RobotLocation());
+    	autonomousMode.addObject("Left SwitchOnlyt RobotLocation", 		new Left_SwitchOnly_RobotLocation());
+    	autonomousMode.addObject("Right SwitchOnly RobotLocation", 		new Left_SwitchOnly_RobotLocation());
+
 
     	SmartDashboard.putData("Autonomous Selection", autonomousMode);    	   	
     }

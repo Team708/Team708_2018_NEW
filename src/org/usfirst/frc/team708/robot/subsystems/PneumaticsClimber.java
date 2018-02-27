@@ -23,7 +23,7 @@ public class PneumaticsClimber extends Subsystem {
 	public PneumaticsClimber() {
 		climberDoubleSolenoid = new DoubleSolenoid(RobotMap.telescopeLow, RobotMap.telescopeHigh); //initializes
 		
-		climberDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+		climberDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	public void initDefaultCommand() {

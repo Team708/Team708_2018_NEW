@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ControlArmToSwitch extends Command {
 	
     public ControlArmToSwitch() {
-//    	requires(Robot.arm);
+    	requires(Robot.arm);
     }
     
 

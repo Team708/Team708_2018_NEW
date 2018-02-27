@@ -16,8 +16,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ShiftClimber extends Command {
 
-
+    private double shift;
+    private boolean done;
+    
     public ShiftClimber() {
+    	requires(Robot.pneumaticsClimber);
     }
     
 
@@ -28,16 +31,17 @@ public class ShiftClimber extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//    	if (Robot.climber)
+    	shift = OI.operatorGamepad.getAxis(Gamepad.shoulderAxisRight);
+
+    	if (shift != 1)
     		Robot.pneumaticsClimber.reverse();
-//    	Robot.pneumaticsClimber.
-//    	else
-//    		Robot.pneumaticsClimber.forward();
+    	else
+    		Robot.pneumaticsClimber.forward();
 	    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return(true);
+    	return(false);
     }
 
     // Called once after isFinished returns true

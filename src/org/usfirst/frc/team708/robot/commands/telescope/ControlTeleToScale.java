@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ControlTeleToScale extends Command {
 	
     public ControlTeleToScale() {
-//    	requires(Robot.arm);
+    	requires(Robot.tele);
     }
     
 

@@ -47,7 +47,8 @@ public class OI {
 	
 //	private static final int SQUEEZE_CUBE_BUTTON			= Gamepad.button_L_Shoulder;
 	
-	private static final int SQUEEZE_CUBE_BUTTON			= Gamepad.shoulderAxisRight;;
+//	private static final int SQUEEZE_CUBE_BUTTON			= Gamepad.shoulderAxisRight;;
+	private static final int SQUEEZE_CUBE_BUTTON			= Gamepad.button_RightStick;;
 
 	private static final int INTAKE_CUBE_BUTTON_OUT			= Gamepad.button_R_Shoulder;
 	private static final int INTAKE_CUBE_BUTTON_IN			= Gamepad.button_L_Shoulder;
@@ -58,9 +59,9 @@ public class OI {
 	private static final int ARM_UP_TO_SWITCH_BUTTON		= Gamepad.button_X;
 	private static final int ARM_UP_TO_SCALE_BUTTON			= Gamepad.button_B;
 	private static final int ARM_UP_TO_HUMAN_FEEDER_BUTTON	= Gamepad.button_Y;
-//	private static final int CLIMB_LOW_GEAR_BUTTON			= Gamepad.shoulderAxisRight;
-	private static final int CLIMB_HIGH_GEAR_BUTTON			= Gamepad.shoulderAxisLeft;
 
+	private static final int CLIMB_HIGH_GEAR_BUTTON			= Gamepad.button_Back;
+	private static final int CLIMB_LOW_GEAR_BUTTON			= Gamepad.button_Start;
 
 	
 	
@@ -77,7 +78,7 @@ public class OI {
 /*
  * Operator Button Commands
  */
-	public static final Trigger squeezeCube		= new AxisUp(operatorGamepad, SQUEEZE_CUBE_BUTTON);
+	public static final Button squeezeCube		= new JoystickButton(operatorGamepad, SQUEEZE_CUBE_BUTTON);
 	public static final Button intakeCubeOut	= new JoystickButton(operatorGamepad, INTAKE_CUBE_BUTTON_OUT);
 	public static final Button intakeCubeIn		= new JoystickButton(operatorGamepad, INTAKE_CUBE_BUTTON_IN);
 	
@@ -89,8 +90,8 @@ public class OI {
 	public static final Button armToSwitch		= new JoystickButton(operatorGamepad, ARM_UP_TO_SWITCH_BUTTON);
 	public static final Button armToScale		= new JoystickButton(operatorGamepad, ARM_UP_TO_SCALE_BUTTON);
 	public static final Button armToFeeder		= new JoystickButton(operatorGamepad, ARM_UP_TO_HUMAN_FEEDER_BUTTON);
-//	public static final Trigger climbLowGear	= new AxisUp(operatorGamepad, CLIMB_LOW_GEAR_BUTTON);
-	public static final Trigger climbHighGear	= new AxisUp(operatorGamepad, CLIMB_HIGH_GEAR_BUTTON);
+	public static final Button climbLowGear		= new JoystickButton(operatorGamepad, CLIMB_LOW_GEAR_BUTTON);
+	public static final Button climbHighGear	= new JoystickButton(operatorGamepad, CLIMB_HIGH_GEAR_BUTTON);
 
 
 	public OI() {
@@ -99,12 +100,14 @@ public class OI {
 		
 		highGearOn.whenPressed(new GearShift2());
 		lowGearOn.whenPressed(new GearShift1());
+		highGearOn.whenPressed(new ShiftClimberLow());
+		lowGearOn.whenPressed(new ShiftClimberHigh());
 
 		breakOn.whenPressed(new ToggleBrakeMode());
 		ledToggle.whenPressed(new ToggleLEDMode());
 		
 		releaseCube.whenPressed(new ReleaseCube());
-		squeezeCube.whileActive(new SqueezeCube());
+		squeezeCube.whenPressed(new ReleaseCube());
 
 		intakeCubeIn.whileHeld(new IntakeIn());
 		intakeCubeOut.whileHeld(new IntakeOut());
@@ -126,8 +129,8 @@ public class OI {
 		armToScale.whenPressed(new MoveArmTeleToScaleCG());		
 		armToFeeder.whenPressed(new MoveArmTeleToFeederCG());
 		
-//		climbLowGear.whileActive(new ShiftClimberLow()); 
-//		climbHighGear.whileActive(new ShiftClimberHigh()); 
+		climbLowGear.whileActive(new ShiftClimberLow()); 
+		climbHighGear.whileActive(new ShiftClimberHigh()); 
 
 /*
  		.whileActive(new 

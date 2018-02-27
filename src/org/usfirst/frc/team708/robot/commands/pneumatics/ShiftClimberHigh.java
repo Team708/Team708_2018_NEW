@@ -17,6 +17,7 @@ public class ShiftClimberHigh extends Command {
 
 
     public ShiftClimberHigh() {
+    	requires(Robot.pneumaticsClimber);
     }
     
 

@@ -7,6 +7,8 @@ import org.usfirst.frc.team708.robot.OI;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc.team708.robot.commands.pneumatics.*;
 import org.usfirst.frc.team708.robot.subsystems.PneumaticsCube;
 import org.usfirst.frc.team708.robot.util.Gamepad;
@@ -18,6 +20,7 @@ public class SqueezeCube extends Command {
     private boolean done;
     
     public SqueezeCube() {
+    	requires(Robot.pneumaticsCube);
     }
     
 

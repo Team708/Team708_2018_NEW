@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ControlTeleToGround extends Command {
 	
     public ControlTeleToGround() {
-//    	requires(Robot.arm);
+    	requires(Robot.tele);
     }
     
 

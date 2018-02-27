@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ControlArmToFeeder extends Command {
 	
     public ControlArmToFeeder() {
-//    	requires(Robot.arm);
+    	requires(Robot.arm);
     }
     
 

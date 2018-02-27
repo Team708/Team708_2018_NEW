@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ControlArmToScale extends Command {
 	
     public ControlArmToScale() {
-//    	requires(Robot.arm);
+    	requires(Robot.arm);
     }
     
 

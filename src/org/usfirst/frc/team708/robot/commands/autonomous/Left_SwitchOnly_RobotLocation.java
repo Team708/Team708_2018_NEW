@@ -1,22 +1,28 @@
-package org.usfirst.frc.team708.robot.commands.drivetrain;
+package org.usfirst.frc.team708.robot.commands.autonomous;
 
 import org.usfirst.frc.team708.robot.Robot;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * this does nothing
  */
-public class ToggleBrakeMode extends Command {
+public class Left_SwitchOnly_RobotLocation extends Command {
 
-    public ToggleBrakeMode() {
+    public Left_SwitchOnly_RobotLocation() {
         // Use requires() here to declare subsystem dependencies
-//     requires(Robot.drivetrain);
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
-    	Robot.drivetrain.toggleBrakeMode();
+    protected void initialize() {/*
+    	Robot.drivetrain.resetEncoder();
+    	Robot.drivetrain.resetEncoder2();
+    	Robot.drivetrain.resetGyro();*/
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -25,7 +31,7 @@ public class ToggleBrakeMode extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

@@ -19,32 +19,22 @@ public class ShiftClimberLow extends Command {
     private boolean done;
 
     public ShiftClimberLow() {
+    	requires(Robot.pneumaticsClimber);
     }
     
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	shift = OI.operatorGamepad.getAxis(Gamepad.shoulderAxisRight);
-
+    	Robot.pneumaticsClimber.reverse();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (shift == -1)
-    	{
-    		done = false;
-        	Robot.pneumaticsClimber.reverse();
-    	}
-    	else
-    	{
-    		done = true;
-        	Robot.pneumaticsClimber.forward();
-    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return(done);
+    	return(true);
     }
 
     // Called once after isFinished returns true
