@@ -26,8 +26,8 @@ public class autoLeft_RR extends CommandGroup {
     	addSequential(new GearShift1());
     	
        	//drive to the alley 
-    	addSequential(new DriveCurvatureForTime(.50, .6, false, 1));
-//    	addSequential(new DriveCurvatureToEncoderOrTime(.50, .6, false, 20, 1));
+    	addSequential(new DriveCurvatureForTime(1.0, .6, false, 1));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .6, false, 20, 1));
 
     	// drive to the far end of switch 
     	addSequential(new DriveStraightToEncoderDistanceOrTime(45, .8, true, 1));

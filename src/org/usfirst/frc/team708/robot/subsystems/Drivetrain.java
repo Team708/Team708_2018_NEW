@@ -229,7 +229,8 @@ public class Drivetrain extends PIDSubsystem {
      * @return
      */
     public double getAngle() {
-    	return gyro.getAngle();
+    	return Math708.round(gyro.getAngle(),0);
+//    	return gyro.getAngle();
     }
     
     /**
@@ -438,6 +439,8 @@ public class Drivetrain extends PIDSubsystem {
 ////	    	SmartDashboard.putNumber("DT IR Distance", getIRDistance());			// IR distance reading
 //	    	
 //	    	SmartDashboard.putNumber("DT Rt Master", rightMaster.getTemperature());
+	    	SmartDashboard.putNumber("DT Rt Master", rightMaster.getOutputCurrent());
+	    	SmartDashboard.putNumber("DT Rt Master", leftMaster.getOutputCurrent());
 //	    	SmartDashboard.putNumber("DT Rt Slave", rightSlave.getTemperature());
 //	    	SmartDashboard.putNumber("DT Lft Master", leftMaster.getTemperature());
 //	    	SmartDashboard.putNumber("DT Lft Slave", leftSlave.getTemperature());
@@ -446,10 +449,12 @@ public class Drivetrain extends PIDSubsystem {
 //    	SmartDashboard.putNumber("DT Sonar Distance", getSonarDistance());		// Sonar distance reading
 //    	SmartDashboard.putNumber("DT Encoder right Distance", encoder.getDistance());	// Encoder reading
     	SmartDashboard.putNumber("DT Encoder Distance", encoder2.getDistance());		// Encoder reading
-    	SmartDashboard.putNumber("Gyro angle", gyro.getAngle());
+    	SmartDashboard.putNumber("Gyro angle", Math708.round(gyro.getAngle(),0));
     	SmartDashboard.putBoolean("Brake", brake);					// Brake or Coast
     	SmartDashboard.putBoolean("gear high", gear_high);					// Brake or Coast
     	SmartDashboard.putBoolean("butterfly", butterfly_on);
     	SmartDashboard.putBoolean("Optical1", isOpticalSensor1White());
+    	SmartDashboard.putNumber("DT Rt Master", rightMaster.getOutputCurrent());
+    	SmartDashboard.putNumber("DT Rt Master", leftMaster.getOutputCurrent());
     }
 }

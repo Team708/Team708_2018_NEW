@@ -25,7 +25,7 @@ public class autoLeft_L_SwitchOnly extends CommandGroup {
     	addSequential(new GearShift1());
     	
        	//drive to the switch
-    	addSequential(new DriveCurvatureForTime(.50, .6, false, 1));
+    	addSequential(new DriveCurvatureForTime(1.0, .6, false, 1.5));
 //    	addSequential(new DriveCurvatureToEncoderOrTime(.5, .6, false, 30, 1));
 
     	

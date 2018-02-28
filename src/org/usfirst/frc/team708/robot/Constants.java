@@ -86,7 +86,7 @@ public final class Constants {
 	 * Drivetrain
 	 */
 	public static final double 	TANK_STICK_TOLERANCE 				= .30;
-	public static final double 	DRIVETRAIN_WHEEL_DIAMETER 			= 4.0;
+	public static final double 	DRIVETRAIN_WHEEL_DIAMETER 			= 2.25;  //4inch wheel * .56 gear ratio
 	public static final double 	DRIVETRAIN_ENCODER_PULSES_PER_REV 	= 256.0;
 	public static final boolean DRIVE_USE_SQUARED_INPUT 			= false;
 	public static final boolean DRIVETRAIN_USE_LEFT_ENCODER			= true; // variable to determine which side encoder is on
