@@ -26,10 +26,14 @@ public class autoLeft_R_SwitchOnly extends CommandGroup {
     	
        	//drive to the switch
     	
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(160, 1.0, true, 2));
+//    	addSequential(new DriveCurvatureForTime(.8, .8, false, 1));
+    	addSequential(new DriveCurvatureToEncoderOrTime(.8, .8, false, 40, 1));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(80, .8, true, 2));
 
-    	addSequential(new DriveCurvatureForTime(1.0, .8, false, 1));
-//    	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .8, false, 50, 1));
+//    	addSequential(new DriveCurvatureForTime(1.0, .8, false, 1));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(.8, .8, false, 60, 1));
+    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.8, false, -75, 2));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(24, .8, true, 2));
 
     	
     	// drop 1st cube in switch

@@ -30,9 +30,9 @@ public class ControlArmToScale extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(Robot.arm.getAngle() >= Constants.SCALE_HEIGHT - Constants.ARM_TOLERANCE)
-    		Robot.arm.moveMotor(Constants.ARM_REVERSE);
-    	else
     		Robot.arm.moveMotor(Constants.ARM_FORWARD);
+    	else
+    		Robot.arm.moveMotor(Constants.ARM_REVERSE);
     	}    	
 
     // Make this return true when this Command no longer needs to run execute()

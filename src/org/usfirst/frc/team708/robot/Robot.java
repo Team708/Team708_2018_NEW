@@ -220,9 +220,9 @@ public class Robot extends IterativeRobot {
 					(autoMode.equals("Left_SwitchOnly_RobotLocation"))) {
 				
 				SmartDashboard.putString("HERE", "running the switchonly specials");
-				switch(gameData.substring(0,2))
+				switch(gameData.substring(0,1))
 				{
-					case "LL":
+					case "L":
 					{
 						SmartDashboard.putString("Auto State", "L");
 						
@@ -239,7 +239,7 @@ public class Robot extends IterativeRobot {
 					
 						break;
 					}
-					case "RR":
+					case "R":
 					{
 						SmartDashboard.putString("Auto State", "R");				
 						
