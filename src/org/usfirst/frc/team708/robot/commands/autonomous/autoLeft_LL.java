@@ -31,8 +31,9 @@ public class autoLeft_LL extends CommandGroup {
     	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .03, false, 230, 1.6));
 
     	// move arm and tele up as stopping at the white line - continue to the scale    	
-    	addSequential(new ControlArmToScale());
-    	addSequential(new ControlTeleToScale());
+//    	addSequential(new ControlArmToScale());
+//    	addSequential(new ControlTeleToScale());
+    	addSequential(new MoveArmTeleToScaleCG());
 //    	addSequential(new DriveCurvatureToWhiteOrTime(.4, .02, false, 1.0));
 //    	addSequential(new DriveCurvatureToEncoderOrTime(.4, .05, false, 20, 1.0));
     	

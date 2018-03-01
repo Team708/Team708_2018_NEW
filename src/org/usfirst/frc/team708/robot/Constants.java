@@ -61,13 +61,13 @@ public final class Constants {
 	public static final double 	PIVOT_DOWN 					= 0.25;
 	public static final int		ARM_ENC_STARTING_POSITION 	= 200; //700
 	public static final int		ARM_TOLERANCE				= 100;
-	public static final double	ARM_DEADZONE				= 0.6;
+	public static final double	ARM_DEADZONE				= 0.5;
 	public static final int 	SCALE_HEIGHT 				= 220; //1000;	//4000
 	public static final int 	SWITCH_HEIGHT 				= 210;  //2000
 	public static final int 	FEEDER_STATION_HEIGHT 		= 100;  //800
  	public static final int 	GROUND_HEIGHT 				= 100;  //0
-	public static final double 	ARM_FORWARD 					= 0.5;  //1
-	public static final double 	ARM_REVERSE 					= -0.5;  //-1
+	public static final double 	ARM_FORWARD 				= 1.0; 
+	public static final double 	ARM_REVERSE 				= -1.0; 
 	
 	/*
 	 * telescoping
@@ -75,13 +75,13 @@ public final class Constants {
 	public static final double 	TELESCOPING_MOTOR_MIN_SPEED 	= .8;
 	public static final double 	TELESCOPING_MOTOR_MAX_SPEED 	= 1.0;
 	public static final int 	TELE_ENC_STARTING_POSITION 		= 0;
-	public static final double	TELE_DEADZONE 					= .6;  //.4;
-	public static final double 	TELE_FORWARD 					= .05;  //1
-	public static final double 	TELE_REVERSE 					= -0.5; //-.5
+	public static final double	TELE_DEADZONE 					= .6; 
+	public static final double 	TELE_FORWARD 					= 1.0; 
+	public static final double 	TELE_REVERSE 					= -1.0;
 	public static final double	TELE_MAX						= 13200;
-	public static final double	TELE_SCALE_HEIGHT				= 13200;  //3000
+	public static final double	TELE_SCALE_HEIGHT				= 13200; 
 	public static final int		TELE_TOLERANCE					= 100;
-	public static final double	CLIMB_SHIFT_LOW					 = 1.0;
+	public static final double	CLIMB_SHIFT_LOW					= 1.0;
 	/*
 	 * Drivetrain
 	 */
@@ -90,7 +90,7 @@ public final class Constants {
 	public static final double 	DRIVETRAIN_ENCODER_PULSES_PER_REV 	= 256.0;
 	public static final boolean DRIVE_USE_SQUARED_INPUT 			= false;
 	public static final boolean DRIVETRAIN_USE_LEFT_ENCODER			= true; // variable to determine which side encoder is on
-	public static final double  BUTTERFLY_PULSE_TIME					= 0.5;
+	public static final double  BUTTERFLY_PULSE_TIME				= 0.5;
 	
 	// PID Tuning parameters
 	public static final double Kp = 0.0;		// Proportional gain
