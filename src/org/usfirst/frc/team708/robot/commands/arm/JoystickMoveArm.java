@@ -23,17 +23,7 @@ public class JoystickMoveArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	 moveSpeed = OI.operatorGamepad.getAxis(Gamepad.leftStick_Y); 
-
-    	//check if joystick axis is in deadzone. Change movespeed to 0 if it is
-    	if((moveSpeed <= Constants.ARM_DEADZONE && moveSpeed >= -Constants.ARM_DEADZONE) || 
-    	   ((Robot.arm.armDown()) && (moveSpeed <= Constants.ARM_DEADZONE))){
-        	Robot.arm.manualMove(0.0);
-    	}
-    	else {
-        	Robot.arm.manualMove(moveSpeed);
-    	}
-    	
+    	 moveSpeed = OI.operatorGamepad.getAxis(Gamepad.leftStick_Y);     	
 //    	SmartDashboard.putNumber("Arm speed", moveSpeed);	// Encoder reading
     }
 
@@ -48,7 +38,12 @@ public class JoystickMoveArm extends Command {
         	Robot.arm.manualMove(0.0);
         	return true;
     	}
-    	else {
+    	else if ((Robot.arm.getAngle() >= Constants.ARM_MAX) && (moveSpeed > 0)) {
+        	Robot.arm.manualMove(0.0);
+        	return true;
+		}
+		else {
+        	Robot.arm.manualMove(moveSpeed);
         	return false;
     	}
     }

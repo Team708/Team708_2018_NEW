@@ -35,7 +35,6 @@ public class Arm extends Subsystem {
 		armMotorSlave1.follow(armMotorMaster);
 
 		armMotorMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
-
 		armMotorMaster.setSelectedSensorPosition(Constants.ARM_ENC_STARTING_POSITION, 0, 0);
 	}
 	

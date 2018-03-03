@@ -5,6 +5,7 @@ import org.usfirst.frc.team708.robot.RobotMap;
 import org.usfirst.frc.team708.robot.commands.telescope.JoystickMoveTele;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
@@ -70,7 +71,7 @@ public class Telescope extends Subsystem {
    }
    
    public double getEncoderDistance() {
-       return teleMotorMaster.getSensorCollection().getQuadraturePosition();
+       return -teleMotorMaster.getSensorCollection().getQuadraturePosition();
    }
    
    public void resetTeleEncoder() {

@@ -22,7 +22,7 @@ public class MoveArmTeleToScaleCG extends CommandGroup {
 
 
 //    	addSequential(new Send("Moving the arm and tele to scale"));
-    	addParallel(new ControlArmToScale());
+    	addSequential(new ControlArmToScale());
     	addSequential(new ControlTeleToScale());
 //    	addSequential(new Send("done moving arm and tele scale"));    
     }

@@ -17,6 +17,7 @@ public class PneumaticsCube extends Subsystem {
 //	private DoubleSolenoid exampleDoubleSolenoid;
 	private Solenoid intakeSolenoid;
 	private boolean intake_on = false;
+	private boolean clawClosed = false;
 	
 	/**
 	 * Constructor
@@ -42,13 +43,18 @@ public class PneumaticsCube extends Subsystem {
 	    	switch_intake();
 	    }
 	    
+	  public boolean getClawPosition() {
+		  return (clawClosed);
+	  }
 	  public void IntakeOn()
 	    {
+		  clawClosed = true;
 		  intakeSolenoid.set(true);
 	    }
 	  
 	  public void IntakeOff()
 	    {
+		  clawClosed = false;
 		  intakeSolenoid.set(false);
 	    }
 	  
@@ -77,6 +83,7 @@ public class PneumaticsCube extends Subsystem {
 	public void sendToDashboard() {
 
 //		SmartDashboard.putBoolean("In Soleniod", true);
+		SmartDashboard.putBoolean("intake claw closed", getClawPosition());
 
 		if (Constants.DEBUG) {
 		}

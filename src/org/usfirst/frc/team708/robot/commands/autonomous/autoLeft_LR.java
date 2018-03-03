@@ -30,9 +30,8 @@ public class autoLeft_LR extends CommandGroup {
 
     	
     	// drop 1st cube in switch
-    	addSequential(new autoControlTeleUp(.5));
 //    	addSequential(new SqueezeCube());
-    	addSequential(new WaitCommand(2.0));  
+//    	addSequential(new WaitCommand(2.0));  
     	
         addSequential(new Send("In autoLeft_LR -- other SCALE"));
         // move arm&tele down backup towards the scale

@@ -24,8 +24,8 @@ public class MoveArmTeleToGroundCG extends CommandGroup {
 
 
 //    	addSequential(new Send("Moving the arm and tele to ground"));
-    	addParallel(new ControlArmToGround());
     	addSequential(new ControlTeleToGround());
+    	addSequential(new ControlArmToGround());
 //    	addSequential(new Send("done moving arm and tele to ground"));    
     }
     

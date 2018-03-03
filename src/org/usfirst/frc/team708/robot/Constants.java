@@ -60,8 +60,9 @@ public final class Constants {
 	public static final double	PIVOT_UP 					= 1.0;
 	public static final double 	PIVOT_DOWN 					= 0.25;
 	public static final int		ARM_ENC_STARTING_POSITION 	= 200; //700
-	public static final int		ARM_TOLERANCE				= 100;
+	public static final int		ARM_TOLERANCE				= 10;
 	public static final double	ARM_DEADZONE				= 0.5;
+	public static final int		ARM_MAX						= 400;
 	public static final int 	SCALE_HEIGHT 				= 220; //1000;	//4000
 	public static final int 	SWITCH_HEIGHT 				= 210;  //2000
 	public static final int 	FEEDER_STATION_HEIGHT 		= 100;  //800
@@ -78,9 +79,9 @@ public final class Constants {
 	public static final double	TELE_DEADZONE 					= .6; 
 	public static final double 	TELE_FORWARD 					= 1.0; 
 	public static final double 	TELE_REVERSE 					= -1.0;
-	public static final double	TELE_MAX						= 13200;
-	public static final double	TELE_SCALE_HEIGHT				= 13200; 
-	public static final int		TELE_TOLERANCE					= 100;
+	public static final double	TELE_MAX						= 21000;
+	public static final double	TELE_SCALE_HEIGHT				= 21000; 
+	public static final int		TELE_TOLERANCE					= 500;
 	public static final double	CLIMB_SHIFT_LOW					= 1.0;
 	/*
 	 * Drivetrain

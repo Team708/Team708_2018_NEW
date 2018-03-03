@@ -124,10 +124,10 @@ public class OI {
 //		armToFeeder.whenPressed(new ControlArmToFeeder());
 		
 // sue's version - trying to call a command to do both things off the button press
-		armToGround.whenPressed(new MoveArmTeleToGroundCG());
-		armToSwitch.whenPressed(new MoveArmTeleToSwitchCG());
-		armToScale.whenPressed(new MoveArmTeleToScaleCG());		
-		armToFeeder.whenPressed(new MoveArmTeleToFeederCG());
+//		armToGround.whenPressed(new MoveArmTeleToGroundCG());
+//		armToSwitch.whenPressed(new MoveArmTeleToSwitchCG());
+//		armToScale.whenPressed(new MoveArmTeleToScaleCG());		
+//		armToFeeder.whenPressed(new MoveArmTeleToFeederCG());
 		
 		climbLowGear.whileActive(new ShiftClimberLow()); 
 		climbHighGear.whileActive(new ShiftClimberHigh()); 

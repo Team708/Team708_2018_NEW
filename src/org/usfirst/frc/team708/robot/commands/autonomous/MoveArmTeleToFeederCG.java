@@ -23,8 +23,8 @@ public class MoveArmTeleToFeederCG extends CommandGroup {
 
 
 //    	addSequential(new Send("Moving the arm and tele to feeder"));
-    	addParallel(new ControlArmToFeeder());
     	addSequential(new ControlTeleToGround());
+    	addSequential(new ControlArmToFeeder());
 //    	addSequential(new Send("done moving arm and tele to feeder"));
     
     }
