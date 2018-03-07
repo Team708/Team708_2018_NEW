@@ -290,6 +290,9 @@ public class Robot extends IterativeRobot {
         visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
         visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_OFF);
         drivetrain.setBrakeMode(false);
+        
+    	Robot.pneumaticsClimber.forward();
+    	Robot.pneumaticsCube.IntakeOff();
     }
 
     /**

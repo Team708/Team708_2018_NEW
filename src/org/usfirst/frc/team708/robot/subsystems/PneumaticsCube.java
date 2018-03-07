@@ -41,6 +41,7 @@ public class PneumaticsCube extends Subsystem {
 	    	else
 	    		intakeSolenoid.set(true);
 	    	switch_intake();
+	    	clawClosed = !clawClosed;
 	    }
 	    
 	  public boolean getClawPosition() {
@@ -48,13 +49,13 @@ public class PneumaticsCube extends Subsystem {
 	  }
 	  public void IntakeOn()
 	    {
-		  clawClosed = true;
+		  clawClosed = false;
 		  intakeSolenoid.set(true);
 	    }
 	  
 	  public void IntakeOff()
 	    {
-		  clawClosed = false;
+		  clawClosed = true;
 		  intakeSolenoid.set(false);
 	    }
 	  

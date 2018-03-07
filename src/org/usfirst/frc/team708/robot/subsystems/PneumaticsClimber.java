@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PneumaticsClimber extends Subsystem {
 	
 	private DoubleSolenoid climberDoubleSolenoid;
+	private boolean high;
 
 	
 	/**
@@ -36,15 +37,17 @@ public class PneumaticsClimber extends Subsystem {
 	
 	public void reverse(){
 		climberDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
-
+		high = false;
 	}
 	
 	public void forward() {
 		climberDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+		high = true;
 	}
 	
 	public void sendToDashboard() {
 		if (Constants.DEBUG) {
 		}
+		SmartDashboard.putBoolean("Climber High", high);
 	}
 }

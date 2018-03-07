@@ -2,6 +2,7 @@ package org.usfirst.frc.team708.robot.commands.autonomous;
 
 import org.usfirst.frc.team708.robot.commands.drivetrain.*;
 import org.usfirst.frc.team708.robot.commands.intakeCube.*;
+import org.usfirst.frc.team708.robot.Robot;
 import org.usfirst.frc.team708.robot.commands.arm.*;
 import org.usfirst.frc.team708.robot.commands.autonomous.*;
 import org.usfirst.frc.team708.robot.commands.telescope.*;
@@ -41,6 +42,8 @@ public class autoLeft_L_SwitchOnly extends CommandGroup {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.pneumaticsClimber.forward();
+    	Robot.pneumaticsCube.IntakeOn();
     }
 
     // Called repeatedly when this Command is scheduled to run
