@@ -2,6 +2,7 @@ package org.usfirst.frc.team708.robot.commands.autonomous;
 
 import org.usfirst.frc.team708.robot.commands.drivetrain.*;
 import org.usfirst.frc.team708.robot.commands.intakeCube.*;
+import org.usfirst.frc.team708.robot.Robot;
 import org.usfirst.frc.team708.robot.commands.arm.*;
 import org.usfirst.frc.team708.robot.commands.autonomous.*;
 import org.usfirst.frc.team708.robot.commands.telescope.*;
@@ -23,6 +24,8 @@ public class autoLeft_LL extends CommandGroup {
     public autoLeft_LL() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+//    	addSequential(new Robot.pneumaticsCube.IntakeOn()); /*intake open grabber closed*/
+    	
         addSequential(new Send("In autoLeft_LL -- SCALE"));
     	addSequential(new GearShift1());
     	
@@ -40,7 +43,8 @@ public class autoLeft_LL extends CommandGroup {
     	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .6, true, 1));
     	
 //      drop 1st cube in scale 
-		addSequential(new SqueezeCube());
+		addSequential(new SqueezeCube());  //Robot.pneumaticsCube.IntakeOff(); //grabber open intake closed
+		
 //    	addSequential(new WaitCommand(2.0));    	
 
 //        addSequential(new Send("In autoLeft_LL -- SWITCH"));

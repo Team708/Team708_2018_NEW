@@ -22,6 +22,9 @@ public class autoLeft_L_SwitchOnly extends CommandGroup {
     public autoLeft_L_SwitchOnly() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	
+//    	Robot.pneumaticsCube.IntakeOff(); /*intake closed*/
+    	
         addSequential(new Send("In autoLeft_L_SwitchOnly - SWITCH"));
     	addSequential(new GearShift1());
     	
@@ -35,9 +38,7 @@ public class autoLeft_L_SwitchOnly extends CommandGroup {
     	addSequential(new AutoIntakeOut(.5));
 
 
-    	addSequential(new Send("finished"));    	
-    	
-       
+    	addSequential(new Send("finished"));
     }
 
     // Called just before this Command runs the first time

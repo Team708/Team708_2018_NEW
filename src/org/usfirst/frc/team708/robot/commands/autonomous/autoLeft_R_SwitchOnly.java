@@ -2,6 +2,7 @@ package org.usfirst.frc.team708.robot.commands.autonomous;
 
 import org.usfirst.frc.team708.robot.commands.drivetrain.*;
 import org.usfirst.frc.team708.robot.commands.intakeCube.*;
+import org.usfirst.frc.team708.robot.Robot;
 import org.usfirst.frc.team708.robot.commands.arm.*;
 import org.usfirst.frc.team708.robot.commands.autonomous.*;
 import org.usfirst.frc.team708.robot.commands.telescope.*;
@@ -21,6 +22,8 @@ public class autoLeft_R_SwitchOnly extends CommandGroup {
     public autoLeft_R_SwitchOnly() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+//    	Robot.pneumaticsCube.IntakeOff(); /*intake closed*/
+    	
         addSequential(new Send("In autoLeft_R_SwitchOnly - SWITCH"));
     	addSequential(new GearShift1());
     	

@@ -131,6 +131,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putString("robotLocation", robotLocation);
 		SmartDashboard.putString("Auto Mode", autoMode);
 		
+    	Robot.pneumaticsClimber.forward(); /*high gear*/
+    	Robot.pneumaticsCube.IntakeOff(); /*intake closed*/
+    	
 		// if the autoMode is one of the 2 "special modes" - those that run based on the gamedata
 		// run the autoMode based on the state LL LR RL RR AND robotLocation combination
 		if ((autoMode.equals("Right_RobotLocation")) ||
@@ -291,8 +294,8 @@ public class Robot extends IterativeRobot {
         visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_OFF);
         drivetrain.setBrakeMode(false);
         
-    	Robot.pneumaticsClimber.forward();
-    	Robot.pneumaticsCube.IntakeOff();
+    	Robot.pneumaticsClimber.forward(); /*high gear*/
+    	Robot.pneumaticsCube.IntakeOff(); /*intake closed*/
     }
 
     /**
