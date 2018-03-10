@@ -24,7 +24,7 @@ public class autoLeft_LL extends CommandGroup {
     public autoLeft_LL() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-//    	addSequential(new Robot.pneumaticsCube.IntakeOn()); /*intake open grabber closed*/
+    	addSequential(new ReleaseCubeAuto()); /*intake open*/
     	
         addSequential(new Send("In autoLeft_LL -- SCALE"));
     	addSequential(new GearShift1());
@@ -43,12 +43,14 @@ public class autoLeft_LL extends CommandGroup {
     	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .6, true, 1));
     	
 //      drop 1st cube in scale 
-		addSequential(new SqueezeCube());  //Robot.pneumaticsCube.IntakeOff(); //grabber open intake closed
+		addSequential(new SqueezeCubeAuto());  //Robot.pneumaticsCube.IntakeOff(); //grabber open intake closed
 		
 //    	addSequential(new WaitCommand(2.0));    	
 
 //        addSequential(new Send("In autoLeft_LL -- SWITCH"));
         // move arm&tele down backup and turn towards cube
+//    	addSequential(new ShiftClimberLow());  
+
 //		addparallel(new MoveArmTeleToGroundCG());
 //    	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
 //    	addSequential(new DriveCurvatureToEncoderOrTime(-1.0, .9, false, 60, .5));
@@ -80,17 +82,18 @@ public class autoLeft_LL extends CommandGroup {
 //    	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .6, 1));
     	
     	// transfer 3rd cube from intake to grabber
-    	//addSequential(new SqueezeCube());
+    	//addSequential(new ReleaseCubeAuto());
 
     	// Turn and drive towards the scale
 //    	addSequential(new TurnToDegrees(1.0, -100));
 //    	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .7, 1));
+//    	addSequential(new ShiftClimberhigh));  
 
 //		addparallel(new MoveArmTeleToScaleCG());
 //    	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .7, 1));
 
     	// drop 3rd cube in scale
-//    	addSequential(new SqueezeCube());
+//    	addSequential(new SqueezeCubeAuto());
 //    	addSequential(new Send("finished"));
         
     }

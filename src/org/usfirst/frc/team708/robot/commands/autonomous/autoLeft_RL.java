@@ -23,7 +23,7 @@ public class autoLeft_RL extends CommandGroup {
     public autoLeft_RL() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-//    	Robot.pneumaticsCube.IntakeOn(); /*intake open grabber closed*/
+    	addSequential(new ReleaseCubeAuto()); /*intake open*/
     	
         addSequential(new Send("In autoLeft_RL -- SCALE"));
     	addSequential(new GearShift1());

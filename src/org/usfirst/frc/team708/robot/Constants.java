@@ -59,7 +59,7 @@ public final class Constants {
 	public static final double 	PIVOT_ARM_SPROCKET_DIAMETER = 1.8;
 	public static final double	PIVOT_UP 					= 1.0;
 	public static final double 	PIVOT_DOWN 					= 0.25;
-	public static final int		ARM_ENC_STARTING_POSITION 	= 200; //700
+	public static final int		ARM_ENC_STARTING_POSITION 	= 220; //700
 	public static final int		ARM_TOLERANCE				= 25;
 	public static final double	ARM_DEADZONE				= 0.5;
 	public static final int		ARM_MAX						= 345;
