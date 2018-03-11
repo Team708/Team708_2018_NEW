@@ -2,6 +2,7 @@ package org.usfirst.frc.team708.robot.commands.autonomous;
 
 import org.usfirst.frc.team708.robot.commands.drivetrain.*;
 import org.usfirst.frc.team708.robot.commands.intakeCube.*;
+import org.usfirst.frc.team708.robot.Robot;
 import org.usfirst.frc.team708.robot.commands.arm.*;
 import org.usfirst.frc.team708.robot.commands.autonomous.*;
 import org.usfirst.frc.team708.robot.commands.telescope.*;
@@ -21,18 +22,23 @@ public class autoRight_L_SwitchOnly extends CommandGroup {
     public autoRight_L_SwitchOnly() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        addSequential(new Send("In autoLeft_L_SwitchOnly - SWITCH"));
+    	addSequential(new SqueezeCubeAuto()); /*intake closed*/  
+
+    	addSequential(new Send("In autoLeft_L_SwitchOnly - SWITCH"));
     	addSequential(new GearShift1());
     	
        	//drive to the switch
-    	addSequential(new DriveCurvatureForTime(.50, .6, false, 1));
-//    	addSequential(new DriveCurvatureToEncoderOrTime(.5, .6, false, 30, 1));
 
+//       	addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, true, 1));
+
+    	addSequential(new DriveCurvatureToEncoderOrTime(.8, -.8, false, 40, 1));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(82, .8, true, 2));
+
+    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .8, false, -80, 2));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(27, .7, true, 2));
     	
-    	// drop 1st cube in switch
+    	
     	addSequential(new AutoIntakeOut(.5));
-
-
     	addSequential(new Send("finished"));    	
     	
        
@@ -40,6 +46,8 @@ public class autoRight_L_SwitchOnly extends CommandGroup {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+       	Robot.pneumaticsClimber.forward();
+    	Robot.pneumaticsCube.IntakeOn();
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -53,7 +53,7 @@ public class OI {
 	private static final int INTAKE_CUBE_BUTTON_OUT			= Gamepad.button_R_Shoulder;
 	private static final int INTAKE_CUBE_BUTTON_IN			= Gamepad.button_L_Shoulder;
 	private static final int OPERATE_ARM_BUTTON				= Gamepad.leftStick_Y;
-	private static final int OPERATE_TELESCOPE_BUTTON		= Gamepad.rightStick_X;
+	private static final int OPERATE_TELESCOPE_BUTTON		= Gamepad.rightStick_Y;
 
 	private static final int ARM_UP_TO_GROUND_BUTTON		= Gamepad.button_A;
 	private static final int ARM_UP_TO_SWITCH_BUTTON		= Gamepad.button_X;

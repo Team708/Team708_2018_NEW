@@ -454,7 +454,7 @@ public class Drivetrain extends PIDSubsystem {
     	SmartDashboard.putBoolean("gear high", gear_high);					// Brake or Coast
     	SmartDashboard.putBoolean("butterfly", butterfly_on);
     	SmartDashboard.putBoolean("Optical1", isOpticalSensor1White());
-    	SmartDashboard.putNumber("DT Rt Master", rightMaster.getOutputCurrent());
-    	SmartDashboard.putNumber("DT Rt Master", leftMaster.getOutputCurrent());
+//    	SmartDashboard.putNumber("DT Rt Master", rightMaster.getOutputCurrent());
+//    	SmartDashboard.putNumber("DT Lt Master", leftMaster.getOutputCurrent());
     }
 }

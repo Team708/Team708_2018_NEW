@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 	
 public class PneumaticsCube extends Subsystem {
 	
-//	private DoubleSolenoid exampleDoubleSolenoid;
+	private DoubleSolenoid grabberSolenoid;
 	private Solenoid intakeSolenoid;
 	private boolean intake_on = false;
 	private boolean clawClosed = false;
@@ -23,7 +23,7 @@ public class PneumaticsCube extends Subsystem {
 	 * Constructor
 	 */
 	public PneumaticsCube() {
-//		exampleDoubleSolenoid = new DoubleSolenoid(RobotMap.squeezeGrabber, RobotMap.releaseGrabber); //initializes
+		grabberSolenoid = new DoubleSolenoid(RobotMap.squeezeGrabber, RobotMap.releaseGrabber); //initializes
 		intakeSolenoid = new Solenoid(RobotMap.intake);
 		
 		intakeSolenoid.set(false);
@@ -36,10 +36,14 @@ public class PneumaticsCube extends Subsystem {
     }
 	  public void toggleIntake()
 	    {
-	    	if(intakeSolenoid.get() == true)
+	    	if(intakeSolenoid.get() == true) {
+	    		grabberSolenoid.set(Value.kReverse);
 	    		intakeSolenoid.set(false);
-	    	else
+	    	}
+	    	else {
+	    		grabberSolenoid.set(Value.kForward);
 	    		intakeSolenoid.set(true);
+	    	}
 	    	switch_intake();
 	    	clawClosed = !clawClosed;
 	    }
@@ -51,11 +55,13 @@ public class PneumaticsCube extends Subsystem {
 	    {
 		  clawClosed = false;
 		  intakeSolenoid.set(true);
+  		grabberSolenoid.set(Value.kForward);
 	    }
 	  
 	  public void IntakeOff()
 	    {
 		  clawClosed = true;
+  		grabberSolenoid.set(Value.kReverse);
 		  intakeSolenoid.set(false);
 	    }
 	  

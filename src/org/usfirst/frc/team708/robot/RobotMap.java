@@ -80,8 +80,8 @@ public class RobotMap {
 	public static final int shifterLow		= 0; 	//Shifts Drivetrain to Low gear
     public static final int shifterHigh		= 1; 	//Shifts Drivetrain to High gear
     public static final int butterflyShift	= 2;	//Drops Onmi Wheels
-//	public static final int releaseGrabber	= 3;	//Release Grabber
-//	public static final int squeezeGrabber	= 4;	//Squeeze Grabber
+	public static final int releaseGrabber	= 3;	//Release Grabber
+	public static final int squeezeGrabber	= 4;	//Squeeze Grabber
 	public static final int telescopeLow	= 5;	//shifts Telescope to Low Gear
 	public static final int telescopeHigh	= 6;	//Shifts Telescope to High Gear
 	public static final int intake          = 7;

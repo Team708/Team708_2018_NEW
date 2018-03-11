@@ -28,17 +28,18 @@ public class AutoIntakeOut extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.intakeCube.moveMotor(Constants.INTAKE_REVERSE);
+//    	Robot.intakeCube.moveMotor(-.6);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeCube.moveMotor(Constants.INTAKE_REVERSE);
+    	Robot.intakeCube.moveMotor(-.4);
    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	return(isTimedOut());
+//    	return(true);
     }
 
     // Called once after isFinished returns true

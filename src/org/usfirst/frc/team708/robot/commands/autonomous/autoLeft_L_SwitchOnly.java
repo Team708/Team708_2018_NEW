@@ -31,7 +31,7 @@ public class autoLeft_L_SwitchOnly extends CommandGroup {
        	//drive to the switch
 //    	addSequential(new DriveCurvatureForTime(1.0, .6, false, 1.5));
     	addSequential(new DriveStraightToEncoderDistanceOrTime(36, .8, true, 2));
-    	addSequential(new DriveCurvatureToEncoderOrTime(.8, -.5, false, 60, 2));
+    	addSequential(new DriveCurvatureToEncoderOrTime(.8, -.5, false, 58, 2));
 
     	
     	// drop 1st cube in switch

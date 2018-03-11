@@ -87,6 +87,8 @@ public class Robot extends IterativeRobot {
 
 
 	    visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
+    	Robot.pneumaticsCube.IntakeOff(); /*intake open*/
+
 	    
 		sendDashboardSubsystems();		// Sends each subsystem's currently running command to the Smart Dashboard
 			
@@ -132,7 +134,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putString("Auto Mode", autoMode);
 		
     	Robot.pneumaticsClimber.forward(); /*high gear*/
-    	Robot.pneumaticsCube.IntakeOff(); /*intake closed*/
+//    	Robot.pneumaticsCube.IntakeOff(); /*intake closed*/
     	
 		// if the autoMode is one of the 2 "special modes" - those that run based on the gamedata
 		// run the autoMode based on the state LL LR RL RR AND robotLocation combination

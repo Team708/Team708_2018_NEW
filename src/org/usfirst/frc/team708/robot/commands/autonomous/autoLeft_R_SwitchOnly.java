@@ -29,25 +29,23 @@ public class autoLeft_R_SwitchOnly extends CommandGroup {
     	
        	//drive to the switch
     	
-//    	addSequential(new DriveCurvatureForTime(.8, .8, false, 1));
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, true, 1));
+
     	addSequential(new DriveCurvatureToEncoderOrTime(.8, .8, false, 40, 1));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(80, .8, true, 2));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(82, .8, true, 2));
 
-//    	addSequential(new DriveCurvatureForTime(1.0, .8, false, 1));
-//    	addSequential(new DriveCurvatureToEncoderOrTime(.8, .8, false, 60, 1));
-    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.8, false, -75, 2));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(24, .8, true, 2));
-
-    	
-    	// drop 1st cube in switch
+    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.8, false, -80, 2));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(27, .7, true, 3));
+ 	
     	addSequential(new AutoIntakeOut(.5));
-
     	addSequential(new Send("finished"));    	
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+       	Robot.pneumaticsClimber.forward();
+    	Robot.pneumaticsCube.IntakeOn();
     }
 
     // Called repeatedly when this Command is scheduled to run
