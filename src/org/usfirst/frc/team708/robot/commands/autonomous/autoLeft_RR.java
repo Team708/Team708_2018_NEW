@@ -36,19 +36,26 @@ public class autoLeft_RR extends CommandGroup {
 //    	addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, true, 1));
     	
     	// gyro turn to turn 90 degrees
-    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .7, true, 80, 2));
-
-
+//    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .7, true, 80, 2));
+    	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .03, false, 170, 3));
+    	addSequential(new TurnToDegrees(.8, 55));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(165, .8, true, 4));
+    	addSequential(new TurnToDegrees(.8, -80));
+    	addSequential(new ControlArmToScale());
+    	addSequential(new ControlTeleToScale());
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(72, .6, true, 4));
+    	addSequential(new ReleaseCubeAuto());
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(10, .5, false, 1));
 //    	addSequential(new DriveCurvatureToEncoderOrTime(.8, .8, false, 40, 1));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(82, .8, true, 2));
-
-    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.8, false, -85, 2));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(32, .7, true, 3));
- 	
-    	addSequential(new AutoIntakeOut(.5));
-    	addSequential(new Send("finished"));    	
-    	
-    	
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(82, .8, true, 2));
+//
+//    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.8, false, -85, 2));
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(32, .7, true, 3));
+// 	
+//    	addSequential(new AutoIntakeOut(.5));
+//    	addSequential(new Send("finished"));    	
+//    	
+//    	
 //        // Use requires() here to declare subsystem dependencies
 //        // eg. requires(chassis);
 //    	addSequential(new ReleaseCubeAuto()); /*intake open*/

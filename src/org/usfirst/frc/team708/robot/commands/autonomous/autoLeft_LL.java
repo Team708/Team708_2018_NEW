@@ -24,14 +24,14 @@ public class autoLeft_LL extends CommandGroup {
     public autoLeft_LL() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	addSequential(new ReleaseCubeAuto()); /*intake open*/
+    	addSequential(new SqueezeCubeAuto());
     	
         addSequential(new Send("In autoLeft_LL -- SCALE"));
     	addSequential(new GearShift1());
     	
        	//drive to the scale
 //    	addSequential(new DriveCurvatureForTime(1.0, .05, false, 1.8));  //.2 front of switch
-    	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .03, false, 200, 3));
+    	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .02, false, 200, 3));
 
     	// move arm and tele up as stopping at the white line - continue to the scale    	
     	addSequential(new ControlArmToScale());
@@ -40,11 +40,12 @@ public class autoLeft_LL extends CommandGroup {
 //    	addSequential(new DriveCurvatureToWhiteOrTime(.4, .02, false, 1.0));
 //    	addSequential(new DriveCurvatureToEncoderOrTime(.4, .05, false, 20, 1.0));
     	
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .6, true, 1));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .6, true, 2));
     	
 //      drop 1st cube in scale 
-		addSequential(new SqueezeCubeAuto());  //Robot.pneumaticsCube.IntakeOff(); //grabber open intake closed
-		
+		addSequential(new ReleaseCubeAuto());  //Robot.pneumaticsCube.IntakeOff(); //grabber open intake closed
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, false, 1));
+
 //    	addSequential(new WaitCommand(2.0));    	
 
 //        addSequential(new Send("In autoLeft_LL -- SWITCH"));

@@ -23,25 +23,35 @@ public class autoLeft_LR extends CommandGroup {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 //    	addSequential(new ReleaseCubeAuto()); /*intake open*/
-    	addSequential(new SqueezeCubeAuto()); /*intake closed*/  
+    	addSequential(new SqueezeCubeAuto()); 
 
-    	
         addSequential(new Send("In autoLeft_LR - SWITCH"));
     	addSequential(new GearShift1());
     	
+    	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .03, false, 170, 3));
+    	addSequential(new TurnToDegrees(.8, 55));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(165, .8, true, 4));
+    	addSequential(new TurnToDegrees(.8, -80));
+    	addSequential(new ControlArmToScale());
+    	addSequential(new ControlTeleToScale());
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(72, .6, true, 4));
+    	addSequential(new ReleaseCubeAuto());
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(10, .5, false, 1));
+
+    	
        	//drive to the switch
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(120, .8, true, 2));
-
-    	addSequential(new DriveCurvatureToDegreesOrTime(1.0, .85, true, 80, 2));
-
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .7, true, .5));
-
-    	// drop 1st cube in switch
-    	addSequential(new AutoIntakeOut(.5));
-    	
-    	
-    	addSequential(new Send("finished"));
-
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(120, .8, true, 2));
+//
+//    	addSequential(new DriveCurvatureToDegreesOrTime(1.0, .85, true, 80, 2));
+//
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .7, true, .5));
+//
+//    	// drop 1st cube in switch
+//    	addSequential(new AutoIntakeOut(.5));
+//    	
+//    	
+//    	addSequential(new Send("finished"));
+//
 
 //    	addSequential(new SqueezeCube());
 //    	addSequential(new WaitCommand(2.0));  

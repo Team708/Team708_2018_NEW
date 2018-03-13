@@ -87,7 +87,7 @@ public class Robot extends IterativeRobot {
 
 
 	    visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
-    	Robot.pneumaticsCube.IntakeOff(); /*intake open*/
+    	Robot.pneumaticsCube.IntakeOff(); /*intake open*/ //Switch to Intakeoff during practice field
 
 	    
 		sendDashboardSubsystems();		// Sends each subsystem's currently running command to the Smart Dashboard
@@ -297,7 +297,7 @@ public class Robot extends IterativeRobot {
         drivetrain.setBrakeMode(false);
         
     	Robot.pneumaticsClimber.forward(); /*high gear*/
-    	Robot.pneumaticsCube.IntakeOff(); /*intake closed*/
+    	Robot.pneumaticsCube.IntakeOn(); /*intake closed*/
     }
 
     /**

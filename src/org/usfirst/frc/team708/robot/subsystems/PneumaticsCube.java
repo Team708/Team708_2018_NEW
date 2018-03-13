@@ -23,7 +23,7 @@ public class PneumaticsCube extends Subsystem {
 	 * Constructor
 	 */
 	public PneumaticsCube() {
-		grabberSolenoid = new DoubleSolenoid(RobotMap.squeezeGrabber, RobotMap.releaseGrabber); //initializes
+		grabberSolenoid = new DoubleSolenoid(RobotMap.releaseGrabber, RobotMap.squeezeGrabber); //initializes
 		intakeSolenoid = new Solenoid(RobotMap.intake);
 		
 		intakeSolenoid.set(false);
@@ -36,13 +36,13 @@ public class PneumaticsCube extends Subsystem {
     }
 	  public void toggleIntake()
 	    {
-	    	if(intakeSolenoid.get() == true) {
-	    		grabberSolenoid.set(Value.kReverse);
-	    		intakeSolenoid.set(false);
+	    	if(intakeSolenoid.get() == false) {
+	    		grabberSolenoid.set(Value.kReverse);  // kReverse
+	    		intakeSolenoid.set(true);
 	    	}
 	    	else {
-	    		grabberSolenoid.set(Value.kForward);
-	    		intakeSolenoid.set(true);
+	    		grabberSolenoid.set(Value.kForward);  // kForward
+	    		intakeSolenoid.set(false);
 	    	}
 	    	switch_intake();
 	    	clawClosed = !clawClosed;
@@ -54,7 +54,7 @@ public class PneumaticsCube extends Subsystem {
 	  public void IntakeOn()
 	    {
 		  clawClosed = false;
-		  intakeSolenoid.set(true);
+		  intakeSolenoid.set(false);
   		grabberSolenoid.set(Value.kForward);
 	    }
 	  
@@ -62,7 +62,7 @@ public class PneumaticsCube extends Subsystem {
 	    {
 		  clawClosed = true;
   		grabberSolenoid.set(Value.kReverse);
-		  intakeSolenoid.set(false);
+		  intakeSolenoid.set(true);
 	    }
 	  
 	    //Activate Butterfly Solenoid for a set duration

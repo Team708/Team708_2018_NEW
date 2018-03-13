@@ -23,14 +23,12 @@ public class autoLeft_RL extends CommandGroup {
     public autoLeft_RL() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	addSequential(new ReleaseCubeAuto()); /*intake open*/
+    	addSequential(new SqueezeCubeAuto()); /*intake open*/
     	
         addSequential(new Send("In autoLeft_RL -- SCALE"));
     	addSequential(new GearShift1());
-    	
-       	//drive to the scale
-//    	addSequential(new DriveCurvatureForTime(1.0, .05, false, 1.8));  //.2 front of switch
-    	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .03, false, 200, .3));
+    	    	
+    	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .02, false, 200, 3));
 
     	// move arm and tele up as stopping at the white line - continue to the scale    	
     	addSequential(new ControlArmToScale());
@@ -39,10 +37,27 @@ public class autoLeft_RL extends CommandGroup {
 //    	addSequential(new DriveCurvatureToWhiteOrTime(.4, .02, false, 1.0));
 //    	addSequential(new DriveCurvatureToEncoderOrTime(.4, .05, false, 20, 1.0));
     	
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .6, true, 1));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .6, true, 2));
     	
 //      drop 1st cube in scale 
-		addSequential(new SqueezeCube());
+		addSequential(new ReleaseCubeAuto());
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, false, 1));
+
+       	//drive to the scale
+//    	addSequential(new DriveCurvatureForTime(1.0, .05, false, 1.8));  //.2 front of switch
+//    	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .03, false, 200, .3));
+//
+//    	// move arm and tele up as stopping at the white line - continue to the scale    	
+//    	addSequential(new ControlArmToScale());
+//    	addSequential(new ControlTeleToScale());
+////    	addSequential(new MoveArmTeleToScaleCG());
+////    	addSequential(new DriveCurvatureToWhiteOrTime(.4, .02, false, 1.0));
+////    	addSequential(new DriveCurvatureToEncoderOrTime(.4, .05, false, 20, 1.0));
+//    	
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .6, true, 1));
+//    	
+////      drop 1st cube in scale 
+//		addSequential(new SqueezeCube());
 //    	addSequential(new WaitCommand(2.0));
 
 //        addSequential(new Send("In autoLeft_RL -- OTHER SWITCH"));    	
