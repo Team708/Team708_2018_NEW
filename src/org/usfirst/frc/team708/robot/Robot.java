@@ -117,6 +117,7 @@ public class Robot extends IterativeRobot {
         visionProcessor.setNTInfo("ledMode", Constants.VISION_LED_OFF);
         visionProcessor.setNTInfo("camMode", Constants.VISION_PROCESSING_ON);
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		 drivetrain.setBrakeMode(true);
 		
 		//original dashboard code
 //    	autonomousCommand = (Command)autonomousMode.getSelected();

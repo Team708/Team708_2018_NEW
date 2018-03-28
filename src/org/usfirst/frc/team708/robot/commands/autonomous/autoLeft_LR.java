@@ -29,39 +29,42 @@ public class autoLeft_LR extends CommandGroup {
     	addSequential(new ShiftClimberHigh());
     	
        	// drive to the scale
-    	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .03, false, 170, 3));
+    	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .03, false, 170, 3));   	
     	addSequential(new TurnToDegrees(.8, 55));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(165, .8, true, 4));
+       	addSequential(new DriveStraightToEncoderDistanceOrTime(165, .8, true, 4));	
     	addSequential(new TurnToDegrees(.8, -80));
     	
     	// move arm and tele up and continue to the scale    	
-    	addSequential(new ControlArmToScale());
+    	addParallel(new ControlArmToScale());
     	addSequential(new ControlTeleToScale());
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(72, .6, true, 4));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .6, true, 4));
     	
     	// drop 1st cube in scale 
     	addSequential(new ReleaseCubeAuto());
-		addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, false, 1));
+    	addSequential(new WaitCommand(1.0));
+		addSequential(new DriveStraightToEncoderDistanceOrTime(30, .6, false, 1));
 		
 		// turn towards the cubes and get ready to intake
-    	addParallel(new ControlArmToGround());
-    	addSequential(new TurnToDegrees(1.0, -150));
-    
+		addSequential(new ControlTeleToGround());
+		addSequential(new ControlArmToGround());
+    	addSequential(new TurnToDegrees(1.0, -145)); //maybe change to 140?
+    	
     	// vision track the cube and intake
-    	addSequential(new FindCube());
-    	addParallel(new AutoIntakeIn(2.0));    	
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .8, true, 2));
+//    	addSequential(new FindCube());
+    	addParallel(new AutoIntakeIn(3.0));    	
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .8, true, 3));
     	
     	// place cube into the grabber
     	addSequential(new SqueezeCubeAuto());
-    	
+    	addSequential(new TurnToDegrees(1.0, 140));
     	// turn the robot and get ready for scale
-    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, .8, false, 170, 2));
+//    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.9, false, -170, 2));
+    	
     	addSequential(new ControlArmToScale());
     	addSequential(new ControlTeleToScale());
-    	
-    	// drive to the scale
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(12, .8, 1));
+//    	
+//    	// drive to the scale
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(36, .8, 1));
     	addSequential(new ReleaseCubeAuto());
 
     }

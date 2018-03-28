@@ -37,25 +37,29 @@ public class autoLeft_RR extends CommandGroup {
     	// move arm and tele up and continue to the scale    	
     	addParallel(new ControlArmToScale());
     	addSequential(new ControlTeleToScale());
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(72, .6, true, 4));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .6, true, 4));
     	
     	// drop 1st cube in scale 
     	addSequential(new ReleaseCubeAuto());
- 		addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, false, 1));
+    	addSequential(new WaitCommand(1.0));
+		addSequential(new DriveStraightToEncoderDistanceOrTime(30, .6, false, 1));
 		
 		// turn towards the cubes and get ready to intake
-    	addParallel(new ControlArmToGround());
-    	addSequential(new TurnToDegrees(1.0, -150));
-
-    	// vision track the cube and intake
-    	addSequential(new FindCube());
-    	addParallel(new AutoIntakeIn(2.0));    	
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .8, true, 2));
+		addSequential(new ControlTeleToGround());
+		addSequential(new ControlArmToGround());
+    	addSequential(new TurnToDegrees(1.0, -145));
     	
-    	// drop 2nd cube into the switch 
+    	// vision track the cube and intake
+//    	addSequential(new FindCube());
+    	addParallel(new AutoIntakeIn(2.0));    	
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .8, true, 2));
+    	
+//    	// drop 2nd cube into the switch
+    	addSequential(new ReleaseCubeAuto());
     	addSequential(new ControlArmToSwitch());
     	addSequential(new DriveStraightToEncoderDistanceOrTime(12, .8, true, 1));
     	addSequential(new AutoIntakeOut(.5));
+
     }
 
     // Called just before this Command runs the first time
