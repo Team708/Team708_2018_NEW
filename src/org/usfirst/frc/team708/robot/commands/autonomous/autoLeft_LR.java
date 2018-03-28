@@ -26,6 +26,7 @@ public class autoLeft_LR extends CommandGroup {
     	addSequential(new SqueezeCubeAuto());
         addSequential(new Send("In autoLeft_LR - SWITCH"));
     	addSequential(new GearShift1());
+    	addSequential(new ShiftClimberHigh());
     	
        	// drive to the scale
     	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .03, false, 170, 3));

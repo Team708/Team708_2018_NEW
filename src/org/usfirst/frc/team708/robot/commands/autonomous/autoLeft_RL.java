@@ -24,9 +24,9 @@ public class autoLeft_RL extends CommandGroup {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	addSequential(new SqueezeCubeAuto()); /*intake open*/
-    	
-        addSequential(new Send("In autoLeft_RL -- SCALE"));
+    	addSequential(new Send("In autoLeft_RL -- SCALE"));
     	addSequential(new GearShift1());
+    	addSequential(new ShiftClimberHigh());
      
     	//drive to the scale
     	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .02, false, 200, 3));
