@@ -24,79 +24,36 @@ public class autoLeft_LL extends CommandGroup {
     public autoLeft_LL() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	addSequential(new SqueezeCubeAuto());
     	
-        addSequential(new Send("In autoLeft_LL -- SCALE"));
+    	addSequential(new SqueezeCubeAuto());
     	addSequential(new GearShift1());
     	
-       	//drive to the scale
-//    	addSequential(new DriveCurvatureForTime(1.0, .05, false, 1.8));  //.2 front of switch
+       	// drive to the scale
     	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .02, false, 200, 3));
 
-    	// move arm and tele up as stopping at the white line - continue to the scale    	
-    	addSequential(new ControlArmToScale());
+    	// move arm and tele up and continue to the scale    	
+    	addParallel(new ControlArmToScale());
     	addSequential(new ControlTeleToScale());
-//    	addSequential(new MoveArmTeleToScaleCG());
-//    	addSequential(new DriveCurvatureToWhiteOrTime(.4, .02, false, 1.0));
-//    	addSequential(new DriveCurvatureToEncoderOrTime(.4, .05, false, 20, 1.0));
-    	
     	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .6, true, 2));
     	
-//      drop 1st cube in scale 
-		addSequential(new ReleaseCubeAuto());  //Robot.pneumaticsCube.IntakeOff(); //grabber open intake closed
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, false, 1));
-
-//    	addSequential(new WaitCommand(2.0));    	
-
-//        addSequential(new Send("In autoLeft_LL -- SWITCH"));
-        // move arm&tele down backup and turn towards cube
-//    	addSequential(new ShiftClimberLow());  
-
-//		addparallel(new MoveArmTeleToGroundCG());
-//    	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
-//    	addSequential(new DriveCurvatureToEncoderOrTime(-1.0, .9, false, 60, .5));
-//    	addSequential(new TurnToDegrees(1.0, 90));
-
-//    	addSequential(new FindCube());
-
-    	// run intake and drive to 2nd cube until intake sensor triggers
-// 		addParallel(new AutoIntakeIn(1);    	
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(80, .6, 1));
-	
-    	// drop off 2nd cube in switch
-    	//addparallel MoveArmTeleToSwitchCG()
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, 1));
-    	//deploy addSequential(new AutoIntakeOut(.1));
+    	// drop 1st cube in scale 
+		addSequential(new ReleaseCubeAuto());
+		addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, false, 1));
+		
+		// turn towards the cubes and get ready to intake
+		addParallel(new ControlArmToGround());
+    	addSequential(new TurnToDegrees(1.0, 150));
     	
-//        addSequential(new Send("In autoLeft_LL -- SCALE2")); 
-        // move arm&tele down backup and turn towards cube
-//		addparallel(new MoveArmTeleToGroundCG());
-//    	addSequential(new DriveCurvatureForTime(-1.0, -.9, false, .4));
-//    	addSequential(new DriveCurvatureToEncoderOrTime(-1.0, -.9, false, 60, .4));
+    	// vision track the cube and intake
+    	addSequential(new FindCube());
+    	addParallel(new AutoIntakeIn(2.0));    	
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .8, true, 2));
     	
-//    	addSequential(new TurnToDegrees(1.0, 90));    	
-    	
-//    	addSequential(new FindCube());
-
-    	// run intake and drive to 3rd cube until intake sensor triggers
-// 		addParallel(new AutoIntakeIn(1);    	
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .6, 1));
-    	
-    	// transfer 3rd cube from intake to grabber
-    	//addSequential(new ReleaseCubeAuto());
-
-    	// Turn and drive towards the scale
-//    	addSequential(new TurnToDegrees(1.0, -100));
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .7, 1));
-//    	addSequential(new ShiftClimberhigh));  
-
-//		addparallel(new MoveArmTeleToScaleCG());
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .7, 1));
-
-    	// drop 3rd cube in scale
-//    	addSequential(new SqueezeCubeAuto());
-//    	addSequential(new Send("finished"));
-        
+    	// drop 2nd cube into the switch 
+    	addSequential(new ControlArmToSwitch());
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(12, .8, true, 1));
+    	addSequential(new AutoIntakeOut(.5));
+   
     }
 
     // Called just before this Command runs the first time

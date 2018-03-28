@@ -100,8 +100,8 @@ public class OI {
 		
 		highGearOn.whenPressed(new GearShift2());
 		lowGearOn.whenPressed(new GearShift1());
-		highGearOn.whenPressed(new ShiftClimberLow());
-		lowGearOn.whenPressed(new ShiftClimberHigh());
+		climbHighGear.whenPressed(new ShiftClimberLow());
+		climbLowGear.whenPressed(new ShiftClimberHigh());
 
 		breakOn.whenPressed(new ToggleBrakeMode());
 		ledToggle.whenPressed(new ToggleLEDMode());

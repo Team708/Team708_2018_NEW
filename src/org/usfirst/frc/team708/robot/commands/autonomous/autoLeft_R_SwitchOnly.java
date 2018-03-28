@@ -23,8 +23,6 @@ public class autoLeft_R_SwitchOnly extends CommandGroup {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	addSequential(new ReleaseCubeAuto()); /*intake closed*/
-    	
-        addSequential(new Send("In autoLeft_R_SwitchOnly - SWITCH"));
     	addSequential(new GearShift1());
     	
        	//drive to the switch

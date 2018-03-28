@@ -27,7 +27,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is a drivetrain subsystem that uses PID to drive straight.
- * @author Nam Tran & Victor Lourng & Thomas Zhao
+ * @author Nam Tran & Thomas Zhao & Viet Tran
  */
 
 public class Drivetrain extends PIDSubsystem {

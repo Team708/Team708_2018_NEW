@@ -24,8 +24,6 @@ public class autoLeft_L_SwitchOnly extends CommandGroup {
         // eg. requires(chassis);
     	
     	addSequential(new ReleaseCubeAuto()); /*intake closed*/  
-    	
-        addSequential(new Send("In autoLeft_L_SwitchOnly - SWITCH"));
     	addSequential(new GearShift1());
     	
        	//drive to the switch

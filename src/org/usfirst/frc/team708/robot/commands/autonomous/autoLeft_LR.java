@@ -22,76 +22,47 @@ public class autoLeft_LR extends CommandGroup {
     public autoLeft_LR() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-//    	addSequential(new ReleaseCubeAuto()); /*intake open*/
-    	addSequential(new SqueezeCubeAuto()); 
-
+    	
+    	addSequential(new SqueezeCubeAuto());
         addSequential(new Send("In autoLeft_LR - SWITCH"));
     	addSequential(new GearShift1());
     	
+       	// drive to the scale
     	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .03, false, 170, 3));
     	addSequential(new TurnToDegrees(.8, 55));
     	addSequential(new DriveStraightToEncoderDistanceOrTime(165, .8, true, 4));
     	addSequential(new TurnToDegrees(.8, -80));
+    	
+    	// move arm and tele up and continue to the scale    	
     	addSequential(new ControlArmToScale());
     	addSequential(new ControlTeleToScale());
     	addSequential(new DriveStraightToEncoderDistanceOrTime(72, .6, true, 4));
+    	
+    	// drop 1st cube in scale 
     	addSequential(new ReleaseCubeAuto());
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(10, .5, false, 1));
+		addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, false, 1));
+		
+		// turn towards the cubes and get ready to intake
+    	addParallel(new ControlArmToGround());
+    	addSequential(new TurnToDegrees(1.0, -150));
+    
+    	// vision track the cube and intake
+    	addSequential(new FindCube());
+    	addParallel(new AutoIntakeIn(2.0));    	
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(50, .8, true, 2));
+    	
+    	// place cube into the grabber
+    	addSequential(new SqueezeCubeAuto());
+    	
+    	// turn the robot and get ready for scale
+    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, .8, false, 170, 2));
+    	addSequential(new ControlArmToScale());
+    	addSequential(new ControlTeleToScale());
+    	
+    	// drive to the scale
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(12, .8, 1));
+    	addSequential(new ReleaseCubeAuto());
 
-    	
-       	//drive to the switch
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(120, .8, true, 2));
-//
-//    	addSequential(new DriveCurvatureToDegreesOrTime(1.0, .85, true, 80, 2));
-//
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .7, true, .5));
-//
-//    	// drop 1st cube in switch
-//    	addSequential(new AutoIntakeOut(.5));
-//    	
-//    	
-//    	addSequential(new Send("finished"));
-//
-
-//    	addSequential(new SqueezeCube());
-//    	addSequential(new WaitCommand(2.0));  
-    	
-//        addSequential(new Send("In autoLeft_LR -- other SCALE"));
-        // move arm&tele down backup towards the scale
-//		addparallel(new MoveArmTeleToGroundCG());
-//    	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
-//    	addSequential(new DriveCurvatureToEncoderOrTime(-1.0, .9, false, 40, .5));
-    	
-    	
-//       	addSequential(new FindCube());
-       	    	
-    	// run intake and drive to 2nd cube until intake sensor triggers
-// 		addParallel(new AutoIntakeIn(1); 
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .6, 3));
-    	
-    	// transfer cube from intake to grabber
-    	//addSequential(new SqueezeCube());
- 
-    	// backup so that robot can drive through alley over the bump to opposite field and stop
-//    	addSequential(new DriveCurvatureForTime(-1.0, .9, false, .5));
-//    	addSequential(new DriveCurvatureToEncoderOrTime(-1.0, .9, false, 40, .5));
-    	
-    	// drive to the far end of switch to find the 2nd cube
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(45, .8, true, 1));
-//    	addSequential(new ActivateButterfly());  //omni on
-//    	addSequential(new TurnToDegrees(1.0, 38));
-//
-//    	addSequential(new ActivateButterfly());//omni off
-
-
-//		addparallel(new MoveArmTeleToScaleCG());
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .7, 1));
-
-    	// drop 2nd cube in scale
-//    	addSequential(new SqueezeCube());
-//    	addSequential(new Send("finished"));    	
-    	
-       
     }
 
     // Called just before this Command runs the first time
