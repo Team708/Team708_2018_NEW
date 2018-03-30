@@ -53,19 +53,20 @@ public class autoLeft_LR extends CommandGroup {
 //    	addSequential(new FindCube());
     	addParallel(new AutoIntakeIn(3.0));    	
     	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .8, true, 3));
+    	addSequential(new SqueezeCubeAuto());
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(12, .7, false, 1));
     	
     	// place cube into the grabber
-    	addSequential(new SqueezeCubeAuto());
-    	addSequential(new TurnToDegrees(1.0, 140));
-    	// turn the robot and get ready for scale
-//    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.9, false, -170, 2));
-    	
-    	addSequential(new ControlArmToScale());
-    	addSequential(new ControlTeleToScale());
+//    	addSequential(new TurnToDegrees(1.0, 140));
+//    	// turn the robot and get ready for scale
+////    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.9, false, -170, 2));
 //    	
-//    	// drive to the scale
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(36, .8, 1));
-    	addSequential(new ReleaseCubeAuto());
+//    	addSequential(new ControlArmToScale());
+//    	addSequential(new ControlTeleToScale());
+////    	
+////    	// drive to the scale
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(36, .8, 1));
+//    	addSequential(new ReleaseCubeAuto());
 
     }
 

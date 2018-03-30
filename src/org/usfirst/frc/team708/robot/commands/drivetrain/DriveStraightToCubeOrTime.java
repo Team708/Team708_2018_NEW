@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveStraightToEncoderDistanceOrTime extends Command {
+public class DriveStraightToCubeOrTime extends Command {
 
 	private double 		targetDistance;
 	private final double rotate = 0.0;
@@ -18,15 +18,15 @@ public class DriveStraightToEncoderDistanceOrTime extends Command {
 	
 	private boolean goForward;
 	
-    public DriveStraightToEncoderDistanceOrTime(double distance, double maxTime) {
+    public DriveStraightToCubeOrTime(double distance, double maxTime) {
     	this(distance, Constants.DRIVE_MOTOR_MAX_SPEED, maxTime);
     }
     
-    public DriveStraightToEncoderDistanceOrTime(double distance, double speed, double maxTime) {
+    public DriveStraightToCubeOrTime(double distance, double speed, double maxTime) {
     	this(distance, speed, true, maxTime);
     }
     
-    public DriveStraightToEncoderDistanceOrTime(double distance, double speed, boolean goForward, double maxTime) {
+    public DriveStraightToCubeOrTime(double distance, double speed, boolean goForward, double maxTime) {
     	// Use requires() here to declare subsystem dependencies
     	requires(Robot.drivetrain);
     	
@@ -62,10 +62,9 @@ public class DriveStraightToEncoderDistanceOrTime extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         if(goForward) {
-        	return (Robot.drivetrain.getEncoderDistance2() >= targetDistance) || isTimedOut() || Robot.intakeCube.hasCube();
-        } 
-        else {
-        	return (Robot.drivetrain.getEncoderDistance2() <= targetDistance) || isTimedOut() || Robot.intakeCube.hasCube();
+        	return (Robot.drivetrain.getEncoderDistance2() >= targetDistance) || isTimedOut();
+        } else {
+        	return (Robot.drivetrain.getEncoderDistance2() <= targetDistance) || isTimedOut();
         }
     }
 

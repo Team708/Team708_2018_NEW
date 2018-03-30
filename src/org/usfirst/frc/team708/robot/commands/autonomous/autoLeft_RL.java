@@ -48,21 +48,22 @@ public class autoLeft_RL extends CommandGroup {
     	
     	// vision track the cube and intake
 //    	addSequential(new FindCube());
-    	addParallel(new AutoIntakeIn(3.0));    	
+    	addParallel(new AutoIntakeIn(4.0));    	
     	addSequential(new DriveStraightToEncoderDistanceOrTime(33, .7, true, 3));
-    	
-    	// place cube into the grabber
     	addSequential(new SqueezeCubeAuto());
-    	addSequential(new TurnToDegrees(1.0, -140));
-    	// turn the robot and get ready for scale
-//    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.9, false, -170, 2));
-    	
-    	addSequential(new ControlArmToScale());
-    	addSequential(new ControlTeleToScale());
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(12, .7, false, 1));
+
+    	// place cube into the grabber
+//    	addSequential(new TurnToDegrees(1.0, -140));
+//    	// turn the robot and get ready for scale
+////    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.9, false, -170, 2));
 //    	
-//    	// drive to the scale
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(60, .8, 1));
-    	addSequential(new ReleaseCubeAuto());
+//    	addSequential(new ControlArmToScale());
+//    	addSequential(new ControlTeleToScale());
+////    	
+////    	// drive to the scale
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(60, .8, 1));
+//    	addSequential(new ReleaseCubeAuto());
     }
 
     // Called just before this Command runs the first time
