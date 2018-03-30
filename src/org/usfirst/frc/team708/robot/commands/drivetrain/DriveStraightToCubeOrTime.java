@@ -2,7 +2,7 @@ package org.usfirst.frc.team708.robot.commands.drivetrain;
 
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.Robot;
-
+import org.usfirst.frc.team708.robot.subsystems.IntakeCube;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -62,9 +62,9 @@ public class DriveStraightToCubeOrTime extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         if(goForward) {
-        	return (Robot.drivetrain.getEncoderDistance2() >= targetDistance) || isTimedOut();
+        	return (Robot.drivetrain.getEncoderDistance2() >= targetDistance) || isTimedOut() || Robot.intakeCube.hasCube();
         } else {
-        	return (Robot.drivetrain.getEncoderDistance2() <= targetDistance) || isTimedOut();
+        	return (Robot.drivetrain.getEncoderDistance2() <= targetDistance) || isTimedOut() || Robot.intakeCube.hasCube();
         }
     }
 

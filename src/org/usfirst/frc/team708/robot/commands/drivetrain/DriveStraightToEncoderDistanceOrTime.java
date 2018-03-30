@@ -62,10 +62,10 @@ public class DriveStraightToEncoderDistanceOrTime extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         if(goForward) {
-        	return (Robot.drivetrain.getEncoderDistance2() >= targetDistance) || isTimedOut() || Robot.intakeCube.hasCube();
+        	return (Robot.drivetrain.getEncoderDistance2() >= targetDistance) || isTimedOut();
         } 
         else {
-        	return (Robot.drivetrain.getEncoderDistance2() <= targetDistance) || isTimedOut() || Robot.intakeCube.hasCube();
+        	return (Robot.drivetrain.getEncoderDistance2() <= targetDistance) || isTimedOut();
         }
     }
 
