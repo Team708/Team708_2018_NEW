@@ -128,7 +128,7 @@ public class Robot extends IterativeRobot {
     	autonomousCommand = (Command)autonomousMode.getSelected();
     	robotLocation = autonomousCommand.getName().substring(0,1); 
     	autoMode = autonomousCommand.getName();
-        
+
     	
 		SmartDashboard.putString("gameData", gameData);
 		SmartDashboard.putString("robotLocation", robotLocation);

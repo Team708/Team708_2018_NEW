@@ -25,6 +25,7 @@ public class autoLeft_LL extends CommandGroup {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	
+    	
     	addSequential(new SqueezeCubeAuto());
     	addSequential(new GearShift1());
     	addSequential(new ShiftClimberHigh());

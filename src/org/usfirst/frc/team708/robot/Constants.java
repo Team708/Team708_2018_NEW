@@ -60,10 +60,10 @@ public final class Constants {
 	public static final double	PIVOT_UP 					= 1.0;
 	public static final double 	PIVOT_DOWN 					= 0.25;
 	public static final int		ARM_ENC_STARTING_POSITION 	= 220; //700
-	public static final int		ARM_TOLERANCE				= 25;
+	public static final int		ARM_TOLERANCE				= 15;
 	public static final double	ARM_DEADZONE				= 0.5;
 	public static final int		ARM_MAX						= 345;
-	public static final int 	SCALE_HEIGHT 				= 310; //1000;	//4000
+	public static final int 	SCALE_HEIGHT 				= 300; //1000;	//4000
 	public static final int 	SWITCH_HEIGHT 				= 220;  //2000
 	public static final int 	FEEDER_STATION_HEIGHT 		= 150;  //800
  	public static final int 	GROUND_HEIGHT 				= 0;  //0
