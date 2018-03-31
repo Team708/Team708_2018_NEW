@@ -346,16 +346,16 @@ public class Robot extends IterativeRobot {
      */
     private void queueAutonomousModes() {
     	
-    	autonomousMode.addObject("Test Auto 1", null);
+//    	autonomousMode.addObject("Test Auto 1", null);
     	autonomousMode.addObject("Do Nothing", new DoNothing());
 
-    	autonomousMode.addObject("Drive in Square", 		new DriveInSquare());
+//    	autonomousMode.addObject("Drive in Square", 		new DriveInSquare());
     	autonomousMode.addObject("Drive encoder distance", 	new driveDistanceEncoder());
-    	autonomousMode.addObject("Curvature Drive", 		new driveCurvatureForTime());
-    	autonomousMode.addObject("Left RobotLocation", 		new Left_RobotLocation());
-    	autonomousMode.addObject("Right RobotLocation", 	new Right_RobotLocation());
-    	autonomousMode.addObject("Left SwitchOnlyt RobotLocation", 		new Left_SwitchOnly_RobotLocation());
-    	autonomousMode.addObject("Right SwitchOnly RobotLocation", 		new Left_SwitchOnly_RobotLocation());
+//    	autonomousMode.addObject("Curvature Drive", 		new driveCurvatureForTime());
+    	autonomousMode.addObject("Left Robot Location", 		new Left_RobotLocation());
+//    	autonomousMode.addObject("Right Robot Location", 	new Right_RobotLocation());
+    	autonomousMode.addObject("Left Switch Only RobotLocation", 		new Left_SwitchOnly_RobotLocation());
+//    	autonomousMode.addObject("Right Switch Only RobotLocation", 		new Left_SwitchOnly_RobotLocation());
 
 
     	SmartDashboard.putData("Autonomous Selection", autonomousMode);    	   	

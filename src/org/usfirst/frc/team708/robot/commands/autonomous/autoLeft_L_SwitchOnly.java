@@ -33,18 +33,20 @@ public class autoLeft_L_SwitchOnly extends CommandGroup {
 
     	
     	// drop 1st cube in switch
-    	addSequential(new AutoIntakeOut(.5));
+    	addSequential(new AutoIntakeOut(1.0));
     	
     	// pull back and face the center cubes
     	addSequential(new DriveCurvatureToDegreesOrTime(-.8, -.6, false, -40, 1));
-    	addSequential(new TurnToDegrees(.8, 50));
+    	addSequential(new TurnToDegrees(.8, 65));
     	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .8, false, 1));
 
-    	
+    
+    	addSequential(new FindCube(2.0));
+
     	// grab 2nd cube from the center
 		addSequential(new ControlArmToGround());
     	addParallel(new AutoIntakeIn(3.0));  
-    	addSequential(new DriveStraightToCubeOrTime(26, .6, true, 3));
+    	addSequential(new DriveStraightToCubeOrTime(30, .6, true, 3));
 
     	// Moving robot to the switch
 		addSequential(new ControlArmToSwitch());

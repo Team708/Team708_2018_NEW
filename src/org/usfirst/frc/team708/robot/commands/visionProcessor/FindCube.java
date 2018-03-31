@@ -9,10 +9,14 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class FindCube extends Command {
 	
-    public FindCube() {
+	private double maxTime;
+
+    public FindCube(double maxTime)
+    {
         // Use requires() here to declare subsystem dependencies
 //        requires(Robot.visionProcessor);
 //        requires(Robot.drivetrain);
+    	this.setTimeout(maxTime);
     }
 
     // Called just before this Command runs the first time
@@ -31,7 +35,7 @@ public class FindCube extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.visionProcessor.isCentered();
+        return Robot.visionProcessor.isCentered() || isTimedOut();
     }
 
     // Called once after isFinished returns true

@@ -37,7 +37,7 @@ public class autoLeft_RR extends CommandGroup {
     	// move arm and tele up and continue to the scale    	
     	addParallel(new ControlArmToScale());
     	addSequential(new ControlTeleToScale());
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .6, true, 4));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(60, .6, true, 4));
     	
     	// drop 1st cube in scale 
     	addSequential(new ReleaseCubeAuto());
@@ -46,8 +46,11 @@ public class autoLeft_RR extends CommandGroup {
 		
 		// turn towards the cubes and get ready to intake
 		addSequential(new ControlTeleToGround());
-		addSequential(new ControlArmToGround());
+		
     	addSequential(new TurnToDegrees(1.0, -142));
+    	addSequential(new FindCube(1.0));
+
+		addSequential(new ControlArmToGround());
     	
     	// vision track the cube and intake
 //    	addSequential(new FindCube());

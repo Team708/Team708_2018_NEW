@@ -37,7 +37,7 @@ public class autoLeft_LR extends CommandGroup {
     	// move arm and tele up and continue to the scale    	
     	addParallel(new ControlArmToScale());
     	addSequential(new ControlTeleToScale());
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(40, .6, true, 4));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(60, .6, true, 4));
     	
     	// drop 1st cube in scale 
     	addSequential(new ReleaseCubeAuto());
@@ -46,14 +46,17 @@ public class autoLeft_LR extends CommandGroup {
 		
 		// turn towards the cubes and get ready to intake
 		addSequential(new ControlTeleToGround());
+		
+    	addSequential(new TurnToDegrees(1.0, -142));
+    	addSequential(new FindCube(1.0));
+
 		addSequential(new ControlArmToGround());
-    	addSequential(new TurnToDegrees(1.0, -145)); //maybe change to 140?
     	
     	// vision track the cube and intake
 //    	addSequential(new FindCube());
     	addParallel(new AutoIntakeIn(3.0));    	
     	addSequential(new DriveStraightToEncoderDistanceOrTime(30, .8, true, 3));
-    	addSequential(new SqueezeCubeAuto());
+  //  	addSequential(new SqueezeCubeAuto());
     	addSequential(new DriveStraightToEncoderDistanceOrTime(12, .7, false, 1));
     	
     	// place cube into the grabber

@@ -52,13 +52,6 @@ public class VisionProcessor extends Subsystem {
 		super("Vision Processor");
 	}
 
-
-//	Method for centering with the cubes
-//	public double displacementX() {
-//		NetworkTableEntry limeLightInfo = limeLightTable.getEntry("tx");		
-//		displacementX = limeLightInfo.getDouble(0);	
-//		return displacementX;
-//	}
 	public boolean hasTarget() {
 		tv = getNTInfo("tv");
 		if (tv != 0.0) {
@@ -72,7 +65,6 @@ public class VisionProcessor extends Subsystem {
 	public boolean isCentered() {
 	
 		displacementX = getNTInfo("tx");
-//		displacementX = getNTInfo("ty");
 	
 		if (Math.abs(displacementX) <= AutoConstants.X_THRESHOLD) {
 			isCentered = true;
@@ -88,25 +80,12 @@ public class VisionProcessor extends Subsystem {
 		if (hasTarget()) {
 			if (!isCentered())	
 			     if (displacementX > 0)
-				     rotate = -.7;
+				     rotate = .8;
 			     else 
-			 	    rotate = .7;
+			 	    rotate = -.8;
 			 else // centered
 				rotate= 0.0;
-		} //dont have target - sweep
-//		else {	//The robot does not see any targets and is now sweeping
-//			drivetrain.resetGyro();
-//			gyroAngle = drivetrain.getAngle();
-//			if (gyroAngle == AutoConstants.SWEEP_ANGLE_START) {
-//				rotate = drivetrain.rotateByGyro(AutoConstants.SWEEP_ANGLE_LEFT, AutoConstants.X_THRESHOLD);
-//			}
-//			else if (gyroAngle == AutoConstants.SWEEP_ANGLE_LEFT) {
-//				rotate = drivetrain.rotateByGyro(AutoConstants.SWEEP_ANGLE_RIGHT, AutoConstants.X_THRESHOLD);
-//			}
-//			else if (gyroAngle == AutoConstants.SWEEP_ANGLE_RIGHT) {
-//				rotate = drivetrain.rotateByGyro(AutoConstants.SWEEP_ANGLE_STOP, AutoConstants.X_THRESHOLD);
-//			}
-//		}		
+		} 
 		return rotate;
 	}
 	public void toggleLEDMode() {

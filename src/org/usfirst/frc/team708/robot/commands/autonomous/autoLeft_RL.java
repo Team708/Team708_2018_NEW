@@ -43,14 +43,16 @@ public class autoLeft_RL extends CommandGroup {
 		
 		// turn towards the cubes and get ready to intake
 		addSequential(new ControlTeleToGround());
+
+		addSequential(new TurnToDegrees(1.0, 142)); 
+    	addSequential(new FindCube(1.0));
+
 		addSequential(new ControlArmToGround());
-    	addSequential(new TurnToDegrees(1.0, 135)); //maybe change to 140?
     	
     	// vision track the cube and intake
-//    	addSequential(new FindCube());
     	addParallel(new AutoIntakeIn(4.0));    	
     	addSequential(new DriveStraightToEncoderDistanceOrTime(33, .7, true, 3));
-    	addSequential(new SqueezeCubeAuto());
+    //	addSequential(new SqueezeCubeAuto());
     	addSequential(new DriveStraightToEncoderDistanceOrTime(12, .7, false, 1));
 
     	// place cube into the grabber

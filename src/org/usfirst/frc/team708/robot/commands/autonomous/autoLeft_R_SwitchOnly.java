@@ -35,18 +35,21 @@ public class autoLeft_R_SwitchOnly extends CommandGroup {
     	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.8, false, -85, 2)); // increase the angle?
     	addSequential(new DriveStraightToEncoderDistanceOrTime(55, .7, true, 3)); // increase the distance moving forward... 30 inches?
  	
-    	addSequential(new AutoIntakeOut(.5));
+    	addSequential(new AutoIntakeOut(1.0));
     	
     	// pull back and face the center cubes
     	addSequential(new DriveCurvatureToDegreesOrTime(-.8, .6, false, 40, 1));
     	addSequential(new TurnToDegrees(.8, -50)); // original 45
     	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .8, false, 1));
     	
+    	addSequential(new FindCube(1.0));
+    	
     	// grab 2nd cube from the center
 		addSequential(new ControlArmToGround());
     	addParallel(new AutoIntakeIn(3.0));  
     	addSequential(new DriveStraightToCubeOrTime(26, .6, true, 3));
-
+    	addParallel(new AutoIntakeIn(1.0));  
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(3, .6, false, 1));
     	// Moving robot to the switch
 		addSequential(new ControlArmToSwitch());
     	addSequential(new TurnToDegrees(.9, 90));
