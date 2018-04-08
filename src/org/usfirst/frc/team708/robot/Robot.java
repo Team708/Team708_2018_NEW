@@ -142,7 +142,7 @@ public class Robot extends IterativeRobot {
 		if ((autoMode.equals("Right_RobotLocation")) ||
 				(autoMode.equals("Left_RobotLocation")))
 			{
-				SmartDashboard.putString("HERE", "running the special modes");
+//				SmartDashboard.putString("HERE", "running the special modes");
 				switch(gameData.substring(0,2))
 				{
 					case "LL":
@@ -225,7 +225,7 @@ public class Robot extends IterativeRobot {
 			else if ((autoMode.equals("Right_SwitchOnly_RobotLocation")) ||
 					(autoMode.equals("Left_SwitchOnly_RobotLocation"))) {
 				
-				SmartDashboard.putString("HERE", "running the switchonly specials");
+//				SmartDashboard.putString("HERE", "running the switchonly specials");
 				switch(gameData.substring(0,1))
 				{
 					case "L":
@@ -264,15 +264,33 @@ public class Robot extends IterativeRobot {
 					}
 				}//switch
 			} //end else if - using switch only
-		
-		
-			else
+		else if ((autoMode.equals("Center_SwitchOnly_RobotLocation"))
+				) {		
+			switch(gameData.substring(0,1)) // checks for 'L' or 'R'
 			{
-				SmartDashboard.putString("HERE", "running the other modes");
-
-				SmartDashboard.putString("Auto State", autoMode);
-				if (autonomousCommand != null) autonomousCommand.start();
+				case "L":
+				{
+//					SmartDashboard.putString("Auto State", "L"); //(Makovics) - Sets string to LL for the dashboard
+				    	SwitchOnly_Center_Left command_Center_L_SwitchOnly = new SwitchOnly_Center_Left(); //autoCenter_LL(); Changed the name to match SwitchOnly_Center Class
+				    	command_Center_L_SwitchOnly.start(); //Changed the name to switch only
+					break;
+				}
+				case "R":
+				{
+				    	SwitchOnly_Center_Right command_Center_R_SwitchOnly = new SwitchOnly_Center_Right(); //autoCenter_RR(); Matched with the auto class
+				    	command_Center_R_SwitchOnly.start(); 
+				}
+					break;
+				
 			}
+		}
+			else
+				{
+					SmartDashboard.putString("HERE", "running the other modes");
+	
+					SmartDashboard.putString("Auto State", autoMode);
+					if (autonomousCommand != null) autonomousCommand.start();
+				}
 
 
     }
@@ -349,13 +367,14 @@ public class Robot extends IterativeRobot {
 //    	autonomousMode.addObject("Test Auto 1", null);
     	autonomousMode.addObject("Do Nothing", new DoNothing());
 
-//    	autonomousMode.addObject("Drive in Square", 		new DriveInSquare());
-    	autonomousMode.addObject("Drive encoder distance", 	new driveDistanceEncoder());
-//    	autonomousMode.addObject("Curvature Drive", 		new driveCurvatureForTime());
-    	autonomousMode.addObject("Left Robot Location", 		new Left_RobotLocation());
-//    	autonomousMode.addObject("Right Robot Location", 	new Right_RobotLocation());
+//    	autonomousMode.addObject("Drive in Square", 					new DriveInSquare());
+    	autonomousMode.addObject("Drive encoder distance", 				new driveDistanceEncoder());
+//    	autonomousMode.addObject("Curvature Drive", 					new driveCurvatureForTime());
+    	autonomousMode.addObject("Left Robot Location", 				new Left_RobotLocation());
+//    	autonomousMode.addObject("Right Robot Location", 				new Right_RobotLocation());
     	autonomousMode.addObject("Left Switch Only RobotLocation", 		new Left_SwitchOnly_RobotLocation());
-//    	autonomousMode.addObject("Right Switch Only RobotLocation", 		new Left_SwitchOnly_RobotLocation());
+//    	autonomousMode.addObject("Right Switch Only RobotLocation", 	new Left_SwitchOnly_RobotLocation());
+    	autonomousMode.addObject("Center Switch Only RobotLocation", 	new Center_SwitchOnly_RobotLocation());
 
 
     	SmartDashboard.putData("Autonomous Selection", autonomousMode);    	   	

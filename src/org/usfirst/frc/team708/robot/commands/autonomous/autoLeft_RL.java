@@ -29,12 +29,12 @@ public class autoLeft_RL extends CommandGroup {
     	addSequential(new ShiftClimberHigh());
      
     	//drive to the scale
-       	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .02, false, 200, 2));
+       	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .02, false, 206, 3));
 
     	// move arm and tele up and continue to the scale    	
     	addParallel(new ControlArmToScale());
     	addSequential(new ControlTeleToScale());
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(36, .6, true, 2));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(48, .6, true, 2));
     	
     	// drop 1st cube in scale 
 		addSequential(new ReleaseCubeAuto());

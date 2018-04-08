@@ -1,4 +1,4 @@
-package org.usfirst.frc.team708.robot.commands.arm;
+package org.usfirst.frc.team708.robot.commands.intakeCube;
 
 import org.usfirst.frc.team708.robot.Constants;
 import org.usfirst.frc.team708.robot.OI;
@@ -11,47 +11,41 @@ import org.usfirst.frc.team708.robot.RobotMap;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 
+
+
 /**
- *@author Nick, Mike, Josh
+ *@author
  */
-public class ControlArmToSwitch extends Command {
-	
-	private double runTime;
+public class AutoIntakeInForTime extends Command {
 
-    public ControlArmToSwitch(double runTime) {
-    	requires(Robot.arm);
+    public AutoIntakeInForTime(double maxTime) {
+//    	requires(Robot.intakeCube);
+//    	requires(Robot.loader);
     	
-        this.runTime = runTime;
-
+    	this.setTimeout(maxTime);
     }
     
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	}    	
+    }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.arm.getAngle() >= Constants.SWITCH_HEIGHT - Constants.ARM_TOLERANCE)
-    		Robot.arm.moveMotor(Constants.ARM_REVERSE);
-    	else
-    		Robot.arm.moveMotor(Constants.ARM_FORWARD);
-    	}    	
-
+//    	if(Robot.intakeCube.hasCube())
+//    		Robot.intakeCube.stop();
+//    	else
+//         	Robot.intakeCube.moveMotor(Constants.INTAKE_FORWARD);    }
+    	Robot.intakeCube.moveMotor(Constants.INTAKE_FORWARD);
+    }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	//Have a range in case the RIO can't get the angle exact.
-       	if (Robot.arm.getAngle() >= Constants.SWITCH_HEIGHT - Constants.ARM_TOLERANCE && 
-			      Robot.arm.getAngle() <= Constants.SWITCH_HEIGHT + Constants.ARM_TOLERANCE || this.timeSinceInitialized() >= runTime)
-    		return true;
-    	else
-    		return false;
+    	return (isTimedOut());
     }
 
     // Called once after isFinished returns true
     protected void end() {
-     Robot.arm.stop();
-
+    	Robot.intakeCube.stop();
     }
 
     // Called when another command which requires one or more of the same

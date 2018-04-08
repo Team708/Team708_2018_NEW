@@ -30,13 +30,13 @@ public class JoystickMoveTele extends Command {
     protected boolean isFinished() {
 
     	//check if joystick axis is in deadzone. Change movespeed to 0 if it is
-    	if ((Robot.tele.telescopeDown()) && (moveSpeed <= Constants.TELE_DEADZONE) ||
-    	    (moveSpeed <= Constants.TELE_DEADZONE && moveSpeed >= -Constants.TELE_DEADZONE)) 
-    	{							
-        	Robot.tele.manualMove(0.0);
-        	return true;
-    	}
-    	else {
+//    	if ((Robot.tele.telescopeDown()) && (moveSpeed <= Constants.TELE_DEADZONE) ||
+//    	    (moveSpeed <= Constants.TELE_DEADZONE && moveSpeed >= -Constants.TELE_DEADZONE)) 
+//    	{							
+//        	Robot.tele.manualMove(0.0);
+//        	return true;
+//    	}
+//    	else {
     		// check if the telescope arm is fully extended
     		if ((Robot.tele.getAngle() >= Constants.TELE_MAX) && (moveSpeed > 0)) {
             	Robot.tele.manualMove(0.0);
@@ -47,7 +47,7 @@ public class JoystickMoveTele extends Command {
             	Robot.tele.manualMove(moveSpeed);
             	return false;
             	}
-    	}
+//    	}
     }
 
     // Called once after isFinished returns true

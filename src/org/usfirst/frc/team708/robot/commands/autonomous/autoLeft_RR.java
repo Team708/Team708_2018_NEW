@@ -29,9 +29,9 @@ public class autoLeft_RR extends CommandGroup {
     	addSequential(new ShiftClimberHigh());
     	
     	// drive to the scale
-     	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .03, false, 170, 3));   	
+     	addSequential(new DriveCurvatureToEncoderOrTime(1.0, .03, false, 190, 4));   	
     	addSequential(new TurnToDegrees(.8, 55));
-       	addSequential(new DriveStraightToEncoderDistanceOrTime(165, .8, true, 4));	
+       	addSequential(new DriveStraightToEncoderDistanceOrTime(151, .8, true, 4));	
     	addSequential(new TurnToDegrees(.8, -80));
     	
     	// move arm and tele up and continue to the scale    	
@@ -59,7 +59,7 @@ public class autoLeft_RR extends CommandGroup {
     	
 //    	// drop 2nd cube into the switch
     	addSequential(new ReleaseCubeAuto());
-    	addSequential(new ControlArmToSwitch());
+    	addSequential(new ControlArmToSwitch(2.0));
     	addSequential(new DriveStraightToEncoderDistanceOrTime(12, .8, true, 1));
     	addSequential(new AutoIntakeOut(.5));
 

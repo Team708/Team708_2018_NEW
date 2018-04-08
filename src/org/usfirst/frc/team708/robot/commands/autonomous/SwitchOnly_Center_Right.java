@@ -17,9 +17,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
  * SwitchLocation 									= LEFT
 
  */
-public class autoLeft_L_SwitchOnly extends CommandGroup {
+public class SwitchOnly_Center_Right extends CommandGroup {
 
-    public autoLeft_L_SwitchOnly() {
+    public SwitchOnly_Center_Right() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	
@@ -27,38 +27,44 @@ public class autoLeft_L_SwitchOnly extends CommandGroup {
     	addSequential(new GearShift1());
     	
        	//drive to the switch
-//    	addSequential(new DriveCurvatureForTime(1.0, .6, false, 1.5));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(36, .8, true, 2));
-    	addSequential(new DriveCurvatureToEncoderOrTime(.8, -.5, false, 67, 4));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(.8, .8, false, 35, 1));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(.8, -.8, false, 35, 1));
+    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .4, false, 35, 1));
+    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.4, false, 35, 1));
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(12, .6, true, 1));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .6, true, 1)); //JNP changed from 12 to 6
 
-    	
     	// drop 1st cube in switch
     	addSequential(new AutoIntakeOut(1.0));
     	
     	// pull back and face the center cubes
-    	addSequential(new DriveCurvatureToDegreesOrTime(-.8, -.6, false, -40, 1));
-    	addSequential(new TurnToDegrees(.8, 65));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .8, false, 1));
-
-    
+    	addSequential(new DriveCurvatureToDegreesOrTime(-.8, .6, false, 40, 1));
+    	addSequential(new TurnToDegrees(.8, -50)); // original 45
+    	//addSequential(new DriveStraightToEncoderDistanceOrTime(6, .8, false, 1));
+    	
     	addSequential(new FindCube(2.0));
-
+    	
     	// grab 2nd cube from the center
 		addSequential(new ControlArmToGround());
     	addParallel(new AutoIntakeIn(2.0));  
     	addSequential(new DriveStraightToCubeOrTime(30, .6, true, 2));
     	addSequential(new AutoIntakeInForTime(1.0));  
     	addSequential(new DriveStraightToEncoderDistanceOrTime(3, .6, false, 1));
-
+    	
     	// Moving robot to the switch
 		addSequential(new ControlArmToSwitch(2.0));
-    	addSequential(new TurnToDegrees(.9, -90));
-    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .7, false, 95, 2));
+    	addSequential(new TurnToDegrees(.9, 90));
+    	addSequential(new DriveCurvatureToDegreesOrTime(.9, -.8, false, -95, 2));
+    	addSequential(new DriveCurvatureToDegreesOrTime(.9, -.8, false, -95, 1)); //JNP shortened from 2 to 1
     	
     	// drop 2nd cube in switch
     	addSequential(new AutoIntakeOut(1.0));
-    	addSequential(new Send("finished"));
-    }
+    	
+    	//go to back side of switch   JNP added this section
+    	addSequential(new ActivateButterfly());
+    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.8, false, -180, 1));
+    	addSequential(new WaitCommand(1.0));
+    	addSequential(new ActivateButterfly());    }
 
     // Called just before this Command runs the first time
     protected void initialize() {

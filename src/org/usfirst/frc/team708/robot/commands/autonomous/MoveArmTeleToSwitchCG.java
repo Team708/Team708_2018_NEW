@@ -23,7 +23,7 @@ public class MoveArmTeleToSwitchCG extends CommandGroup {
 
 //    	addSequential(new Send("Moving the arm and tele to switch"));
     	addSequential(new ControlTeleToGround());
-    	addSequential(new ControlArmToSwitch());
+    	addSequential(new ControlArmToSwitch(2.0));
 //    	addSequential(new Send("done moving arm and tele to switch"));    
     }
     
