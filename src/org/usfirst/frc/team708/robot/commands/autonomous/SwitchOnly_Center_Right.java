@@ -62,9 +62,11 @@ public class SwitchOnly_Center_Right extends CommandGroup {
     	
     	//go to back side of switch   JNP added this section
     	addSequential(new ActivateButterfly());
-    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.8, false, -180, 1));
+    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.3, true, -180, 3));
     	addSequential(new WaitCommand(1.0));
-    	addSequential(new ActivateButterfly());    }
+    	addSequential(new ActivateButterfly());
+    	
+    }
 
     // Called just before this Command runs the first time
     protected void initialize() {

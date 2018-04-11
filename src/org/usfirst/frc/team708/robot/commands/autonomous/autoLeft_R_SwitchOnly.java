@@ -58,8 +58,12 @@ public class autoLeft_R_SwitchOnly extends CommandGroup {
     	
     	// drop 2nd cube in switch
     	addSequential(new AutoIntakeOut(1.0));
-    	addSequential(new Send("finished"));    	
     	
+    	//go to back side of switch   JNP added this section
+    	addSequential(new ActivateButterfly());
+    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.3, true, -180, 3));
+    	addSequential(new WaitCommand(1.0));
+    	addSequential(new ActivateButterfly());    	
     }
 
     // Called just before this Command runs the first time
