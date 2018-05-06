@@ -27,12 +27,9 @@ public class SwitchOnly_Center_Left extends CommandGroup {
     	addSequential(new GearShift1());
     	
        	//drive to the switch
-//    	addSequential(new DriveCurvatureToEncoderOrTime(.8, -.8, false, 35, 1));
-//    	addSequential(new DriveCurvatureToEncoderOrTime(.8, .8, false, 35, 1));
-    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.6, false, 42, 1));
-    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .6, false, 42, 1));
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(12, .6, true, 1));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .6, true, 1)); //JNP shortened from 12 to 6
+    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.7, false, -40, 2));
+    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .5, false, 40, 1));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(2, .6, true, 1)); //JNP shortened from 12 to 6
 
     	// drop 1st cube in switch
     	addSequential(new AutoIntakeOut(1.0));
@@ -41,7 +38,6 @@ public class SwitchOnly_Center_Left extends CommandGroup {
     	addSequential(new DriveCurvatureToDegreesOrTime(-.8, -.6, false, -40, 1));
     	addSequential(new TurnToDegrees(.8, 65));
     	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .8, false, 1));
-
     
     	addSequential(new FindCube(2.0));
 
@@ -53,18 +49,17 @@ public class SwitchOnly_Center_Left extends CommandGroup {
     	addSequential(new DriveStraightToEncoderDistanceOrTime(3, .6, false, 1));
 
     	// Moving robot to the switch
-		addSequential(new ControlArmToSwitch(2.0));
+		addSequential(new ControlArmToSwitch(1.0));
     	addSequential(new TurnToDegrees(.9, -90));
-//    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .7, false, 95, 2));
+    	
     	addSequential(new DriveCurvatureToDegreesOrTime(.8, .7, false, 95, 1)); //JNP shortened from 2 to 1 second
     	
     	// drop 2nd cube in switch
     	addSequential(new AutoIntakeOut(1.0));
     	
-    	
     	//go to back side of switch   JNP added this section
     	addSequential(new ActivateButterfly());
-    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, .3, true, 160, 3));
+    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, .6, true, 250, 3));
     	addSequential(new WaitCommand(1.0));
     	addSequential(new ActivateButterfly());
     }

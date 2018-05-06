@@ -98,8 +98,15 @@ public class OI {
 
 		butterflyOn.whenPressed(new ActivateButterfly());
 		
-		highGearOn.whenPressed(new GearShift2());
-		lowGearOn.whenPressed(new GearShift1());
+	//	highGearOn.whenPressed(new GearShift2());
+		highGearOn.whenReleased(new GearShift2());
+		highGearOn.whileHeld(new GearShift1());
+
+	//	lowGearOn.whenPressed(new GearShift1());
+		lowGearOn.whenReleased(new GearShift2());
+		lowGearOn.whileHeld(new GearShift1());
+
+		
 		climbHighGear.whenPressed(new ShiftClimberLow());
 		climbLowGear.whenPressed(new ShiftClimberHigh());
 

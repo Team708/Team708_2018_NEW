@@ -3,9 +3,11 @@ package org.usfirst.frc.team708.robot.commands.autonomous;
 import org.usfirst.frc.team708.robot.Robot;
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightToEncoderDistance;
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightToEncoderDistanceOrTime;
+import org.usfirst.frc.team708.robot.commands.drivetrain.GearShift1;
 import org.usfirst.frc.team708.robot.commands.drivetrain.DriveStraightForTime;
 //import org.usfirst.frc.team708.robot.commands.drivetrain.RotateAndDriveToBoiler;
 import org.usfirst.frc.team708.robot.commands.drivetrain.ToggleBrakeMode;
+import org.usfirst.frc.team708.robot.commands.pneumatics.ReleaseCubeAuto;
 import org.usfirst.frc.team708.robot.commands.drivetrain.Send;
 //import org.usfirst.frc.team708.robot.commands.feeder.SpinFeeder;
 //import org.usfirst.frc.team708.robot.commands.shooter.SpinShooter;
@@ -33,14 +35,13 @@ public class driveDistanceEncoder extends CommandGroup {
 	
     public  driveDistanceEncoder() {
 
-    	addSequential(new Send("In DriveDistance"));
+    	addSequential(new ReleaseCubeAuto()); /*intake closed*/  
+    	addSequential(new GearShift1());
 
 //    	addSequential(new WaitCommand(5.0));
     	
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(70, .8, true, 3));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(140, .8, true, 5));
 
-    	
-    	addSequential(new Send("finished"));
     }
     
     // Make this return true when this Command no longer needs to run execute()

@@ -12,7 +12,7 @@ public class GearShift1 extends Command{
         
     public GearShift1() {
 
-    	requires(Robot.drivetrain);
+   // 	requires(Robot.drivetrain);
     	
     }
 

@@ -52,7 +52,7 @@ public class autoLeft_R_SwitchOnly extends CommandGroup {
     	addSequential(new DriveStraightToEncoderDistanceOrTime(3, .6, false, 1));
     	
     	// Moving robot to the switch
-		addSequential(new ControlArmToSwitch(2.0));
+		addSequential(new ControlArmToSwitch(1.0));
     	addSequential(new TurnToDegrees(.9, 90));
     	addSequential(new DriveCurvatureToDegreesOrTime(.9, -.8, false, -79, 2));
     	
@@ -61,7 +61,7 @@ public class autoLeft_R_SwitchOnly extends CommandGroup {
     	
     	//go to back side of switch   JNP added this section
     	addSequential(new ActivateButterfly());
-    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.3, true, -180, 3));
+    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.8, true, -180, 3));
     	addSequential(new WaitCommand(1.0));
     	addSequential(new ActivateButterfly());    	
     }

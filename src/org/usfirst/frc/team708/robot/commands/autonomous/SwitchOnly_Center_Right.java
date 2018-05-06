@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 
  */
 public class SwitchOnly_Center_Right extends CommandGroup {
-
+ 
     public SwitchOnly_Center_Right() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -27,12 +27,9 @@ public class SwitchOnly_Center_Right extends CommandGroup {
     	addSequential(new GearShift1());
     	
        	//drive to the switch
-//    	addSequential(new DriveCurvatureToEncoderOrTime(.8, .8, false, 35, 1));
-//    	addSequential(new DriveCurvatureToEncoderOrTime(.8, -.8, false, 35, 1));
-    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .4, false, 35, 1));
-    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.4, false, 35, 1));
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(12, .6, true, 1));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .6, true, 1)); //JNP changed from 12 to 6
+    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .7, false, 35, 2));
+    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.5, false, -35, 1));
+ //   	addSequential(new DriveStraightToEncoderDistanceOrTime(5, .6, true, 5)); //JNP changed from 12 to 6
 
     	// drop 1st cube in switch
     	addSequential(new AutoIntakeOut(1.0));
@@ -52,20 +49,18 @@ public class SwitchOnly_Center_Right extends CommandGroup {
     	addSequential(new DriveStraightToEncoderDistanceOrTime(3, .6, false, 1));
     	
     	// Moving robot to the switch
-		addSequential(new ControlArmToSwitch(2.0));
+		addSequential(new ControlArmToSwitch(1.0));
     	addSequential(new TurnToDegrees(.9, 90));
-    	addSequential(new DriveCurvatureToDegreesOrTime(.9, -.8, false, -95, 2));
-    	addSequential(new DriveCurvatureToDegreesOrTime(.9, -.8, false, -95, 1)); //JNP shortened from 2 to 1
+    	addSequential(new DriveCurvatureToDegreesOrTime(.9, -.8, false, -75, 2)); //JNP shortened from 2 to 1
     	
     	// drop 2nd cube in switch
     	addSequential(new AutoIntakeOut(1.0));
     	
     	//go to back side of switch   JNP added this section
     	addSequential(new ActivateButterfly());
-    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.3, true, -180, 3));
+    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.6, true, -250, 3));
     	addSequential(new WaitCommand(1.0));
     	addSequential(new ActivateButterfly());
-    	
     }
 
     // Called just before this Command runs the first time
