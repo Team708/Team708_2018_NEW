@@ -36,21 +36,20 @@ public class RobotMap {
 	public static final int drivetrainLeftMotorSlave1  	= 12; 
 	public static final int drivetrainLeftMotorSlave2	= 13;
 	
-	public static final int drivetrainRightMotorMaster  = 14;
-	public static final int drivetrainRightMotorSlave1 	= 15;
-	public static final int drivetrainRightMotorSlave2 	= 16;
+	public static final int drivetrainRightMotorMaster  = 21;
+	public static final int drivetrainRightMotorSlave1 	= 22;
+	public static final int drivetrainRightMotorSlave2 	= 23;
 
-	public static final int telescopingMotorMaster	 	= 21;
-	public static final int telescopingMotorSlave1	 	= 22;
-	public static final int telescopingMotorSlave2	 	= 23;
-//	public static final int telescopingMotorSlave3	 	= 24;
+	public static final int telescopingMotorMaster	 	= 31;
+	public static final int telescopingMotorSlave1	 	= 32;
+	public static final int telescopingMotorSlave2	 	= 33;
 
 	// Pivot Arm CAN Device ID
-	public static final int pivotArmMotorMaster			= 31; 
-	public static final int pivotArmMotorSlave1			= 32; 
+	public static final int pivotArmMotorMaster			= 41; 
+	public static final int pivotArmMotorSlave1			= 42; 
 	
-	public static final int intakeMotorMaster			= 41; 
-	public static final int intakeMotorSlave			= 42; 
+	public static final int intakeMotorMaster			= 51; 
+	public static final int intakeMotorSlave			= 52; 
 	
 	// Digital IO
 	public static final int drivetrainEncoderARt		= 0;  	//this might go directly on the motor controllers
