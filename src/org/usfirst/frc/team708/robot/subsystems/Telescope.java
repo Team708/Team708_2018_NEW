@@ -25,6 +25,15 @@ public class Telescope extends Subsystem {
 		teleMotorMaster  = new WPI_TalonSRX(RobotMap.telescopingMotorMaster);
 		teleMotorSlave1  = new WPI_VictorSPX(RobotMap.telescopingMotorSlave1);
 		teleMotorSlave2  = new WPI_VictorSPX(RobotMap.telescopingMotorSlave2);
+		
+		/* Peak Current and Duration must be exceeded before current limit is activated.
+		 * When activated, current will be limited to Continuous Current.
+		 * Set Peak Current params to 0 if desired behavior is to immediately current-limit. 
+		 * (10 ms timeout)*/
+		teleMotorMaster.configPeakCurrentLimit(45, 10); /* 45 A */
+		teleMotorMaster.configPeakCurrentDuration(200, 10); /* 200ms */
+		teleMotorMaster.configContinuousCurrentLimit(40, 10); /* 40A */
+		teleMotorMaster.enableCurrentLimit(true); /* turn it on */
 
 		teleSensor 	= new DigitalInput(RobotMap.TelescopeSensor);
 

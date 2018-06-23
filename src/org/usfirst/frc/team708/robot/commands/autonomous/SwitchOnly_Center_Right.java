@@ -39,7 +39,7 @@ public class SwitchOnly_Center_Right extends CommandGroup {
     	addSequential(new TurnToDegrees(.8, -50)); // original 45
     	//addSequential(new DriveStraightToEncoderDistanceOrTime(6, .8, false, 1));
     	
-    	addSequential(new FindCube(2.0));
+    	//addSequential(new FindCube(2.0));
     	
     	// grab 2nd cube from the center
 		addSequential(new ControlArmToGround());
