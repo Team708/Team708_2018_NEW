@@ -28,8 +28,8 @@ public class SwitchOnly_Center_Left extends CommandGroup {
     	
        	//drive to the switch
     	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.7, false, -40, 2));
-    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .5, false, 40, 1));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(2, .6, true, 1)); //JNP shortened from 12 to 6
+    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .5, false, 38, 1));
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(2, .6, true, 1)); //JNP shortened from 12 to 6
 
     	// drop 1st cube in switch
     	addSequential(new AutoIntakeOut(1.0));
