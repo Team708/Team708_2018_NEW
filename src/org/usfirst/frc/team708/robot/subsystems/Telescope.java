@@ -30,10 +30,10 @@ public class Telescope extends Subsystem {
 		 * When activated, current will be limited to Continuous Current.
 		 * Set Peak Current params to 0 if desired behavior is to immediately current-limit. 
 		 * (10 ms timeout)*/
-		teleMotorMaster.configPeakCurrentLimit(45, 10); /* 45 A */
-		teleMotorMaster.configPeakCurrentDuration(200, 10); /* 200ms */
-		teleMotorMaster.configContinuousCurrentLimit(40, 10); /* 40A */
-		teleMotorMaster.enableCurrentLimit(true); /* turn it on */
+//		teleMotorMaster.configPeakCurrentLimit(45, 10); /* 45 A */
+//		teleMotorMaster.configPeakCurrentDuration(200, 10); /* 200ms */
+//		teleMotorMaster.configContinuousCurrentLimit(40, 10); /* 40A */
+//		teleMotorMaster.enableCurrentLimit(true); /* turn it on */
 
 		teleSensor 	= new DigitalInput(RobotMap.TelescopeSensor);
 

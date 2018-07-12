@@ -39,10 +39,10 @@ public class IntakeCube extends Subsystem {
 		 * When activated, current will be limited to Continuous Current.
 		 * Set Peak Current params to 0 if desired behavior is to immediately current-limit. 
 		 * (10 ms timeout)*/
-		intakeMaster.configPeakCurrentLimit(25, 10); /* 45 A */
-		intakeMaster.configPeakCurrentDuration(200, 10); /* 200ms */
-		intakeMaster.configContinuousCurrentLimit(20, 10); /* 40A */
-		intakeMaster.enableCurrentLimit(true); /* turn it on */
+//		intakeMaster.configPeakCurrentLimit(25, 10); /* 45 A */
+//		intakeMaster.configPeakCurrentDuration(200, 10); /* 200ms */
+//		intakeMaster.configContinuousCurrentLimit(20, 10); /* 40A */
+//		intakeMaster.enableCurrentLimit(true); /* turn it on */
 		
 		cubeSensor 	= new DigitalInput(RobotMap.cubeSensor);
 		

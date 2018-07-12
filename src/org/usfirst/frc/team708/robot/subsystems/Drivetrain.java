@@ -83,19 +83,15 @@ public class Drivetrain extends PIDSubsystem {
 		 * When activated, current will be limited to Continuous Current.
 		 * Set Peak Current params to 0 if desired behavior is to immediately current-limit. 
 		 * (10 ms timeout)*/
-		leftMaster.configPeakCurrentLimit(45, 10); /* 45 A */
-		leftMaster.configPeakCurrentDuration(200, 10); /* 200ms */
-		leftMaster.configContinuousCurrentLimit(40, 10); /* 40A */
-		leftMaster.enableCurrentLimit(true); /* turn it on */
-		
-		/* Peak Current and Duration must be exceeded before current limit is activated.
-		 * When activated, current will be limited to Continuous Current.
-		 * Set Peak Current params to 0 if desired behavior is to immediately current-limit. 
-		 * (10 ms timeout)*/
-		rightMaster.configPeakCurrentLimit(45, 10); /* 45 A */
-		rightMaster.configPeakCurrentDuration(200, 10); /* 200ms */
-		rightMaster.configContinuousCurrentLimit(40, 10); /* 40A */
-		rightMaster.enableCurrentLimit(true); /* turn it on */
+//		leftMaster.configPeakCurrentLimit(45, 10); /* 45 A */
+//		leftMaster.configPeakCurrentDuration(200, 10); /* 200ms */
+//		leftMaster.configContinuousCurrentLimit(40, 10); /* 40A */
+//		leftMaster.enableCurrentLimit(true); /* turn it on */
+//	
+//		rightMaster.configPeakCurrentLimit(45, 10); /* 45 A */
+//		rightMaster.configPeakCurrentDuration(200, 10); /* 200ms */
+//		rightMaster.configContinuousCurrentLimit(40, 10); /* 40A */
+//		rightMaster.enableCurrentLimit(true); /* turn it on */
 		
 		SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftMaster, leftSlave1, leftSlave2);
 		SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightMaster, rightSlave1, rightSlave2);

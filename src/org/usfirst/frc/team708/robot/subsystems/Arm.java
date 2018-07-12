@@ -36,10 +36,10 @@ public class Arm extends Subsystem {
 		 * When activated, current will be limited to Continuous Current.
 		 * Set Peak Current params to 0 if desired behavior is to immediately current-limit. 
 		 * (10 ms timeout)*/
-		armMotorMaster.configPeakCurrentLimit(30, 10); /* 45 A */
-		armMotorMaster.configPeakCurrentDuration(200, 10); /* 200ms */
-		armMotorMaster.configContinuousCurrentLimit(25, 10); /* 40A */
-		armMotorMaster.enableCurrentLimit(true); /* turn it on */
+//		armMotorMaster.configPeakCurrentLimit(30, 10); /* 45 A */
+//		armMotorMaster.configPeakCurrentDuration(200, 10); /* 200ms */
+//		armMotorMaster.configContinuousCurrentLimit(25, 10); /* 40A */
+//		armMotorMaster.enableCurrentLimit(true); /* turn it on */
 
 		armMotorSlave1.follow(armMotorMaster);
 
