@@ -23,7 +23,7 @@ public class ShiftClimberHigh extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-	    Robot.pneumaticsClimber.forward();
+	    Robot.pneumaticsClimber.reverse();
     }
 
     // Called repeatedly when this Command is scheduled to run

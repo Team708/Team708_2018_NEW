@@ -50,7 +50,7 @@ public class autoLeft_LL extends CommandGroup {
     	addSequential(new TurnToDegrees(1.0, 142)); // originally 145
     	addSequential(new FindCube(1.0));
 
-		addSequential(new ControlArmToGround());
+		addSequential(new ControlArmToGround(2));
     	
     	// vision track the cube and intake
     	addParallel(new AutoIntakeIn(2.0));    	

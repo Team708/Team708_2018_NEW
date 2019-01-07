@@ -317,7 +317,7 @@ public class Robot extends IterativeRobot {
         drivetrain.shiftGearReverse();
     	drivetrain.setgear(false);
         
-    	Robot.pneumaticsClimber.reverse(); /*high gear*/
+    	Robot.pneumaticsClimber.forward(); /*high gear*/
     	Robot.pneumaticsCube.IntakeOn(); /*intake closed*/
     }
 

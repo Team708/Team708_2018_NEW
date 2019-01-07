@@ -28,8 +28,8 @@ public class SwitchOnly_Center_Left extends CommandGroup {
     	
        	//drive to the switch
     	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.7, false, -40, 2));
-    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .5, false, 38, 1));
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(2, .6, true, 1)); //JNP shortened from 12 to 6
+    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .5, false, 40, 1));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(10, .6, true, 1)); //JNP shortened from 12 to 6
 
     	// drop 1st cube in switch
     	addSequential(new AutoIntakeOut(1.0));
@@ -39,17 +39,17 @@ public class SwitchOnly_Center_Left extends CommandGroup {
     	addSequential(new TurnToDegrees(.8, 65));
     	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .8, false, 1));
     
-    	//addSequential(new FindCube(2.0));
+    	addSequential(new FindCube(2.0));
 
     	// grab 2nd cube from the center
-		addSequential(new ControlArmToGround());
+		addSequential(new ControlArmToGround(2));
     	addParallel(new AutoIntakeIn(2.0));  
-    	addSequential(new DriveStraightToCubeOrTime(30, .6, true, 2));
+    	addSequential(new DriveStraightToCubeOrTime(45, .6, true, 3));
     	addSequential(new AutoIntakeInForTime(1.0));  
     	addSequential(new DriveStraightToEncoderDistanceOrTime(3, .6, false, 1));
 
     	// Moving robot to the switch
-		addSequential(new ControlArmToSwitch(1.0));
+		addSequential(new ControlArmToSwitch(2.0));
     	addSequential(new TurnToDegrees(.9, -90));
     	
     	addSequential(new DriveCurvatureToDegreesOrTime(.8, .7, false, 95, 1)); //JNP shortened from 2 to 1 second

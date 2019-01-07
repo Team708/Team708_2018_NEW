@@ -26,43 +26,50 @@ public class autoLeft_L_SwitchOnly extends CommandGroup {
     	addSequential(new ReleaseCubeAuto()); /*intake closed*/  
     	addSequential(new GearShift1());
     	
-       	//drive to the switch
-//    	addSequential(new DriveCurvatureForTime(1.0, .6, false, 1.5));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(36, .8, true, 2));
-    	addSequential(new DriveCurvatureToEncoderOrTime(.8, -.5, false, 67, 4));
-
+//       	//drive to the switch
+////    	addSequential(new DriveCurvatureForTime(1.0, .6, false, 1.5));
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(36, .8, true, 2));
+//    	addSequential(new DriveCurvatureToEncoderOrTime(.8, -.5, false, 67, 4));
+//
+//    	
+//    	// drop 1st cube in switch
+//    	addSequential(new AutoIntakeOut(1.0));
+//    	
+//    	// pull back and face the center cubes
+//    	addSequential(new DriveCurvatureToDegreesOrTime(-.8, -.6, false, -40, 1));
+//    	addSequential(new TurnToDegrees(.8, 65));
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .8, false, 1));
+//
+//    
+//    	addSequential(new FindCube(2.0));
+//
+//    	// grab 2nd cube from the center
+//		addSequential(new ControlArmToGround());
+//    	addParallel(new AutoIntakeIn(2.0));  
+//    	addSequential(new DriveStraightToCubeOrTime(30, .6, true, 2));
+//    	addSequential(new AutoIntakeInForTime(1.0));  
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(3, .6, false, 1));
+//
+//    	// Moving robot to the switch
+//		addSequential(new ControlArmToSwitch(1.0));
+//    	addSequential(new TurnToDegrees(.9, -90));
+//    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .7, false, 95, 2));
+//    	
+//    	// drop 2nd cube in switch
+//    	addSequential(new AutoIntakeOut(1.0));
+//    	
+//    	//go to back side of switch   JNP added this section
+//    	addSequential(new ActivateButterfly());
+//    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, .8, true, 160, 3));
+//    	addSequential(new WaitCommand(1.0));
+//    	addSequential(new ActivateButterfly());
     	
-    	// drop 1st cube in switch
+    	
+    	addSequential(new TurnToDegrees(.8, -35));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(115, .8, true, 3.0));
+    	addSequential(new TurnToDegrees(.8, 85));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(36, .6, true, 1.0));
     	addSequential(new AutoIntakeOut(1.0));
-    	
-    	// pull back and face the center cubes
-    	addSequential(new DriveCurvatureToDegreesOrTime(-.8, -.6, false, -40, 1));
-    	addSequential(new TurnToDegrees(.8, 65));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .8, false, 1));
-
-    
-    	addSequential(new FindCube(2.0));
-
-    	// grab 2nd cube from the center
-		addSequential(new ControlArmToGround());
-    	addParallel(new AutoIntakeIn(2.0));  
-    	addSequential(new DriveStraightToCubeOrTime(30, .6, true, 2));
-    	addSequential(new AutoIntakeInForTime(1.0));  
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(3, .6, false, 1));
-
-    	// Moving robot to the switch
-		addSequential(new ControlArmToSwitch(1.0));
-    	addSequential(new TurnToDegrees(.9, -90));
-    	addSequential(new DriveCurvatureToDegreesOrTime(.8, .7, false, 95, 2));
-    	
-    	// drop 2nd cube in switch
-    	addSequential(new AutoIntakeOut(1.0));
-    	
-    	//go to back side of switch   JNP added this section
-    	addSequential(new ActivateButterfly());
-    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, .8, true, 160, 3));
-    	addSequential(new WaitCommand(1.0));
-    	addSequential(new ActivateButterfly());
     	
     }
 

@@ -37,12 +37,12 @@ public class PneumaticsClimber extends Subsystem {
 	
 	public void reverse(){
 		climberDoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
-		high = false;
+		high = true;
 	}
 	
 	public void forward() {
 		climberDoubleSolenoid.set(DoubleSolenoid.Value.kForward);
-		high = true;
+		high = false;
 	}
 	
 	public void sendToDashboard() {

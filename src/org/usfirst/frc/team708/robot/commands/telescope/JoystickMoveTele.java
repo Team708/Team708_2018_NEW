@@ -24,6 +24,12 @@ public class JoystickMoveTele extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	moveSpeed = OI.operatorGamepad.getAxis(Gamepad.rightStick_Y);
+    	if (moveSpeed > 0) {
+    	    Robot.pneumaticsClimber.reverse();
+    	}
+    	else {
+    	    Robot.pneumaticsClimber.forward();
+    	}
   }
 
     // Make this return true when this Command no longer needs to run execute()

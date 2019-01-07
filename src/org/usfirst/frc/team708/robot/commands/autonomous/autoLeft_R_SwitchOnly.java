@@ -25,45 +25,54 @@ public class autoLeft_R_SwitchOnly extends CommandGroup {
     	addSequential(new ReleaseCubeAuto()); /*intake closed*/
     	addSequential(new GearShift1());
     	
-       	//drive to the switch
-    	
-//    	addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, true, 1));
+//       	//drive to the switch
+//    	
+////    	addSequential(new DriveStraightToEncoderDistanceOrTime(20, .6, true, 1));
+//
+//    	addSequential(new DriveCurvatureToEncoderOrTime(.8, .8, false, 40, 1));
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(94, .8, true, 2));
+//
+//    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.8, false, -85, 2)); 
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(48, .7, true, 1)); // increase the distance moving forward... 30 inches?
+// 	
+//    	addSequential(new AutoIntakeOut(1.0));
+//    	
+//    	// pull back and face the center cubes
+//    	addSequential(new DriveCurvatureToDegreesOrTime(-.8, .6, false, 40, 1));
+//    	addSequential(new TurnToDegrees(.8, -50)); // original 45
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .8, false, 1));
+//    	
+//    	addSequential(new FindCube(2.0));
+//    	
+//    	// grab 2nd cube from the center
+//		addSequential(new ControlArmToGround());
+//    	addParallel(new AutoIntakeIn(2.0));  
+//    	addSequential(new DriveStraightToCubeOrTime(30, .6, true, 2));
+//    	addSequential(new AutoIntakeInForTime(1.0));  
+//    	addSequential(new DriveStraightToEncoderDistanceOrTime(3, .6, false, 1));
+//    	
+//    	// Moving robot to the switch
+//		addSequential(new ControlArmToSwitch(1.0));
+//    	addSequential(new TurnToDegrees(.9, 90));
+//    	addSequential(new DriveCurvatureToDegreesOrTime(.9, -.8, false, -79, 2));
+//    	
+//    	// drop 2nd cube in switch
+//    	addSequential(new AutoIntakeOut(1.0));
+//    	
+//    	//go to back side of switch   JNP added this section
+//    	addSequential(new ActivateButterfly());
+//    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.8, true, -180, 3));
+//    	addSequential(new WaitCommand(1.0));
+//    	addSequential(new ActivateButterfly());
 
     	addSequential(new DriveCurvatureToEncoderOrTime(.8, .8, false, 40, 1));
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(94, .8, true, 2));
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(160, .8, true, 2));
 
-    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.8, false, -85, 2)); 
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(48, .7, true, 1)); // increase the distance moving forward... 30 inches?
- 	
+    	addSequential(new DriveCurvatureToDegreesOrTime(.8, -.7, false, -115, 4)); 
+    	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .6, true, 1.0));
     	addSequential(new AutoIntakeOut(1.0));
+
     	
-    	// pull back and face the center cubes
-    	addSequential(new DriveCurvatureToDegreesOrTime(-.8, .6, false, 40, 1));
-    	addSequential(new TurnToDegrees(.8, -50)); // original 45
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(6, .8, false, 1));
-    	
-    	addSequential(new FindCube(2.0));
-    	
-    	// grab 2nd cube from the center
-		addSequential(new ControlArmToGround());
-    	addParallel(new AutoIntakeIn(2.0));  
-    	addSequential(new DriveStraightToCubeOrTime(30, .6, true, 2));
-    	addSequential(new AutoIntakeInForTime(1.0));  
-    	addSequential(new DriveStraightToEncoderDistanceOrTime(3, .6, false, 1));
-    	
-    	// Moving robot to the switch
-		addSequential(new ControlArmToSwitch(1.0));
-    	addSequential(new TurnToDegrees(.9, 90));
-    	addSequential(new DriveCurvatureToDegreesOrTime(.9, -.8, false, -79, 2));
-    	
-    	// drop 2nd cube in switch
-    	addSequential(new AutoIntakeOut(1.0));
-    	
-    	//go to back side of switch   JNP added this section
-    	addSequential(new ActivateButterfly());
-    	addSequential(new DriveCurvatureToDegreesOrTime(-1.0, -.8, true, -180, 3));
-    	addSequential(new WaitCommand(1.0));
-    	addSequential(new ActivateButterfly());    	
     }
 
     // Called just before this Command runs the first time
