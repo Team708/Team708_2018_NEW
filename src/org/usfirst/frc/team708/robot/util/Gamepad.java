@@ -22,7 +22,7 @@ public class Gamepad extends Joystick{
     public static final int shoulderAxisRight 	= 3; //Right trigger
     public static final int rightStick_X 	= 4;
     public static final int rightStick_Y 	= 5;
-    public static final int dpadAxis 		= 6;
+    public static final int dpadAxis 		= 6; // Doesn't work, use getPOV() which returns int angle where 0 = up, 90 = right, etc
     
     //boolean buttons:
     public static final int button_A 		= 1;
